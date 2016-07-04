@@ -10,5 +10,6 @@
   	<module>server-gate</module>
     <module>server-master</module>
     <module>server-region</module>
+    <module>common</module>
   </modules>
 </project>
