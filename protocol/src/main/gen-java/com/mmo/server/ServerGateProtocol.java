@@ -743,9 +743,9 @@ public final class ServerGateProtocol {
         getMsAddrBytes();
 
     /**
-     * <code>optional int64 port = 3;</code>
+     * <code>optional int32 port = 3;</code>
      */
-    long getPort();
+    int getPort();
   }
   /**
    * Protobuf type {@code UserLoginResponse}
@@ -761,7 +761,7 @@ public final class ServerGateProtocol {
     private UserLoginResponse() {
       code_ = 0;
       msAddr_ = "";
-      port_ = 0L;
+      port_ = 0;
     }
 
     @java.lang.Override
@@ -803,7 +803,7 @@ public final class ServerGateProtocol {
             }
             case 24: {
 
-              port_ = input.readInt64();
+              port_ = input.readInt32();
               break;
             }
           }
@@ -880,11 +880,11 @@ public final class ServerGateProtocol {
     }
 
     public static final int PORT_FIELD_NUMBER = 3;
-    private long port_;
+    private int port_;
     /**
-     * <code>optional int64 port = 3;</code>
+     * <code>optional int32 port = 3;</code>
      */
-    public long getPort() {
+    public int getPort() {
       return port_;
     }
 
@@ -906,8 +906,8 @@ public final class ServerGateProtocol {
       if (!getMsAddrBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 2, msAddr_);
       }
-      if (port_ != 0L) {
-        output.writeInt64(3, port_);
+      if (port_ != 0) {
+        output.writeInt32(3, port_);
       }
     }
 
@@ -923,9 +923,9 @@ public final class ServerGateProtocol {
       if (!getMsAddrBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(2, msAddr_);
       }
-      if (port_ != 0L) {
+      if (port_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, port_);
+          .computeInt32Size(3, port_);
       }
       memoizedSize = size;
       return size;
@@ -963,8 +963,7 @@ public final class ServerGateProtocol {
       hash = (37 * hash) + MSADDR_FIELD_NUMBER;
       hash = (53 * hash) + getMsAddr().hashCode();
       hash = (37 * hash) + PORT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getPort());
+      hash = (53 * hash) + getPort();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1086,7 +1085,7 @@ public final class ServerGateProtocol {
 
         msAddr_ = "";
 
-        port_ = 0L;
+        port_ = 0;
 
         return this;
       }
@@ -1135,7 +1134,7 @@ public final class ServerGateProtocol {
           msAddr_ = other.msAddr_;
           onChanged();
         }
-        if (other.getPort() != 0L) {
+        if (other.getPort() != 0) {
           setPort(other.getPort());
         }
         onChanged();
@@ -1277,28 +1276,28 @@ public final class ServerGateProtocol {
         return this;
       }
 
-      private long port_ ;
+      private int port_ ;
       /**
-       * <code>optional int64 port = 3;</code>
+       * <code>optional int32 port = 3;</code>
        */
-      public long getPort() {
+      public int getPort() {
         return port_;
       }
       /**
-       * <code>optional int64 port = 3;</code>
+       * <code>optional int32 port = 3;</code>
        */
-      public Builder setPort(long value) {
+      public Builder setPort(int value) {
         
         port_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int64 port = 3;</code>
+       * <code>optional int32 port = 3;</code>
        */
       public Builder clearPort() {
         
-        port_ = 0L;
+        port_ = 0;
         onChanged();
         return this;
       }
@@ -1351,6 +1350,1434 @@ public final class ServerGateProtocol {
 
   }
 
+  public interface MasterServerIdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MasterServerId)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    java.lang.String getId();
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+  }
+  /**
+   * Protobuf type {@code MasterServerId}
+   */
+  public  static final class MasterServerId extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:MasterServerId)
+      MasterServerIdOrBuilder {
+    // Use MasterServerId.newBuilder() to construct.
+    private MasterServerId(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private MasterServerId() {
+      id_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MasterServerId(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGateProtocol.internal_static_MasterServerId_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGateProtocol.internal_static_MasterServerId_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGateProtocol.MasterServerId.class, com.mmo.server.ServerGateProtocol.MasterServerId.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string id = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.MasterServerId)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGateProtocol.MasterServerId other = (com.mmo.server.ServerGateProtocol.MasterServerId) obj;
+
+      boolean result = true;
+      result = result && getId()
+          .equals(other.getId());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServerId parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.MasterServerId prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MasterServerId}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MasterServerId)
+        com.mmo.server.ServerGateProtocol.MasterServerIdOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGateProtocol.internal_static_MasterServerId_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGateProtocol.internal_static_MasterServerId_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGateProtocol.MasterServerId.class, com.mmo.server.ServerGateProtocol.MasterServerId.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGateProtocol.MasterServerId.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGateProtocol.internal_static_MasterServerId_descriptor;
+      }
+
+      public com.mmo.server.ServerGateProtocol.MasterServerId getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGateProtocol.MasterServerId build() {
+        com.mmo.server.ServerGateProtocol.MasterServerId result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGateProtocol.MasterServerId buildPartial() {
+        com.mmo.server.ServerGateProtocol.MasterServerId result = new com.mmo.server.ServerGateProtocol.MasterServerId(this);
+        result.id_ = id_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGateProtocol.MasterServerId) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.MasterServerId)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.MasterServerId other) {
+        if (other == com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGateProtocol.MasterServerId parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGateProtocol.MasterServerId) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string id = 1;</code>
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MasterServerId)
+    }
+
+    // @@protoc_insertion_point(class_scope:MasterServerId)
+    private static final com.mmo.server.ServerGateProtocol.MasterServerId DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.MasterServerId();
+    }
+
+    public static com.mmo.server.ServerGateProtocol.MasterServerId getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MasterServerId>
+        PARSER = new com.google.protobuf.AbstractParser<MasterServerId>() {
+      public MasterServerId parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MasterServerId(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MasterServerId> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MasterServerId> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGateProtocol.MasterServerId getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MasterServerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MasterServer)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string status = 1;</code>
+     */
+    java.lang.String getStatus();
+    /**
+     * <code>optional string status = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getStatusBytes();
+  }
+  /**
+   * Protobuf type {@code MasterServer}
+   */
+  public  static final class MasterServer extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:MasterServer)
+      MasterServerOrBuilder {
+    // Use MasterServer.newBuilder() to construct.
+    private MasterServer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private MasterServer() {
+      status_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private MasterServer(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              status_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGateProtocol.internal_static_MasterServer_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGateProtocol.internal_static_MasterServer_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGateProtocol.MasterServer.class, com.mmo.server.ServerGateProtocol.MasterServer.Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private volatile java.lang.Object status_;
+    /**
+     * <code>optional string status = 1;</code>
+     */
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string status = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getStatusBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, status_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getStatusBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, status_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.MasterServer)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGateProtocol.MasterServer other = (com.mmo.server.ServerGateProtocol.MasterServer) obj;
+
+      boolean result = true;
+      result = result && getStatus()
+          .equals(other.getStatus());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.MasterServer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.MasterServer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MasterServer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MasterServer)
+        com.mmo.server.ServerGateProtocol.MasterServerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGateProtocol.internal_static_MasterServer_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGateProtocol.internal_static_MasterServer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGateProtocol.MasterServer.class, com.mmo.server.ServerGateProtocol.MasterServer.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGateProtocol.MasterServer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        status_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGateProtocol.internal_static_MasterServer_descriptor;
+      }
+
+      public com.mmo.server.ServerGateProtocol.MasterServer getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGateProtocol.MasterServer build() {
+        com.mmo.server.ServerGateProtocol.MasterServer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGateProtocol.MasterServer buildPartial() {
+        com.mmo.server.ServerGateProtocol.MasterServer result = new com.mmo.server.ServerGateProtocol.MasterServer(this);
+        result.status_ = status_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGateProtocol.MasterServer) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.MasterServer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.MasterServer other) {
+        if (other == com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance()) return this;
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGateProtocol.MasterServer parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGateProtocol.MasterServer) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       * <code>optional string status = 1;</code>
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string status = 1;</code>
+       */
+      public Builder setStatus(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 1;</code>
+       */
+      public Builder clearStatus() {
+        
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string status = 1;</code>
+       */
+      public Builder setStatusBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MasterServer)
+    }
+
+    // @@protoc_insertion_point(class_scope:MasterServer)
+    private static final com.mmo.server.ServerGateProtocol.MasterServer DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.MasterServer();
+    }
+
+    public static com.mmo.server.ServerGateProtocol.MasterServer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MasterServer>
+        PARSER = new com.google.protobuf.AbstractParser<MasterServer>() {
+      public MasterServer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MasterServer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MasterServer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MasterServer> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGateProtocol.MasterServer getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ChatMsgOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChatMsg)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string contant = 1;</code>
+     */
+    java.lang.String getContant();
+    /**
+     * <code>optional string contant = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getContantBytes();
+  }
+  /**
+   * Protobuf type {@code ChatMsg}
+   */
+  public  static final class ChatMsg extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ChatMsg)
+      ChatMsgOrBuilder {
+    // Use ChatMsg.newBuilder() to construct.
+    private ChatMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ChatMsg() {
+      contant_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ChatMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              contant_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGateProtocol.internal_static_ChatMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGateProtocol.internal_static_ChatMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGateProtocol.ChatMsg.class, com.mmo.server.ServerGateProtocol.ChatMsg.Builder.class);
+    }
+
+    public static final int CONTANT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object contant_;
+    /**
+     * <code>optional string contant = 1;</code>
+     */
+    public java.lang.String getContant() {
+      java.lang.Object ref = contant_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        contant_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string contant = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContantBytes() {
+      java.lang.Object ref = contant_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        contant_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getContantBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, contant_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getContantBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, contant_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.ChatMsg)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGateProtocol.ChatMsg other = (com.mmo.server.ServerGateProtocol.ChatMsg) obj;
+
+      boolean result = true;
+      result = result && getContant()
+          .equals(other.getContant());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + CONTANT_FIELD_NUMBER;
+      hash = (53 * hash) + getContant().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.ChatMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.ChatMsg prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ChatMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ChatMsg)
+        com.mmo.server.ServerGateProtocol.ChatMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGateProtocol.internal_static_ChatMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGateProtocol.internal_static_ChatMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGateProtocol.ChatMsg.class, com.mmo.server.ServerGateProtocol.ChatMsg.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGateProtocol.ChatMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        contant_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGateProtocol.internal_static_ChatMsg_descriptor;
+      }
+
+      public com.mmo.server.ServerGateProtocol.ChatMsg getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGateProtocol.ChatMsg build() {
+        com.mmo.server.ServerGateProtocol.ChatMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGateProtocol.ChatMsg buildPartial() {
+        com.mmo.server.ServerGateProtocol.ChatMsg result = new com.mmo.server.ServerGateProtocol.ChatMsg(this);
+        result.contant_ = contant_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGateProtocol.ChatMsg) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.ChatMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.ChatMsg other) {
+        if (other == com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance()) return this;
+        if (!other.getContant().isEmpty()) {
+          contant_ = other.contant_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGateProtocol.ChatMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGateProtocol.ChatMsg) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object contant_ = "";
+      /**
+       * <code>optional string contant = 1;</code>
+       */
+      public java.lang.String getContant() {
+        java.lang.Object ref = contant_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          contant_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string contant = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContantBytes() {
+        java.lang.Object ref = contant_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contant_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string contant = 1;</code>
+       */
+      public Builder setContant(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        contant_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string contant = 1;</code>
+       */
+      public Builder clearContant() {
+        
+        contant_ = getDefaultInstance().getContant();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string contant = 1;</code>
+       */
+      public Builder setContantBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        contant_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ChatMsg)
+    }
+
+    // @@protoc_insertion_point(class_scope:ChatMsg)
+    private static final com.mmo.server.ServerGateProtocol.ChatMsg DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.ChatMsg();
+    }
+
+    public static com.mmo.server.ServerGateProtocol.ChatMsg getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ChatMsg>
+        PARSER = new com.google.protobuf.AbstractParser<ChatMsg>() {
+      public ChatMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ChatMsg(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ChatMsg> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ChatMsg> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGateProtocol.ChatMsg getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   /**
    * Protobuf service {@code ServerGateService}
    */
@@ -1367,6 +2794,42 @@ public final class ServerGateProtocol {
           com.mmo.server.ServerGateProtocol.UserLoginRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.UserLoginResponse> done);
 
+      /**
+       * <pre>
+       *server-side
+       * </pre>
+       *
+       * <code>rpc ListMasters(.MasterServerId) returns (stream .MasterServer);</code>
+       */
+      public abstract void listMasters(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done);
+
+      /**
+       * <pre>
+       *client-side
+       * </pre>
+       *
+       * <code>rpc status(stream .MasterServerId) returns (.MasterServer);</code>
+       */
+      public abstract void status(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done);
+
+      /**
+       * <pre>
+       *Bidirectional
+       * </pre>
+       *
+       * <code>rpc chat(stream .ChatMsg) returns (stream .ChatMsg);</code>
+       */
+      public abstract void chat(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.ChatMsg request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.ChatMsg> done);
+
     }
 
     public static com.google.protobuf.Service newReflectiveService(
@@ -1378,6 +2841,30 @@ public final class ServerGateProtocol {
             com.mmo.server.ServerGateProtocol.UserLoginRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.UserLoginResponse> done) {
           impl.userLogin(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void listMasters(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.MasterServerId request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done) {
+          impl.listMasters(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void status(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.MasterServerId request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done) {
+          impl.status(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void chat(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.ChatMsg request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.ChatMsg> done) {
+          impl.chat(controller, request, done);
         }
 
       };
@@ -1404,6 +2891,12 @@ public final class ServerGateProtocol {
           switch(method.getIndex()) {
             case 0:
               return impl.userLogin(controller, (com.mmo.server.ServerGateProtocol.UserLoginRequest)request);
+            case 1:
+              return impl.listMasters(controller, (com.mmo.server.ServerGateProtocol.MasterServerId)request);
+            case 2:
+              return impl.status(controller, (com.mmo.server.ServerGateProtocol.MasterServerId)request);
+            case 3:
+              return impl.chat(controller, (com.mmo.server.ServerGateProtocol.ChatMsg)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1420,6 +2913,12 @@ public final class ServerGateProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerGateProtocol.UserLoginRequest.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance();
+            case 2:
+              return com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance();
+            case 3:
+              return com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1436,6 +2935,12 @@ public final class ServerGateProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerGateProtocol.UserLoginResponse.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance();
+            case 2:
+              return com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance();
+            case 3:
+              return com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1451,6 +2956,42 @@ public final class ServerGateProtocol {
         com.google.protobuf.RpcController controller,
         com.mmo.server.ServerGateProtocol.UserLoginRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.UserLoginResponse> done);
+
+    /**
+     * <pre>
+     *server-side
+     * </pre>
+     *
+     * <code>rpc ListMasters(.MasterServerId) returns (stream .MasterServer);</code>
+     */
+    public abstract void listMasters(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.MasterServerId request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done);
+
+    /**
+     * <pre>
+     *client-side
+     * </pre>
+     *
+     * <code>rpc status(stream .MasterServerId) returns (.MasterServer);</code>
+     */
+    public abstract void status(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.MasterServerId request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done);
+
+    /**
+     * <pre>
+     *Bidirectional
+     * </pre>
+     *
+     * <code>rpc chat(stream .ChatMsg) returns (stream .ChatMsg);</code>
+     */
+    public abstract void chat(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.ChatMsg request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.ChatMsg> done);
 
     public static final
         com.google.protobuf.Descriptors.ServiceDescriptor
@@ -1479,6 +3020,21 @@ public final class ServerGateProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.UserLoginResponse>specializeCallback(
               done));
           return;
+        case 1:
+          this.listMasters(controller, (com.mmo.server.ServerGateProtocol.MasterServerId)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.MasterServer>specializeCallback(
+              done));
+          return;
+        case 2:
+          this.status(controller, (com.mmo.server.ServerGateProtocol.MasterServerId)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.MasterServer>specializeCallback(
+              done));
+          return;
+        case 3:
+          this.chat(controller, (com.mmo.server.ServerGateProtocol.ChatMsg)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.ChatMsg>specializeCallback(
+              done));
+          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1495,6 +3051,12 @@ public final class ServerGateProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerGateProtocol.UserLoginRequest.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance();
+        case 2:
+          return com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance();
+        case 3:
+          return com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1511,6 +3073,12 @@ public final class ServerGateProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerGateProtocol.UserLoginResponse.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance();
+        case 2:
+          return com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance();
+        case 3:
+          return com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1546,6 +3114,51 @@ public final class ServerGateProtocol {
             com.mmo.server.ServerGateProtocol.UserLoginResponse.class,
             com.mmo.server.ServerGateProtocol.UserLoginResponse.getDefaultInstance()));
       }
+
+      public  void listMasters(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGateProtocol.MasterServer.class,
+            com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance()));
+      }
+
+      public  void status(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.MasterServer> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(2),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGateProtocol.MasterServer.class,
+            com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance()));
+      }
+
+      public  void chat(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.ChatMsg request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.ChatMsg> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(3),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGateProtocol.ChatMsg.class,
+            com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance()));
+      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -1557,6 +3170,21 @@ public final class ServerGateProtocol {
       public com.mmo.server.ServerGateProtocol.UserLoginResponse userLogin(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerGateProtocol.UserLoginRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.ServerGateProtocol.MasterServer listMasters(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.ServerGateProtocol.MasterServer status(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.ServerGateProtocol.ChatMsg chat(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.ChatMsg request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -1578,6 +3206,42 @@ public final class ServerGateProtocol {
           com.mmo.server.ServerGateProtocol.UserLoginResponse.getDefaultInstance());
       }
 
+
+      public com.mmo.server.ServerGateProtocol.MasterServer listMasters(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerGateProtocol.MasterServer) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.ServerGateProtocol.MasterServer status(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.MasterServerId request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerGateProtocol.MasterServer) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(2),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.ServerGateProtocol.ChatMsg chat(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.ChatMsg request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerGateProtocol.ChatMsg) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(3),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance());
+      }
+
     }
 
     // @@protoc_insertion_point(class_scope:ServerGateService)
@@ -1593,6 +3257,21 @@ public final class ServerGateProtocol {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_UserLoginResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MasterServerId_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_MasterServerId_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MasterServer_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_MasterServer_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ChatMsg_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ChatMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1605,12 +3284,17 @@ public final class ServerGateProtocol {
       "\n src/main/proto/client_gate.proto\"/\n\020Us" +
       "erLoginRequest\022\r\n\005uname\030\001 \001(\t\022\014\n\004upwd\030\002 " +
       "\001(\t\"K\n\021UserLoginResponse\022\030\n\004code\030\001 \001(\0162\n" +
-      ".LoginCode\022\016\n\006msAddr\030\002 \001(\t\022\014\n\004port\030\003 \001(\003" +
-      "*\"\n\tLoginCode\022\006\n\002OK\020\000\022\r\n\tERROR_PWD\020\0012I\n\021" +
-      "ServerGateService\0224\n\tUserLogin\022\021.UserLog" +
-      "inRequest\032\022.UserLoginResponse\"\000B*\n\016com.m" +
-      "mo.serverB\022ServerGateProtocol\210\001\001\240\001\001b\006pro" +
-      "to3"
+      ".LoginCode\022\016\n\006msAddr\030\002 \001(\t\022\014\n\004port\030\003 \001(\005" +
+      "\"\034\n\016MasterServerId\022\n\n\002id\030\001 \001(\t\"\036\n\014Master" +
+      "Server\022\016\n\006status\030\001 \001(\t\"\032\n\007ChatMsg\022\017\n\007con" +
+      "tant\030\001 \001(\t*\"\n\tLoginCode\022\006\n\002OK\020\000\022\r\n\tERROR" +
+      "_PWD\020\0012\314\001\n\021ServerGateService\0224\n\tUserLogi" +
+      "n\022\021.UserLoginRequest\032\022.UserLoginResponse" +
+      "\"\000\0221\n\013ListMasters\022\017.MasterServerId\032\r.Mas",
+      "terServer\"\0000\001\022,\n\006status\022\017.MasterServerId" +
+      "\032\r.MasterServer\"\000(\001\022 \n\004chat\022\010.ChatMsg\032\010." +
+      "ChatMsg\"\000(\0010\001B*\n\016com.mmo.serverB\022ServerG" +
+      "ateProtocol\210\001\001\240\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1636,6 +3320,24 @@ public final class ServerGateProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserLoginResponse_descriptor,
         new java.lang.String[] { "Code", "MsAddr", "Port", });
+    internal_static_MasterServerId_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_MasterServerId_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_MasterServerId_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_MasterServer_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_MasterServer_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_MasterServer_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_ChatMsg_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ChatMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ChatMsg_descriptor,
+        new java.lang.String[] { "Contant", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

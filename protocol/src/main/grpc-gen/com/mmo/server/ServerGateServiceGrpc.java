@@ -36,6 +36,33 @@ public class ServerGateServiceGrpc {
               "ServerGateService", "UserLogin"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.UserLoginRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.UserLoginResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.MasterServerId,
+      com.mmo.server.ServerGateProtocol.MasterServer> METHOD_LIST_MASTERS =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING,
+          generateFullMethodName(
+              "ServerGateService", "ListMasters"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.MasterServerId,
+      com.mmo.server.ServerGateProtocol.MasterServer> METHOD_STATUS =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING,
+          generateFullMethodName(
+              "ServerGateService", "status"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.MasterServerId.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.MasterServer.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.ChatMsg,
+      com.mmo.server.ServerGateProtocol.ChatMsg> METHOD_CHAT =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING,
+          generateFullMethodName(
+              "ServerGateService", "chat"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.ChatMsg.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -68,6 +95,30 @@ public class ServerGateServiceGrpc {
      */
     public void userLogin(com.mmo.server.ServerGateProtocol.UserLoginRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.UserLoginResponse> responseObserver);
+
+    /**
+     * <pre>
+     *server-side
+     * </pre>
+     */
+    public void listMasters(com.mmo.server.ServerGateProtocol.MasterServerId request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer> responseObserver);
+
+    /**
+     * <pre>
+     *client-side
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServerId> status(
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer> responseObserver);
+
+    /**
+     * <pre>
+     *Bidirectional
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg> chat(
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -77,6 +128,24 @@ public class ServerGateServiceGrpc {
     public void userLogin(com.mmo.server.ServerGateProtocol.UserLoginRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.UserLoginResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_USER_LOGIN, responseObserver);
+    }
+
+    @java.lang.Override
+    public void listMasters(com.mmo.server.ServerGateProtocol.MasterServerId request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_LIST_MASTERS, responseObserver);
+    }
+
+    @java.lang.Override
+    public io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServerId> status(
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_STATUS, responseObserver);
+    }
+
+    @java.lang.Override
+    public io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg> chat(
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_CHAT, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -91,6 +160,14 @@ public class ServerGateServiceGrpc {
     /**
      */
     public com.mmo.server.ServerGateProtocol.UserLoginResponse userLogin(com.mmo.server.ServerGateProtocol.UserLoginRequest request);
+
+    /**
+     * <pre>
+     *server-side
+     * </pre>
+     */
+    public java.util.Iterator<com.mmo.server.ServerGateProtocol.MasterServer> listMasters(
+        com.mmo.server.ServerGateProtocol.MasterServerId request);
   }
 
   /**
@@ -126,6 +203,27 @@ public class ServerGateServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_USER_LOGIN, getCallOptions()), request, responseObserver);
     }
+
+    @java.lang.Override
+    public void listMasters(com.mmo.server.ServerGateProtocol.MasterServerId request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(METHOD_LIST_MASTERS, getCallOptions()), request, responseObserver);
+    }
+
+    @java.lang.Override
+    public io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServerId> status(
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(METHOD_STATUS, getCallOptions()), responseObserver);
+    }
+
+    @java.lang.Override
+    public io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg> chat(
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(METHOD_CHAT, getCallOptions()), responseObserver);
+    }
   }
 
   public static class ServerGateServiceBlockingStub extends io.grpc.stub.AbstractStub<ServerGateServiceBlockingStub>
@@ -149,6 +247,13 @@ public class ServerGateServiceGrpc {
     public com.mmo.server.ServerGateProtocol.UserLoginResponse userLogin(com.mmo.server.ServerGateProtocol.UserLoginRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_USER_LOGIN, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public java.util.Iterator<com.mmo.server.ServerGateProtocol.MasterServer> listMasters(
+        com.mmo.server.ServerGateProtocol.MasterServerId request) {
+      return blockingServerStreamingCall(
+          getChannel(), METHOD_LIST_MASTERS, getCallOptions(), request);
     }
   }
 
@@ -178,6 +283,9 @@ public class ServerGateServiceGrpc {
   }
 
   private static final int METHODID_USER_LOGIN = 0;
+  private static final int METHODID_LIST_MASTERS = 1;
+  private static final int METHODID_STATUS = 2;
+  private static final int METHODID_CHAT = 3;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -200,6 +308,10 @@ public class ServerGateServiceGrpc {
           serviceImpl.userLogin((com.mmo.server.ServerGateProtocol.UserLoginRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.UserLoginResponse>) responseObserver);
           break;
+        case METHODID_LIST_MASTERS:
+          serviceImpl.listMasters((com.mmo.server.ServerGateProtocol.MasterServerId) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -210,6 +322,12 @@ public class ServerGateServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_STATUS:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.status(
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.MasterServer>) responseObserver);
+        case METHODID_CHAT:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.chat(
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.ChatMsg>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -226,6 +344,27 @@ public class ServerGateServiceGrpc {
               com.mmo.server.ServerGateProtocol.UserLoginRequest,
               com.mmo.server.ServerGateProtocol.UserLoginResponse>(
                 serviceImpl, METHODID_USER_LOGIN)))
+        .addMethod(
+          METHOD_LIST_MASTERS,
+          asyncServerStreamingCall(
+            new MethodHandlers<
+              com.mmo.server.ServerGateProtocol.MasterServerId,
+              com.mmo.server.ServerGateProtocol.MasterServer>(
+                serviceImpl, METHODID_LIST_MASTERS)))
+        .addMethod(
+          METHOD_STATUS,
+          asyncClientStreamingCall(
+            new MethodHandlers<
+              com.mmo.server.ServerGateProtocol.MasterServerId,
+              com.mmo.server.ServerGateProtocol.MasterServer>(
+                serviceImpl, METHODID_STATUS)))
+        .addMethod(
+          METHOD_CHAT,
+          asyncBidiStreamingCall(
+            new MethodHandlers<
+              com.mmo.server.ServerGateProtocol.ChatMsg,
+              com.mmo.server.ServerGateProtocol.ChatMsg>(
+                serviceImpl, METHODID_CHAT)))
         .build();
   }
 }
