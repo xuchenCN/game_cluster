@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "ServerGateProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+import "common.proto"
+
+enum LoginCode {
+    OK = 0;
+   	ERROR_PWD = 1;
+   	OCCUPIED = 2;
+}
+
+message UserLoginRequest {
+	string uname = 1;
+	string upwd = 2;
+}
+
+message UserLoginResponse {
+	LoginCode code = 1;
+	string ticket = 2;
+}
+
+message GetCharacterInfoRequest {
+	string ticket = 1;
+}
+
+message GetCharacterInfoResponse {
+	CharacterInfo character = 1;
+}
+
+
+service ServerGateService {
+	rpc UserLogin (UserLoginRequest) returns (UserLoginResponse) {}
+	rpc GetCharacter (GetCharacterInfoRequest) returns (GetCharacterInfoResponse) {}
+}

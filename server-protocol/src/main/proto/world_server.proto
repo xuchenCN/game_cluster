@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "ServerWorldProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+import "common.proto"
+
+message UserArrivedWorldRequest {
+	string gateHost;
+	int32 gatePort;
+	int32 uid;
+}
+
+
+message UserArrivedWorldResponse {
+	CommonStat stat = 1;
+}
+

@@ -1,0 +1,40 @@
+<assembly>
+	<id>dist</id>
+	<formats>
+		<format>dir</format>
+		<format>tar</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<!-- <moduleSets> <moduleSet> <includes> <include>com.lenovo.corata:cortara-index</include> 
+		</includes> <sources> <outputDirectory>sources/${artifactId}</outputDirectory> 
+		</sources> </moduleSet> </moduleSets> -->
+	<dependencySets>
+		<dependencySet>
+			<useProjectArtifact>false</useProjectArtifact>
+			<outputDirectory>/lib</outputDirectory>
+			<useTransitiveDependencies>true</useTransitiveDependencies>
+			<directoryMode>0755</directoryMode>
+			<fileMode>0644</fileMode>
+		</dependencySet>
+	</dependencySets>
+	<fileSets>
+		<fileSet>
+			<directory>../common/src/main/resources</directory>
+			<outputDirectory>/conf</outputDirectory>
+			<!-- <excludes>
+				<exclude>log4j.properties</exclude>
+				<exclude>Readme</exclude>
+				<exclude>*.xml</exclude>
+			</excludes> -->
+			<fileMode>0755</fileMode>
+		</fileSet>
+		
+		<fileSet>
+			<directory>${basedir}/bin</directory>
+			<outputDirectory>/bin</outputDirectory>
+			<fileMode>0755</fileMode>
+		</fileSet>
+	</fileSets>
+
+</assembly>

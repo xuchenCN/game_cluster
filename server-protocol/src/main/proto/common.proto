@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "CommonProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+enum CommonStat {
+	OK = 1;
+	ERROR = 2;
+}
+
+
+message CharacterInfo {
+	
+	int32 mapId = 1;
+	int32 humanMod = 2;
+	int32 posX = 3;
+	int32 posY = 4;
+	int32 posZ = 5;
+	
+}

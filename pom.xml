@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.mmo.server</groupId>
 	<artifactId>game_cluster</artifactId>
@@ -8,12 +7,14 @@
 	<name>game_cluster</name>
 	<packaging>pom</packaging>
 	<modules>
-		<module>server-gate</module>
-		<module>server-master</module>
-		<module>server-region</module>
+		<module>gate-server</module>
+		<module>world-server</module>
+		<module>game-server</module>
 		<module>common</module>
-		<module>protocol</module>
-	</modules>
+		<module>server-protocol</module>
+		<module>assembly-project</module>
+    <module>character-server</module>
+  </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -28,7 +29,6 @@
 				<groupId>com.google.protobuf</groupId>
 				<artifactId>protobuf-java</artifactId>
 				<version>${protobuf.version}</version>
-				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
