@@ -8,7 +8,7 @@ option java_generate_equals_and_hash = true;
 import "common.proto"
 
 message GetCharacterInfoRequest {
-	string ticket = 1;
+	int32 uid = 1;
 }
 
 message GetCharacterInfoResponse {
