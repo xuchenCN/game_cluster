@@ -67,6 +67,11 @@ message Character {
 	SurvivalInfo = 4;
 }
 
+
+message CommonResponse {
+	CommonStat stat = 1;
+}
+
 /* Events */
 
 message MoveEvent {

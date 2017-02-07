@@ -15,7 +15,7 @@ message UserArrivedWorldRequest {
 }
 
 
-message UserArrivedWorldResponse {
-	CommonStat stat = 1;
-}
 
+service UserService {
+	rpc userArrived (UserArrivedWorldRequest) returns (CommonControlsResponse) {}
+}
