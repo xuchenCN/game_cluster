@@ -7,11 +7,15 @@ option java_generate_equals_and_hash = true;
 
 import "common.proto"
 
+/* Enumerations */
+
 enum LoginCode {
     OK = 0;
    	ERROR_PWD = 1;
    	OCCUPIED = 2;
 }
+
+/* Accounts */
 
 message UserLoginRequest {
 	string uname = 1;
@@ -23,6 +27,14 @@ message UserLoginResponse {
 	string ticket = 2;
 }
 
+message UserLogoutRequest {
+	string ticket = 1;
+}
+
+message UserLogoutResponse {
+	LoginCode code = 1;
+}
+
 message GetCharacterInfoRequest {
 	string ticket = 1;
 }
@@ -32,7 +44,24 @@ message GetCharacterInfoResponse {
 }
 
 
+/* Controls */
+
+message CharacterMove {
+	Position toPos = 1;
+}
+
+message CommonControlsResponse {
+	CommonStat stat = 1;
+}
+
+/* Services Definition */
+
 service ServerGateService {
-	rpc UserLogin (UserLoginRequest) returns (UserLoginResponse) {}
-	rpc GetCharacter (GetCharacterInfoRequest) returns (GetCharacterInfoResponse) {}
+	rpc userLogin (UserLoginRequest) returns (UserLoginResponse) {}
+	rpc userLogout (UserLogoutRequest) returns (UserLogoutResponse) {}
+	rpc getCharacter (GetCharacterInfoRequest) returns (GetCharacterInfoResponse) {}
+}
+
+service ClientSideService {
+	rpc moveTo (CharacterMove) returns (CommonControlsResponse) {}
 }

@@ -8,4 +8,3 @@ option java_generate_equals_and_hash = true;
 import "common.proto"
 
 
-
