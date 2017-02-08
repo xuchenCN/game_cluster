@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "ServerClientProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+import "common.proto";
+
+/* Enumerations */
+
+enum LoginCode {
+    SUC = 0;
+   	ERROR_PWD = 1;
+   	OCCUPIED = 2;
+}
+
+/* Accounts */
+
+message UserLoginRequest {
+	string uname = 1;
+	string upwd = 2;
+}
+
+message UserLoginResponse {
+	LoginCode code = 1;
+	string ticket = 2;
+}
+
+message UserLogoutRequest {
+	string ticket = 1;
+}
+
+message UserLogoutResponse {
+	LoginCode code = 1;
+}
+
+message GetCharacterInfoRequest {
+	string ticket = 1;
+}
+
+message GetCharacterInfoResponse {
+	Character character = 1;
+}
+
+
+/* Controls */
+
+message CharacterMove {
+	string ticket = 1;
+	Position toPos = 2;
+}
+
+
+/* Services Definition */
+
+service ServerGateService {
+	rpc userLogin (UserLoginRequest) returns (UserLoginResponse) {}
+	rpc userLogout (UserLogoutRequest) returns (UserLogoutResponse) {}
+	rpc getCharacter (GetCharacterInfoRequest) returns (GetCharacterInfoResponse) {}
+}
+
+service ClientSideService {
+	rpc moveTo (CharacterMove) returns (CommonResponse) {}
+}

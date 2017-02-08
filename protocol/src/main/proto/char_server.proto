@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "ServerCharacterProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+import "common.proto" ;
+
+message GetCharacterRequest {
+	int32 uid = 1;
+}
+
+message GetCharacterResponse {
+	Character character = 1;
+}
+
+
+service ServerCharacterService {
+	rpc GetCharacter (GetCharacterRequest) returns (GetCharacterResponse) {}
+}

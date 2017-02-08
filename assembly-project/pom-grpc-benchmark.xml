@@ -84,7 +84,6 @@
 		<dependency>
 			<groupId>org.mmo.server</groupId>
 			<artifactId>protocol</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		
 

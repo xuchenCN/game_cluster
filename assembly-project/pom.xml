@@ -7,9 +7,9 @@
 		<artifactId>game_cluster</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>server-master</artifactId>
+	<artifactId>assembly</artifactId>
 	<packaging>pom</packaging>
-	<name>server-master</name>
+	<name>assembly</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

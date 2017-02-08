@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "CommonProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+/* Enumerations */
+
+enum CommonStat {
+	OK = 0;
+	ERROR = 1;
+}
+
+enum ItemType {
+	BUILD = 0;
+	MATERIAL = 1;
+}
+
+/* Basically Informations */
+
+message Position {
+	int32 posX = 1;
+	int32 posY = 2;
+	int32 posZ = 3;
+	
+}
+
+message ModInfo {
+	int32 modId = 1;
+	int32 motion = 2;
+	int32 orientation = 3;
+}
+
+message MotionInfo {
+	int32 motion = 1;
+	int32 effect = 2;
+	float speed = 3;
+}
+
+message SurvivalInfo {
+	int32 hearth = 1;
+	int32 hungry = 2;
+	int32 tired = 3;
+}
+
+message IdentifyInfo {
+	string ID = 1;
+	string name = 2;
+	ItemType type = 3;
+}
+
+/* Basically Objects */
+
+message Item {
+	IdentifyInfo identify = 1;
+	Position position = 2;
+	ModInfo modInfo = 3;
+	SurvivalInfo survivalInfo= 4;
+}
+
+
+message Character {
+	IdentifyInfo identify = 1;
+	Position position = 2;
+	ModInfo modInfo = 3;
+	SurvivalInfo survivalInfo= 4;
+}
+
+
+message CommonResponse {
+	CommonStat stat = 1;
+}
+
+/* Events */
+
+message MoveEvent {
+	string ID = 1;
+	Position fromPos = 2;
+	Position toPos = 3;
+	float speed = 4;
+	MotionInfo playMotion = 5;
+}
+
+
