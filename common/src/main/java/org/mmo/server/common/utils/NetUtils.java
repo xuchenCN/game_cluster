@@ -13,9 +13,9 @@ import org.mmo.server.common.conf.GameConfiguration;
 
 import com.google.common.base.Throwables;
 
-public class HuskyNetUtils {
+public class NetUtils {
 
-	private static final Log LOG = LogFactory.getLog(HuskyNetUtils.class);
+	private static final Log LOG = LogFactory.getLog(NetUtils.class);
 
 	private static String localHost;
 	private static String localIP;
@@ -61,7 +61,7 @@ public class HuskyNetUtils {
 		}
 		int hostResolutionTimeout = conf
 				.getInt(Constants.HOST_RESOLUTION_TIMEOUT_MS, Constants.HOST_RESOLUTION_TIMEOUT_MS_DEFAULT);
-		return HuskyNetUtils.getLocalHostName(hostResolutionTimeout);
+		return NetUtils.getLocalHostName(hostResolutionTimeout);
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class HuskyNetUtils {
 		}
 		int hostResolutionTimeout = conf
 				.getInt(Constants.HOST_RESOLUTION_TIMEOUT_MS, Constants.HOST_RESOLUTION_TIMEOUT_MS_DEFAULT);
-		return HuskyNetUtils.getLocalIpAddress(hostResolutionTimeout);
+		return NetUtils.getLocalIpAddress(hostResolutionTimeout);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package org.server.world;
+package org.character.server;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,18 +8,18 @@ import org.mmo.server.common.service.CompositeService.CompositeServiceShutdownHo
 import org.mmo.server.common.utils.ShutdownHookManager;
 import org.mmo.server.common.utils.StringUtils;
 
-public class WorldServerMain {
+public class CharacterServerMain {
 
-  private static final Log LOG = LogFactory.getLog(WorldServerMain.class);
+  private static final Log LOG = LogFactory.getLog(CharacterServerMain.class);
 
   public static final int SHUTDOWN_HOOK_PRIORITY = 30;
 
   public static void main(String[] args) {
     Thread.setDefaultUncaughtExceptionHandler(new HuskyUncaughtExceptionHandler());
-    StringUtils.startupShutdownMessage(WorldServerMain.class, args, LOG);
+    StringUtils.startupShutdownMessage(CharacterServerMain.class, args, LOG);
     try {
       GameConfiguration conf = new GameConfiguration();
-      WorldServer gameServer = new WorldServer(new WorldServerContext(conf));
+      CharacterServer gameServer = new CharacterServer(new CharacterContext(conf));
 
       ShutdownHookManager.get()
           .addShutdownHook(new CompositeServiceShutdownHook(gameServer), SHUTDOWN_HOOK_PRIORITY);
@@ -27,7 +27,7 @@ public class WorldServerMain {
       gameServer.init(conf);
       gameServer.start();
     } catch (Throwable t) {
-      LOG.error("Error starting WorldServer", t);
+      LOG.error("Error starting EngineServer", t);
       System.exit(-1);
     }
   }

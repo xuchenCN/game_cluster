@@ -36,6 +36,15 @@ public class EventDispatcherGrpc {
               "EventDispatcher", "moveEvent"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.MoveEvent.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.GateServerPing,
+      com.mmo.server.ServerGateProtocol.GateServerPong> METHOD_RECEIVE_PING =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "EventDispatcher", "receivePing"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -68,6 +77,11 @@ public class EventDispatcherGrpc {
      */
     public void moveEvent(com.mmo.server.CommonProtocol.MoveEvent request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
+
+    /**
+     */
+    public void receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -77,6 +91,12 @@ public class EventDispatcherGrpc {
     public void moveEvent(com.mmo.server.CommonProtocol.MoveEvent request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_MOVE_EVENT, responseObserver);
+    }
+
+    @java.lang.Override
+    public void receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_RECEIVE_PING, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -91,6 +111,10 @@ public class EventDispatcherGrpc {
     /**
      */
     public com.mmo.server.CommonProtocol.CommonResponse moveEvent(com.mmo.server.CommonProtocol.MoveEvent request);
+
+    /**
+     */
+    public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request);
   }
 
   /**
@@ -101,6 +125,11 @@ public class EventDispatcherGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> moveEvent(
         com.mmo.server.CommonProtocol.MoveEvent request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerGateProtocol.GateServerPong> receivePing(
+        com.mmo.server.ServerGateProtocol.GateServerPing request);
   }
 
   public static class EventDispatcherStub extends io.grpc.stub.AbstractStub<EventDispatcherStub>
@@ -126,6 +155,13 @@ public class EventDispatcherGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_MOVE_EVENT, getCallOptions()), request, responseObserver);
     }
+
+    @java.lang.Override
+    public void receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_RECEIVE_PING, getCallOptions()), request, responseObserver);
+    }
   }
 
   public static class EventDispatcherBlockingStub extends io.grpc.stub.AbstractStub<EventDispatcherBlockingStub>
@@ -149,6 +185,12 @@ public class EventDispatcherGrpc {
     public com.mmo.server.CommonProtocol.CommonResponse moveEvent(com.mmo.server.CommonProtocol.MoveEvent request) {
       return blockingUnaryCall(
           getChannel(), METHOD_MOVE_EVENT, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_RECEIVE_PING, getCallOptions(), request);
     }
   }
 
@@ -175,9 +217,17 @@ public class EventDispatcherGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_MOVE_EVENT, getCallOptions()), request);
     }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerGateProtocol.GateServerPong> receivePing(
+        com.mmo.server.ServerGateProtocol.GateServerPing request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_RECEIVE_PING, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_MOVE_EVENT = 0;
+  private static final int METHODID_RECEIVE_PING = 1;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -199,6 +249,10 @@ public class EventDispatcherGrpc {
         case METHODID_MOVE_EVENT:
           serviceImpl.moveEvent((com.mmo.server.CommonProtocol.MoveEvent) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
+          break;
+        case METHODID_RECEIVE_PING:
+          serviceImpl.receivePing((com.mmo.server.ServerGateProtocol.GateServerPing) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -226,6 +280,13 @@ public class EventDispatcherGrpc {
               com.mmo.server.CommonProtocol.MoveEvent,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_MOVE_EVENT)))
+        .addMethod(
+          METHOD_RECEIVE_PING,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerGateProtocol.GateServerPing,
+              com.mmo.server.ServerGateProtocol.GateServerPong>(
+                serviceImpl, METHODID_RECEIVE_PING)))
         .build();
   }
 }

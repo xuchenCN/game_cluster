@@ -7,6 +7,12 @@ option java_generate_equals_and_hash = true;
 
 import "common.proto";
 
+message RegionServerInfo {
+	string serverHost = 1;
+	int32 serverPort = 2;
+	int32 mapid = 3;
+}
+
 message UserArrivedWorldRequest {
 	string gateHost = 1;
 	int32 gatePort = 2;
@@ -14,7 +20,26 @@ message UserArrivedWorldRequest {
 	int32 mapId = 4;
 }
 
+message GateRegisterRequest {
+	string gateHost = 1;
+	int32 gatePort = 2;
+}
+
+message GateRegisterResponse {
+	repeated RegionServerInfo regions = 1;
+}
+
+message RegionRegisterRequest {
+	string serverHost = 1;
+	int32 serverPort = 2;
+	int32 mapId = 3;
+}
 
 service UserWorldService {
 	rpc userArrivedWorld (UserArrivedWorldRequest) returns (CommonResponse) {}
+}
+
+service WorldService {
+	rpc registerGate (GateRegisterRequest) returns (GateRegisterResponse) {}
+	rpc registerRegion (RegionRegisterRequest) returns (CommonResponse) {}
 }

@@ -8,9 +8,7 @@
 		<artifactId>game_cluster</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.mmo.server</groupId>
 	<artifactId>gate-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>server-gate</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -19,7 +17,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.mmo.server</groupId>
-			<artifactId>common</artifactId>
+			<artifactId>persistent-lib</artifactId>
 		</dependency>
 
 		<dependency>

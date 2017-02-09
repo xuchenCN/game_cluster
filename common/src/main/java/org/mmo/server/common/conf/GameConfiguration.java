@@ -36,7 +36,7 @@ public class GameConfiguration {
 			InputStream defaultInputStream = GameConfiguration.class.getClassLoader()
 					.getResourceAsStream(DEFAULT_PROPERTIES);
 			if (defaultInputStream == null) {
-				throw new RuntimeException("The default TensorHusky properties file does not exist.");
+				throw new RuntimeException("The default Game properties file does not exist.");
 			}
 			try {
 				defaultProps.load(defaultInputStream);

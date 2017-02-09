@@ -8,6 +8,682 @@ public final class ServerGateProtocol {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface GateServerPingOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GateServerPing)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code GateServerPing}
+   */
+  public  static final class GateServerPing extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:GateServerPing)
+      GateServerPingOrBuilder {
+    // Use GateServerPing.newBuilder() to construct.
+    private GateServerPing(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GateServerPing() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private GateServerPing(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGateProtocol.internal_static_GateServerPing_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGateProtocol.internal_static_GateServerPing_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGateProtocol.GateServerPing.class, com.mmo.server.ServerGateProtocol.GateServerPing.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.GateServerPing)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGateProtocol.GateServerPing other = (com.mmo.server.ServerGateProtocol.GateServerPing) obj;
+
+      boolean result = true;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPing parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.GateServerPing prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GateServerPing}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GateServerPing)
+        com.mmo.server.ServerGateProtocol.GateServerPingOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGateProtocol.internal_static_GateServerPing_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGateProtocol.internal_static_GateServerPing_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGateProtocol.GateServerPing.class, com.mmo.server.ServerGateProtocol.GateServerPing.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGateProtocol.GateServerPing.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGateProtocol.internal_static_GateServerPing_descriptor;
+      }
+
+      public com.mmo.server.ServerGateProtocol.GateServerPing getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGateProtocol.GateServerPing build() {
+        com.mmo.server.ServerGateProtocol.GateServerPing result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGateProtocol.GateServerPing buildPartial() {
+        com.mmo.server.ServerGateProtocol.GateServerPing result = new com.mmo.server.ServerGateProtocol.GateServerPing(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPing) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPing)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.GateServerPing other) {
+        if (other == com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance()) return this;
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGateProtocol.GateServerPing parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGateProtocol.GateServerPing) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GateServerPing)
+    }
+
+    // @@protoc_insertion_point(class_scope:GateServerPing)
+    private static final com.mmo.server.ServerGateProtocol.GateServerPing DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.GateServerPing();
+    }
+
+    public static com.mmo.server.ServerGateProtocol.GateServerPing getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GateServerPing>
+        PARSER = new com.google.protobuf.AbstractParser<GateServerPing>() {
+      public GateServerPing parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GateServerPing(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GateServerPing> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GateServerPing> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGateProtocol.GateServerPing getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GateServerPongOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GateServerPong)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code GateServerPong}
+   */
+  public  static final class GateServerPong extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:GateServerPong)
+      GateServerPongOrBuilder {
+    // Use GateServerPong.newBuilder() to construct.
+    private GateServerPong(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GateServerPong() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private GateServerPong(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGateProtocol.internal_static_GateServerPong_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGateProtocol.internal_static_GateServerPong_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGateProtocol.GateServerPong.class, com.mmo.server.ServerGateProtocol.GateServerPong.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.GateServerPong)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGateProtocol.GateServerPong other = (com.mmo.server.ServerGateProtocol.GateServerPong) obj;
+
+      boolean result = true;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGateProtocol.GateServerPong parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.GateServerPong prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GateServerPong}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GateServerPong)
+        com.mmo.server.ServerGateProtocol.GateServerPongOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGateProtocol.internal_static_GateServerPong_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGateProtocol.internal_static_GateServerPong_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGateProtocol.GateServerPong.class, com.mmo.server.ServerGateProtocol.GateServerPong.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGateProtocol.GateServerPong.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGateProtocol.internal_static_GateServerPong_descriptor;
+      }
+
+      public com.mmo.server.ServerGateProtocol.GateServerPong getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGateProtocol.GateServerPong build() {
+        com.mmo.server.ServerGateProtocol.GateServerPong result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGateProtocol.GateServerPong buildPartial() {
+        com.mmo.server.ServerGateProtocol.GateServerPong result = new com.mmo.server.ServerGateProtocol.GateServerPong(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPong) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPong)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.GateServerPong other) {
+        if (other == com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()) return this;
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGateProtocol.GateServerPong parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGateProtocol.GateServerPong) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GateServerPong)
+    }
+
+    // @@protoc_insertion_point(class_scope:GateServerPong)
+    private static final com.mmo.server.ServerGateProtocol.GateServerPong DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.GateServerPong();
+    }
+
+    public static com.mmo.server.ServerGateProtocol.GateServerPong getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GateServerPong>
+        PARSER = new com.google.protobuf.AbstractParser<GateServerPong>() {
+      public GateServerPong parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GateServerPong(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GateServerPong> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GateServerPong> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGateProtocol.GateServerPong getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   /**
    * Protobuf service {@code EventDispatcher}
    */
@@ -24,6 +700,14 @@ public final class ServerGateProtocol {
           com.mmo.server.CommonProtocol.MoveEvent request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
+      /**
+       * <code>rpc receivePing(.GateServerPing) returns (.GateServerPong);</code>
+       */
+      public abstract void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
+
     }
 
     public static com.google.protobuf.Service newReflectiveService(
@@ -35,6 +719,14 @@ public final class ServerGateProtocol {
             com.mmo.server.CommonProtocol.MoveEvent request,
             com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
           impl.moveEvent(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void receivePing(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.GateServerPing request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done) {
+          impl.receivePing(controller, request, done);
         }
 
       };
@@ -61,6 +753,8 @@ public final class ServerGateProtocol {
           switch(method.getIndex()) {
             case 0:
               return impl.moveEvent(controller, (com.mmo.server.CommonProtocol.MoveEvent)request);
+            case 1:
+              return impl.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -77,6 +771,8 @@ public final class ServerGateProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.CommonProtocol.MoveEvent.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -93,6 +789,8 @@ public final class ServerGateProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -108,6 +806,14 @@ public final class ServerGateProtocol {
         com.google.protobuf.RpcController controller,
         com.mmo.server.CommonProtocol.MoveEvent request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    /**
+     * <code>rpc receivePing(.GateServerPing) returns (.GateServerPong);</code>
+     */
+    public abstract void receivePing(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.GateServerPing request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
 
     public static final
         com.google.protobuf.Descriptors.ServiceDescriptor
@@ -136,6 +842,11 @@ public final class ServerGateProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
+        case 1:
+          this.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.GateServerPong>specializeCallback(
+              done));
+          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -152,6 +863,8 @@ public final class ServerGateProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.CommonProtocol.MoveEvent.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -168,6 +881,8 @@ public final class ServerGateProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -203,6 +918,21 @@ public final class ServerGateProtocol {
             com.mmo.server.CommonProtocol.CommonResponse.class,
             com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
       }
+
+      public  void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGateProtocol.GateServerPong.class,
+            com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
+      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -214,6 +944,11 @@ public final class ServerGateProtocol {
       public com.mmo.server.CommonProtocol.CommonResponse moveEvent(
           com.google.protobuf.RpcController controller,
           com.mmo.server.CommonProtocol.MoveEvent request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -235,11 +970,33 @@ public final class ServerGateProtocol {
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
       }
 
+
+      public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerGateProtocol.GateServerPong) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance());
+      }
+
     }
 
     // @@protoc_insertion_point(class_scope:EventDispatcher)
   }
 
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GateServerPing_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GateServerPing_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GateServerPong_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GateServerPong_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -249,10 +1006,12 @@ public final class ServerGateProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021gate_server.proto\032\014common.proto2=\n\017Eve" +
-      "ntDispatcher\022*\n\tmoveEvent\022\n.MoveEvent\032\017." +
-      "CommonResponse\"\000B*\n\016com.mmo.serverB\022Serv" +
-      "erGateProtocol\210\001\001\240\001\001b\006proto3"
+      "\n\021gate_server.proto\032\014common.proto\"\020\n\016Gat" +
+      "eServerPing\"\020\n\016GateServerPong2p\n\017EventDi" +
+      "spatcher\022*\n\tmoveEvent\022\n.MoveEvent\032\017.Comm" +
+      "onResponse\"\000\0221\n\013receivePing\022\017.GateServer" +
+      "Ping\032\017.GateServerPong\"\000B*\n\016com.mmo.serve" +
+      "rB\022ServerGateProtocol\210\001\001\240\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -267,6 +1026,18 @@ public final class ServerGateProtocol {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.mmo.server.CommonProtocol.getDescriptor(),
         }, assigner);
+    internal_static_GateServerPing_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_GateServerPing_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_GateServerPing_descriptor,
+        new java.lang.String[] { });
+    internal_static_GateServerPong_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_GateServerPong_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_GateServerPong_descriptor,
+        new java.lang.String[] { });
     com.mmo.server.CommonProtocol.getDescriptor();
   }
 

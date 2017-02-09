@@ -14,12 +14,13 @@
 		<module>common</module>
 		<module>protocol</module>
 		<module>character-server</module>
+		<module>persistent-lib</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<grpc.version>0.14.1</grpc.version>
-		<protobuf.version>3.0.0-beta-3</protobuf.version>
+		<grpc.version>1.1.2</grpc.version>
+		<protobuf.version>3.2.0</protobuf.version>
 		<commons-logging.version>1.1.3</commons-logging.version>
 		<hadoop.version>2.7.1</hadoop.version>
 	</properties>
@@ -100,6 +101,12 @@
 				<groupId>org.apache.hadoop</groupId>
 				<artifactId>hadoop-common</artifactId>
 				<version>${hadoop.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.guava</groupId>
+						<artifactId>guava</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 
 			<dependency>
@@ -111,7 +118,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>19.0</version>
+				<version>20.0</version>
 			</dependency>
 
 			<dependency>
@@ -126,13 +133,26 @@
 				<artifactId>common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.mmo.server</groupId>
 				<artifactId>protocol</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
+			<dependency>
+				<groupId>org.mmo.server</groupId>
+				<artifactId>persistent-lib</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+				<scope>test</scope>
+			</dependency>
+
 
 		</dependencies>
 

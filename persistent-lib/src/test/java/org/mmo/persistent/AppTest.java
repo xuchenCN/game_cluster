@@ -1,4 +1,4 @@
-package org.character.server;
+package org.mmo.persistent;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

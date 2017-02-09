@@ -20,11 +20,20 @@ message CharacterMoveReq {
 	Position toPos = 2;
 }
 
+message GameServerPing {
+
+}
+
+message GameServerPong {
+
+}
+
 
 /* Services Definition */
 
 service UserRegionService {
 	rpc userArrivedRegion (UserArrivedRegionRequest) returns (CommonResponse) {}
+	rpc receivePing (GameServerPing) returns (GameServerPong) {}
 }
 
 service CharacterService {

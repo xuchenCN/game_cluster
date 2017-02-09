@@ -8,21 +8,25 @@
 		<artifactId>game_cluster</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>character-server</artifactId>
-	<name>character-server</name>
+	<artifactId>persistent-lib</artifactId>
+	<name>persistent-lib</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.mmo.server</groupId>
-			<artifactId>common</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.mmo.server</groupId>
-			<artifactId>protocol</artifactId>
+			<artifactId>common</artifactId>
 		</dependency>
 	</dependencies>
 </project>

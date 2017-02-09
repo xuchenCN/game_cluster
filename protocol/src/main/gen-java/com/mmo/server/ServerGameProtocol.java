@@ -1214,6 +1214,682 @@ public final class ServerGameProtocol {
 
   }
 
+  public interface GameServerPingOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GameServerPing)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code GameServerPing}
+   */
+  public  static final class GameServerPing extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:GameServerPing)
+      GameServerPingOrBuilder {
+    // Use GameServerPing.newBuilder() to construct.
+    private GameServerPing(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GameServerPing() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private GameServerPing(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGameProtocol.internal_static_GameServerPing_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGameProtocol.internal_static_GameServerPing_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGameProtocol.GameServerPing.class, com.mmo.server.ServerGameProtocol.GameServerPing.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGameProtocol.GameServerPing)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGameProtocol.GameServerPing other = (com.mmo.server.ServerGameProtocol.GameServerPing) obj;
+
+      boolean result = true;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPing parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGameProtocol.GameServerPing prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GameServerPing}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GameServerPing)
+        com.mmo.server.ServerGameProtocol.GameServerPingOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGameProtocol.internal_static_GameServerPing_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGameProtocol.internal_static_GameServerPing_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGameProtocol.GameServerPing.class, com.mmo.server.ServerGameProtocol.GameServerPing.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGameProtocol.GameServerPing.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGameProtocol.internal_static_GameServerPing_descriptor;
+      }
+
+      public com.mmo.server.ServerGameProtocol.GameServerPing getDefaultInstanceForType() {
+        return com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGameProtocol.GameServerPing build() {
+        com.mmo.server.ServerGameProtocol.GameServerPing result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGameProtocol.GameServerPing buildPartial() {
+        com.mmo.server.ServerGameProtocol.GameServerPing result = new com.mmo.server.ServerGameProtocol.GameServerPing(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGameProtocol.GameServerPing) {
+          return mergeFrom((com.mmo.server.ServerGameProtocol.GameServerPing)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGameProtocol.GameServerPing other) {
+        if (other == com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance()) return this;
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGameProtocol.GameServerPing parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGameProtocol.GameServerPing) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GameServerPing)
+    }
+
+    // @@protoc_insertion_point(class_scope:GameServerPing)
+    private static final com.mmo.server.ServerGameProtocol.GameServerPing DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGameProtocol.GameServerPing();
+    }
+
+    public static com.mmo.server.ServerGameProtocol.GameServerPing getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GameServerPing>
+        PARSER = new com.google.protobuf.AbstractParser<GameServerPing>() {
+      public GameServerPing parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GameServerPing(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GameServerPing> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GameServerPing> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGameProtocol.GameServerPing getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GameServerPongOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GameServerPong)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code GameServerPong}
+   */
+  public  static final class GameServerPong extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:GameServerPong)
+      GameServerPongOrBuilder {
+    // Use GameServerPong.newBuilder() to construct.
+    private GameServerPong(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private GameServerPong() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private GameServerPong(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGameProtocol.internal_static_GameServerPong_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGameProtocol.internal_static_GameServerPong_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGameProtocol.GameServerPong.class, com.mmo.server.ServerGameProtocol.GameServerPong.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGameProtocol.GameServerPong)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGameProtocol.GameServerPong other = (com.mmo.server.ServerGameProtocol.GameServerPong) obj;
+
+      boolean result = true;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.GameServerPong parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGameProtocol.GameServerPong prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code GameServerPong}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GameServerPong)
+        com.mmo.server.ServerGameProtocol.GameServerPongOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGameProtocol.internal_static_GameServerPong_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGameProtocol.internal_static_GameServerPong_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGameProtocol.GameServerPong.class, com.mmo.server.ServerGameProtocol.GameServerPong.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGameProtocol.GameServerPong.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGameProtocol.internal_static_GameServerPong_descriptor;
+      }
+
+      public com.mmo.server.ServerGameProtocol.GameServerPong getDefaultInstanceForType() {
+        return com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGameProtocol.GameServerPong build() {
+        com.mmo.server.ServerGameProtocol.GameServerPong result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGameProtocol.GameServerPong buildPartial() {
+        com.mmo.server.ServerGameProtocol.GameServerPong result = new com.mmo.server.ServerGameProtocol.GameServerPong(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGameProtocol.GameServerPong) {
+          return mergeFrom((com.mmo.server.ServerGameProtocol.GameServerPong)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGameProtocol.GameServerPong other) {
+        if (other == com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance()) return this;
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGameProtocol.GameServerPong parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGameProtocol.GameServerPong) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GameServerPong)
+    }
+
+    // @@protoc_insertion_point(class_scope:GameServerPong)
+    private static final com.mmo.server.ServerGameProtocol.GameServerPong DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGameProtocol.GameServerPong();
+    }
+
+    public static com.mmo.server.ServerGameProtocol.GameServerPong getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GameServerPong>
+        PARSER = new com.google.protobuf.AbstractParser<GameServerPong>() {
+      public GameServerPong parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GameServerPong(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GameServerPong> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GameServerPong> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGameProtocol.GameServerPong getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   /**
    * Protobuf service {@code UserRegionService}
    */
@@ -1230,6 +1906,14 @@ public final class ServerGameProtocol {
           com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
+      /**
+       * <code>rpc receivePing(.GameServerPing) returns (.GameServerPong);</code>
+       */
+      public abstract void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGameProtocol.GameServerPong> done);
+
     }
 
     public static com.google.protobuf.Service newReflectiveService(
@@ -1241,6 +1925,14 @@ public final class ServerGameProtocol {
             com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
           impl.userArrivedRegion(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void receivePing(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGameProtocol.GameServerPing request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerGameProtocol.GameServerPong> done) {
+          impl.receivePing(controller, request, done);
         }
 
       };
@@ -1267,6 +1959,8 @@ public final class ServerGameProtocol {
           switch(method.getIndex()) {
             case 0:
               return impl.userArrivedRegion(controller, (com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)request);
+            case 1:
+              return impl.receivePing(controller, (com.mmo.server.ServerGameProtocol.GameServerPing)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1283,6 +1977,8 @@ public final class ServerGameProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1299,6 +1995,8 @@ public final class ServerGameProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1314,6 +2012,14 @@ public final class ServerGameProtocol {
         com.google.protobuf.RpcController controller,
         com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    /**
+     * <code>rpc receivePing(.GameServerPing) returns (.GameServerPong);</code>
+     */
+    public abstract void receivePing(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGameProtocol.GameServerPing request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerGameProtocol.GameServerPong> done);
 
     public static final
         com.google.protobuf.Descriptors.ServiceDescriptor
@@ -1342,6 +2048,11 @@ public final class ServerGameProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
+        case 1:
+          this.receivePing(controller, (com.mmo.server.ServerGameProtocol.GameServerPing)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGameProtocol.GameServerPong>specializeCallback(
+              done));
+          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1358,6 +2069,8 @@ public final class ServerGameProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1374,6 +2087,8 @@ public final class ServerGameProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1409,6 +2124,21 @@ public final class ServerGameProtocol {
             com.mmo.server.CommonProtocol.CommonResponse.class,
             com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
       }
+
+      public  void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGameProtocol.GameServerPong> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGameProtocol.GameServerPong.class,
+            com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance()));
+      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -1420,6 +2150,11 @@ public final class ServerGameProtocol {
       public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -1439,6 +2174,18 @@ public final class ServerGameProtocol {
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerGameProtocol.GameServerPong) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance());
       }
 
     }
@@ -1688,6 +2435,16 @@ public final class ServerGameProtocol {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CharacterMoveReq_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GameServerPing_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GameServerPing_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GameServerPong_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_GameServerPong_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1701,12 +2458,14 @@ public final class ServerGameProtocol {
       "rArrivedRegionRequest\022\020\n\010gateHost\030\001 \001(\t\022" +
       "\020\n\010gatePort\030\002 \001(\005\022\013\n\003uid\030\003 \001(\005\"9\n\020Charac" +
       "terMoveReq\022\013\n\003uid\030\001 \001(\005\022\030\n\005toPos\030\002 \001(\0132\t" +
-      ".Position2V\n\021UserRegionService\022A\n\021userAr" +
-      "rivedRegion\022\031.UserArrivedRegionRequest\032\017" +
-      ".CommonResponse\"\0002B\n\020CharacterService\022.\n" +
-      "\006moveTo\022\021.CharacterMoveReq\032\017.CommonRespo" +
-      "nse\"\000B*\n\016com.mmo.serverB\022ServerGameProto" +
-      "col\210\001\001\240\001\001b\006proto3"
+      ".Position\"\020\n\016GameServerPing\"\020\n\016GameServe" +
+      "rPong2\211\001\n\021UserRegionService\022A\n\021userArriv" +
+      "edRegion\022\031.UserArrivedRegionRequest\032\017.Co" +
+      "mmonResponse\"\000\0221\n\013receivePing\022\017.GameServ" +
+      "erPing\032\017.GameServerPong\"\0002B\n\020CharacterSe" +
+      "rvice\022.\n\006moveTo\022\021.CharacterMoveReq\032\017.Com",
+      "monResponse\"\000B*\n\016com.mmo.serverB\022ServerG" +
+      "ameProtocol\210\001\001\240\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1733,6 +2492,18 @@ public final class ServerGameProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterMoveReq_descriptor,
         new java.lang.String[] { "Uid", "ToPos", });
+    internal_static_GameServerPing_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_GameServerPing_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_GameServerPing_descriptor,
+        new java.lang.String[] { });
+    internal_static_GameServerPong_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_GameServerPong_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_GameServerPong_descriptor,
+        new java.lang.String[] { });
     com.mmo.server.CommonProtocol.getDescriptor();
   }
 

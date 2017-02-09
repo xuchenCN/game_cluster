@@ -36,6 +36,15 @@ public class UserRegionServiceGrpc {
               "UserRegionService", "userArrivedRegion"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGameProtocol.GameServerPing,
+      com.mmo.server.ServerGameProtocol.GameServerPong> METHOD_RECEIVE_PING =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "UserRegionService", "receivePing"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -68,6 +77,11 @@ public class UserRegionServiceGrpc {
      */
     public void userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
+
+    /**
+     */
+    public void receivePing(com.mmo.server.ServerGameProtocol.GameServerPing request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGameProtocol.GameServerPong> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -77,6 +91,12 @@ public class UserRegionServiceGrpc {
     public void userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_USER_ARRIVED_REGION, responseObserver);
+    }
+
+    @java.lang.Override
+    public void receivePing(com.mmo.server.ServerGameProtocol.GameServerPing request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGameProtocol.GameServerPong> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_RECEIVE_PING, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -91,6 +111,10 @@ public class UserRegionServiceGrpc {
     /**
      */
     public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request);
+
+    /**
+     */
+    public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(com.mmo.server.ServerGameProtocol.GameServerPing request);
   }
 
   /**
@@ -101,6 +125,11 @@ public class UserRegionServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userArrivedRegion(
         com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerGameProtocol.GameServerPong> receivePing(
+        com.mmo.server.ServerGameProtocol.GameServerPing request);
   }
 
   public static class UserRegionServiceStub extends io.grpc.stub.AbstractStub<UserRegionServiceStub>
@@ -126,6 +155,13 @@ public class UserRegionServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_REGION, getCallOptions()), request, responseObserver);
     }
+
+    @java.lang.Override
+    public void receivePing(com.mmo.server.ServerGameProtocol.GameServerPing request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerGameProtocol.GameServerPong> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_RECEIVE_PING, getCallOptions()), request, responseObserver);
+    }
   }
 
   public static class UserRegionServiceBlockingStub extends io.grpc.stub.AbstractStub<UserRegionServiceBlockingStub>
@@ -149,6 +185,12 @@ public class UserRegionServiceGrpc {
     public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_USER_ARRIVED_REGION, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(com.mmo.server.ServerGameProtocol.GameServerPing request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_RECEIVE_PING, getCallOptions(), request);
     }
   }
 
@@ -175,9 +217,17 @@ public class UserRegionServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_REGION, getCallOptions()), request);
     }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerGameProtocol.GameServerPong> receivePing(
+        com.mmo.server.ServerGameProtocol.GameServerPing request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_RECEIVE_PING, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_USER_ARRIVED_REGION = 0;
+  private static final int METHODID_RECEIVE_PING = 1;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -199,6 +249,10 @@ public class UserRegionServiceGrpc {
         case METHODID_USER_ARRIVED_REGION:
           serviceImpl.userArrivedRegion((com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
+          break;
+        case METHODID_RECEIVE_PING:
+          serviceImpl.receivePing((com.mmo.server.ServerGameProtocol.GameServerPing) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerGameProtocol.GameServerPong>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -226,6 +280,13 @@ public class UserRegionServiceGrpc {
               com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_USER_ARRIVED_REGION)))
+        .addMethod(
+          METHOD_RECEIVE_PING,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerGameProtocol.GameServerPing,
+              com.mmo.server.ServerGameProtocol.GameServerPong>(
+                serviceImpl, METHODID_RECEIVE_PING)))
         .build();
   }
 }
