@@ -1,5 +1,8 @@
 package org.server.game.communicator;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.mmo.server.CommonProtocol.CommonResponse;
 import com.mmo.server.CommonProtocol.CommonStat;
 import com.mmo.server.ServerWorldProtocol.RegionRegisterRequest;
@@ -12,6 +15,8 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
 public class WorldServerCommunicator {
+	
+	private static final Log LOG = LogFactory.getLog(WorldServerCommunicator.class);
 
 	private ManagedChannel channel;
 
@@ -32,5 +37,7 @@ public class WorldServerCommunicator {
 		if (!(CommonStat.OK == response.getStat())) {
 			throw new RuntimeException("Failed to register");
 		}
+		
+		LOG.info("Register success !");
 	}
 }

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.AbstractService;
+import org.server.world.WorldServer;
 import org.server.world.WorldServerContext;
 
 import com.mmo.server.CommonProtocol.CommonResponse;
@@ -21,6 +24,8 @@ import com.mmo.server.WorldServiceGrpc.AbstractWorldService;
 import io.grpc.stub.StreamObserver;
 
 public class WorldServerProcessor extends AbstractService {
+	
+	private static final Log LOG = LogFactory.getLog(WorldServerProcessor.class);
 
 	private WorldServerContext globalContext;
 
@@ -94,7 +99,8 @@ public class WorldServerProcessor extends AbstractService {
 			
 			GateServerInfo gateInfo = new GateServerInfo(host, port);
 			gateMapping.put(key, gateInfo);
-
+			
+			LOG.info("Gate registered " + key);
 		}
 
 		@Override
@@ -111,11 +117,11 @@ public class WorldServerProcessor extends AbstractService {
 			regionServerInfoB.setServerPort(request.getServerPort());
 			regionServerInfoB.setMapid(request.getMapId());
 
-			regionMapping.put(request.getMapId(), regionServerInfoB.build());
-
 			responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.OK).build());
 			responseObserver.onCompleted();
-
+			
+			regionMapping.put(request.getMapId(), regionServerInfoB.build());
+			LOG.info("Region registered mapId : " + request.getMapId());
 		}
 
 	}

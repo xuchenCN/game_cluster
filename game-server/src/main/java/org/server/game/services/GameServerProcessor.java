@@ -1,7 +1,10 @@
 package org.server.game.services;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.AbstractService;
+import org.server.game.GameServer;
 import org.server.game.GameServerContext;
 
 import com.mmo.server.CharacterServiceGrpc.AbstractCharacterService;
@@ -13,6 +16,8 @@ import com.mmo.server.UserRegionServiceGrpc.AbstractUserRegionService;
 import io.grpc.stub.StreamObserver;
 
 public class GameServerProcessor extends AbstractService {
+	
+	private static final Log LOG = LogFactory.getLog(GameServerProcessor.class);
 
 	private GameServerContext globalContext;
 	private UserRegionService userRegionService;
@@ -21,6 +26,8 @@ public class GameServerProcessor extends AbstractService {
 	public GameServerProcessor(GameServerContext globalContext) {
 		super("GameServerProcessor");
 		this.globalContext = globalContext;
+		this.userRegionService = new UserRegionService();
+		this.characterService = new CharacterService();
 	}
 
 	@Override
