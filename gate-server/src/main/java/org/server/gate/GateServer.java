@@ -46,8 +46,7 @@ public class GateServer extends CompositeService {
 	@Override
 	protected void serviceStart() throws Exception {
 
-		grpcServer = ServerBuilder.forPort(0).addService(gateServerProcessor.getClientSideService())
-				.addService(gateServerProcessor.getGateService()).build();
+		grpcServer = ServerBuilder.forPort(0).addService(gateServerRouter.getForwardService()).build();
 		grpcServer.start();
 		globalContext.setListenOn(grpcServer.getPort());
 		LOG.info("Gate Server started , listening on " + globalContext.getListenOn());

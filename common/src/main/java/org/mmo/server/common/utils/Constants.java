@@ -7,6 +7,12 @@ public class Constants {
 	public static final String WORLD_SERVER_PORT = "world-server.port";
 	public static final int WORLD_SERVER_PORT_DEFAULT = 23333;
 	
+	//TODO Using portal server delegate 
+	public static final String GATE_SERVER_HOST = "gate-server.host";
+	public static final String GATE_SERVER_HOST_DEFAULT = "localhost";
+	public static final String GATE_SERVER_PORT = "gate-server.port";
+	public static final int GATE_SERVER_PORT_DEFAULT = 24444;
+	
 	public static final String HOST_RESOLUTION_TIMEOUT_MS = "host.resolution.timeout.ms";
 	public static final int HOST_RESOLUTION_TIMEOUT_MS_DEFAULT = 5000;
 

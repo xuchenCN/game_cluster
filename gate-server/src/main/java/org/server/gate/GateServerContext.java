@@ -22,6 +22,15 @@ public class GateServerContext {
 	public int getWorldServerPort() {
 		return config.getInt(Constants.WORLD_SERVER_PORT, Constants.WORLD_SERVER_PORT_DEFAULT);
 	}
+	
+
+	public String getGateServerHost() {
+		return config.get(Constants.GATE_SERVER_HOST, Constants.GATE_SERVER_HOST_DEFAULT);
+	}
+
+	public int getGateServerPort() {
+		return config.getInt(Constants.GATE_SERVER_HOST, Constants.GATE_SERVER_PORT_DEFAULT);
+	}
 
 	public int getListenOn() {
 		return listenOn;

@@ -1,0 +1,1 @@
+.\protoc\win\protoc-2.6.1-windows-x86_64.exe --proto_path=.\src\main\proto --csharp_out=.\src .\src\main\proto\client_gate.proto

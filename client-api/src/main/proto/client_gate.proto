@@ -1,0 +1,88 @@
+
+option java_package = "com.mmo.server";
+option java_outer_classname = "ServerClientProtocol";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+
+/* Enumerations */
+
+enum LoginCode {
+    SUC = 0;
+   	ERROR_PWD = 1;
+   	OCCUPIED = 2;
+}
+
+enum ClientCommonStat {
+	OK = 0;
+	ERROR = 1;
+}
+/* Common */
+
+message Position {
+	required int32 posX = 1;
+	required int32 posY = 2;
+	required int32 posZ = 3;
+	
+}
+
+/*Character*/
+
+message Character {
+	
+}
+
+/* Accounts */
+
+message ClientCommonResponse {
+	required ClientCommonStat stat = 1;
+}
+
+
+message UserLoginRequest {
+	required string uname = 1;
+	required string upwd = 2;
+}
+
+message UserLoginResponse {
+	required LoginCode code = 1;
+	required string ticket = 2;
+}
+
+message UserLogoutRequest {
+	required string ticket = 1;
+}
+
+message UserLogoutResponse {
+	required LoginCode code = 1;
+}
+
+message GetCharacterInfoRequest {
+	required string ticket = 1;
+}
+
+message GetCharacterInfoResponse {
+	required Character character = 1;
+}
+
+
+/* Controls */
+
+
+message CharacterMove {
+	required string ticket = 1;
+	required Position toPos = 2;
+}
+
+
+/* Services Definition */
+
+service ServerGateService {
+	rpc userLogin (UserLoginRequest) returns (UserLoginResponse) {}
+	rpc userLogout (UserLogoutRequest) returns (UserLogoutResponse) {}
+	rpc getCharacter (GetCharacterInfoRequest) returns (GetCharacterInfoResponse) {}
+}
+
+service ClientSideService {
+	rpc moveTo (CharacterMove) returns (ClientCommonResponse) {}
+}
