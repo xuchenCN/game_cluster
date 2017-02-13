@@ -25,6 +25,10 @@ public final class ServerClientProtocol {
      * <code>OCCUPIED = 2;</code>
      */
     OCCUPIED(2, 2),
+    /**
+     * <code>NOT_EXIST = 3;</code>
+     */
+    NOT_EXIST(3, 3),
     ;
 
     /**
@@ -39,6 +43,10 @@ public final class ServerClientProtocol {
      * <code>OCCUPIED = 2;</code>
      */
     public static final int OCCUPIED_VALUE = 2;
+    /**
+     * <code>NOT_EXIST = 3;</code>
+     */
+    public static final int NOT_EXIST_VALUE = 3;
 
 
     public final int getNumber() { return value; }
@@ -48,6 +56,7 @@ public final class ServerClientProtocol {
         case 0: return SUC;
         case 1: return ERROR_PWD;
         case 2: return OCCUPIED;
+        case 3: return NOT_EXIST;
         default: return null;
       }
     }
@@ -6374,29 +6383,30 @@ public final class ServerClientProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021client_gate.proto\"4\n\010Position\022\014\n\004posX\030" +
-      "\001 \002(\005\022\014\n\004posY\030\002 \002(\005\022\014\n\004posZ\030\003 \002(\005\"\013\n\tCha" +
-      "racter\"7\n\024ClientCommonResponse\022\037\n\004stat\030\001" +
-      " \002(\0162\021.ClientCommonStat\"/\n\020UserLoginRequ" +
-      "est\022\r\n\005uname\030\001 \002(\t\022\014\n\004upwd\030\002 \002(\t\"=\n\021User" +
-      "LoginResponse\022\030\n\004code\030\001 \002(\0162\n.LoginCode\022" +
-      "\016\n\006ticket\030\002 \002(\t\"#\n\021UserLogoutRequest\022\016\n\006" +
-      "ticket\030\001 \002(\t\".\n\022UserLogoutResponse\022\030\n\004co" +
-      "de\030\001 \002(\0162\n.LoginCode\")\n\027GetCharacterInfo" +
-      "Request\022\016\n\006ticket\030\001 \002(\t\"9\n\030GetCharacterI",
-      "nfoResponse\022\035\n\tcharacter\030\001 \002(\0132\n.Charact" +
-      "er\"9\n\rCharacterMove\022\016\n\006ticket\030\001 \002(\t\022\030\n\005t" +
-      "oPos\030\002 \002(\0132\t.Position*1\n\tLoginCode\022\007\n\003SU" +
-      "C\020\000\022\r\n\tERROR_PWD\020\001\022\014\n\010OCCUPIED\020\002*%\n\020Clie" +
-      "ntCommonStat\022\006\n\002OK\020\000\022\t\n\005ERROR\020\0012\311\001\n\021Serv" +
-      "erGateService\0224\n\tuserLogin\022\021.UserLoginRe" +
-      "quest\032\022.UserLoginResponse\"\000\0227\n\nuserLogou" +
-      "t\022\022.UserLogoutRequest\032\023.UserLogoutRespon" +
-      "se\"\000\022E\n\014getCharacter\022\030.GetCharacterInfoR" +
-      "equest\032\031.GetCharacterInfoResponse\"\0002F\n\021C",
-      "lientSideService\0221\n\006moveTo\022\016.CharacterMo" +
-      "ve\032\025.ClientCommonResponse\"\000B,\n\016com.mmo.s" +
-      "erverB\024ServerClientProtocol\210\001\001\240\001\001"
+      "\n\021client_gate.proto\032\026message_identify.pr" +
+      "oto\"4\n\010Position\022\014\n\004posX\030\001 \002(\005\022\014\n\004posY\030\002 " +
+      "\002(\005\022\014\n\004posZ\030\003 \002(\005\"\013\n\tCharacter\"7\n\024Client" +
+      "CommonResponse\022\037\n\004stat\030\001 \002(\0162\021.ClientCom" +
+      "monStat\"/\n\020UserLoginRequest\022\r\n\005uname\030\001 \002" +
+      "(\t\022\014\n\004upwd\030\002 \002(\t\"=\n\021UserLoginResponse\022\030\n" +
+      "\004code\030\001 \002(\0162\n.LoginCode\022\016\n\006ticket\030\002 \002(\t\"" +
+      "#\n\021UserLogoutRequest\022\016\n\006ticket\030\001 \002(\t\".\n\022" +
+      "UserLogoutResponse\022\030\n\004code\030\001 \002(\0162\n.Login" +
+      "Code\")\n\027GetCharacterInfoRequest\022\016\n\006ticke",
+      "t\030\001 \002(\t\"9\n\030GetCharacterInfoResponse\022\035\n\tc" +
+      "haracter\030\001 \002(\0132\n.Character\"9\n\rCharacterM" +
+      "ove\022\016\n\006ticket\030\001 \002(\t\022\030\n\005toPos\030\002 \002(\0132\t.Pos" +
+      "ition*@\n\tLoginCode\022\007\n\003SUC\020\000\022\r\n\tERROR_PWD" +
+      "\020\001\022\014\n\010OCCUPIED\020\002\022\r\n\tNOT_EXIST\020\003*%\n\020Clien" +
+      "tCommonStat\022\006\n\002OK\020\000\022\t\n\005ERROR\020\0012\311\001\n\021Serve" +
+      "rGateService\0224\n\tuserLogin\022\021.UserLoginReq" +
+      "uest\032\022.UserLoginResponse\"\000\0227\n\nuserLogout" +
+      "\022\022.UserLogoutRequest\032\023.UserLogoutRespons" +
+      "e\"\000\022E\n\014getCharacter\022\030.GetCharacterInfoRe",
+      "quest\032\031.GetCharacterInfoResponse\"\0002F\n\021Cl" +
+      "ientSideService\0221\n\006moveTo\022\016.CharacterMov" +
+      "e\032\025.ClientCommonResponse\"\000B,\n\016com.mmo.se" +
+      "rverB\024ServerClientProtocol\210\001\001\240\001\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6409,6 +6419,7 @@ public final class ServerClientProtocol {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.mmo.server.MessagesLocation.getDescriptor(),
         }, assigner);
     internal_static_Position_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -6470,6 +6481,7 @@ public final class ServerClientProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterMove_descriptor,
         new java.lang.String[] { "Ticket", "ToPos", });
+    com.mmo.server.MessagesLocation.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

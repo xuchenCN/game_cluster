@@ -4,6 +4,8 @@ option java_outer_classname = "ServerClientProtocol";
 option java_generic_services = true;
 option java_generate_equals_and_hash = true;
 
+import "message_identify.proto" ;
+
 
 /* Enumerations */
 
@@ -11,6 +13,7 @@ enum LoginCode {
     SUC = 0;
    	ERROR_PWD = 1;
    	OCCUPIED = 2;
+   	NOT_EXIST = 3;
 }
 
 enum ClientCommonStat {

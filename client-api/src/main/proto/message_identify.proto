@@ -1,0 +1,18 @@
+option java_package = "com.mmo.server";
+option java_outer_classname = "MessagesLocation";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+
+enum MessageRegistry {
+
+	CLIENTCOMMONRESPONSE = 0;
+	USERLOGINREQUEST = 1;
+	USERLOGINRESPONSE = 2;
+	USERLOGOUTREQUEST = 3;
+	USERLOGOUTRESPONSE = 4;
+	GETCHARACTERINFOREQUEST = 5;
+	GETCHARACTERINFORESPONSE = 6;
+	
+	CHARACTERMOVE = 7;
+	
+}

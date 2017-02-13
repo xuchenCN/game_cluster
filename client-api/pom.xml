@@ -45,7 +45,7 @@
 					<execution>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>add-source</goal>
+						<goal>add-source</goal>
 						</goals>
 						<configuration>
 							<sources>
