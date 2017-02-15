@@ -60,9 +60,8 @@ public class GateNettyServer {
 
 				LOG.info("Channel init");
 
-				ch.pipeline().addLast(new ProtobufVarint32FrameDecoder())
-						.addLast(new ProtobufDecoder(ServerClientProtocol.UserLoginRequest.getDefaultInstance()))
-						.addLast(new ProtobufVarint32LengthFieldPrepender()).addLast(new ProtobufEncoder())
+				ch.pipeline().addLast(new GateProtoEncoder())
+						.addLast(new GateProtoDecoder()).addLast(new GateProtoEncoder())
 						.addLast(new GateNettyHandler());
 
 				ch.closeFuture().addListener(new ChannelFutureListener() {
