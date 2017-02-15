@@ -42,9 +42,21 @@ public final class MessagesLocation {
      */
     GETCHARACTERINFORESPONSE(6, 6),
     /**
-     * <code>CHARACTERMOVE = 7;</code>
+     * <code>ITEMMOVEEVENT = 7;</code>
      */
-    CHARACTERMOVE(7, 7),
+    ITEMMOVEEVENT(7, 7),
+    /**
+     * <code>ITEMCRAATEEVENT = 8;</code>
+     */
+    ITEMCRAATEEVENT(8, 8),
+    /**
+     * <code>ITEMDESTROYEVENT = 9;</code>
+     */
+    ITEMDESTROYEVENT(9, 9),
+    /**
+     * <code>CHARACTERCREATEEVENT = 10;</code>
+     */
+    CHARACTERCREATEEVENT(10, 10),
     ;
 
     /**
@@ -76,9 +88,21 @@ public final class MessagesLocation {
      */
     public static final int GETCHARACTERINFORESPONSE_VALUE = 6;
     /**
-     * <code>CHARACTERMOVE = 7;</code>
+     * <code>ITEMMOVEEVENT = 7;</code>
      */
-    public static final int CHARACTERMOVE_VALUE = 7;
+    public static final int ITEMMOVEEVENT_VALUE = 7;
+    /**
+     * <code>ITEMCRAATEEVENT = 8;</code>
+     */
+    public static final int ITEMCRAATEEVENT_VALUE = 8;
+    /**
+     * <code>ITEMDESTROYEVENT = 9;</code>
+     */
+    public static final int ITEMDESTROYEVENT_VALUE = 9;
+    /**
+     * <code>CHARACTERCREATEEVENT = 10;</code>
+     */
+    public static final int CHARACTERCREATEEVENT_VALUE = 10;
 
 
     public final int getNumber() { return value; }
@@ -92,7 +116,10 @@ public final class MessagesLocation {
         case 4: return USERLOGOUTRESPONSE;
         case 5: return GETCHARACTERINFOREQUEST;
         case 6: return GETCHARACTERINFORESPONSE;
-        case 7: return CHARACTERMOVE;
+        case 7: return ITEMMOVEEVENT;
+        case 8: return ITEMCRAATEEVENT;
+        case 9: return ITEMDESTROYEVENT;
+        case 10: return CHARACTERCREATEEVENT;
         default: return null;
       }
     }
@@ -153,14 +180,15 @@ public final class MessagesLocation {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026message_identify.proto*\325\001\n\017MessageRegi" +
+      "\n\026message_identify.proto*\232\002\n\017MessageRegi" +
       "stry\022\030\n\024CLIENTCOMMONRESPONSE\020\000\022\024\n\020USERLO" +
       "GINREQUEST\020\001\022\025\n\021USERLOGINRESPONSE\020\002\022\025\n\021U" +
       "SERLOGOUTREQUEST\020\003\022\026\n\022USERLOGOUTRESPONSE" +
       "\020\004\022\033\n\027GETCHARACTERINFOREQUEST\020\005\022\034\n\030GETCH" +
-      "ARACTERINFORESPONSE\020\006\022\021\n\rCHARACTERMOVE\020\007" +
-      "B(\n\016com.mmo.serverB\020MessagesLocation\210\001\001\240" +
-      "\001\001"
+      "ARACTERINFORESPONSE\020\006\022\021\n\rITEMMOVEEVENT\020\007" +
+      "\022\023\n\017ITEMCRAATEEVENT\020\010\022\024\n\020ITEMDESTROYEVEN" +
+      "T\020\t\022\030\n\024CHARACTERCREATEEVENT\020\nB(\n\016com.mmo" +
+      ".serverB\020MessagesLocation\210\001\001\240\001\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

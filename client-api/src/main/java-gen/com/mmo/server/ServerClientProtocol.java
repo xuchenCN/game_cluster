@@ -109,9 +109,9 @@ public final class ServerClientProtocol {
   }
 
   /**
-   * Protobuf enum {@code ClientCommonStat}
+   * Protobuf enum {@code CommonStat}
    */
-  public enum ClientCommonStat
+  public enum CommonStat
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>OK = 0;</code>
@@ -135,7 +135,7 @@ public final class ServerClientProtocol {
 
     public final int getNumber() { return value; }
 
-    public static ClientCommonStat valueOf(int value) {
+    public static CommonStat valueOf(int value) {
       switch (value) {
         case 0: return OK;
         case 1: return ERROR;
@@ -143,15 +143,15 @@ public final class ServerClientProtocol {
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<ClientCommonStat>
+    public static com.google.protobuf.Internal.EnumLiteMap<CommonStat>
         internalGetValueMap() {
       return internalValueMap;
     }
-    private static com.google.protobuf.Internal.EnumLiteMap<ClientCommonStat>
+    private static com.google.protobuf.Internal.EnumLiteMap<CommonStat>
         internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ClientCommonStat>() {
-            public ClientCommonStat findValueByNumber(int number) {
-              return ClientCommonStat.valueOf(number);
+          new com.google.protobuf.Internal.EnumLiteMap<CommonStat>() {
+            public CommonStat findValueByNumber(int number) {
+              return CommonStat.valueOf(number);
             }
           };
 
@@ -168,9 +168,9 @@ public final class ServerClientProtocol {
       return com.mmo.server.ServerClientProtocol.getDescriptor().getEnumTypes().get(1);
     }
 
-    private static final ClientCommonStat[] VALUES = values();
+    private static final CommonStat[] VALUES = values();
 
-    public static ClientCommonStat valueOf(
+    public static CommonStat valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException(
@@ -182,12 +182,94 @@ public final class ServerClientProtocol {
     private final int index;
     private final int value;
 
-    private ClientCommonStat(int index, int value) {
+    private CommonStat(int index, int value) {
       this.index = index;
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:ClientCommonStat)
+    // @@protoc_insertion_point(enum_scope:CommonStat)
+  }
+
+  /**
+   * Protobuf enum {@code ItemType}
+   */
+  public enum ItemType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>BUILD = 0;</code>
+     */
+    BUILD(0, 0),
+    /**
+     * <code>MATERIAL = 1;</code>
+     */
+    MATERIAL(1, 1),
+    ;
+
+    /**
+     * <code>BUILD = 0;</code>
+     */
+    public static final int BUILD_VALUE = 0;
+    /**
+     * <code>MATERIAL = 1;</code>
+     */
+    public static final int MATERIAL_VALUE = 1;
+
+
+    public final int getNumber() { return value; }
+
+    public static ItemType valueOf(int value) {
+      switch (value) {
+        case 0: return BUILD;
+        case 1: return MATERIAL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ItemType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ItemType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ItemType>() {
+            public ItemType findValueByNumber(int number) {
+              return ItemType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final ItemType[] VALUES = values();
+
+    public static ItemType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ItemType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ItemType)
   }
 
   public interface PositionOrBuilder extends
@@ -822,9 +904,3963 @@ public final class ServerClientProtocol {
     // @@protoc_insertion_point(class_scope:Position)
   }
 
+  public interface ModInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ModInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 modId = 1;</code>
+     */
+    boolean hasModId();
+    /**
+     * <code>required int32 modId = 1;</code>
+     */
+    int getModId();
+
+    /**
+     * <code>required int32 motion = 2;</code>
+     */
+    boolean hasMotion();
+    /**
+     * <code>required int32 motion = 2;</code>
+     */
+    int getMotion();
+
+    /**
+     * <code>required int32 orientation = 3;</code>
+     */
+    boolean hasOrientation();
+    /**
+     * <code>required int32 orientation = 3;</code>
+     */
+    int getOrientation();
+  }
+  /**
+   * Protobuf type {@code ModInfo}
+   */
+  public static final class ModInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ModInfo)
+      ModInfoOrBuilder {
+    // Use ModInfo.newBuilder() to construct.
+    private ModInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ModInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ModInfo defaultInstance;
+    public static ModInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ModInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ModInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              modId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              motion_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              orientation_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ModInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ModInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.ModInfo.class, com.mmo.server.ServerClientProtocol.ModInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ModInfo> PARSER =
+        new com.google.protobuf.AbstractParser<ModInfo>() {
+      public ModInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ModInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ModInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int MODID_FIELD_NUMBER = 1;
+    private int modId_;
+    /**
+     * <code>required int32 modId = 1;</code>
+     */
+    public boolean hasModId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 modId = 1;</code>
+     */
+    public int getModId() {
+      return modId_;
+    }
+
+    public static final int MOTION_FIELD_NUMBER = 2;
+    private int motion_;
+    /**
+     * <code>required int32 motion = 2;</code>
+     */
+    public boolean hasMotion() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 motion = 2;</code>
+     */
+    public int getMotion() {
+      return motion_;
+    }
+
+    public static final int ORIENTATION_FIELD_NUMBER = 3;
+    private int orientation_;
+    /**
+     * <code>required int32 orientation = 3;</code>
+     */
+    public boolean hasOrientation() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 orientation = 3;</code>
+     */
+    public int getOrientation() {
+      return orientation_;
+    }
+
+    private void initFields() {
+      modId_ = 0;
+      motion_ = 0;
+      orientation_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasModId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMotion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOrientation()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, modId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, motion_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, orientation_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, modId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, motion_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, orientation_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.ModInfo)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.ModInfo other = (com.mmo.server.ServerClientProtocol.ModInfo) obj;
+
+      boolean result = true;
+      result = result && (hasModId() == other.hasModId());
+      if (hasModId()) {
+        result = result && (getModId()
+            == other.getModId());
+      }
+      result = result && (hasMotion() == other.hasMotion());
+      if (hasMotion()) {
+        result = result && (getMotion()
+            == other.getMotion());
+      }
+      result = result && (hasOrientation() == other.hasOrientation());
+      if (hasOrientation()) {
+        result = result && (getOrientation()
+            == other.getOrientation());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasModId()) {
+        hash = (37 * hash) + MODID_FIELD_NUMBER;
+        hash = (53 * hash) + getModId();
+      }
+      if (hasMotion()) {
+        hash = (37 * hash) + MOTION_FIELD_NUMBER;
+        hash = (53 * hash) + getMotion();
+      }
+      if (hasOrientation()) {
+        hash = (37 * hash) + ORIENTATION_FIELD_NUMBER;
+        hash = (53 * hash) + getOrientation();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ModInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.ModInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ModInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ModInfo)
+        com.mmo.server.ServerClientProtocol.ModInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ModInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ModInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.ModInfo.class, com.mmo.server.ServerClientProtocol.ModInfo.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.ModInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        modId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        motion_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        orientation_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ModInfo_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ModInfo getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.ModInfo build() {
+        com.mmo.server.ServerClientProtocol.ModInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ModInfo buildPartial() {
+        com.mmo.server.ServerClientProtocol.ModInfo result = new com.mmo.server.ServerClientProtocol.ModInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.modId_ = modId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.motion_ = motion_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.orientation_ = orientation_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.ModInfo) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.ModInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.ModInfo other) {
+        if (other == com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance()) return this;
+        if (other.hasModId()) {
+          setModId(other.getModId());
+        }
+        if (other.hasMotion()) {
+          setMotion(other.getMotion());
+        }
+        if (other.hasOrientation()) {
+          setOrientation(other.getOrientation());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasModId()) {
+          
+          return false;
+        }
+        if (!hasMotion()) {
+          
+          return false;
+        }
+        if (!hasOrientation()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.ModInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.ModInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int modId_ ;
+      /**
+       * <code>required int32 modId = 1;</code>
+       */
+      public boolean hasModId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 modId = 1;</code>
+       */
+      public int getModId() {
+        return modId_;
+      }
+      /**
+       * <code>required int32 modId = 1;</code>
+       */
+      public Builder setModId(int value) {
+        bitField0_ |= 0x00000001;
+        modId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 modId = 1;</code>
+       */
+      public Builder clearModId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        modId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int motion_ ;
+      /**
+       * <code>required int32 motion = 2;</code>
+       */
+      public boolean hasMotion() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 motion = 2;</code>
+       */
+      public int getMotion() {
+        return motion_;
+      }
+      /**
+       * <code>required int32 motion = 2;</code>
+       */
+      public Builder setMotion(int value) {
+        bitField0_ |= 0x00000002;
+        motion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 motion = 2;</code>
+       */
+      public Builder clearMotion() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        motion_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int orientation_ ;
+      /**
+       * <code>required int32 orientation = 3;</code>
+       */
+      public boolean hasOrientation() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 orientation = 3;</code>
+       */
+      public int getOrientation() {
+        return orientation_;
+      }
+      /**
+       * <code>required int32 orientation = 3;</code>
+       */
+      public Builder setOrientation(int value) {
+        bitField0_ |= 0x00000004;
+        orientation_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 orientation = 3;</code>
+       */
+      public Builder clearOrientation() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        orientation_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ModInfo)
+    }
+
+    static {
+      defaultInstance = new ModInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ModInfo)
+  }
+
+  public interface MotionInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MotionInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 motion = 1;</code>
+     */
+    boolean hasMotion();
+    /**
+     * <code>required int32 motion = 1;</code>
+     */
+    int getMotion();
+
+    /**
+     * <code>required int32 effect = 2;</code>
+     */
+    boolean hasEffect();
+    /**
+     * <code>required int32 effect = 2;</code>
+     */
+    int getEffect();
+
+    /**
+     * <code>required float speed = 3;</code>
+     */
+    boolean hasSpeed();
+    /**
+     * <code>required float speed = 3;</code>
+     */
+    float getSpeed();
+  }
+  /**
+   * Protobuf type {@code MotionInfo}
+   */
+  public static final class MotionInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:MotionInfo)
+      MotionInfoOrBuilder {
+    // Use MotionInfo.newBuilder() to construct.
+    private MotionInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MotionInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MotionInfo defaultInstance;
+    public static MotionInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MotionInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MotionInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              motion_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              effect_ = input.readInt32();
+              break;
+            }
+            case 29: {
+              bitField0_ |= 0x00000004;
+              speed_ = input.readFloat();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_MotionInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_MotionInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.MotionInfo.class, com.mmo.server.ServerClientProtocol.MotionInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MotionInfo> PARSER =
+        new com.google.protobuf.AbstractParser<MotionInfo>() {
+      public MotionInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MotionInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MotionInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int MOTION_FIELD_NUMBER = 1;
+    private int motion_;
+    /**
+     * <code>required int32 motion = 1;</code>
+     */
+    public boolean hasMotion() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 motion = 1;</code>
+     */
+    public int getMotion() {
+      return motion_;
+    }
+
+    public static final int EFFECT_FIELD_NUMBER = 2;
+    private int effect_;
+    /**
+     * <code>required int32 effect = 2;</code>
+     */
+    public boolean hasEffect() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 effect = 2;</code>
+     */
+    public int getEffect() {
+      return effect_;
+    }
+
+    public static final int SPEED_FIELD_NUMBER = 3;
+    private float speed_;
+    /**
+     * <code>required float speed = 3;</code>
+     */
+    public boolean hasSpeed() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required float speed = 3;</code>
+     */
+    public float getSpeed() {
+      return speed_;
+    }
+
+    private void initFields() {
+      motion_ = 0;
+      effect_ = 0;
+      speed_ = 0F;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasMotion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasEffect()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSpeed()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, motion_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, effect_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeFloat(3, speed_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, motion_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, effect_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(3, speed_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.MotionInfo)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.MotionInfo other = (com.mmo.server.ServerClientProtocol.MotionInfo) obj;
+
+      boolean result = true;
+      result = result && (hasMotion() == other.hasMotion());
+      if (hasMotion()) {
+        result = result && (getMotion()
+            == other.getMotion());
+      }
+      result = result && (hasEffect() == other.hasEffect());
+      if (hasEffect()) {
+        result = result && (getEffect()
+            == other.getEffect());
+      }
+      result = result && (hasSpeed() == other.hasSpeed());
+      if (hasSpeed()) {
+        result = result && (
+            java.lang.Float.floatToIntBits(getSpeed())
+            == java.lang.Float.floatToIntBits(
+                other.getSpeed()));
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasMotion()) {
+        hash = (37 * hash) + MOTION_FIELD_NUMBER;
+        hash = (53 * hash) + getMotion();
+      }
+      if (hasEffect()) {
+        hash = (37 * hash) + EFFECT_FIELD_NUMBER;
+        hash = (53 * hash) + getEffect();
+      }
+      if (hasSpeed()) {
+        hash = (37 * hash) + SPEED_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getSpeed());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.MotionInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.MotionInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MotionInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MotionInfo)
+        com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_MotionInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_MotionInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.MotionInfo.class, com.mmo.server.ServerClientProtocol.MotionInfo.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.MotionInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        motion_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        effect_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        speed_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_MotionInfo_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.MotionInfo getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.MotionInfo.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.MotionInfo build() {
+        com.mmo.server.ServerClientProtocol.MotionInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.MotionInfo buildPartial() {
+        com.mmo.server.ServerClientProtocol.MotionInfo result = new com.mmo.server.ServerClientProtocol.MotionInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.motion_ = motion_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.effect_ = effect_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.speed_ = speed_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.MotionInfo) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.MotionInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.MotionInfo other) {
+        if (other == com.mmo.server.ServerClientProtocol.MotionInfo.getDefaultInstance()) return this;
+        if (other.hasMotion()) {
+          setMotion(other.getMotion());
+        }
+        if (other.hasEffect()) {
+          setEffect(other.getEffect());
+        }
+        if (other.hasSpeed()) {
+          setSpeed(other.getSpeed());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasMotion()) {
+          
+          return false;
+        }
+        if (!hasEffect()) {
+          
+          return false;
+        }
+        if (!hasSpeed()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.MotionInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.MotionInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int motion_ ;
+      /**
+       * <code>required int32 motion = 1;</code>
+       */
+      public boolean hasMotion() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 motion = 1;</code>
+       */
+      public int getMotion() {
+        return motion_;
+      }
+      /**
+       * <code>required int32 motion = 1;</code>
+       */
+      public Builder setMotion(int value) {
+        bitField0_ |= 0x00000001;
+        motion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 motion = 1;</code>
+       */
+      public Builder clearMotion() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        motion_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int effect_ ;
+      /**
+       * <code>required int32 effect = 2;</code>
+       */
+      public boolean hasEffect() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 effect = 2;</code>
+       */
+      public int getEffect() {
+        return effect_;
+      }
+      /**
+       * <code>required int32 effect = 2;</code>
+       */
+      public Builder setEffect(int value) {
+        bitField0_ |= 0x00000002;
+        effect_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 effect = 2;</code>
+       */
+      public Builder clearEffect() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        effect_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float speed_ ;
+      /**
+       * <code>required float speed = 3;</code>
+       */
+      public boolean hasSpeed() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required float speed = 3;</code>
+       */
+      public float getSpeed() {
+        return speed_;
+      }
+      /**
+       * <code>required float speed = 3;</code>
+       */
+      public Builder setSpeed(float value) {
+        bitField0_ |= 0x00000004;
+        speed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float speed = 3;</code>
+       */
+      public Builder clearSpeed() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        speed_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:MotionInfo)
+    }
+
+    static {
+      defaultInstance = new MotionInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:MotionInfo)
+  }
+
+  public interface SurvivalInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SurvivalInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 hearth = 1;</code>
+     */
+    boolean hasHearth();
+    /**
+     * <code>required int32 hearth = 1;</code>
+     */
+    int getHearth();
+
+    /**
+     * <code>required int32 hungry = 2;</code>
+     */
+    boolean hasHungry();
+    /**
+     * <code>required int32 hungry = 2;</code>
+     */
+    int getHungry();
+
+    /**
+     * <code>required int32 tired = 3;</code>
+     */
+    boolean hasTired();
+    /**
+     * <code>required int32 tired = 3;</code>
+     */
+    int getTired();
+  }
+  /**
+   * Protobuf type {@code SurvivalInfo}
+   */
+  public static final class SurvivalInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:SurvivalInfo)
+      SurvivalInfoOrBuilder {
+    // Use SurvivalInfo.newBuilder() to construct.
+    private SurvivalInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SurvivalInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SurvivalInfo defaultInstance;
+    public static SurvivalInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SurvivalInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SurvivalInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              hearth_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              hungry_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              tired_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_SurvivalInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_SurvivalInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.SurvivalInfo.class, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SurvivalInfo> PARSER =
+        new com.google.protobuf.AbstractParser<SurvivalInfo>() {
+      public SurvivalInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SurvivalInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SurvivalInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int HEARTH_FIELD_NUMBER = 1;
+    private int hearth_;
+    /**
+     * <code>required int32 hearth = 1;</code>
+     */
+    public boolean hasHearth() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 hearth = 1;</code>
+     */
+    public int getHearth() {
+      return hearth_;
+    }
+
+    public static final int HUNGRY_FIELD_NUMBER = 2;
+    private int hungry_;
+    /**
+     * <code>required int32 hungry = 2;</code>
+     */
+    public boolean hasHungry() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 hungry = 2;</code>
+     */
+    public int getHungry() {
+      return hungry_;
+    }
+
+    public static final int TIRED_FIELD_NUMBER = 3;
+    private int tired_;
+    /**
+     * <code>required int32 tired = 3;</code>
+     */
+    public boolean hasTired() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 tired = 3;</code>
+     */
+    public int getTired() {
+      return tired_;
+    }
+
+    private void initFields() {
+      hearth_ = 0;
+      hungry_ = 0;
+      tired_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasHearth()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHungry()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTired()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, hearth_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, hungry_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, tired_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, hearth_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, hungry_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, tired_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.SurvivalInfo)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.SurvivalInfo other = (com.mmo.server.ServerClientProtocol.SurvivalInfo) obj;
+
+      boolean result = true;
+      result = result && (hasHearth() == other.hasHearth());
+      if (hasHearth()) {
+        result = result && (getHearth()
+            == other.getHearth());
+      }
+      result = result && (hasHungry() == other.hasHungry());
+      if (hasHungry()) {
+        result = result && (getHungry()
+            == other.getHungry());
+      }
+      result = result && (hasTired() == other.hasTired());
+      if (hasTired()) {
+        result = result && (getTired()
+            == other.getTired());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasHearth()) {
+        hash = (37 * hash) + HEARTH_FIELD_NUMBER;
+        hash = (53 * hash) + getHearth();
+      }
+      if (hasHungry()) {
+        hash = (37 * hash) + HUNGRY_FIELD_NUMBER;
+        hash = (53 * hash) + getHungry();
+      }
+      if (hasTired()) {
+        hash = (37 * hash) + TIRED_FIELD_NUMBER;
+        hash = (53 * hash) + getTired();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.SurvivalInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.SurvivalInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code SurvivalInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:SurvivalInfo)
+        com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_SurvivalInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_SurvivalInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.SurvivalInfo.class, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.SurvivalInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        hearth_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        hungry_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        tired_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_SurvivalInfo_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo build() {
+        com.mmo.server.ServerClientProtocol.SurvivalInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo buildPartial() {
+        com.mmo.server.ServerClientProtocol.SurvivalInfo result = new com.mmo.server.ServerClientProtocol.SurvivalInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.hearth_ = hearth_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.hungry_ = hungry_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.tired_ = tired_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.SurvivalInfo) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.SurvivalInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.SurvivalInfo other) {
+        if (other == com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance()) return this;
+        if (other.hasHearth()) {
+          setHearth(other.getHearth());
+        }
+        if (other.hasHungry()) {
+          setHungry(other.getHungry());
+        }
+        if (other.hasTired()) {
+          setTired(other.getTired());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasHearth()) {
+          
+          return false;
+        }
+        if (!hasHungry()) {
+          
+          return false;
+        }
+        if (!hasTired()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.SurvivalInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.SurvivalInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int hearth_ ;
+      /**
+       * <code>required int32 hearth = 1;</code>
+       */
+      public boolean hasHearth() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 hearth = 1;</code>
+       */
+      public int getHearth() {
+        return hearth_;
+      }
+      /**
+       * <code>required int32 hearth = 1;</code>
+       */
+      public Builder setHearth(int value) {
+        bitField0_ |= 0x00000001;
+        hearth_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 hearth = 1;</code>
+       */
+      public Builder clearHearth() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        hearth_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int hungry_ ;
+      /**
+       * <code>required int32 hungry = 2;</code>
+       */
+      public boolean hasHungry() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 hungry = 2;</code>
+       */
+      public int getHungry() {
+        return hungry_;
+      }
+      /**
+       * <code>required int32 hungry = 2;</code>
+       */
+      public Builder setHungry(int value) {
+        bitField0_ |= 0x00000002;
+        hungry_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 hungry = 2;</code>
+       */
+      public Builder clearHungry() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        hungry_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int tired_ ;
+      /**
+       * <code>required int32 tired = 3;</code>
+       */
+      public boolean hasTired() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 tired = 3;</code>
+       */
+      public int getTired() {
+        return tired_;
+      }
+      /**
+       * <code>required int32 tired = 3;</code>
+       */
+      public Builder setTired(int value) {
+        bitField0_ |= 0x00000004;
+        tired_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 tired = 3;</code>
+       */
+      public Builder clearTired() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        tired_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:SurvivalInfo)
+    }
+
+    static {
+      defaultInstance = new SurvivalInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:SurvivalInfo)
+  }
+
+  public interface IdentifyInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:IdentifyInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string ID = 1;</code>
+     */
+    boolean hasID();
+    /**
+     * <code>required string ID = 1;</code>
+     */
+    java.lang.String getID();
+    /**
+     * <code>required string ID = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIDBytes();
+
+    /**
+     * <code>required string name = 2;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>required string name = 2;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>required string name = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>required .ItemType type = 3;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>required .ItemType type = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.ItemType getType();
+  }
+  /**
+   * Protobuf type {@code IdentifyInfo}
+   */
+  public static final class IdentifyInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:IdentifyInfo)
+      IdentifyInfoOrBuilder {
+    // Use IdentifyInfo.newBuilder() to construct.
+    private IdentifyInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private IdentifyInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final IdentifyInfo defaultInstance;
+    public static IdentifyInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public IdentifyInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private IdentifyInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              iD_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              name_ = bs;
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+              com.mmo.server.ServerClientProtocol.ItemType value = com.mmo.server.ServerClientProtocol.ItemType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(3, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                type_ = value;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_IdentifyInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_IdentifyInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.IdentifyInfo.class, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<IdentifyInfo> PARSER =
+        new com.google.protobuf.AbstractParser<IdentifyInfo>() {
+      public IdentifyInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new IdentifyInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<IdentifyInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.lang.Object iD_;
+    /**
+     * <code>required string ID = 1;</code>
+     */
+    public boolean hasID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string ID = 1;</code>
+     */
+    public java.lang.String getID() {
+      java.lang.Object ref = iD_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          iD_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string ID = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIDBytes() {
+      java.lang.Object ref = iD_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        iD_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private java.lang.Object name_;
+    /**
+     * <code>required string name = 2;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string name = 2;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string name = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private com.mmo.server.ServerClientProtocol.ItemType type_;
+    /**
+     * <code>required .ItemType type = 3;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .ItemType type = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.ItemType getType() {
+      return type_;
+    }
+
+    private void initFields() {
+      iD_ = "";
+      name_ = "";
+      type_ = com.mmo.server.ServerClientProtocol.ItemType.BUILD;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getIDBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeEnum(3, type_.getNumber());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getIDBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, type_.getNumber());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.IdentifyInfo)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.IdentifyInfo other = (com.mmo.server.ServerClientProtocol.IdentifyInfo) obj;
+
+      boolean result = true;
+      result = result && (hasID() == other.hasID());
+      if (hasID()) {
+        result = result && getID()
+            .equals(other.getID());
+      }
+      result = result && (hasName() == other.hasName());
+      if (hasName()) {
+        result = result && getName()
+            .equals(other.getName());
+      }
+      result = result && (hasType() == other.hasType());
+      if (hasType()) {
+        result = result &&
+            (getType() == other.getType());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasID()) {
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getID().hashCode();
+      }
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashEnum(
+            getType());
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.IdentifyInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.IdentifyInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code IdentifyInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:IdentifyInfo)
+        com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_IdentifyInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_IdentifyInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.IdentifyInfo.class, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.IdentifyInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        iD_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = com.mmo.server.ServerClientProtocol.ItemType.BUILD;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_IdentifyInfo_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo build() {
+        com.mmo.server.ServerClientProtocol.IdentifyInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo buildPartial() {
+        com.mmo.server.ServerClientProtocol.IdentifyInfo result = new com.mmo.server.ServerClientProtocol.IdentifyInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.iD_ = iD_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.IdentifyInfo) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.IdentifyInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.IdentifyInfo other) {
+        if (other == com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance()) return this;
+        if (other.hasID()) {
+          bitField0_ |= 0x00000001;
+          iD_ = other.iD_;
+          onChanged();
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasID()) {
+          
+          return false;
+        }
+        if (!hasName()) {
+          
+          return false;
+        }
+        if (!hasType()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.IdentifyInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.IdentifyInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object iD_ = "";
+      /**
+       * <code>required string ID = 1;</code>
+       */
+      public boolean hasID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string ID = 1;</code>
+       */
+      public java.lang.String getID() {
+        java.lang.Object ref = iD_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            iD_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string ID = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIDBytes() {
+        java.lang.Object ref = iD_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          iD_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string ID = 1;</code>
+       */
+      public Builder setID(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        iD_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ID = 1;</code>
+       */
+      public Builder clearID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        iD_ = getDefaultInstance().getID();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ID = 1;</code>
+       */
+      public Builder setIDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        iD_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string name = 2;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.mmo.server.ServerClientProtocol.ItemType type_ = com.mmo.server.ServerClientProtocol.ItemType.BUILD;
+      /**
+       * <code>required .ItemType type = 3;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .ItemType type = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ItemType getType() {
+        return type_;
+      }
+      /**
+       * <code>required .ItemType type = 3;</code>
+       */
+      public Builder setType(com.mmo.server.ServerClientProtocol.ItemType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000004;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .ItemType type = 3;</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        type_ = com.mmo.server.ServerClientProtocol.ItemType.BUILD;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:IdentifyInfo)
+    }
+
+    static {
+      defaultInstance = new IdentifyInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:IdentifyInfo)
+  }
+
+  public interface ItemOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Item)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    boolean hasIdentify();
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify();
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder();
+
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    boolean hasPosition();
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    com.mmo.server.ServerClientProtocol.Position getPosition();
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    com.mmo.server.ServerClientProtocol.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    boolean hasModInfo();
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.ModInfo getModInfo();
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.ModInfoOrBuilder getModInfoOrBuilder();
+
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    boolean hasSurvivalInfo();
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    com.mmo.server.ServerClientProtocol.SurvivalInfo getSurvivalInfo();
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder();
+  }
+  /**
+   * Protobuf type {@code Item}
+   */
+  public static final class Item extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:Item)
+      ItemOrBuilder {
+    // Use Item.newBuilder() to construct.
+    private Item(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Item(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Item defaultInstance;
+    public static Item getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Item getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Item(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = identify_.toBuilder();
+              }
+              identify_ = input.readMessage(com.mmo.server.ServerClientProtocol.IdentifyInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(identify_);
+                identify_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              com.mmo.server.ServerClientProtocol.Position.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(com.mmo.server.ServerClientProtocol.Position.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.mmo.server.ServerClientProtocol.ModInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = modInfo_.toBuilder();
+              }
+              modInfo_ = input.readMessage(com.mmo.server.ServerClientProtocol.ModInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(modInfo_);
+                modInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = survivalInfo_.toBuilder();
+              }
+              survivalInfo_ = input.readMessage(com.mmo.server.ServerClientProtocol.SurvivalInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(survivalInfo_);
+                survivalInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_Item_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_Item_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.Item.class, com.mmo.server.ServerClientProtocol.Item.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Item> PARSER =
+        new com.google.protobuf.AbstractParser<Item>() {
+      public Item parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Item(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Item> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int IDENTIFY_FIELD_NUMBER = 1;
+    private com.mmo.server.ServerClientProtocol.IdentifyInfo identify_;
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    public boolean hasIdentify() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify() {
+      return identify_;
+    }
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder() {
+      return identify_;
+    }
+
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private com.mmo.server.ServerClientProtocol.Position position_;
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    public boolean hasPosition() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.Position getPosition() {
+      return position_;
+    }
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.PositionOrBuilder getPositionOrBuilder() {
+      return position_;
+    }
+
+    public static final int MODINFO_FIELD_NUMBER = 3;
+    private com.mmo.server.ServerClientProtocol.ModInfo modInfo_;
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    public boolean hasModInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.ModInfo getModInfo() {
+      return modInfo_;
+    }
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.ModInfoOrBuilder getModInfoOrBuilder() {
+      return modInfo_;
+    }
+
+    public static final int SURVIVALINFO_FIELD_NUMBER = 4;
+    private com.mmo.server.ServerClientProtocol.SurvivalInfo survivalInfo_;
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    public boolean hasSurvivalInfo() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.SurvivalInfo getSurvivalInfo() {
+      return survivalInfo_;
+    }
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder() {
+      return survivalInfo_;
+    }
+
+    private void initFields() {
+      identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+      position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+      modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+      survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasIdentify()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPosition()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasModInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSurvivalInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getIdentify().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getPosition().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getModInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSurvivalInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, identify_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, position_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, modInfo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, survivalInfo_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, identify_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, position_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, modInfo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, survivalInfo_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.Item)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.Item other = (com.mmo.server.ServerClientProtocol.Item) obj;
+
+      boolean result = true;
+      result = result && (hasIdentify() == other.hasIdentify());
+      if (hasIdentify()) {
+        result = result && getIdentify()
+            .equals(other.getIdentify());
+      }
+      result = result && (hasPosition() == other.hasPosition());
+      if (hasPosition()) {
+        result = result && getPosition()
+            .equals(other.getPosition());
+      }
+      result = result && (hasModInfo() == other.hasModInfo());
+      if (hasModInfo()) {
+        result = result && getModInfo()
+            .equals(other.getModInfo());
+      }
+      result = result && (hasSurvivalInfo() == other.hasSurvivalInfo());
+      if (hasSurvivalInfo()) {
+        result = result && getSurvivalInfo()
+            .equals(other.getSurvivalInfo());
+      }
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasIdentify()) {
+        hash = (37 * hash) + IDENTIFY_FIELD_NUMBER;
+        hash = (53 * hash) + getIdentify().hashCode();
+      }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
+      if (hasModInfo()) {
+        hash = (37 * hash) + MODINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getModInfo().hashCode();
+      }
+      if (hasSurvivalInfo()) {
+        hash = (37 * hash) + SURVIVALINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getSurvivalInfo().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.Item parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.Item prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code Item}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:Item)
+        com.mmo.server.ServerClientProtocol.ItemOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_Item_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_Item_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.Item.class, com.mmo.server.ServerClientProtocol.Item.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.Item.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdentifyFieldBuilder();
+          getPositionFieldBuilder();
+          getModInfoFieldBuilder();
+          getSurvivalInfoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (identifyBuilder_ == null) {
+          identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+        } else {
+          identifyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (positionBuilder_ == null) {
+          position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+        } else {
+          positionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (modInfoBuilder_ == null) {
+          modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+        } else {
+          modInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (survivalInfoBuilder_ == null) {
+          survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+        } else {
+          survivalInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_Item_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.Item getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.Item.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.Item build() {
+        com.mmo.server.ServerClientProtocol.Item result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.Item buildPartial() {
+        com.mmo.server.ServerClientProtocol.Item result = new com.mmo.server.ServerClientProtocol.Item(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (identifyBuilder_ == null) {
+          result.identify_ = identify_;
+        } else {
+          result.identify_ = identifyBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (modInfoBuilder_ == null) {
+          result.modInfo_ = modInfo_;
+        } else {
+          result.modInfo_ = modInfoBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (survivalInfoBuilder_ == null) {
+          result.survivalInfo_ = survivalInfo_;
+        } else {
+          result.survivalInfo_ = survivalInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.Item) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.Item)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.Item other) {
+        if (other == com.mmo.server.ServerClientProtocol.Item.getDefaultInstance()) return this;
+        if (other.hasIdentify()) {
+          mergeIdentify(other.getIdentify());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
+        }
+        if (other.hasModInfo()) {
+          mergeModInfo(other.getModInfo());
+        }
+        if (other.hasSurvivalInfo()) {
+          mergeSurvivalInfo(other.getSurvivalInfo());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasIdentify()) {
+          
+          return false;
+        }
+        if (!hasPosition()) {
+          
+          return false;
+        }
+        if (!hasModInfo()) {
+          
+          return false;
+        }
+        if (!hasSurvivalInfo()) {
+          
+          return false;
+        }
+        if (!getIdentify().isInitialized()) {
+          
+          return false;
+        }
+        if (!getPosition().isInitialized()) {
+          
+          return false;
+        }
+        if (!getModInfo().isInitialized()) {
+          
+          return false;
+        }
+        if (!getSurvivalInfo().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.Item parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.Item) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.mmo.server.ServerClientProtocol.IdentifyInfo identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public boolean hasIdentify() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify() {
+        if (identifyBuilder_ == null) {
+          return identify_;
+        } else {
+          return identifyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          identify_ = value;
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(
+          com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          identify_ = builderForValue.build();
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder mergeIdentify(com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              identify_ != com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance()) {
+            identify_ =
+              com.mmo.server.ServerClientProtocol.IdentifyInfo.newBuilder(identify_).mergeFrom(value).buildPartial();
+          } else {
+            identify_ = value;
+          }
+          onChanged();
+        } else {
+          identifyBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder clearIdentify() {
+        if (identifyBuilder_ == null) {
+          identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          identifyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder getIdentifyBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getIdentifyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder() {
+        if (identifyBuilder_ != null) {
+          return identifyBuilder_.getMessageOrBuilder();
+        } else {
+          return identify_;
+        }
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+          getIdentifyFieldBuilder() {
+        if (identifyBuilder_ == null) {
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder>(
+                  getIdentify(),
+                  getParentForChildren(),
+                  isClean());
+          identify_ = null;
+        }
+        return identifyBuilder_;
+      }
+
+      private com.mmo.server.ServerClientProtocol.Position position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public boolean hasPosition() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder setPosition(com.mmo.server.ServerClientProtocol.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder setPosition(
+          com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder mergePosition(com.mmo.server.ServerClientProtocol.Position value) {
+        if (positionBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              position_ != com.mmo.server.ServerClientProtocol.Position.getDefaultInstance()) {
+            position_ =
+              com.mmo.server.ServerClientProtocol.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+          onChanged();
+        } else {
+          positionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder getPositionBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_;
+        }
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
+      private com.mmo.server.ServerClientProtocol.ModInfo modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.ModInfo, com.mmo.server.ServerClientProtocol.ModInfo.Builder, com.mmo.server.ServerClientProtocol.ModInfoOrBuilder> modInfoBuilder_;
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public boolean hasModInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ModInfo getModInfo() {
+        if (modInfoBuilder_ == null) {
+          return modInfo_;
+        } else {
+          return modInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder setModInfo(com.mmo.server.ServerClientProtocol.ModInfo value) {
+        if (modInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          modInfo_ = value;
+          onChanged();
+        } else {
+          modInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder setModInfo(
+          com.mmo.server.ServerClientProtocol.ModInfo.Builder builderForValue) {
+        if (modInfoBuilder_ == null) {
+          modInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          modInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder mergeModInfo(com.mmo.server.ServerClientProtocol.ModInfo value) {
+        if (modInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              modInfo_ != com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance()) {
+            modInfo_ =
+              com.mmo.server.ServerClientProtocol.ModInfo.newBuilder(modInfo_).mergeFrom(value).buildPartial();
+          } else {
+            modInfo_ = value;
+          }
+          onChanged();
+        } else {
+          modInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder clearModInfo() {
+        if (modInfoBuilder_ == null) {
+          modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          modInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ModInfo.Builder getModInfoBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getModInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ModInfoOrBuilder getModInfoOrBuilder() {
+        if (modInfoBuilder_ != null) {
+          return modInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return modInfo_;
+        }
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.ModInfo, com.mmo.server.ServerClientProtocol.ModInfo.Builder, com.mmo.server.ServerClientProtocol.ModInfoOrBuilder> 
+          getModInfoFieldBuilder() {
+        if (modInfoBuilder_ == null) {
+          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.ModInfo, com.mmo.server.ServerClientProtocol.ModInfo.Builder, com.mmo.server.ServerClientProtocol.ModInfoOrBuilder>(
+                  getModInfo(),
+                  getParentForChildren(),
+                  isClean());
+          modInfo_ = null;
+        }
+        return modInfoBuilder_;
+      }
+
+      private com.mmo.server.ServerClientProtocol.SurvivalInfo survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.SurvivalInfo, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder, com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder> survivalInfoBuilder_;
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public boolean hasSurvivalInfo() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo getSurvivalInfo() {
+        if (survivalInfoBuilder_ == null) {
+          return survivalInfo_;
+        } else {
+          return survivalInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder setSurvivalInfo(com.mmo.server.ServerClientProtocol.SurvivalInfo value) {
+        if (survivalInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          survivalInfo_ = value;
+          onChanged();
+        } else {
+          survivalInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder setSurvivalInfo(
+          com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder builderForValue) {
+        if (survivalInfoBuilder_ == null) {
+          survivalInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          survivalInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder mergeSurvivalInfo(com.mmo.server.ServerClientProtocol.SurvivalInfo value) {
+        if (survivalInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              survivalInfo_ != com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance()) {
+            survivalInfo_ =
+              com.mmo.server.ServerClientProtocol.SurvivalInfo.newBuilder(survivalInfo_).mergeFrom(value).buildPartial();
+          } else {
+            survivalInfo_ = value;
+          }
+          onChanged();
+        } else {
+          survivalInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder clearSurvivalInfo() {
+        if (survivalInfoBuilder_ == null) {
+          survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          survivalInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder getSurvivalInfoBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getSurvivalInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder() {
+        if (survivalInfoBuilder_ != null) {
+          return survivalInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return survivalInfo_;
+        }
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.SurvivalInfo, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder, com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder> 
+          getSurvivalInfoFieldBuilder() {
+        if (survivalInfoBuilder_ == null) {
+          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.SurvivalInfo, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder, com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder>(
+                  getSurvivalInfo(),
+                  getParentForChildren(),
+                  isClean());
+          survivalInfo_ = null;
+        }
+        return survivalInfoBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:Item)
+    }
+
+    static {
+      defaultInstance = new Item(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:Item)
+  }
+
   public interface CharacterOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Character)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    boolean hasIdentify();
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify();
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder();
+
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    boolean hasPosition();
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    com.mmo.server.ServerClientProtocol.Position getPosition();
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    com.mmo.server.ServerClientProtocol.PositionOrBuilder getPositionOrBuilder();
+
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    boolean hasModInfo();
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.ModInfo getModInfo();
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.ModInfoOrBuilder getModInfoOrBuilder();
+
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    boolean hasSurvivalInfo();
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    com.mmo.server.ServerClientProtocol.SurvivalInfo getSurvivalInfo();
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder();
   }
   /**
    * Protobuf type {@code Character}
@@ -860,6 +4896,7 @@ public final class ServerClientProtocol {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -875,6 +4912,58 @@ public final class ServerClientProtocol {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = identify_.toBuilder();
+              }
+              identify_ = input.readMessage(com.mmo.server.ServerClientProtocol.IdentifyInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(identify_);
+                identify_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              com.mmo.server.ServerClientProtocol.Position.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = position_.toBuilder();
+              }
+              position_ = input.readMessage(com.mmo.server.ServerClientProtocol.Position.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(position_);
+                position_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              com.mmo.server.ServerClientProtocol.ModInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = modInfo_.toBuilder();
+              }
+              modInfo_ = input.readMessage(com.mmo.server.ServerClientProtocol.ModInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(modInfo_);
+                modInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = survivalInfo_.toBuilder();
+              }
+              survivalInfo_ = input.readMessage(com.mmo.server.ServerClientProtocol.SurvivalInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(survivalInfo_);
+                survivalInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -916,7 +5005,96 @@ public final class ServerClientProtocol {
       return PARSER;
     }
 
+    private int bitField0_;
+    public static final int IDENTIFY_FIELD_NUMBER = 1;
+    private com.mmo.server.ServerClientProtocol.IdentifyInfo identify_;
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    public boolean hasIdentify() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify() {
+      return identify_;
+    }
+    /**
+     * <code>required .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder() {
+      return identify_;
+    }
+
+    public static final int POSITION_FIELD_NUMBER = 2;
+    private com.mmo.server.ServerClientProtocol.Position position_;
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    public boolean hasPosition() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.Position getPosition() {
+      return position_;
+    }
+    /**
+     * <code>required .Position position = 2;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.PositionOrBuilder getPositionOrBuilder() {
+      return position_;
+    }
+
+    public static final int MODINFO_FIELD_NUMBER = 3;
+    private com.mmo.server.ServerClientProtocol.ModInfo modInfo_;
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    public boolean hasModInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.ModInfo getModInfo() {
+      return modInfo_;
+    }
+    /**
+     * <code>required .ModInfo modInfo = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.ModInfoOrBuilder getModInfoOrBuilder() {
+      return modInfo_;
+    }
+
+    public static final int SURVIVALINFO_FIELD_NUMBER = 4;
+    private com.mmo.server.ServerClientProtocol.SurvivalInfo survivalInfo_;
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    public boolean hasSurvivalInfo() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.SurvivalInfo getSurvivalInfo() {
+      return survivalInfo_;
+    }
+    /**
+     * <code>required .SurvivalInfo survivalInfo = 4;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder() {
+      return survivalInfo_;
+    }
+
     private void initFields() {
+      identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+      position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+      modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+      survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -924,6 +5102,38 @@ public final class ServerClientProtocol {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasIdentify()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPosition()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasModInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSurvivalInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getIdentify().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getPosition().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getModInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSurvivalInfo().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -931,6 +5141,18 @@ public final class ServerClientProtocol {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, identify_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, position_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, modInfo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, survivalInfo_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -940,6 +5162,22 @@ public final class ServerClientProtocol {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, identify_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, position_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, modInfo_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, survivalInfo_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -963,6 +5201,26 @@ public final class ServerClientProtocol {
       com.mmo.server.ServerClientProtocol.Character other = (com.mmo.server.ServerClientProtocol.Character) obj;
 
       boolean result = true;
+      result = result && (hasIdentify() == other.hasIdentify());
+      if (hasIdentify()) {
+        result = result && getIdentify()
+            .equals(other.getIdentify());
+      }
+      result = result && (hasPosition() == other.hasPosition());
+      if (hasPosition()) {
+        result = result && getPosition()
+            .equals(other.getPosition());
+      }
+      result = result && (hasModInfo() == other.hasModInfo());
+      if (hasModInfo()) {
+        result = result && getModInfo()
+            .equals(other.getModInfo());
+      }
+      result = result && (hasSurvivalInfo() == other.hasSurvivalInfo());
+      if (hasSurvivalInfo()) {
+        result = result && getSurvivalInfo()
+            .equals(other.getSurvivalInfo());
+      }
       result = result &&
           getUnknownFields().equals(other.getUnknownFields());
       return result;
@@ -975,6 +5233,22 @@ public final class ServerClientProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasIdentify()) {
+        hash = (37 * hash) + IDENTIFY_FIELD_NUMBER;
+        hash = (53 * hash) + getIdentify().hashCode();
+      }
+      if (hasPosition()) {
+        hash = (37 * hash) + POSITION_FIELD_NUMBER;
+        hash = (53 * hash) + getPosition().hashCode();
+      }
+      if (hasModInfo()) {
+        hash = (37 * hash) + MODINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getModInfo().hashCode();
+      }
+      if (hasSurvivalInfo()) {
+        hash = (37 * hash) + SURVIVALINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getSurvivalInfo().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1077,6 +5351,10 @@ public final class ServerClientProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdentifyFieldBuilder();
+          getPositionFieldBuilder();
+          getModInfoFieldBuilder();
+          getSurvivalInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1085,6 +5363,30 @@ public final class ServerClientProtocol {
 
       public Builder clear() {
         super.clear();
+        if (identifyBuilder_ == null) {
+          identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+        } else {
+          identifyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (positionBuilder_ == null) {
+          position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+        } else {
+          positionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (modInfoBuilder_ == null) {
+          modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+        } else {
+          modInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (survivalInfoBuilder_ == null) {
+          survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+        } else {
+          survivalInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1111,6 +5413,41 @@ public final class ServerClientProtocol {
 
       public com.mmo.server.ServerClientProtocol.Character buildPartial() {
         com.mmo.server.ServerClientProtocol.Character result = new com.mmo.server.ServerClientProtocol.Character(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (identifyBuilder_ == null) {
+          result.identify_ = identify_;
+        } else {
+          result.identify_ = identifyBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (positionBuilder_ == null) {
+          result.position_ = position_;
+        } else {
+          result.position_ = positionBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (modInfoBuilder_ == null) {
+          result.modInfo_ = modInfo_;
+        } else {
+          result.modInfo_ = modInfoBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (survivalInfoBuilder_ == null) {
+          result.survivalInfo_ = survivalInfo_;
+        } else {
+          result.survivalInfo_ = survivalInfoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1126,11 +5463,55 @@ public final class ServerClientProtocol {
 
       public Builder mergeFrom(com.mmo.server.ServerClientProtocol.Character other) {
         if (other == com.mmo.server.ServerClientProtocol.Character.getDefaultInstance()) return this;
+        if (other.hasIdentify()) {
+          mergeIdentify(other.getIdentify());
+        }
+        if (other.hasPosition()) {
+          mergePosition(other.getPosition());
+        }
+        if (other.hasModInfo()) {
+          mergeModInfo(other.getModInfo());
+        }
+        if (other.hasSurvivalInfo()) {
+          mergeSurvivalInfo(other.getSurvivalInfo());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasIdentify()) {
+          
+          return false;
+        }
+        if (!hasPosition()) {
+          
+          return false;
+        }
+        if (!hasModInfo()) {
+          
+          return false;
+        }
+        if (!hasSurvivalInfo()) {
+          
+          return false;
+        }
+        if (!getIdentify().isInitialized()) {
+          
+          return false;
+        }
+        if (!getPosition().isInitialized()) {
+          
+          return false;
+        }
+        if (!getModInfo().isInitialized()) {
+          
+          return false;
+        }
+        if (!getSurvivalInfo().isInitialized()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -1151,6 +5532,471 @@ public final class ServerClientProtocol {
         }
         return this;
       }
+      private int bitField0_;
+
+      private com.mmo.server.ServerClientProtocol.IdentifyInfo identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public boolean hasIdentify() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify() {
+        if (identifyBuilder_ == null) {
+          return identify_;
+        } else {
+          return identifyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          identify_ = value;
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(
+          com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          identify_ = builderForValue.build();
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder mergeIdentify(com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              identify_ != com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance()) {
+            identify_ =
+              com.mmo.server.ServerClientProtocol.IdentifyInfo.newBuilder(identify_).mergeFrom(value).buildPartial();
+          } else {
+            identify_ = value;
+          }
+          onChanged();
+        } else {
+          identifyBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public Builder clearIdentify() {
+        if (identifyBuilder_ == null) {
+          identify_ = com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          identifyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder getIdentifyBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getIdentifyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder() {
+        if (identifyBuilder_ != null) {
+          return identifyBuilder_.getMessageOrBuilder();
+        } else {
+          return identify_;
+        }
+      }
+      /**
+       * <code>required .IdentifyInfo identify = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+          getIdentifyFieldBuilder() {
+        if (identifyBuilder_ == null) {
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder>(
+                  getIdentify(),
+                  getParentForChildren(),
+                  isClean());
+          identify_ = null;
+        }
+        return identifyBuilder_;
+      }
+
+      private com.mmo.server.ServerClientProtocol.Position position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> positionBuilder_;
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public boolean hasPosition() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position getPosition() {
+        if (positionBuilder_ == null) {
+          return position_;
+        } else {
+          return positionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder setPosition(com.mmo.server.ServerClientProtocol.Position value) {
+        if (positionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          position_ = value;
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder setPosition(
+          com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (positionBuilder_ == null) {
+          position_ = builderForValue.build();
+          onChanged();
+        } else {
+          positionBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder mergePosition(com.mmo.server.ServerClientProtocol.Position value) {
+        if (positionBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              position_ != com.mmo.server.ServerClientProtocol.Position.getDefaultInstance()) {
+            position_ =
+              com.mmo.server.ServerClientProtocol.Position.newBuilder(position_).mergeFrom(value).buildPartial();
+          } else {
+            position_ = value;
+          }
+          onChanged();
+        } else {
+          positionBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public Builder clearPosition() {
+        if (positionBuilder_ == null) {
+          position_ = com.mmo.server.ServerClientProtocol.Position.getDefaultInstance();
+          onChanged();
+        } else {
+          positionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder getPositionBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getPositionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.PositionOrBuilder getPositionOrBuilder() {
+        if (positionBuilder_ != null) {
+          return positionBuilder_.getMessageOrBuilder();
+        } else {
+          return position_;
+        }
+      }
+      /**
+       * <code>required .Position position = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+          getPositionFieldBuilder() {
+        if (positionBuilder_ == null) {
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder>(
+                  getPosition(),
+                  getParentForChildren(),
+                  isClean());
+          position_ = null;
+        }
+        return positionBuilder_;
+      }
+
+      private com.mmo.server.ServerClientProtocol.ModInfo modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.ModInfo, com.mmo.server.ServerClientProtocol.ModInfo.Builder, com.mmo.server.ServerClientProtocol.ModInfoOrBuilder> modInfoBuilder_;
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public boolean hasModInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ModInfo getModInfo() {
+        if (modInfoBuilder_ == null) {
+          return modInfo_;
+        } else {
+          return modInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder setModInfo(com.mmo.server.ServerClientProtocol.ModInfo value) {
+        if (modInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          modInfo_ = value;
+          onChanged();
+        } else {
+          modInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder setModInfo(
+          com.mmo.server.ServerClientProtocol.ModInfo.Builder builderForValue) {
+        if (modInfoBuilder_ == null) {
+          modInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          modInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder mergeModInfo(com.mmo.server.ServerClientProtocol.ModInfo value) {
+        if (modInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              modInfo_ != com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance()) {
+            modInfo_ =
+              com.mmo.server.ServerClientProtocol.ModInfo.newBuilder(modInfo_).mergeFrom(value).buildPartial();
+          } else {
+            modInfo_ = value;
+          }
+          onChanged();
+        } else {
+          modInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public Builder clearModInfo() {
+        if (modInfoBuilder_ == null) {
+          modInfo_ = com.mmo.server.ServerClientProtocol.ModInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          modInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ModInfo.Builder getModInfoBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getModInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ModInfoOrBuilder getModInfoOrBuilder() {
+        if (modInfoBuilder_ != null) {
+          return modInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return modInfo_;
+        }
+      }
+      /**
+       * <code>required .ModInfo modInfo = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.ModInfo, com.mmo.server.ServerClientProtocol.ModInfo.Builder, com.mmo.server.ServerClientProtocol.ModInfoOrBuilder> 
+          getModInfoFieldBuilder() {
+        if (modInfoBuilder_ == null) {
+          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.ModInfo, com.mmo.server.ServerClientProtocol.ModInfo.Builder, com.mmo.server.ServerClientProtocol.ModInfoOrBuilder>(
+                  getModInfo(),
+                  getParentForChildren(),
+                  isClean());
+          modInfo_ = null;
+        }
+        return modInfoBuilder_;
+      }
+
+      private com.mmo.server.ServerClientProtocol.SurvivalInfo survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.SurvivalInfo, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder, com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder> survivalInfoBuilder_;
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public boolean hasSurvivalInfo() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo getSurvivalInfo() {
+        if (survivalInfoBuilder_ == null) {
+          return survivalInfo_;
+        } else {
+          return survivalInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder setSurvivalInfo(com.mmo.server.ServerClientProtocol.SurvivalInfo value) {
+        if (survivalInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          survivalInfo_ = value;
+          onChanged();
+        } else {
+          survivalInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder setSurvivalInfo(
+          com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder builderForValue) {
+        if (survivalInfoBuilder_ == null) {
+          survivalInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          survivalInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder mergeSurvivalInfo(com.mmo.server.ServerClientProtocol.SurvivalInfo value) {
+        if (survivalInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              survivalInfo_ != com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance()) {
+            survivalInfo_ =
+              com.mmo.server.ServerClientProtocol.SurvivalInfo.newBuilder(survivalInfo_).mergeFrom(value).buildPartial();
+          } else {
+            survivalInfo_ = value;
+          }
+          onChanged();
+        } else {
+          survivalInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public Builder clearSurvivalInfo() {
+        if (survivalInfoBuilder_ == null) {
+          survivalInfo_ = com.mmo.server.ServerClientProtocol.SurvivalInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          survivalInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder getSurvivalInfoBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getSurvivalInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder() {
+        if (survivalInfoBuilder_ != null) {
+          return survivalInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return survivalInfo_;
+        }
+      }
+      /**
+       * <code>required .SurvivalInfo survivalInfo = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.ServerClientProtocol.SurvivalInfo, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder, com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder> 
+          getSurvivalInfoFieldBuilder() {
+        if (survivalInfoBuilder_ == null) {
+          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.ServerClientProtocol.SurvivalInfo, com.mmo.server.ServerClientProtocol.SurvivalInfo.Builder, com.mmo.server.ServerClientProtocol.SurvivalInfoOrBuilder>(
+                  getSurvivalInfo(),
+                  getParentForChildren(),
+                  isClean());
+          survivalInfo_ = null;
+        }
+        return survivalInfoBuilder_;
+      }
 
       // @@protoc_insertion_point(builder_scope:Character)
     }
@@ -1168,13 +6014,13 @@ public final class ServerClientProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .ClientCommonStat stat = 1;</code>
+     * <code>required .CommonStat stat = 1;</code>
      */
     boolean hasStat();
     /**
-     * <code>required .ClientCommonStat stat = 1;</code>
+     * <code>required .CommonStat stat = 1;</code>
      */
-    com.mmo.server.ServerClientProtocol.ClientCommonStat getStat();
+    com.mmo.server.ServerClientProtocol.CommonStat getStat();
   }
   /**
    * Protobuf type {@code ClientCommonResponse}
@@ -1230,7 +6076,7 @@ public final class ServerClientProtocol {
             }
             case 8: {
               int rawValue = input.readEnum();
-              com.mmo.server.ServerClientProtocol.ClientCommonStat value = com.mmo.server.ServerClientProtocol.ClientCommonStat.valueOf(rawValue);
+              com.mmo.server.ServerClientProtocol.CommonStat value = com.mmo.server.ServerClientProtocol.CommonStat.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -1280,22 +6126,22 @@ public final class ServerClientProtocol {
 
     private int bitField0_;
     public static final int STAT_FIELD_NUMBER = 1;
-    private com.mmo.server.ServerClientProtocol.ClientCommonStat stat_;
+    private com.mmo.server.ServerClientProtocol.CommonStat stat_;
     /**
-     * <code>required .ClientCommonStat stat = 1;</code>
+     * <code>required .CommonStat stat = 1;</code>
      */
     public boolean hasStat() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .ClientCommonStat stat = 1;</code>
+     * <code>required .CommonStat stat = 1;</code>
      */
-    public com.mmo.server.ServerClientProtocol.ClientCommonStat getStat() {
+    public com.mmo.server.ServerClientProtocol.CommonStat getStat() {
       return stat_;
     }
 
     private void initFields() {
-      stat_ = com.mmo.server.ServerClientProtocol.ClientCommonStat.OK;
+      stat_ = com.mmo.server.ServerClientProtocol.CommonStat.OK;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1485,7 +6331,7 @@ public final class ServerClientProtocol {
 
       public Builder clear() {
         super.clear();
-        stat_ = com.mmo.server.ServerClientProtocol.ClientCommonStat.OK;
+        stat_ = com.mmo.server.ServerClientProtocol.CommonStat.OK;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
@@ -1569,23 +6415,23 @@ public final class ServerClientProtocol {
       }
       private int bitField0_;
 
-      private com.mmo.server.ServerClientProtocol.ClientCommonStat stat_ = com.mmo.server.ServerClientProtocol.ClientCommonStat.OK;
+      private com.mmo.server.ServerClientProtocol.CommonStat stat_ = com.mmo.server.ServerClientProtocol.CommonStat.OK;
       /**
-       * <code>required .ClientCommonStat stat = 1;</code>
+       * <code>required .CommonStat stat = 1;</code>
        */
       public boolean hasStat() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .ClientCommonStat stat = 1;</code>
+       * <code>required .CommonStat stat = 1;</code>
        */
-      public com.mmo.server.ServerClientProtocol.ClientCommonStat getStat() {
+      public com.mmo.server.ServerClientProtocol.CommonStat getStat() {
         return stat_;
       }
       /**
-       * <code>required .ClientCommonStat stat = 1;</code>
+       * <code>required .CommonStat stat = 1;</code>
        */
-      public Builder setStat(com.mmo.server.ServerClientProtocol.ClientCommonStat value) {
+      public Builder setStat(com.mmo.server.ServerClientProtocol.CommonStat value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1595,11 +6441,11 @@ public final class ServerClientProtocol {
         return this;
       }
       /**
-       * <code>required .ClientCommonStat stat = 1;</code>
+       * <code>required .CommonStat stat = 1;</code>
        */
       public Builder clearStat() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        stat_ = com.mmo.server.ServerClientProtocol.ClientCommonStat.OK;
+        stat_ = com.mmo.server.ServerClientProtocol.CommonStat.OK;
         onChanged();
         return this;
       }
@@ -4586,6 +9432,10 @@ public final class ServerClientProtocol {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!getCharacter().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4834,6 +9684,10 @@ public final class ServerClientProtocol {
           
           return false;
         }
+        if (!getCharacter().isInitialized()) {
+          
+          return false;
+        }
         return true;
       }
 
@@ -4981,6 +9835,4186 @@ public final class ServerClientProtocol {
     }
 
     // @@protoc_insertion_point(class_scope:GetCharacterInfoResponse)
+  }
+
+  public interface ItemMoveEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ItemMoveEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> 
+        getIdentifyList();
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify(int index);
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    int getIdentifyCount();
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+        getIdentifyOrBuilderList();
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.Position> 
+        getFromPosList();
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    com.mmo.server.ServerClientProtocol.Position getFromPos(int index);
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    int getFromPosCount();
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+        getFromPosOrBuilderList();
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    com.mmo.server.ServerClientProtocol.PositionOrBuilder getFromPosOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.Position> 
+        getToPosList();
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.Position getToPos(int index);
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    int getToPosCount();
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+        getToPosOrBuilderList();
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    com.mmo.server.ServerClientProtocol.PositionOrBuilder getToPosOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated float speed = 4;</code>
+     */
+    java.util.List<java.lang.Float> getSpeedList();
+    /**
+     * <code>repeated float speed = 4;</code>
+     */
+    int getSpeedCount();
+    /**
+     * <code>repeated float speed = 4;</code>
+     */
+    float getSpeed(int index);
+
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.MotionInfo> 
+        getPlayMotionList();
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    com.mmo.server.ServerClientProtocol.MotionInfo getPlayMotion(int index);
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    int getPlayMotionCount();
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder> 
+        getPlayMotionOrBuilderList();
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder getPlayMotionOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code ItemMoveEvent}
+   */
+  public static final class ItemMoveEvent extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ItemMoveEvent)
+      ItemMoveEventOrBuilder {
+    // Use ItemMoveEvent.newBuilder() to construct.
+    private ItemMoveEvent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ItemMoveEvent(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ItemMoveEvent defaultInstance;
+    public static ItemMoveEvent getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ItemMoveEvent getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ItemMoveEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                identify_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.IdentifyInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              identify_.add(input.readMessage(com.mmo.server.ServerClientProtocol.IdentifyInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                fromPos_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Position>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              fromPos_.add(input.readMessage(com.mmo.server.ServerClientProtocol.Position.PARSER, extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                toPos_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Position>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              toPos_.add(input.readMessage(com.mmo.server.ServerClientProtocol.Position.PARSER, extensionRegistry));
+              break;
+            }
+            case 37: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                speed_ = new java.util.ArrayList<java.lang.Float>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              speed_.add(input.readFloat());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                speed_ = new java.util.ArrayList<java.lang.Float>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                speed_.add(input.readFloat());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                playMotion_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.MotionInfo>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              playMotion_.add(input.readMessage(com.mmo.server.ServerClientProtocol.MotionInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          identify_ = java.util.Collections.unmodifiableList(identify_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          fromPos_ = java.util.Collections.unmodifiableList(fromPos_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          toPos_ = java.util.Collections.unmodifiableList(toPos_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          speed_ = java.util.Collections.unmodifiableList(speed_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          playMotion_ = java.util.Collections.unmodifiableList(playMotion_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ItemMoveEvent_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ItemMoveEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.ItemMoveEvent.class, com.mmo.server.ServerClientProtocol.ItemMoveEvent.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ItemMoveEvent> PARSER =
+        new com.google.protobuf.AbstractParser<ItemMoveEvent>() {
+      public ItemMoveEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ItemMoveEvent(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ItemMoveEvent> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int IDENTIFY_FIELD_NUMBER = 1;
+    private java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> identify_;
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> getIdentifyList() {
+      return identify_;
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+        getIdentifyOrBuilderList() {
+      return identify_;
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public int getIdentifyCount() {
+      return identify_.size();
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify(int index) {
+      return identify_.get(index);
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder(
+        int index) {
+      return identify_.get(index);
+    }
+
+    public static final int FROMPOS_FIELD_NUMBER = 2;
+    private java.util.List<com.mmo.server.ServerClientProtocol.Position> fromPos_;
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.Position> getFromPosList() {
+      return fromPos_;
+    }
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+        getFromPosOrBuilderList() {
+      return fromPos_;
+    }
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    public int getFromPosCount() {
+      return fromPos_.size();
+    }
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.Position getFromPos(int index) {
+      return fromPos_.get(index);
+    }
+    /**
+     * <code>repeated .Position fromPos = 2;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.PositionOrBuilder getFromPosOrBuilder(
+        int index) {
+      return fromPos_.get(index);
+    }
+
+    public static final int TOPOS_FIELD_NUMBER = 3;
+    private java.util.List<com.mmo.server.ServerClientProtocol.Position> toPos_;
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.Position> getToPosList() {
+      return toPos_;
+    }
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+        getToPosOrBuilderList() {
+      return toPos_;
+    }
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    public int getToPosCount() {
+      return toPos_.size();
+    }
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.Position getToPos(int index) {
+      return toPos_.get(index);
+    }
+    /**
+     * <code>repeated .Position toPos = 3;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.PositionOrBuilder getToPosOrBuilder(
+        int index) {
+      return toPos_.get(index);
+    }
+
+    public static final int SPEED_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Float> speed_;
+    /**
+     * <code>repeated float speed = 4;</code>
+     */
+    public java.util.List<java.lang.Float>
+        getSpeedList() {
+      return speed_;
+    }
+    /**
+     * <code>repeated float speed = 4;</code>
+     */
+    public int getSpeedCount() {
+      return speed_.size();
+    }
+    /**
+     * <code>repeated float speed = 4;</code>
+     */
+    public float getSpeed(int index) {
+      return speed_.get(index);
+    }
+
+    public static final int PLAYMOTION_FIELD_NUMBER = 5;
+    private java.util.List<com.mmo.server.ServerClientProtocol.MotionInfo> playMotion_;
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.MotionInfo> getPlayMotionList() {
+      return playMotion_;
+    }
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder> 
+        getPlayMotionOrBuilderList() {
+      return playMotion_;
+    }
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    public int getPlayMotionCount() {
+      return playMotion_.size();
+    }
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.MotionInfo getPlayMotion(int index) {
+      return playMotion_.get(index);
+    }
+    /**
+     * <code>repeated .MotionInfo playMotion = 5;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder getPlayMotionOrBuilder(
+        int index) {
+      return playMotion_.get(index);
+    }
+
+    private void initFields() {
+      identify_ = java.util.Collections.emptyList();
+      fromPos_ = java.util.Collections.emptyList();
+      toPos_ = java.util.Collections.emptyList();
+      speed_ = java.util.Collections.emptyList();
+      playMotion_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getIdentifyCount(); i++) {
+        if (!getIdentify(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getFromPosCount(); i++) {
+        if (!getFromPos(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getToPosCount(); i++) {
+        if (!getToPos(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getPlayMotionCount(); i++) {
+        if (!getPlayMotion(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < identify_.size(); i++) {
+        output.writeMessage(1, identify_.get(i));
+      }
+      for (int i = 0; i < fromPos_.size(); i++) {
+        output.writeMessage(2, fromPos_.get(i));
+      }
+      for (int i = 0; i < toPos_.size(); i++) {
+        output.writeMessage(3, toPos_.get(i));
+      }
+      for (int i = 0; i < speed_.size(); i++) {
+        output.writeFloat(4, speed_.get(i));
+      }
+      for (int i = 0; i < playMotion_.size(); i++) {
+        output.writeMessage(5, playMotion_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < identify_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, identify_.get(i));
+      }
+      for (int i = 0; i < fromPos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, fromPos_.get(i));
+      }
+      for (int i = 0; i < toPos_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, toPos_.get(i));
+      }
+      {
+        int dataSize = 0;
+        dataSize = 4 * getSpeedList().size();
+        size += dataSize;
+        size += 1 * getSpeedList().size();
+      }
+      for (int i = 0; i < playMotion_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, playMotion_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.ItemMoveEvent)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.ItemMoveEvent other = (com.mmo.server.ServerClientProtocol.ItemMoveEvent) obj;
+
+      boolean result = true;
+      result = result && getIdentifyList()
+          .equals(other.getIdentifyList());
+      result = result && getFromPosList()
+          .equals(other.getFromPosList());
+      result = result && getToPosList()
+          .equals(other.getToPosList());
+      result = result && getSpeedList()
+          .equals(other.getSpeedList());
+      result = result && getPlayMotionList()
+          .equals(other.getPlayMotionList());
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getIdentifyCount() > 0) {
+        hash = (37 * hash) + IDENTIFY_FIELD_NUMBER;
+        hash = (53 * hash) + getIdentifyList().hashCode();
+      }
+      if (getFromPosCount() > 0) {
+        hash = (37 * hash) + FROMPOS_FIELD_NUMBER;
+        hash = (53 * hash) + getFromPosList().hashCode();
+      }
+      if (getToPosCount() > 0) {
+        hash = (37 * hash) + TOPOS_FIELD_NUMBER;
+        hash = (53 * hash) + getToPosList().hashCode();
+      }
+      if (getSpeedCount() > 0) {
+        hash = (37 * hash) + SPEED_FIELD_NUMBER;
+        hash = (53 * hash) + getSpeedList().hashCode();
+      }
+      if (getPlayMotionCount() > 0) {
+        hash = (37 * hash) + PLAYMOTION_FIELD_NUMBER;
+        hash = (53 * hash) + getPlayMotionList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemMoveEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.ItemMoveEvent prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ItemMoveEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ItemMoveEvent)
+        com.mmo.server.ServerClientProtocol.ItemMoveEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemMoveEvent_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemMoveEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.ItemMoveEvent.class, com.mmo.server.ServerClientProtocol.ItemMoveEvent.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.ItemMoveEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdentifyFieldBuilder();
+          getFromPosFieldBuilder();
+          getToPosFieldBuilder();
+          getPlayMotionFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (identifyBuilder_ == null) {
+          identify_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          identifyBuilder_.clear();
+        }
+        if (fromPosBuilder_ == null) {
+          fromPos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          fromPosBuilder_.clear();
+        }
+        if (toPosBuilder_ == null) {
+          toPos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          toPosBuilder_.clear();
+        }
+        speed_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (playMotionBuilder_ == null) {
+          playMotion_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          playMotionBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemMoveEvent_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemMoveEvent getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.ItemMoveEvent.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemMoveEvent build() {
+        com.mmo.server.ServerClientProtocol.ItemMoveEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemMoveEvent buildPartial() {
+        com.mmo.server.ServerClientProtocol.ItemMoveEvent result = new com.mmo.server.ServerClientProtocol.ItemMoveEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (identifyBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            identify_ = java.util.Collections.unmodifiableList(identify_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.identify_ = identify_;
+        } else {
+          result.identify_ = identifyBuilder_.build();
+        }
+        if (fromPosBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            fromPos_ = java.util.Collections.unmodifiableList(fromPos_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.fromPos_ = fromPos_;
+        } else {
+          result.fromPos_ = fromPosBuilder_.build();
+        }
+        if (toPosBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            toPos_ = java.util.Collections.unmodifiableList(toPos_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.toPos_ = toPos_;
+        } else {
+          result.toPos_ = toPosBuilder_.build();
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          speed_ = java.util.Collections.unmodifiableList(speed_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.speed_ = speed_;
+        if (playMotionBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            playMotion_ = java.util.Collections.unmodifiableList(playMotion_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.playMotion_ = playMotion_;
+        } else {
+          result.playMotion_ = playMotionBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.ItemMoveEvent) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.ItemMoveEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.ItemMoveEvent other) {
+        if (other == com.mmo.server.ServerClientProtocol.ItemMoveEvent.getDefaultInstance()) return this;
+        if (identifyBuilder_ == null) {
+          if (!other.identify_.isEmpty()) {
+            if (identify_.isEmpty()) {
+              identify_ = other.identify_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureIdentifyIsMutable();
+              identify_.addAll(other.identify_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.identify_.isEmpty()) {
+            if (identifyBuilder_.isEmpty()) {
+              identifyBuilder_.dispose();
+              identifyBuilder_ = null;
+              identify_ = other.identify_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              identifyBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getIdentifyFieldBuilder() : null;
+            } else {
+              identifyBuilder_.addAllMessages(other.identify_);
+            }
+          }
+        }
+        if (fromPosBuilder_ == null) {
+          if (!other.fromPos_.isEmpty()) {
+            if (fromPos_.isEmpty()) {
+              fromPos_ = other.fromPos_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureFromPosIsMutable();
+              fromPos_.addAll(other.fromPos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.fromPos_.isEmpty()) {
+            if (fromPosBuilder_.isEmpty()) {
+              fromPosBuilder_.dispose();
+              fromPosBuilder_ = null;
+              fromPos_ = other.fromPos_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              fromPosBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFromPosFieldBuilder() : null;
+            } else {
+              fromPosBuilder_.addAllMessages(other.fromPos_);
+            }
+          }
+        }
+        if (toPosBuilder_ == null) {
+          if (!other.toPos_.isEmpty()) {
+            if (toPos_.isEmpty()) {
+              toPos_ = other.toPos_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureToPosIsMutable();
+              toPos_.addAll(other.toPos_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.toPos_.isEmpty()) {
+            if (toPosBuilder_.isEmpty()) {
+              toPosBuilder_.dispose();
+              toPosBuilder_ = null;
+              toPos_ = other.toPos_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              toPosBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getToPosFieldBuilder() : null;
+            } else {
+              toPosBuilder_.addAllMessages(other.toPos_);
+            }
+          }
+        }
+        if (!other.speed_.isEmpty()) {
+          if (speed_.isEmpty()) {
+            speed_ = other.speed_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureSpeedIsMutable();
+            speed_.addAll(other.speed_);
+          }
+          onChanged();
+        }
+        if (playMotionBuilder_ == null) {
+          if (!other.playMotion_.isEmpty()) {
+            if (playMotion_.isEmpty()) {
+              playMotion_ = other.playMotion_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensurePlayMotionIsMutable();
+              playMotion_.addAll(other.playMotion_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.playMotion_.isEmpty()) {
+            if (playMotionBuilder_.isEmpty()) {
+              playMotionBuilder_.dispose();
+              playMotionBuilder_ = null;
+              playMotion_ = other.playMotion_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              playMotionBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getPlayMotionFieldBuilder() : null;
+            } else {
+              playMotionBuilder_.addAllMessages(other.playMotion_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getIdentifyCount(); i++) {
+          if (!getIdentify(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getFromPosCount(); i++) {
+          if (!getFromPos(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getToPosCount(); i++) {
+          if (!getToPos(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getPlayMotionCount(); i++) {
+          if (!getPlayMotion(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.ItemMoveEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.ItemMoveEvent) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> identify_ =
+        java.util.Collections.emptyList();
+      private void ensureIdentifyIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          identify_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.IdentifyInfo>(identify_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
+
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> getIdentifyList() {
+        if (identifyBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(identify_);
+        } else {
+          return identifyBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public int getIdentifyCount() {
+        if (identifyBuilder_ == null) {
+          return identify_.size();
+        } else {
+          return identifyBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify(int index) {
+        if (identifyBuilder_ == null) {
+          return identify_.get(index);
+        } else {
+          return identifyBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdentifyIsMutable();
+          identify_.set(index, value);
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdentifyIsMutable();
+          identify_.add(value);
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdentifyIsMutable();
+          identify_.add(index, value);
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(
+          com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.add(builderForValue.build());
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addAllIdentify(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.IdentifyInfo> values) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, identify_);
+          onChanged();
+        } else {
+          identifyBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder clearIdentify() {
+        if (identifyBuilder_ == null) {
+          identify_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          identifyBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder removeIdentify(int index) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.remove(index);
+          onChanged();
+        } else {
+          identifyBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder getIdentifyBuilder(
+          int index) {
+        return getIdentifyFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder(
+          int index) {
+        if (identifyBuilder_ == null) {
+          return identify_.get(index);  } else {
+          return identifyBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+           getIdentifyOrBuilderList() {
+        if (identifyBuilder_ != null) {
+          return identifyBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(identify_);
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder addIdentifyBuilder() {
+        return getIdentifyFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder addIdentifyBuilder(
+          int index) {
+        return getIdentifyFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder> 
+           getIdentifyBuilderList() {
+        return getIdentifyFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+          getIdentifyFieldBuilder() {
+        if (identifyBuilder_ == null) {
+          identifyBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder>(
+                  identify_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          identify_ = null;
+        }
+        return identifyBuilder_;
+      }
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.Position> fromPos_ =
+        java.util.Collections.emptyList();
+      private void ensureFromPosIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          fromPos_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Position>(fromPos_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> fromPosBuilder_;
+
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Position> getFromPosList() {
+        if (fromPosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(fromPos_);
+        } else {
+          return fromPosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public int getFromPosCount() {
+        if (fromPosBuilder_ == null) {
+          return fromPos_.size();
+        } else {
+          return fromPosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position getFromPos(int index) {
+        if (fromPosBuilder_ == null) {
+          return fromPos_.get(index);
+        } else {
+          return fromPosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder setFromPos(
+          int index, com.mmo.server.ServerClientProtocol.Position value) {
+        if (fromPosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFromPosIsMutable();
+          fromPos_.set(index, value);
+          onChanged();
+        } else {
+          fromPosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder setFromPos(
+          int index, com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (fromPosBuilder_ == null) {
+          ensureFromPosIsMutable();
+          fromPos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          fromPosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder addFromPos(com.mmo.server.ServerClientProtocol.Position value) {
+        if (fromPosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFromPosIsMutable();
+          fromPos_.add(value);
+          onChanged();
+        } else {
+          fromPosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder addFromPos(
+          int index, com.mmo.server.ServerClientProtocol.Position value) {
+        if (fromPosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFromPosIsMutable();
+          fromPos_.add(index, value);
+          onChanged();
+        } else {
+          fromPosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder addFromPos(
+          com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (fromPosBuilder_ == null) {
+          ensureFromPosIsMutable();
+          fromPos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          fromPosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder addFromPos(
+          int index, com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (fromPosBuilder_ == null) {
+          ensureFromPosIsMutable();
+          fromPos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          fromPosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder addAllFromPos(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.Position> values) {
+        if (fromPosBuilder_ == null) {
+          ensureFromPosIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, fromPos_);
+          onChanged();
+        } else {
+          fromPosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder clearFromPos() {
+        if (fromPosBuilder_ == null) {
+          fromPos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          fromPosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public Builder removeFromPos(int index) {
+        if (fromPosBuilder_ == null) {
+          ensureFromPosIsMutable();
+          fromPos_.remove(index);
+          onChanged();
+        } else {
+          fromPosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder getFromPosBuilder(
+          int index) {
+        return getFromPosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.PositionOrBuilder getFromPosOrBuilder(
+          int index) {
+        if (fromPosBuilder_ == null) {
+          return fromPos_.get(index);  } else {
+          return fromPosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+           getFromPosOrBuilderList() {
+        if (fromPosBuilder_ != null) {
+          return fromPosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(fromPos_);
+        }
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder addFromPosBuilder() {
+        return getFromPosFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.Position.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder addFromPosBuilder(
+          int index) {
+        return getFromPosFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.Position.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Position fromPos = 2;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Position.Builder> 
+           getFromPosBuilderList() {
+        return getFromPosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+          getFromPosFieldBuilder() {
+        if (fromPosBuilder_ == null) {
+          fromPosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder>(
+                  fromPos_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          fromPos_ = null;
+        }
+        return fromPosBuilder_;
+      }
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.Position> toPos_ =
+        java.util.Collections.emptyList();
+      private void ensureToPosIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          toPos_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Position>(toPos_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> toPosBuilder_;
+
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Position> getToPosList() {
+        if (toPosBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(toPos_);
+        } else {
+          return toPosBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public int getToPosCount() {
+        if (toPosBuilder_ == null) {
+          return toPos_.size();
+        } else {
+          return toPosBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position getToPos(int index) {
+        if (toPosBuilder_ == null) {
+          return toPos_.get(index);
+        } else {
+          return toPosBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder setToPos(
+          int index, com.mmo.server.ServerClientProtocol.Position value) {
+        if (toPosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureToPosIsMutable();
+          toPos_.set(index, value);
+          onChanged();
+        } else {
+          toPosBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder setToPos(
+          int index, com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (toPosBuilder_ == null) {
+          ensureToPosIsMutable();
+          toPos_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          toPosBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder addToPos(com.mmo.server.ServerClientProtocol.Position value) {
+        if (toPosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureToPosIsMutable();
+          toPos_.add(value);
+          onChanged();
+        } else {
+          toPosBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder addToPos(
+          int index, com.mmo.server.ServerClientProtocol.Position value) {
+        if (toPosBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureToPosIsMutable();
+          toPos_.add(index, value);
+          onChanged();
+        } else {
+          toPosBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder addToPos(
+          com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (toPosBuilder_ == null) {
+          ensureToPosIsMutable();
+          toPos_.add(builderForValue.build());
+          onChanged();
+        } else {
+          toPosBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder addToPos(
+          int index, com.mmo.server.ServerClientProtocol.Position.Builder builderForValue) {
+        if (toPosBuilder_ == null) {
+          ensureToPosIsMutable();
+          toPos_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          toPosBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder addAllToPos(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.Position> values) {
+        if (toPosBuilder_ == null) {
+          ensureToPosIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, toPos_);
+          onChanged();
+        } else {
+          toPosBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder clearToPos() {
+        if (toPosBuilder_ == null) {
+          toPos_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          toPosBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public Builder removeToPos(int index) {
+        if (toPosBuilder_ == null) {
+          ensureToPosIsMutable();
+          toPos_.remove(index);
+          onChanged();
+        } else {
+          toPosBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder getToPosBuilder(
+          int index) {
+        return getToPosFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.PositionOrBuilder getToPosOrBuilder(
+          int index) {
+        if (toPosBuilder_ == null) {
+          return toPos_.get(index);  } else {
+          return toPosBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+           getToPosOrBuilderList() {
+        if (toPosBuilder_ != null) {
+          return toPosBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(toPos_);
+        }
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder addToPosBuilder() {
+        return getToPosFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.Position.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Position.Builder addToPosBuilder(
+          int index) {
+        return getToPosFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.Position.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Position toPos = 3;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Position.Builder> 
+           getToPosBuilderList() {
+        return getToPosFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder> 
+          getToPosFieldBuilder() {
+        if (toPosBuilder_ == null) {
+          toPosBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.Position, com.mmo.server.ServerClientProtocol.Position.Builder, com.mmo.server.ServerClientProtocol.PositionOrBuilder>(
+                  toPos_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          toPos_ = null;
+        }
+        return toPosBuilder_;
+      }
+
+      private java.util.List<java.lang.Float> speed_ = java.util.Collections.emptyList();
+      private void ensureSpeedIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          speed_ = new java.util.ArrayList<java.lang.Float>(speed_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public java.util.List<java.lang.Float>
+          getSpeedList() {
+        return java.util.Collections.unmodifiableList(speed_);
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public int getSpeedCount() {
+        return speed_.size();
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public float getSpeed(int index) {
+        return speed_.get(index);
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public Builder setSpeed(
+          int index, float value) {
+        ensureSpeedIsMutable();
+        speed_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public Builder addSpeed(float value) {
+        ensureSpeedIsMutable();
+        speed_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public Builder addAllSpeed(
+          java.lang.Iterable<? extends java.lang.Float> values) {
+        ensureSpeedIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, speed_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float speed = 4;</code>
+       */
+      public Builder clearSpeed() {
+        speed_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.MotionInfo> playMotion_ =
+        java.util.Collections.emptyList();
+      private void ensurePlayMotionIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          playMotion_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.MotionInfo>(playMotion_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.MotionInfo, com.mmo.server.ServerClientProtocol.MotionInfo.Builder, com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder> playMotionBuilder_;
+
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.MotionInfo> getPlayMotionList() {
+        if (playMotionBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(playMotion_);
+        } else {
+          return playMotionBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public int getPlayMotionCount() {
+        if (playMotionBuilder_ == null) {
+          return playMotion_.size();
+        } else {
+          return playMotionBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.MotionInfo getPlayMotion(int index) {
+        if (playMotionBuilder_ == null) {
+          return playMotion_.get(index);
+        } else {
+          return playMotionBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder setPlayMotion(
+          int index, com.mmo.server.ServerClientProtocol.MotionInfo value) {
+        if (playMotionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePlayMotionIsMutable();
+          playMotion_.set(index, value);
+          onChanged();
+        } else {
+          playMotionBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder setPlayMotion(
+          int index, com.mmo.server.ServerClientProtocol.MotionInfo.Builder builderForValue) {
+        if (playMotionBuilder_ == null) {
+          ensurePlayMotionIsMutable();
+          playMotion_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          playMotionBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder addPlayMotion(com.mmo.server.ServerClientProtocol.MotionInfo value) {
+        if (playMotionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePlayMotionIsMutable();
+          playMotion_.add(value);
+          onChanged();
+        } else {
+          playMotionBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder addPlayMotion(
+          int index, com.mmo.server.ServerClientProtocol.MotionInfo value) {
+        if (playMotionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePlayMotionIsMutable();
+          playMotion_.add(index, value);
+          onChanged();
+        } else {
+          playMotionBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder addPlayMotion(
+          com.mmo.server.ServerClientProtocol.MotionInfo.Builder builderForValue) {
+        if (playMotionBuilder_ == null) {
+          ensurePlayMotionIsMutable();
+          playMotion_.add(builderForValue.build());
+          onChanged();
+        } else {
+          playMotionBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder addPlayMotion(
+          int index, com.mmo.server.ServerClientProtocol.MotionInfo.Builder builderForValue) {
+        if (playMotionBuilder_ == null) {
+          ensurePlayMotionIsMutable();
+          playMotion_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          playMotionBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder addAllPlayMotion(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.MotionInfo> values) {
+        if (playMotionBuilder_ == null) {
+          ensurePlayMotionIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, playMotion_);
+          onChanged();
+        } else {
+          playMotionBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder clearPlayMotion() {
+        if (playMotionBuilder_ == null) {
+          playMotion_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          playMotionBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public Builder removePlayMotion(int index) {
+        if (playMotionBuilder_ == null) {
+          ensurePlayMotionIsMutable();
+          playMotion_.remove(index);
+          onChanged();
+        } else {
+          playMotionBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.MotionInfo.Builder getPlayMotionBuilder(
+          int index) {
+        return getPlayMotionFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder getPlayMotionOrBuilder(
+          int index) {
+        if (playMotionBuilder_ == null) {
+          return playMotion_.get(index);  } else {
+          return playMotionBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder> 
+           getPlayMotionOrBuilderList() {
+        if (playMotionBuilder_ != null) {
+          return playMotionBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(playMotion_);
+        }
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.MotionInfo.Builder addPlayMotionBuilder() {
+        return getPlayMotionFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.MotionInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.MotionInfo.Builder addPlayMotionBuilder(
+          int index) {
+        return getPlayMotionFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.MotionInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .MotionInfo playMotion = 5;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.MotionInfo.Builder> 
+           getPlayMotionBuilderList() {
+        return getPlayMotionFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.MotionInfo, com.mmo.server.ServerClientProtocol.MotionInfo.Builder, com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder> 
+          getPlayMotionFieldBuilder() {
+        if (playMotionBuilder_ == null) {
+          playMotionBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.MotionInfo, com.mmo.server.ServerClientProtocol.MotionInfo.Builder, com.mmo.server.ServerClientProtocol.MotionInfoOrBuilder>(
+                  playMotion_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          playMotion_ = null;
+        }
+        return playMotionBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ItemMoveEvent)
+    }
+
+    static {
+      defaultInstance = new ItemMoveEvent(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ItemMoveEvent)
+  }
+
+  public interface ItemCraateEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ItemCraateEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.Item> 
+        getItemList();
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.Item getItem(int index);
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    int getItemCount();
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.ItemOrBuilder> 
+        getItemOrBuilderList();
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.ItemOrBuilder getItemOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code ItemCraateEvent}
+   */
+  public static final class ItemCraateEvent extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ItemCraateEvent)
+      ItemCraateEventOrBuilder {
+    // Use ItemCraateEvent.newBuilder() to construct.
+    private ItemCraateEvent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ItemCraateEvent(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ItemCraateEvent defaultInstance;
+    public static ItemCraateEvent getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ItemCraateEvent getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ItemCraateEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                item_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Item>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              item_.add(input.readMessage(com.mmo.server.ServerClientProtocol.Item.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          item_ = java.util.Collections.unmodifiableList(item_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ItemCraateEvent_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ItemCraateEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.ItemCraateEvent.class, com.mmo.server.ServerClientProtocol.ItemCraateEvent.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ItemCraateEvent> PARSER =
+        new com.google.protobuf.AbstractParser<ItemCraateEvent>() {
+      public ItemCraateEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ItemCraateEvent(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ItemCraateEvent> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int ITEM_FIELD_NUMBER = 1;
+    private java.util.List<com.mmo.server.ServerClientProtocol.Item> item_;
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.Item> getItemList() {
+      return item_;
+    }
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.ItemOrBuilder> 
+        getItemOrBuilderList() {
+      return item_;
+    }
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    public int getItemCount() {
+      return item_.size();
+    }
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.Item getItem(int index) {
+      return item_.get(index);
+    }
+    /**
+     * <code>repeated .Item item = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.ItemOrBuilder getItemOrBuilder(
+        int index) {
+      return item_.get(index);
+    }
+
+    private void initFields() {
+      item_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getItemCount(); i++) {
+        if (!getItem(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < item_.size(); i++) {
+        output.writeMessage(1, item_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < item_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, item_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.ItemCraateEvent)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.ItemCraateEvent other = (com.mmo.server.ServerClientProtocol.ItemCraateEvent) obj;
+
+      boolean result = true;
+      result = result && getItemList()
+          .equals(other.getItemList());
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getItemCount() > 0) {
+        hash = (37 * hash) + ITEM_FIELD_NUMBER;
+        hash = (53 * hash) + getItemList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemCraateEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.ItemCraateEvent prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ItemCraateEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ItemCraateEvent)
+        com.mmo.server.ServerClientProtocol.ItemCraateEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemCraateEvent_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemCraateEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.ItemCraateEvent.class, com.mmo.server.ServerClientProtocol.ItemCraateEvent.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.ItemCraateEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getItemFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (itemBuilder_ == null) {
+          item_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          itemBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemCraateEvent_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemCraateEvent getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.ItemCraateEvent.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemCraateEvent build() {
+        com.mmo.server.ServerClientProtocol.ItemCraateEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemCraateEvent buildPartial() {
+        com.mmo.server.ServerClientProtocol.ItemCraateEvent result = new com.mmo.server.ServerClientProtocol.ItemCraateEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (itemBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            item_ = java.util.Collections.unmodifiableList(item_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.item_ = item_;
+        } else {
+          result.item_ = itemBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.ItemCraateEvent) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.ItemCraateEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.ItemCraateEvent other) {
+        if (other == com.mmo.server.ServerClientProtocol.ItemCraateEvent.getDefaultInstance()) return this;
+        if (itemBuilder_ == null) {
+          if (!other.item_.isEmpty()) {
+            if (item_.isEmpty()) {
+              item_ = other.item_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureItemIsMutable();
+              item_.addAll(other.item_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.item_.isEmpty()) {
+            if (itemBuilder_.isEmpty()) {
+              itemBuilder_.dispose();
+              itemBuilder_ = null;
+              item_ = other.item_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              itemBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getItemFieldBuilder() : null;
+            } else {
+              itemBuilder_.addAllMessages(other.item_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getItemCount(); i++) {
+          if (!getItem(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.ItemCraateEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.ItemCraateEvent) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.Item> item_ =
+        java.util.Collections.emptyList();
+      private void ensureItemIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          item_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Item>(item_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Item, com.mmo.server.ServerClientProtocol.Item.Builder, com.mmo.server.ServerClientProtocol.ItemOrBuilder> itemBuilder_;
+
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Item> getItemList() {
+        if (itemBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(item_);
+        } else {
+          return itemBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public int getItemCount() {
+        if (itemBuilder_ == null) {
+          return item_.size();
+        } else {
+          return itemBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Item getItem(int index) {
+        if (itemBuilder_ == null) {
+          return item_.get(index);
+        } else {
+          return itemBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder setItem(
+          int index, com.mmo.server.ServerClientProtocol.Item value) {
+        if (itemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemIsMutable();
+          item_.set(index, value);
+          onChanged();
+        } else {
+          itemBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder setItem(
+          int index, com.mmo.server.ServerClientProtocol.Item.Builder builderForValue) {
+        if (itemBuilder_ == null) {
+          ensureItemIsMutable();
+          item_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder addItem(com.mmo.server.ServerClientProtocol.Item value) {
+        if (itemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemIsMutable();
+          item_.add(value);
+          onChanged();
+        } else {
+          itemBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder addItem(
+          int index, com.mmo.server.ServerClientProtocol.Item value) {
+        if (itemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemIsMutable();
+          item_.add(index, value);
+          onChanged();
+        } else {
+          itemBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder addItem(
+          com.mmo.server.ServerClientProtocol.Item.Builder builderForValue) {
+        if (itemBuilder_ == null) {
+          ensureItemIsMutable();
+          item_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder addItem(
+          int index, com.mmo.server.ServerClientProtocol.Item.Builder builderForValue) {
+        if (itemBuilder_ == null) {
+          ensureItemIsMutable();
+          item_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder addAllItem(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.Item> values) {
+        if (itemBuilder_ == null) {
+          ensureItemIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, item_);
+          onChanged();
+        } else {
+          itemBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder clearItem() {
+        if (itemBuilder_ == null) {
+          item_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          itemBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public Builder removeItem(int index) {
+        if (itemBuilder_ == null) {
+          ensureItemIsMutable();
+          item_.remove(index);
+          onChanged();
+        } else {
+          itemBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Item.Builder getItemBuilder(
+          int index) {
+        return getItemFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.ItemOrBuilder getItemOrBuilder(
+          int index) {
+        if (itemBuilder_ == null) {
+          return item_.get(index);  } else {
+          return itemBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.ItemOrBuilder> 
+           getItemOrBuilderList() {
+        if (itemBuilder_ != null) {
+          return itemBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(item_);
+        }
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Item.Builder addItemBuilder() {
+        return getItemFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Item.Builder addItemBuilder(
+          int index) {
+        return getItemFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Item item = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Item.Builder> 
+           getItemBuilderList() {
+        return getItemFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Item, com.mmo.server.ServerClientProtocol.Item.Builder, com.mmo.server.ServerClientProtocol.ItemOrBuilder> 
+          getItemFieldBuilder() {
+        if (itemBuilder_ == null) {
+          itemBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.Item, com.mmo.server.ServerClientProtocol.Item.Builder, com.mmo.server.ServerClientProtocol.ItemOrBuilder>(
+                  item_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          item_ = null;
+        }
+        return itemBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ItemCraateEvent)
+    }
+
+    static {
+      defaultInstance = new ItemCraateEvent(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ItemCraateEvent)
+  }
+
+  public interface ItemDestroyEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ItemDestroyEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> 
+        getIdentifyList();
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify(int index);
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    int getIdentifyCount();
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+        getIdentifyOrBuilderList();
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code ItemDestroyEvent}
+   */
+  public static final class ItemDestroyEvent extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ItemDestroyEvent)
+      ItemDestroyEventOrBuilder {
+    // Use ItemDestroyEvent.newBuilder() to construct.
+    private ItemDestroyEvent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ItemDestroyEvent(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ItemDestroyEvent defaultInstance;
+    public static ItemDestroyEvent getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ItemDestroyEvent getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ItemDestroyEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                identify_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.IdentifyInfo>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              identify_.add(input.readMessage(com.mmo.server.ServerClientProtocol.IdentifyInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          identify_ = java.util.Collections.unmodifiableList(identify_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ItemDestroyEvent_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_ItemDestroyEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.ItemDestroyEvent.class, com.mmo.server.ServerClientProtocol.ItemDestroyEvent.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ItemDestroyEvent> PARSER =
+        new com.google.protobuf.AbstractParser<ItemDestroyEvent>() {
+      public ItemDestroyEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ItemDestroyEvent(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ItemDestroyEvent> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int IDENTIFY_FIELD_NUMBER = 1;
+    private java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> identify_;
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> getIdentifyList() {
+      return identify_;
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+        getIdentifyOrBuilderList() {
+      return identify_;
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public int getIdentifyCount() {
+      return identify_.size();
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify(int index) {
+      return identify_.get(index);
+    }
+    /**
+     * <code>repeated .IdentifyInfo identify = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder(
+        int index) {
+      return identify_.get(index);
+    }
+
+    private void initFields() {
+      identify_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getIdentifyCount(); i++) {
+        if (!getIdentify(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < identify_.size(); i++) {
+        output.writeMessage(1, identify_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < identify_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, identify_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.ItemDestroyEvent)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.ItemDestroyEvent other = (com.mmo.server.ServerClientProtocol.ItemDestroyEvent) obj;
+
+      boolean result = true;
+      result = result && getIdentifyList()
+          .equals(other.getIdentifyList());
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getIdentifyCount() > 0) {
+        hash = (37 * hash) + IDENTIFY_FIELD_NUMBER;
+        hash = (53 * hash) + getIdentifyList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.ItemDestroyEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.ItemDestroyEvent prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ItemDestroyEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ItemDestroyEvent)
+        com.mmo.server.ServerClientProtocol.ItemDestroyEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemDestroyEvent_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemDestroyEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.ItemDestroyEvent.class, com.mmo.server.ServerClientProtocol.ItemDestroyEvent.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.ItemDestroyEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdentifyFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (identifyBuilder_ == null) {
+          identify_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          identifyBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_ItemDestroyEvent_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemDestroyEvent getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.ItemDestroyEvent.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemDestroyEvent build() {
+        com.mmo.server.ServerClientProtocol.ItemDestroyEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.ItemDestroyEvent buildPartial() {
+        com.mmo.server.ServerClientProtocol.ItemDestroyEvent result = new com.mmo.server.ServerClientProtocol.ItemDestroyEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (identifyBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            identify_ = java.util.Collections.unmodifiableList(identify_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.identify_ = identify_;
+        } else {
+          result.identify_ = identifyBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.ItemDestroyEvent) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.ItemDestroyEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.ItemDestroyEvent other) {
+        if (other == com.mmo.server.ServerClientProtocol.ItemDestroyEvent.getDefaultInstance()) return this;
+        if (identifyBuilder_ == null) {
+          if (!other.identify_.isEmpty()) {
+            if (identify_.isEmpty()) {
+              identify_ = other.identify_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureIdentifyIsMutable();
+              identify_.addAll(other.identify_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.identify_.isEmpty()) {
+            if (identifyBuilder_.isEmpty()) {
+              identifyBuilder_.dispose();
+              identifyBuilder_ = null;
+              identify_ = other.identify_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              identifyBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getIdentifyFieldBuilder() : null;
+            } else {
+              identifyBuilder_.addAllMessages(other.identify_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getIdentifyCount(); i++) {
+          if (!getIdentify(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.ItemDestroyEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.ItemDestroyEvent) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> identify_ =
+        java.util.Collections.emptyList();
+      private void ensureIdentifyIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          identify_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.IdentifyInfo>(identify_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
+
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo> getIdentifyList() {
+        if (identifyBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(identify_);
+        } else {
+          return identifyBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public int getIdentifyCount() {
+        if (identifyBuilder_ == null) {
+          return identify_.size();
+        } else {
+          return identifyBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo getIdentify(int index) {
+        if (identifyBuilder_ == null) {
+          return identify_.get(index);
+        } else {
+          return identifyBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdentifyIsMutable();
+          identify_.set(index, value);
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder setIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          identifyBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdentifyIsMutable();
+          identify_.add(value);
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo value) {
+        if (identifyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdentifyIsMutable();
+          identify_.add(index, value);
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(
+          com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.add(builderForValue.build());
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addIdentify(
+          int index, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder builderForValue) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          identifyBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder addAllIdentify(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.IdentifyInfo> values) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, identify_);
+          onChanged();
+        } else {
+          identifyBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder clearIdentify() {
+        if (identifyBuilder_ == null) {
+          identify_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          identifyBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public Builder removeIdentify(int index) {
+        if (identifyBuilder_ == null) {
+          ensureIdentifyIsMutable();
+          identify_.remove(index);
+          onChanged();
+        } else {
+          identifyBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder getIdentifyBuilder(
+          int index) {
+        return getIdentifyFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder getIdentifyOrBuilder(
+          int index) {
+        if (identifyBuilder_ == null) {
+          return identify_.get(index);  } else {
+          return identifyBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+           getIdentifyOrBuilderList() {
+        if (identifyBuilder_ != null) {
+          return identifyBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(identify_);
+        }
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder addIdentifyBuilder() {
+        return getIdentifyFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder addIdentifyBuilder(
+          int index) {
+        return getIdentifyFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.IdentifyInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .IdentifyInfo identify = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder> 
+           getIdentifyBuilderList() {
+        return getIdentifyFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder> 
+          getIdentifyFieldBuilder() {
+        if (identifyBuilder_ == null) {
+          identifyBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.IdentifyInfo, com.mmo.server.ServerClientProtocol.IdentifyInfo.Builder, com.mmo.server.ServerClientProtocol.IdentifyInfoOrBuilder>(
+                  identify_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          identify_ = null;
+        }
+        return identifyBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ItemDestroyEvent)
+    }
+
+    static {
+      defaultInstance = new ItemDestroyEvent(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:ItemDestroyEvent)
+  }
+
+  public interface CharacterCreateEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CharacterCreateEvent)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    java.util.List<com.mmo.server.ServerClientProtocol.Character> 
+        getCharacterList();
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.Character getCharacter(int index);
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    int getCharacterCount();
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    java.util.List<? extends com.mmo.server.ServerClientProtocol.CharacterOrBuilder> 
+        getCharacterOrBuilderList();
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    com.mmo.server.ServerClientProtocol.CharacterOrBuilder getCharacterOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code CharacterCreateEvent}
+   */
+  public static final class CharacterCreateEvent extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CharacterCreateEvent)
+      CharacterCreateEventOrBuilder {
+    // Use CharacterCreateEvent.newBuilder() to construct.
+    private CharacterCreateEvent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CharacterCreateEvent(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CharacterCreateEvent defaultInstance;
+    public static CharacterCreateEvent getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CharacterCreateEvent getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CharacterCreateEvent(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                character_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Character>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              character_.add(input.readMessage(com.mmo.server.ServerClientProtocol.Character.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          character_ = java.util.Collections.unmodifiableList(character_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerClientProtocol.internal_static_CharacterCreateEvent_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerClientProtocol.internal_static_CharacterCreateEvent_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerClientProtocol.CharacterCreateEvent.class, com.mmo.server.ServerClientProtocol.CharacterCreateEvent.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CharacterCreateEvent> PARSER =
+        new com.google.protobuf.AbstractParser<CharacterCreateEvent>() {
+      public CharacterCreateEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CharacterCreateEvent(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CharacterCreateEvent> getParserForType() {
+      return PARSER;
+    }
+
+    public static final int CHARACTER_FIELD_NUMBER = 1;
+    private java.util.List<com.mmo.server.ServerClientProtocol.Character> character_;
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    public java.util.List<com.mmo.server.ServerClientProtocol.Character> getCharacterList() {
+      return character_;
+    }
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    public java.util.List<? extends com.mmo.server.ServerClientProtocol.CharacterOrBuilder> 
+        getCharacterOrBuilderList() {
+      return character_;
+    }
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    public int getCharacterCount() {
+      return character_.size();
+    }
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.Character getCharacter(int index) {
+      return character_.get(index);
+    }
+    /**
+     * <code>repeated .Character character = 1;</code>
+     */
+    public com.mmo.server.ServerClientProtocol.CharacterOrBuilder getCharacterOrBuilder(
+        int index) {
+      return character_.get(index);
+    }
+
+    private void initFields() {
+      character_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getCharacterCount(); i++) {
+        if (!getCharacter(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < character_.size(); i++) {
+        output.writeMessage(1, character_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < character_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, character_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerClientProtocol.CharacterCreateEvent)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerClientProtocol.CharacterCreateEvent other = (com.mmo.server.ServerClientProtocol.CharacterCreateEvent) obj;
+
+      boolean result = true;
+      result = result && getCharacterList()
+          .equals(other.getCharacterList());
+      result = result &&
+          getUnknownFields().equals(other.getUnknownFields());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (getCharacterCount() > 0) {
+        hash = (37 * hash) + CHARACTER_FIELD_NUMBER;
+        hash = (53 * hash) + getCharacterList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.mmo.server.ServerClientProtocol.CharacterCreateEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.mmo.server.ServerClientProtocol.CharacterCreateEvent prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CharacterCreateEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CharacterCreateEvent)
+        com.mmo.server.ServerClientProtocol.CharacterCreateEventOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerClientProtocol.internal_static_CharacterCreateEvent_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerClientProtocol.internal_static_CharacterCreateEvent_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerClientProtocol.CharacterCreateEvent.class, com.mmo.server.ServerClientProtocol.CharacterCreateEvent.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerClientProtocol.CharacterCreateEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCharacterFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (characterBuilder_ == null) {
+          character_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          characterBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerClientProtocol.internal_static_CharacterCreateEvent_descriptor;
+      }
+
+      public com.mmo.server.ServerClientProtocol.CharacterCreateEvent getDefaultInstanceForType() {
+        return com.mmo.server.ServerClientProtocol.CharacterCreateEvent.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerClientProtocol.CharacterCreateEvent build() {
+        com.mmo.server.ServerClientProtocol.CharacterCreateEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerClientProtocol.CharacterCreateEvent buildPartial() {
+        com.mmo.server.ServerClientProtocol.CharacterCreateEvent result = new com.mmo.server.ServerClientProtocol.CharacterCreateEvent(this);
+        int from_bitField0_ = bitField0_;
+        if (characterBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            character_ = java.util.Collections.unmodifiableList(character_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.character_ = character_;
+        } else {
+          result.character_ = characterBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerClientProtocol.CharacterCreateEvent) {
+          return mergeFrom((com.mmo.server.ServerClientProtocol.CharacterCreateEvent)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerClientProtocol.CharacterCreateEvent other) {
+        if (other == com.mmo.server.ServerClientProtocol.CharacterCreateEvent.getDefaultInstance()) return this;
+        if (characterBuilder_ == null) {
+          if (!other.character_.isEmpty()) {
+            if (character_.isEmpty()) {
+              character_ = other.character_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureCharacterIsMutable();
+              character_.addAll(other.character_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.character_.isEmpty()) {
+            if (characterBuilder_.isEmpty()) {
+              characterBuilder_.dispose();
+              characterBuilder_ = null;
+              character_ = other.character_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              characterBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getCharacterFieldBuilder() : null;
+            } else {
+              characterBuilder_.addAllMessages(other.character_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getCharacterCount(); i++) {
+          if (!getCharacter(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerClientProtocol.CharacterCreateEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerClientProtocol.CharacterCreateEvent) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.mmo.server.ServerClientProtocol.Character> character_ =
+        java.util.Collections.emptyList();
+      private void ensureCharacterIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          character_ = new java.util.ArrayList<com.mmo.server.ServerClientProtocol.Character>(character_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Character, com.mmo.server.ServerClientProtocol.Character.Builder, com.mmo.server.ServerClientProtocol.CharacterOrBuilder> characterBuilder_;
+
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Character> getCharacterList() {
+        if (characterBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(character_);
+        } else {
+          return characterBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public int getCharacterCount() {
+        if (characterBuilder_ == null) {
+          return character_.size();
+        } else {
+          return characterBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Character getCharacter(int index) {
+        if (characterBuilder_ == null) {
+          return character_.get(index);
+        } else {
+          return characterBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder setCharacter(
+          int index, com.mmo.server.ServerClientProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCharacterIsMutable();
+          character_.set(index, value);
+          onChanged();
+        } else {
+          characterBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder setCharacter(
+          int index, com.mmo.server.ServerClientProtocol.Character.Builder builderForValue) {
+        if (characterBuilder_ == null) {
+          ensureCharacterIsMutable();
+          character_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          characterBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder addCharacter(com.mmo.server.ServerClientProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCharacterIsMutable();
+          character_.add(value);
+          onChanged();
+        } else {
+          characterBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder addCharacter(
+          int index, com.mmo.server.ServerClientProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCharacterIsMutable();
+          character_.add(index, value);
+          onChanged();
+        } else {
+          characterBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder addCharacter(
+          com.mmo.server.ServerClientProtocol.Character.Builder builderForValue) {
+        if (characterBuilder_ == null) {
+          ensureCharacterIsMutable();
+          character_.add(builderForValue.build());
+          onChanged();
+        } else {
+          characterBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder addCharacter(
+          int index, com.mmo.server.ServerClientProtocol.Character.Builder builderForValue) {
+        if (characterBuilder_ == null) {
+          ensureCharacterIsMutable();
+          character_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          characterBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder addAllCharacter(
+          java.lang.Iterable<? extends com.mmo.server.ServerClientProtocol.Character> values) {
+        if (characterBuilder_ == null) {
+          ensureCharacterIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, character_);
+          onChanged();
+        } else {
+          characterBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder clearCharacter() {
+        if (characterBuilder_ == null) {
+          character_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          characterBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public Builder removeCharacter(int index) {
+        if (characterBuilder_ == null) {
+          ensureCharacterIsMutable();
+          character_.remove(index);
+          onChanged();
+        } else {
+          characterBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Character.Builder getCharacterBuilder(
+          int index) {
+        return getCharacterFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.CharacterOrBuilder getCharacterOrBuilder(
+          int index) {
+        if (characterBuilder_ == null) {
+          return character_.get(index);  } else {
+          return characterBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public java.util.List<? extends com.mmo.server.ServerClientProtocol.CharacterOrBuilder> 
+           getCharacterOrBuilderList() {
+        if (characterBuilder_ != null) {
+          return characterBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(character_);
+        }
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Character.Builder addCharacterBuilder() {
+        return getCharacterFieldBuilder().addBuilder(
+            com.mmo.server.ServerClientProtocol.Character.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public com.mmo.server.ServerClientProtocol.Character.Builder addCharacterBuilder(
+          int index) {
+        return getCharacterFieldBuilder().addBuilder(
+            index, com.mmo.server.ServerClientProtocol.Character.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Character character = 1;</code>
+       */
+      public java.util.List<com.mmo.server.ServerClientProtocol.Character.Builder> 
+           getCharacterBuilderList() {
+        return getCharacterFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.mmo.server.ServerClientProtocol.Character, com.mmo.server.ServerClientProtocol.Character.Builder, com.mmo.server.ServerClientProtocol.CharacterOrBuilder> 
+          getCharacterFieldBuilder() {
+        if (characterBuilder_ == null) {
+          characterBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.mmo.server.ServerClientProtocol.Character, com.mmo.server.ServerClientProtocol.Character.Builder, com.mmo.server.ServerClientProtocol.CharacterOrBuilder>(
+                  character_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          character_ = null;
+        }
+        return characterBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:CharacterCreateEvent)
+    }
+
+    static {
+      defaultInstance = new CharacterCreateEvent(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:CharacterCreateEvent)
   }
 
   public interface CharacterMoveOrBuilder extends
@@ -6330,6 +15364,31 @@ public final class ServerClientProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Position_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ModInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ModInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MotionInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_MotionInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_SurvivalInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SurvivalInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_IdentifyInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_IdentifyInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Item_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Item_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Character_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -6370,6 +15429,26 @@ public final class ServerClientProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_GetCharacterInfoResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ItemMoveEvent_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ItemMoveEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ItemCraateEvent_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ItemCraateEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ItemDestroyEvent_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ItemDestroyEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CharacterCreateEvent_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CharacterCreateEvent_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CharacterMove_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -6383,30 +15462,51 @@ public final class ServerClientProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021client_gate.proto\032\026message_identify.pr" +
-      "oto\"4\n\010Position\022\014\n\004posX\030\001 \002(\005\022\014\n\004posY\030\002 " +
-      "\002(\005\022\014\n\004posZ\030\003 \002(\005\"\013\n\tCharacter\"7\n\024Client" +
-      "CommonResponse\022\037\n\004stat\030\001 \002(\0162\021.ClientCom" +
-      "monStat\"/\n\020UserLoginRequest\022\r\n\005uname\030\001 \002" +
-      "(\t\022\014\n\004upwd\030\002 \002(\t\"=\n\021UserLoginResponse\022\030\n" +
-      "\004code\030\001 \002(\0162\n.LoginCode\022\016\n\006ticket\030\002 \002(\t\"" +
-      "#\n\021UserLogoutRequest\022\016\n\006ticket\030\001 \002(\t\".\n\022" +
-      "UserLogoutResponse\022\030\n\004code\030\001 \002(\0162\n.Login" +
-      "Code\")\n\027GetCharacterInfoRequest\022\016\n\006ticke",
-      "t\030\001 \002(\t\"9\n\030GetCharacterInfoResponse\022\035\n\tc" +
-      "haracter\030\001 \002(\0132\n.Character\"9\n\rCharacterM" +
-      "ove\022\016\n\006ticket\030\001 \002(\t\022\030\n\005toPos\030\002 \002(\0132\t.Pos" +
-      "ition*@\n\tLoginCode\022\007\n\003SUC\020\000\022\r\n\tERROR_PWD" +
-      "\020\001\022\014\n\010OCCUPIED\020\002\022\r\n\tNOT_EXIST\020\003*%\n\020Clien" +
-      "tCommonStat\022\006\n\002OK\020\000\022\t\n\005ERROR\020\0012\311\001\n\021Serve" +
-      "rGateService\0224\n\tuserLogin\022\021.UserLoginReq" +
-      "uest\032\022.UserLoginResponse\"\000\0227\n\nuserLogout" +
-      "\022\022.UserLogoutRequest\032\023.UserLogoutRespons" +
-      "e\"\000\022E\n\014getCharacter\022\030.GetCharacterInfoRe",
-      "quest\032\031.GetCharacterInfoResponse\"\0002F\n\021Cl" +
-      "ientSideService\0221\n\006moveTo\022\016.CharacterMov" +
-      "e\032\025.ClientCommonResponse\"\000B,\n\016com.mmo.se" +
-      "rverB\024ServerClientProtocol\210\001\001\240\001\001"
+      "\n\021client_gate.proto\"4\n\010Position\022\014\n\004posX\030" +
+      "\001 \002(\005\022\014\n\004posY\030\002 \002(\005\022\014\n\004posZ\030\003 \002(\005\"=\n\007Mod" +
+      "Info\022\r\n\005modId\030\001 \002(\005\022\016\n\006motion\030\002 \002(\005\022\023\n\013o" +
+      "rientation\030\003 \002(\005\";\n\nMotionInfo\022\016\n\006motion" +
+      "\030\001 \002(\005\022\016\n\006effect\030\002 \002(\005\022\r\n\005speed\030\003 \002(\002\"=\n" +
+      "\014SurvivalInfo\022\016\n\006hearth\030\001 \002(\005\022\016\n\006hungry\030" +
+      "\002 \002(\005\022\r\n\005tired\030\003 \002(\005\"A\n\014IdentifyInfo\022\n\n\002" +
+      "ID\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\027\n\004type\030\003 \002(\0162\t.I" +
+      "temType\"\204\001\n\004Item\022\037\n\010identify\030\001 \002(\0132\r.Ide" +
+      "ntifyInfo\022\033\n\010position\030\002 \002(\0132\t.Position\022\031",
+      "\n\007modInfo\030\003 \002(\0132\010.ModInfo\022#\n\014survivalInf" +
+      "o\030\004 \002(\0132\r.SurvivalInfo\"\211\001\n\tCharacter\022\037\n\010" +
+      "identify\030\001 \002(\0132\r.IdentifyInfo\022\033\n\010positio" +
+      "n\030\002 \002(\0132\t.Position\022\031\n\007modInfo\030\003 \002(\0132\010.Mo" +
+      "dInfo\022#\n\014survivalInfo\030\004 \002(\0132\r.SurvivalIn" +
+      "fo\"1\n\024ClientCommonResponse\022\031\n\004stat\030\001 \002(\016" +
+      "2\013.CommonStat\"/\n\020UserLoginRequest\022\r\n\005una" +
+      "me\030\001 \002(\t\022\014\n\004upwd\030\002 \002(\t\"=\n\021UserLoginRespo" +
+      "nse\022\030\n\004code\030\001 \002(\0162\n.LoginCode\022\016\n\006ticket\030" +
+      "\002 \002(\t\"#\n\021UserLogoutRequest\022\016\n\006ticket\030\001 \002",
+      "(\t\".\n\022UserLogoutResponse\022\030\n\004code\030\001 \002(\0162\n" +
+      ".LoginCode\")\n\027GetCharacterInfoRequest\022\016\n" +
+      "\006ticket\030\001 \002(\t\"9\n\030GetCharacterInfoRespons" +
+      "e\022\035\n\tcharacter\030\001 \002(\0132\n.Character\"\226\001\n\rIte" +
+      "mMoveEvent\022\037\n\010identify\030\001 \003(\0132\r.IdentifyI" +
+      "nfo\022\032\n\007fromPos\030\002 \003(\0132\t.Position\022\030\n\005toPos" +
+      "\030\003 \003(\0132\t.Position\022\r\n\005speed\030\004 \003(\002\022\037\n\nplay" +
+      "Motion\030\005 \003(\0132\013.MotionInfo\"&\n\017ItemCraateE" +
+      "vent\022\023\n\004item\030\001 \003(\0132\005.Item\"3\n\020ItemDestroy" +
+      "Event\022\037\n\010identify\030\001 \003(\0132\r.IdentifyInfo\"5",
+      "\n\024CharacterCreateEvent\022\035\n\tcharacter\030\001 \003(" +
+      "\0132\n.Character\"9\n\rCharacterMove\022\016\n\006ticket" +
+      "\030\001 \002(\t\022\030\n\005toPos\030\002 \002(\0132\t.Position*@\n\tLogi" +
+      "nCode\022\007\n\003SUC\020\000\022\r\n\tERROR_PWD\020\001\022\014\n\010OCCUPIE" +
+      "D\020\002\022\r\n\tNOT_EXIST\020\003*\037\n\nCommonStat\022\006\n\002OK\020\000" +
+      "\022\t\n\005ERROR\020\001*#\n\010ItemType\022\t\n\005BUILD\020\000\022\014\n\010MA" +
+      "TERIAL\020\0012\311\001\n\021ServerGateService\0224\n\tuserLo" +
+      "gin\022\021.UserLoginRequest\032\022.UserLoginRespon" +
+      "se\"\000\0227\n\nuserLogout\022\022.UserLogoutRequest\032\023" +
+      ".UserLogoutResponse\"\000\022E\n\014getCharacter\022\030.",
+      "GetCharacterInfoRequest\032\031.GetCharacterIn" +
+      "foResponse\"\0002F\n\021ClientSideService\0221\n\006mov" +
+      "eTo\022\016.CharacterMove\032\025.ClientCommonRespon" +
+      "se\"\000B,\n\016com.mmo.serverB\024ServerClientProt" +
+      "ocol\210\001\001\240\001\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6419,7 +15519,6 @@ public final class ServerClientProtocol {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.mmo.server.MessagesLocation.getDescriptor(),
         }, assigner);
     internal_static_Position_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -6427,61 +15526,114 @@ public final class ServerClientProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Position_descriptor,
         new java.lang.String[] { "PosX", "PosY", "PosZ", });
-    internal_static_Character_descriptor =
+    internal_static_ModInfo_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_ModInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ModInfo_descriptor,
+        new java.lang.String[] { "ModId", "Motion", "Orientation", });
+    internal_static_MotionInfo_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_MotionInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_MotionInfo_descriptor,
+        new java.lang.String[] { "Motion", "Effect", "Speed", });
+    internal_static_SurvivalInfo_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_SurvivalInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_SurvivalInfo_descriptor,
+        new java.lang.String[] { "Hearth", "Hungry", "Tired", });
+    internal_static_IdentifyInfo_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_IdentifyInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_IdentifyInfo_descriptor,
+        new java.lang.String[] { "ID", "Name", "Type", });
+    internal_static_Item_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_Item_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_Item_descriptor,
+        new java.lang.String[] { "Identify", "Position", "ModInfo", "SurvivalInfo", });
+    internal_static_Character_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Character_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Character_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Identify", "Position", "ModInfo", "SurvivalInfo", });
     internal_static_ClientCommonResponse_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_ClientCommonResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ClientCommonResponse_descriptor,
         new java.lang.String[] { "Stat", });
     internal_static_UserLoginRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_UserLoginRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserLoginRequest_descriptor,
         new java.lang.String[] { "Uname", "Upwd", });
     internal_static_UserLoginResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_UserLoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserLoginResponse_descriptor,
         new java.lang.String[] { "Code", "Ticket", });
     internal_static_UserLogoutRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_UserLogoutRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserLogoutRequest_descriptor,
         new java.lang.String[] { "Ticket", });
     internal_static_UserLogoutResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_UserLogoutResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserLogoutResponse_descriptor,
         new java.lang.String[] { "Code", });
     internal_static_GetCharacterInfoRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_GetCharacterInfoRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCharacterInfoRequest_descriptor,
         new java.lang.String[] { "Ticket", });
     internal_static_GetCharacterInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_GetCharacterInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCharacterInfoResponse_descriptor,
         new java.lang.String[] { "Character", });
+    internal_static_ItemMoveEvent_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_ItemMoveEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ItemMoveEvent_descriptor,
+        new java.lang.String[] { "Identify", "FromPos", "ToPos", "Speed", "PlayMotion", });
+    internal_static_ItemCraateEvent_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_ItemCraateEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ItemCraateEvent_descriptor,
+        new java.lang.String[] { "Item", });
+    internal_static_ItemDestroyEvent_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_ItemDestroyEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ItemDestroyEvent_descriptor,
+        new java.lang.String[] { "Identify", });
+    internal_static_CharacterCreateEvent_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_CharacterCreateEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CharacterCreateEvent_descriptor,
+        new java.lang.String[] { "Character", });
     internal_static_CharacterMove_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_CharacterMove_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterMove_descriptor,
         new java.lang.String[] { "Ticket", "ToPos", });
-    com.mmo.server.MessagesLocation.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

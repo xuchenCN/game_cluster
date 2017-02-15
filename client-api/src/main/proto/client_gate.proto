@@ -4,8 +4,6 @@ option java_outer_classname = "ServerClientProtocol";
 option java_generic_services = true;
 option java_generate_equals_and_hash = true;
 
-import "message_identify.proto" ;
-
 
 /* Enumerations */
 
@@ -16,11 +14,17 @@ enum LoginCode {
    	NOT_EXIST = 3;
 }
 
-enum ClientCommonStat {
+enum CommonStat {
 	OK = 0;
 	ERROR = 1;
 }
-/* Common */
+
+enum ItemType {
+	BUILD = 0;
+	MATERIAL = 1;
+}
+
+/* Basically Informations */
 
 message Position {
 	required int32 posX = 1;
@@ -29,16 +33,52 @@ message Position {
 	
 }
 
-/*Character*/
+message ModInfo {
+	required int32 modId = 1;
+	required int32 motion = 2;
+	required int32 orientation = 3;
+}
+
+message MotionInfo {
+	required int32 motion = 1;
+	required int32 effect = 2;
+	required float speed = 3;
+}
+
+message SurvivalInfo {
+	required int32 hearth = 1;
+	required int32 hungry = 2;
+	required int32 tired = 3;
+}
+
+message IdentifyInfo {
+	required string ID = 1;
+	required string name = 2;
+	required ItemType type = 3;
+}
+
+/* Basically Objects */
+
+message Item {
+	required IdentifyInfo identify = 1;
+	required Position position = 2;
+	required ModInfo modInfo = 3;
+	required SurvivalInfo survivalInfo= 4;
+}
+
 
 message Character {
-	
+	required IdentifyInfo identify = 1;
+	required Position position = 2;
+	required ModInfo modInfo = 3;
+	required SurvivalInfo survivalInfo= 4;
 }
+
 
 /* Accounts */
 
 message ClientCommonResponse {
-	required ClientCommonStat stat = 1;
+	required CommonStat stat = 1;
 }
 
 
@@ -66,6 +106,30 @@ message GetCharacterInfoRequest {
 
 message GetCharacterInfoResponse {
 	required Character character = 1;
+}
+
+/* Item Events */
+
+message ItemMoveEvent {
+	repeated IdentifyInfo identify = 1;
+	repeated Position fromPos = 2;
+	repeated Position toPos = 3;
+	repeated float speed = 4;
+	repeated MotionInfo playMotion = 5;
+}
+
+message ItemCraateEvent {
+	repeated Item item = 1;
+}
+
+message ItemDestroyEvent {
+	repeated IdentifyInfo identify = 1;
+}
+
+/* Character Event */
+
+message CharacterCreateEvent {
+	repeated Character character = 1;
 }
 
 

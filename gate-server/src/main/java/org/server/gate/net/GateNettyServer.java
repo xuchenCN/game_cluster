@@ -91,7 +91,6 @@ public class GateNettyServer {
 		try {
 			channel.closeFuture().sync();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -7,6 +7,13 @@ option java_generate_equals_and_hash = true;
 
 /* Enumerations */
 
+enum LoginCode {
+    SUC = 0;
+   	ERROR_PWD = 1;
+   	OCCUPIED = 2;
+   	NOT_EXIST = 3;
+}
+
 enum CommonStat {
 	OK = 0;
 	ERROR = 1;
@@ -72,14 +79,28 @@ message CommonResponse {
 	CommonStat stat = 1;
 }
 
-/* Events */
+/* Item Events */
 
-message MoveEvent {
-	string ID = 1;
+message ItemMoveEvent {
+	IdentifyInfo identify = 1;
 	Position fromPos = 2;
 	Position toPos = 3;
 	float speed = 4;
 	MotionInfo playMotion = 5;
+}
+
+message ItemCraateEvent {
+	Item item = 1;
+}
+
+message ItemDestroyEvent {
+	IdentifyInfo identify = 1;
+}
+
+/* Character Event */
+
+message CharacterCreateEvent {
+	Character character = 1;
 }
 
 

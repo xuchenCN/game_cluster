@@ -1,1 +1,5 @@
-.\protoc\win\protoc-2.6.1-windows-x86_64.exe --proto_path=.\src\main\proto --csharp_out=.\src .\src\main\proto\client_gate.proto
+## cshap
+.\protoc\win\tools\ProtoGen.exe -output_directory=.\src\main\csharp  .\src\main\proto\message_identify.proto
+
+##java
+--proto_path=./src/main/proto/ --java_out=./src/main/gen-java/ ./src/main/proto/*

@@ -1,7 +1,7 @@
 package org.server.gate;
 
+import org.server.gate.core.GateRecvMessage;
 import org.server.gate.net.FlexiblePBDecoder;
-import org.server.gate.net.GateMessage;
 
 import com.mmo.server.MessagesLocation.MessageRegistry;
 import com.mmo.server.ServerClientProtocol.UserLoginRequest;
@@ -17,14 +17,14 @@ public class TestNettyHandle extends ChannelInboundHandlerAdapter {
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		UserLoginRequest req = UserLoginRequest.newBuilder().setUname("tester1").setUpwd("pwd1").build();
 
-		GateMessage msg = new GateMessage(MessageRegistry.USERLOGINREQUEST, Unpooled.wrappedBuffer(req.toByteArray()));
+		GateRecvMessage msg = new GateRecvMessage(MessageRegistry.USERLOGINREQUEST, Unpooled.wrappedBuffer(req.toByteArray()));
 
 		ctx.writeAndFlush(msg);
 	}
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		GateMessage message = (GateMessage)msg;
+		GateRecvMessage message = (GateRecvMessage)msg;
 		System.out.println(message.messageId);
 		System.out.println(message.body);
 		

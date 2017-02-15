@@ -1,5 +1,9 @@
 package org.server.gate.communicator;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.server.gate.core.GateServerRouter;
+
 import com.mmo.server.CharacterServiceGrpc;
 import com.mmo.server.CharacterServiceGrpc.CharacterServiceBlockingStub;
 import com.mmo.server.UserRegionServiceGrpc;
@@ -9,6 +13,8 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
 public class GameServerCommunicator {
+
+	private static final Log LOG = LogFactory.getLog(GameServerCommunicator.class);
 
 	private ManagedChannel channel;
 
@@ -20,6 +26,8 @@ public class GameServerCommunicator {
 		channel = channelBuilder.build();
 		userRegionStub = UserRegionServiceGrpc.newBlockingStub(channel);
 		characterStub = CharacterServiceGrpc.newBlockingStub(channel);
+
+		LOG.info("Init Game-Server connection " + host + ":" + port);
 	}
 
 }

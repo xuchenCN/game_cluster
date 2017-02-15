@@ -1,14 +1,14 @@
-package org.server.gate.net;
+package org.server.gate.core;
 
 import com.mmo.server.MessagesLocation.MessageRegistry;
 
 import io.netty.buffer.ByteBuf;
 
-public class GateMessage {
+public class GateRecvMessage {
 	public MessageRegistry messageId;
 	public ByteBuf body;
 
-	public GateMessage(MessageRegistry messageId, ByteBuf message) {
+	public GateRecvMessage(MessageRegistry messageId, ByteBuf message) {
 		this.messageId = messageId;
 		this.body = message;
 	}

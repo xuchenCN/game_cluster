@@ -3,6 +3,8 @@ package org.server.gate.net;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
+import org.server.gate.core.GateRecvMessage;
+
 import com.google.protobuf.CodedInputStream;
 import com.mmo.server.MessagesLocation.MessageRegistry;
 import com.mmo.server.ServerClientProtocol;
@@ -14,7 +16,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class GateNettyHandler extends ChannelInboundHandlerAdapter {
-	
+
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		System.out.println("channelActive " + ctx.channel().remoteAddress());
@@ -24,7 +26,7 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		System.out.println("channelInactive" + ctx.channel().remoteAddress());
 	}
-	
+
 	@Override
 	public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
 		System.out.println("channelRegistered" + ctx.channel().remoteAddress());
@@ -43,8 +45,17 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+		
+	}
 
-		GateMessage message = (GateMessage) msg;
+	@Override
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+		cause.printStackTrace();
+		ctx.close();
+	}
+
+	private void testResp(ChannelHandlerContext ctx, Object msg) throws Exception {
+		GateRecvMessage message = (GateRecvMessage) msg;
 
 		System.out.println(message.messageId);
 		System.out.println(message.body);
@@ -61,20 +72,13 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 				ServerClientProtocol.UserLoginResponse resp = ServerClientProtocol.UserLoginResponse.newBuilder()
 						.setCode(LoginCode.SUC).setTicket(Thread.currentThread().getName() + " " + n).build();
 
-				GateMessage responseMes = new GateMessage(MessageRegistry.USERLOGINRESPONSE,
+				GateRecvMessage responseMes = new GateRecvMessage(MessageRegistry.USERLOGINRESPONSE,
 						Unpooled.wrappedBuffer(resp.toByteArray()));
 				ctx.writeAndFlush(responseMes);
 
 			});
 
 		});
-
-	}
-
-	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-		cause.printStackTrace();
-		ctx.close();
 	}
 
 }

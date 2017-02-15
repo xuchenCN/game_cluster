@@ -7,6 +7,13 @@ option java_generate_equals_and_hash = true;
 
 import "common.proto";
 
+enum MapEventType {
+	ITEMMOVEEVENT = 0;
+	ITEMCRAATEEVENT = 1;
+	ITEMDESTROYEVENT = 2;
+	CHARACTERCREATEEVENT = 3;
+}
+
 message GateServerPing {
 
 }
@@ -15,13 +22,53 @@ message GateServerPong {
 
 }
 
+message PlayerBeginChangeMapRequest {
+	int32 from = 1;
+	int32 to = 2;
+	Position toPos = 3;
+}
+
+message PlayerChangeMapCompletedRequest {
+	
+}
+
+/* Events */
+message ItemMoveEventRequest {
+	int32 mapId = 1;
+	ItemMoveEvent event = 2;
+	MapEventType eventType = 3;
+}
+
+message ItemCraateEventRequest {
+	int32 mapId = 1;
+	ItemCraateEvent event = 2;
+	MapEventType eventType = 3;
+}
+
+message ItemDestroyEventRequest {
+	int32 mapId = 1;
+	ItemDestroyEvent event = 2;
+	MapEventType eventType = 3;
+}
+
+message CharacterCreateEventRequest {
+	int32 mapId = 1;
+	CharacterCreateEvent event = 2;
+	MapEventType eventType = 3;
+}
 
 /* Services Definition */
 
 service EventDispatcher {
-	rpc moveEvent (MoveEvent) returns (CommonResponse) {}
+	rpc moveEvent (ItemMoveEventRequest) returns (CommonResponse) {}
+	rpc createItemEvent (ItemCraateEventRequest) returns (CommonResponse) {}
+	rpc destroyItemEvent (ItemDestroyEventRequest) returns (CommonResponse) {}
+	rpc createCharacterEvent (CharacterCreateEventRequest) returns (CommonResponse) {}
 	
 	rpc receivePing (GateServerPing) returns (GateServerPong) {}
+	
+	rpc playBeginChangeMap(PlayerBeginChangeMapRequest) returns (CommonResponse) {}
+	rpc PlayerChangeMapCompleted(PlayerChangeMapCompletedRequest) returns (CommonResponse) {}
 }
 
 

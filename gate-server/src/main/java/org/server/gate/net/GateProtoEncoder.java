@@ -2,6 +2,8 @@ package org.server.gate.net;
 
 import java.io.IOException;
 
+import org.server.gate.core.GateRecvMessage;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
@@ -11,10 +13,10 @@ import io.netty.handler.codec.MessageToByteEncoder;
  * body-length -> messageId -> body
  *
  */
-public class GateProtoEncoder extends MessageToByteEncoder<GateMessage> {
+public class GateProtoEncoder extends MessageToByteEncoder<GateRecvMessage> {
 
 	@Override
-	protected void encode(ChannelHandlerContext ctx, GateMessage msg, ByteBuf out) throws Exception {
+	protected void encode(ChannelHandlerContext ctx, GateRecvMessage msg, ByteBuf out) throws Exception {
 		int bodyLen = msg.body.readableBytes();
 		int headerLen = computeRawVarint32Size(bodyLen);
 		int msgIdLen = computeRawVarint32Size(msg.messageId.getNumber());

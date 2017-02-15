@@ -2,6 +2,8 @@ package org.server.gate.net;
 
 import java.util.List;
 
+import org.server.gate.core.GateRecvMessage;
+
 import com.mmo.server.MessagesLocation.MessageRegistry;
 
 import io.netty.buffer.ByteBuf;
@@ -37,7 +39,7 @@ public class GateProtoDecoder extends ByteToMessageDecoder {
 		if (in.readableBytes() < length) {
 			in.resetReaderIndex();
 		} else {
-			GateMessage message = new GateMessage(messageR, in.readRetainedSlice(length));
+			GateRecvMessage message = new GateRecvMessage(messageR, in.readRetainedSlice(length));
 			out.add(message);
 		}
 	}
