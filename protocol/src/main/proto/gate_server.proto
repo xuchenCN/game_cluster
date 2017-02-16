@@ -65,8 +65,10 @@ service EventDispatcher {
 	rpc destroyItemEvent (ItemDestroyEventRequest) returns (CommonResponse) {}
 	rpc createCharacterEvent (CharacterCreateEventRequest) returns (CommonResponse) {}
 	
+}
+
+service GateServerService {
 	rpc receivePing (GateServerPing) returns (GateServerPong) {}
-	
 	rpc playBeginChangeMap(PlayerBeginChangeMapRequest) returns (CommonResponse) {}
 	rpc PlayerChangeMapCompleted(PlayerChangeMapCompletedRequest) returns (CommonResponse) {}
 }

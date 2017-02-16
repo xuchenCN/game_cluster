@@ -6,13 +6,7 @@ package com.mmo.server;
 public final class CommonProtocol {
   private CommonProtocol() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code LoginCode}
@@ -682,32 +676,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.Position) {
           return mergeFrom((com.mmo.server.CommonProtocol.Position)other);
@@ -1236,32 +1204,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ModInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.ModInfo)other);
@@ -1793,32 +1735,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.MotionInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.MotionInfo)other);
@@ -2347,32 +2263,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.SurvivalInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.SurvivalInfo)other);
@@ -2741,7 +2631,7 @@ public final class CommonProtocol {
      * <code>optional .ItemType type = 3;</code>
      */
     public com.mmo.server.CommonProtocol.ItemType getType() {
-      com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.valueOf(type_);
+      com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.forNumber(type_);
       return result == null ? com.mmo.server.CommonProtocol.ItemType.UNRECOGNIZED : result;
     }
 
@@ -2972,32 +2862,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.IdentifyInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.IdentifyInfo)other);
@@ -3203,7 +3067,7 @@ public final class CommonProtocol {
        * <code>optional .ItemType type = 3;</code>
        */
       public com.mmo.server.CommonProtocol.ItemType getType() {
-        com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.valueOf(type_);
+        com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.forNumber(type_);
         return result == null ? com.mmo.server.CommonProtocol.ItemType.UNRECOGNIZED : result;
       }
       /**
@@ -3826,32 +3690,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.Item) {
           return mergeFrom((com.mmo.server.CommonProtocol.Item)other);
@@ -3902,7 +3740,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -4004,11 +3842,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -4019,7 +3857,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position position_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> positionBuilder_;
       /**
        * <code>optional .Position position = 2;</code>
@@ -4121,11 +3959,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position position = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getPositionFieldBuilder() {
         if (positionBuilder_ == null) {
-          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getPosition(),
                   getParentForChildren(),
@@ -4136,7 +3974,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ModInfo modInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> modInfoBuilder_;
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
@@ -4238,11 +4076,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
           getModInfoFieldBuilder() {
         if (modInfoBuilder_ == null) {
-          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
                   getModInfo(),
                   getParentForChildren(),
@@ -4253,7 +4091,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.SurvivalInfo survivalInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> survivalInfoBuilder_;
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
@@ -4355,11 +4193,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> 
           getSurvivalInfoFieldBuilder() {
         if (survivalInfoBuilder_ == null) {
-          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder>(
                   getSurvivalInfo(),
                   getParentForChildren(),
@@ -4967,32 +4805,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.Character) {
           return mergeFrom((com.mmo.server.CommonProtocol.Character)other);
@@ -5043,7 +4855,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -5145,11 +4957,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -5160,7 +4972,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position position_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> positionBuilder_;
       /**
        * <code>optional .Position position = 2;</code>
@@ -5262,11 +5074,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position position = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getPositionFieldBuilder() {
         if (positionBuilder_ == null) {
-          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getPosition(),
                   getParentForChildren(),
@@ -5277,7 +5089,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ModInfo modInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> modInfoBuilder_;
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
@@ -5379,11 +5191,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
           getModInfoFieldBuilder() {
         if (modInfoBuilder_ == null) {
-          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
                   getModInfo(),
                   getParentForChildren(),
@@ -5394,7 +5206,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.SurvivalInfo survivalInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> survivalInfoBuilder_;
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
@@ -5496,11 +5308,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> 
           getSurvivalInfoFieldBuilder() {
         if (survivalInfoBuilder_ == null) {
-          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder>(
                   getSurvivalInfo(),
                   getParentForChildren(),
@@ -5652,7 +5464,7 @@ public final class CommonProtocol {
      * <code>optional .CommonStat stat = 1;</code>
      */
     public com.mmo.server.CommonProtocol.CommonStat getStat() {
-      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
+      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.forNumber(stat_);
       return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
     }
 
@@ -5857,32 +5669,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.CommonResponse) {
           return mergeFrom((com.mmo.server.CommonProtocol.CommonResponse)other);
@@ -5942,7 +5728,7 @@ public final class CommonProtocol {
        * <code>optional .CommonStat stat = 1;</code>
        */
       public com.mmo.server.CommonProtocol.CommonStat getStat() {
-        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
+        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.forNumber(stat_);
         return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
       }
       /**
@@ -6602,32 +6388,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ItemMoveEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.ItemMoveEvent)other);
@@ -6681,7 +6441,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -6783,11 +6543,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -6798,7 +6558,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position fromPos_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> fromPosBuilder_;
       /**
        * <code>optional .Position fromPos = 2;</code>
@@ -6900,11 +6660,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position fromPos = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getFromPosFieldBuilder() {
         if (fromPosBuilder_ == null) {
-          fromPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          fromPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getFromPos(),
                   getParentForChildren(),
@@ -6915,7 +6675,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position toPos_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> toPosBuilder_;
       /**
        * <code>optional .Position toPos = 3;</code>
@@ -7017,11 +6777,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position toPos = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getToPosFieldBuilder() {
         if (toPosBuilder_ == null) {
-          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getToPos(),
                   getParentForChildren(),
@@ -7058,7 +6818,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.MotionInfo playMotion_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.MotionInfo, com.mmo.server.CommonProtocol.MotionInfo.Builder, com.mmo.server.CommonProtocol.MotionInfoOrBuilder> playMotionBuilder_;
       /**
        * <code>optional .MotionInfo playMotion = 5;</code>
@@ -7160,11 +6920,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .MotionInfo playMotion = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.MotionInfo, com.mmo.server.CommonProtocol.MotionInfo.Builder, com.mmo.server.CommonProtocol.MotionInfoOrBuilder> 
           getPlayMotionFieldBuilder() {
         if (playMotionBuilder_ == null) {
-          playMotionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          playMotionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.MotionInfo, com.mmo.server.CommonProtocol.MotionInfo.Builder, com.mmo.server.CommonProtocol.MotionInfoOrBuilder>(
                   getPlayMotion(),
                   getParentForChildren(),
@@ -7550,32 +7310,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ItemCraateEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.ItemCraateEvent)other);
@@ -7617,7 +7351,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Item item_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> itemBuilder_;
       /**
        * <code>optional .Item item = 1;</code>
@@ -7719,11 +7453,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Item item = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> 
           getItemFieldBuilder() {
         if (itemBuilder_ == null) {
-          itemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          itemBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder>(
                   getItem(),
                   getParentForChildren(),
@@ -8109,32 +7843,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ItemDestroyEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.ItemDestroyEvent)other);
@@ -8176,7 +7884,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -8278,11 +7986,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -8668,32 +8376,6 @@ public final class CommonProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.CharacterCreateEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.CharacterCreateEvent)other);
@@ -8735,7 +8417,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Character character_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> characterBuilder_;
       /**
        * <code>optional .Character character = 1;</code>
@@ -8837,11 +8519,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Character character = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
           getCharacterFieldBuilder() {
         if (characterBuilder_ == null) {
-          characterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          characterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
                   getCharacter(),
                   getParentForChildren(),

@@ -6,13 +6,7 @@ package com.mmo.server;
 public final class ServerGameProtocol {
   private ServerGameProtocol() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface UserArrivedRegionRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:UserArrivedRegionRequest)
@@ -400,32 +394,6 @@ public final class ServerGameProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)other);
@@ -1012,32 +980,6 @@ public final class ServerGameProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.CharacterMoveReq) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.CharacterMoveReq)other);
@@ -1108,7 +1050,7 @@ public final class ServerGameProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position toPos_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> toPosBuilder_;
       /**
        * <code>optional .Position toPos = 2;</code>
@@ -1210,11 +1152,11 @@ public final class ServerGameProtocol {
       /**
        * <code>optional .Position toPos = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getToPosFieldBuilder() {
         if (toPosBuilder_ == null) {
-          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getToPos(),
                   getParentForChildren(),
@@ -1525,32 +1467,6 @@ public final class ServerGameProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.GameServerPing) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.GameServerPing)other);
@@ -1889,32 +1805,6 @@ public final class ServerGameProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.GameServerPong) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.GameServerPong)other);
@@ -2001,21 +1891,13 @@ public final class ServerGameProtocol {
   }
 
   /**
-   * Protobuf service {@code UserRegionService}
+   * Protobuf service {@code GameServerService}
    */
-  public static abstract class UserRegionService
+  public static abstract class GameServerService
       implements com.google.protobuf.Service {
-    protected UserRegionService() {}
+    protected GameServerService() {}
 
     public interface Interface {
-      /**
-       * <code>rpc userArrivedRegion(.UserArrivedRegionRequest) returns (.CommonResponse);</code>
-       */
-      public abstract void userArrivedRegion(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
       /**
        * <code>rpc receivePing(.GameServerPing) returns (.GameServerPong);</code>
        */
@@ -2028,15 +1910,7 @@ public final class ServerGameProtocol {
 
     public static com.google.protobuf.Service newReflectiveService(
         final Interface impl) {
-      return new UserRegionService() {
-        @java.lang.Override
-        public  void userArrivedRegion(
-            com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
-            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-          impl.userArrivedRegion(controller, request, done);
-        }
-
+      return new GameServerService() {
         @java.lang.Override
         public  void receivePing(
             com.google.protobuf.RpcController controller,
@@ -2068,8 +1942,6 @@ public final class ServerGameProtocol {
           }
           switch(method.getIndex()) {
             case 0:
-              return impl.userArrivedRegion(controller, (com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)request);
-            case 1:
               return impl.receivePing(controller, (com.mmo.server.ServerGameProtocol.GameServerPing)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
@@ -2086,8 +1958,6 @@ public final class ServerGameProtocol {
           }
           switch(method.getIndex()) {
             case 0:
-              return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
-            case 1:
               return com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
@@ -2104,8 +1974,6 @@ public final class ServerGameProtocol {
           }
           switch(method.getIndex()) {
             case 0:
-              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-            case 1:
               return com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
@@ -2114,14 +1982,6 @@ public final class ServerGameProtocol {
 
       };
     }
-
-    /**
-     * <code>rpc userArrivedRegion(.UserArrivedRegionRequest) returns (.CommonResponse);</code>
-     */
-    public abstract void userArrivedRegion(
-        com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
-        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     /**
      * <code>rpc receivePing(.GameServerPing) returns (.GameServerPong);</code>
@@ -2154,11 +2014,6 @@ public final class ServerGameProtocol {
       }
       switch(method.getIndex()) {
         case 0:
-          this.userArrivedRegion(controller, (com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)request,
-            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
-              done));
-          return;
-        case 1:
           this.receivePing(controller, (com.mmo.server.ServerGameProtocol.GameServerPing)request,
             com.google.protobuf.RpcUtil.<com.mmo.server.ServerGameProtocol.GameServerPong>specializeCallback(
               done));
@@ -2178,8 +2033,6 @@ public final class ServerGameProtocol {
       }
       switch(method.getIndex()) {
         case 0:
-          return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
-        case 1:
           return com.mmo.server.ServerGameProtocol.GameServerPing.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
@@ -2196,9 +2049,239 @@ public final class ServerGameProtocol {
       }
       switch(method.getIndex()) {
         case 0:
-          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-        case 1:
           return com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public static Stub newStub(
+        com.google.protobuf.RpcChannel channel) {
+      return new Stub(channel);
+    }
+
+    public static final class Stub extends com.mmo.server.ServerGameProtocol.GameServerService implements Interface {
+      private Stub(com.google.protobuf.RpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.RpcChannel channel;
+
+      public com.google.protobuf.RpcChannel getChannel() {
+        return channel;
+      }
+
+      public  void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGameProtocol.GameServerPong> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGameProtocol.GameServerPong.class,
+            com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance()));
+      }
+    }
+
+    public static BlockingInterface newBlockingStub(
+        com.google.protobuf.BlockingRpcChannel channel) {
+      return new BlockingStub(channel);
+    }
+
+    public interface BlockingInterface {
+      public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request)
+          throws com.google.protobuf.ServiceException;
+    }
+
+    private static final class BlockingStub implements BlockingInterface {
+      private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.BlockingRpcChannel channel;
+
+      public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.GameServerPing request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerGameProtocol.GameServerPong) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance());
+      }
+
+    }
+
+    // @@protoc_insertion_point(class_scope:GameServerService)
+  }
+
+  /**
+   * Protobuf service {@code UserRegionService}
+   */
+  public static abstract class UserRegionService
+      implements com.google.protobuf.Service {
+    protected UserRegionService() {}
+
+    public interface Interface {
+      /**
+       * <code>rpc userArrivedRegion(.UserArrivedRegionRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void userArrivedRegion(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    }
+
+    public static com.google.protobuf.Service newReflectiveService(
+        final Interface impl) {
+      return new UserRegionService() {
+        @java.lang.Override
+        public  void userArrivedRegion(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.userArrivedRegion(controller, request, done);
+        }
+
+      };
+    }
+
+    public static com.google.protobuf.BlockingService
+        newReflectiveBlockingService(final BlockingInterface impl) {
+      return new com.google.protobuf.BlockingService() {
+        public final com.google.protobuf.Descriptors.ServiceDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+
+        public final com.google.protobuf.Message callBlockingMethod(
+            com.google.protobuf.Descriptors.MethodDescriptor method,
+            com.google.protobuf.RpcController controller,
+            com.google.protobuf.Message request)
+            throws com.google.protobuf.ServiceException {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.callBlockingMethod() given method descriptor for " +
+              "wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return impl.userArrivedRegion(controller, (com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)request);
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getRequestPrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getRequestPrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getResponsePrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getResponsePrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+      };
+    }
+
+    /**
+     * <code>rpc userArrivedRegion(.UserArrivedRegionRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void userArrivedRegion(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    public static final
+        com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGameProtocol.getDescriptor().getServices().get(1);
+    }
+    public final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+
+    public final void callMethod(
+        com.google.protobuf.Descriptors.MethodDescriptor method,
+        com.google.protobuf.RpcController controller,
+        com.google.protobuf.Message request,
+        com.google.protobuf.RpcCallback<
+          com.google.protobuf.Message> done) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.callMethod() given method descriptor for wrong " +
+          "service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          this.userArrivedRegion(controller, (com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getRequestPrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getRequestPrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getResponsePrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getResponsePrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -2234,21 +2317,6 @@ public final class ServerGameProtocol {
             com.mmo.server.CommonProtocol.CommonResponse.class,
             com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
       }
-
-      public  void receivePing(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGameProtocol.GameServerPing request,
-          com.google.protobuf.RpcCallback<com.mmo.server.ServerGameProtocol.GameServerPong> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(1),
-          controller,
-          request,
-          com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            com.mmo.server.ServerGameProtocol.GameServerPong.class,
-            com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance()));
-      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -2260,11 +2328,6 @@ public final class ServerGameProtocol {
       public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request)
-          throws com.google.protobuf.ServiceException;
-
-      public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGameProtocol.GameServerPing request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -2284,18 +2347,6 @@ public final class ServerGameProtocol {
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
-      }
-
-
-      public com.mmo.server.ServerGameProtocol.GameServerPong receivePing(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGameProtocol.GameServerPing request)
-          throws com.google.protobuf.ServiceException {
-        return (com.mmo.server.ServerGameProtocol.GameServerPong) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(1),
-          controller,
-          request,
-          com.mmo.server.ServerGameProtocol.GameServerPong.getDefaultInstance());
       }
 
     }
@@ -2407,7 +2458,7 @@ public final class ServerGameProtocol {
     public static final
         com.google.protobuf.Descriptors.ServiceDescriptor
         getDescriptor() {
-      return com.mmo.server.ServerGameProtocol.getDescriptor().getServices().get(1);
+      return com.mmo.server.ServerGameProtocol.getDescriptor().getServices().get(2);
     }
     public final com.google.protobuf.Descriptors.ServiceDescriptor
         getDescriptorForType() {
@@ -2569,13 +2620,14 @@ public final class ServerGameProtocol {
       "\020\n\010gatePort\030\002 \001(\005\022\013\n\003uid\030\003 \001(\005\"9\n\020Charac" +
       "terMoveReq\022\013\n\003uid\030\001 \001(\005\022\030\n\005toPos\030\002 \001(\0132\t" +
       ".Position\"\020\n\016GameServerPing\"\020\n\016GameServe" +
-      "rPong2\211\001\n\021UserRegionService\022A\n\021userArriv" +
-      "edRegion\022\031.UserArrivedRegionRequest\032\017.Co" +
-      "mmonResponse\"\000\0221\n\013receivePing\022\017.GameServ" +
-      "erPing\032\017.GameServerPong\"\0002B\n\020CharacterSe" +
-      "rvice\022.\n\006moveTo\022\021.CharacterMoveReq\032\017.Com",
-      "monResponse\"\000B*\n\016com.mmo.serverB\022ServerG" +
-      "ameProtocol\210\001\001\240\001\001b\006proto3"
+      "rPong2F\n\021GameServerService\0221\n\013receivePin" +
+      "g\022\017.GameServerPing\032\017.GameServerPong\"\0002V\n" +
+      "\021UserRegionService\022A\n\021userArrivedRegion\022" +
+      "\031.UserArrivedRegionRequest\032\017.CommonRespo" +
+      "nse\"\0002B\n\020CharacterService\022.\n\006moveTo\022\021.Ch",
+      "aracterMoveReq\032\017.CommonResponse\"\000B*\n\016com" +
+      ".mmo.serverB\022ServerGameProtocol\210\001\001\240\001\001b\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

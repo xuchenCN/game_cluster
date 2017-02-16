@@ -9,9 +9,9 @@ import java.util.Map;
 
 public abstract class RedisBean {
 
-	abstract String key();
+	public abstract String key();
 
-	abstract String userKey();
+//	abstract String userKey();
 	
 	//redisMap make Instance to a map
 	public Map<String, String> redisMap() {

@@ -9,8 +9,7 @@ import java.net.SocketAddress;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import com.mmo.server.ServerClientProtocol;
+import org.server.gate.GateServerContext;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -20,10 +19,6 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.protobuf.ProtobufDecoder;
-import io.netty.handler.codec.protobuf.ProtobufEncoder;
-import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
-import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.util.concurrent.DefaultThreadFactory;
 
 public class GateNettyServer {
@@ -36,9 +31,12 @@ public class GateNettyServer {
 
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
+	
+	private GateServerContext gateServerContext;
 
-	public GateNettyServer(int port) {
-		this.port = port;
+	public GateNettyServer(GateServerContext gateServerContext) {
+		this.gateServerContext = gateServerContext;
+		this.port = gateServerContext.getGateNettyPort();
 
 		bossGroup = new NioEventLoopGroup(1, new DefaultThreadFactory("boss", true));
 		workerGroup = new NioEventLoopGroup(4, new DefaultThreadFactory("worker", true));
@@ -62,7 +60,7 @@ public class GateNettyServer {
 
 				ch.pipeline().addLast(new GateProtoEncoder())
 						.addLast(new GateProtoDecoder()).addLast(new GateProtoEncoder())
-						.addLast(new GateNettyHandler());
+						.addLast(new GateNettyHandler(gateServerContext));
 
 				ch.closeFuture().addListener(new ChannelFutureListener() {
 					@Override

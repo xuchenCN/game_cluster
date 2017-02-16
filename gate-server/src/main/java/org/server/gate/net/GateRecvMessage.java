@@ -1,4 +1,4 @@
-package org.server.gate.core;
+package org.server.gate.net;
 
 import com.mmo.server.MessagesLocation.MessageRegistry;
 

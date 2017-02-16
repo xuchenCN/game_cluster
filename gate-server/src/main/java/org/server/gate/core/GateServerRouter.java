@@ -1,9 +1,12 @@
 package org.server.gate.core;
 
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,15 +17,21 @@ import org.mmo.server.common.utils.NetUtils;
 import org.server.gate.GateServerContext;
 import org.server.gate.communicator.GameServerCommunicator;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mmo.server.CommonProtocol.CommonResponse;
 import com.mmo.server.CommonProtocol.CommonStat;
 import com.mmo.server.EventDispatcherGrpc.AbstractEventDispatcher;
+import com.mmo.server.GateServerServiceGrpc.AbstractGateServerService;
+import com.mmo.server.MessagesLocation.MessageRegistry;
+import com.mmo.server.ServerGameProtocol.CharacterMoveReq;
 import com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest;
 import com.mmo.server.ServerGateProtocol.GateServerPing;
 import com.mmo.server.ServerGateProtocol.GateServerPong;
 import com.mmo.server.ServerGateProtocol.ItemCraateEventRequest;
 import com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest;
 import com.mmo.server.ServerGateProtocol.ItemMoveEventRequest;
+import com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest;
+import com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest;
 import com.mmo.server.ServerWorldProtocol.RegionServerInfo;
 
 import io.grpc.stub.StreamObserver;
@@ -36,16 +45,25 @@ public class GateServerRouter extends AbstractService {
 
 	private Map<String, GameServerCommunicator> mapCommunicators = new HashMap<String, GameServerCommunicator>();
 
-	private ArrayBlockingQueue<GateRecvMessage> receiveMessageQueue;
+	private ArrayBlockingQueue<InstructionEvent> receiveMessageQueue;
 	private ArrayBlockingQueue<GateSendMessge> sendEventQueue;
+
+	private ExecutorService recvThreadPool;
+
+	private volatile boolean shouldRun;
 
 	public GateServerRouter(GateServerContext globalContext) {
 		super("GateServerRouter");
 		this.globalContext = globalContext;
-		receiveMessageQueue = new ArrayBlockingQueue<GateRecvMessage>(this.getConfig()
-				.getInt(Constants.GATE_SERVER_RECV_QUEUE_SIZE, Constants.GATE_SERVER_RECV_QUEUE_SIZE_DEFAULT));
-		sendEventQueue = new ArrayBlockingQueue<GateSendMessge>(this.getConfig()
-				.getInt(Constants.GATE_SERVER_SEND_QUEUE_SIZE, Constants.GATE_SERVER_SEND_QUEUE_SIZE_DEFAULT));
+		receiveMessageQueue = new ArrayBlockingQueue<InstructionEvent>(
+				this.getConfig().getInt(Constants.GATE_SERVER_RECV_QUEUE_SIZE, Constants.GATE_SERVER_RECV_QUEUE_SIZE_DEFAULT));
+		sendEventQueue = new ArrayBlockingQueue<GateSendMessge>(
+				this.getConfig().getInt(Constants.GATE_SERVER_SEND_QUEUE_SIZE, Constants.GATE_SERVER_SEND_QUEUE_SIZE_DEFAULT));
+
+		recvThreadPool = Executors.newFixedThreadPool(
+				this.getConfig().getInt(Constants.GATE_SERVER_RECV_POOL_SIZE, Constants.GATE_SERVER_RECV_POOL_SIZE_DEFAULT),
+				new ThreadFactoryBuilder().setNameFormat("RecvMessagePool #%d")
+						.setUncaughtExceptionHandler(new ExecutorExceptionHandler()).build());
 	}
 
 	@Override
@@ -66,6 +84,8 @@ public class GateServerRouter extends AbstractService {
 					new GameServerCommunicator(info.getServerHost(), info.getServerPort()));
 		});
 
+		this.shouldRun = true;
+
 		super.serviceStart();
 	}
 
@@ -75,16 +95,53 @@ public class GateServerRouter extends AbstractService {
 		super.serviceStop();
 	}
 
+	class ExecutorExceptionHandler implements UncaughtExceptionHandler {
+
+		@Override
+		public void uncaughtException(Thread t, Throwable e) {
+			LOG.error("ThreadPool got exception : " + t.getName(), e);
+		}
+	}
+
 	public ForwardService getForwardService() {
 		return forwardService;
 	}
 
-	public void receiveMessage(GateRecvMessage message) throws InterruptedException {
+	public void receiveMessage(InstructionEvent message) throws InterruptedException {
 		this.receiveMessageQueue.put(message);
 	}
 
 	public GateSendMessge pullSendQueue() throws InterruptedException {
 		return sendEventQueue.take();
+	}
+
+	class GameServerRouter implements Runnable {
+
+		@Override
+		public void run() {
+			while (shouldRun && !Thread.interrupted()) {
+				try {
+					InstructionEvent instructionEvent = receiveMessageQueue.take();
+					GameServerCommunicator communicator = mapCommunicators.get(instructionEvent.getMapId() + "");
+					if (communicator != null) {
+						switch (instructionEvent.getMessageId().getNumber()) {
+						case MessageRegistry.CHARACTERMOVE_VALUE:
+							CharacterMoveReq characterMove = (CharacterMoveReq) instructionEvent.getBody();
+							break;
+						default:
+							LOG.error("Unknow message " + instructionEvent.getMessageId().getNumber());
+							break;
+						}
+					} else {
+						LOG.error("MapId not exist " + instructionEvent.getMapId());
+					}
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	/**
@@ -96,7 +153,7 @@ public class GateServerRouter extends AbstractService {
 		@Override
 		public void moveEvent(ItemMoveEventRequest request, StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(),request.getEvent(),request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -107,7 +164,7 @@ public class GateServerRouter extends AbstractService {
 		@Override
 		public void createItemEvent(ItemCraateEventRequest request, StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(),request.getEvent(),request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -118,7 +175,7 @@ public class GateServerRouter extends AbstractService {
 		@Override
 		public void destroyItemEvent(ItemDestroyEventRequest request, StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(),request.getEvent(),request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -130,7 +187,7 @@ public class GateServerRouter extends AbstractService {
 		public void createCharacterEvent(CharacterCreateEventRequest request,
 				StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(),request.getEvent(),request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -138,10 +195,28 @@ public class GateServerRouter extends AbstractService {
 			responseObserver.onCompleted();
 		}
 
+	}
+
+	class GateServerService extends AbstractGateServerService {
+
 		@Override
 		public void receivePing(GateServerPing request, StreamObserver<GateServerPong> responseObserver) {
 			// TODO Auto-generated method stub
 			super.receivePing(request, responseObserver);
+		}
+
+		@Override
+		public void playBeginChangeMap(PlayerBeginChangeMapRequest request,
+				StreamObserver<CommonResponse> responseObserver) {
+			// TODO Auto-generated method stub
+			super.playBeginChangeMap(request, responseObserver);
+		}
+
+		@Override
+		public void playerChangeMapCompleted(PlayerChangeMapCompletedRequest request,
+				StreamObserver<CommonResponse> responseObserver) {
+			// TODO Auto-generated method stub
+			super.playerChangeMapCompleted(request, responseObserver);
 		}
 
 	}

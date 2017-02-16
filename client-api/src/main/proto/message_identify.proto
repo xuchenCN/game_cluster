@@ -4,7 +4,8 @@ option java_generic_services = true;
 option java_generate_equals_and_hash = true;
 
 enum MessageRegistry {
-
+	
+	/*Message to gate*/
 	CLIENTCOMMONRESPONSE = 0;
 	USERLOGINREQUEST = 1;
 	USERLOGINRESPONSE = 2;
@@ -12,10 +13,17 @@ enum MessageRegistry {
 	USERLOGOUTRESPONSE = 4;
 	GETCHARACTERINFOREQUEST = 5;
 	GETCHARACTERINFORESPONSE = 6;
+	CHARACTERENTERREQUEST = 7;
 	
-	ITEMMOVEEVENT = 7;
-	ITEMCRAATEEVENT = 8;
-	ITEMDESTROYEVENT = 9;
-	CHARACTERCREATEEVENT = 10;
+
+	/*Event from gate*/
+	ITEMMOVEEVENT = 100;
+	ITEMCRAATEEVENT = 101;
+	ITEMDESTROYEVENT = 102;
+	CHARACTERCREATEEVENT = 103;
+	
+	
+	/* Player control */
+	CHARACTERMOVE = 1000;
 	
 }

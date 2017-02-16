@@ -108,6 +108,11 @@ message GetCharacterInfoResponse {
 	required Character character = 1;
 }
 
+message CharacterEnterRequest {
+	required string ticket = 1;
+}
+
+
 /* Item Events */
 
 message ItemMoveEvent {

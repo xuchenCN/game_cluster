@@ -15,6 +15,10 @@ public final class MessagesLocation {
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
      * <code>CLIENTCOMMONRESPONSE = 0;</code>
+     *
+     * <pre>
+     *Message to gate
+     * </pre>
      */
     CLIENTCOMMONRESPONSE(0, 0),
     /**
@@ -42,25 +46,45 @@ public final class MessagesLocation {
      */
     GETCHARACTERINFORESPONSE(6, 6),
     /**
-     * <code>ITEMMOVEEVENT = 7;</code>
+     * <code>CHARACTERENTERREQUEST = 7;</code>
      */
-    ITEMMOVEEVENT(7, 7),
+    CHARACTERENTERREQUEST(7, 7),
     /**
-     * <code>ITEMCRAATEEVENT = 8;</code>
+     * <code>ITEMMOVEEVENT = 100;</code>
+     *
+     * <pre>
+     *Event from gate
+     * </pre>
      */
-    ITEMCRAATEEVENT(8, 8),
+    ITEMMOVEEVENT(8, 100),
     /**
-     * <code>ITEMDESTROYEVENT = 9;</code>
+     * <code>ITEMCRAATEEVENT = 101;</code>
      */
-    ITEMDESTROYEVENT(9, 9),
+    ITEMCRAATEEVENT(9, 101),
     /**
-     * <code>CHARACTERCREATEEVENT = 10;</code>
+     * <code>ITEMDESTROYEVENT = 102;</code>
      */
-    CHARACTERCREATEEVENT(10, 10),
+    ITEMDESTROYEVENT(10, 102),
+    /**
+     * <code>CHARACTERCREATEEVENT = 103;</code>
+     */
+    CHARACTERCREATEEVENT(11, 103),
+    /**
+     * <code>CHARACTERMOVE = 1000;</code>
+     *
+     * <pre>
+     * Player control 
+     * </pre>
+     */
+    CHARACTERMOVE(12, 1000),
     ;
 
     /**
      * <code>CLIENTCOMMONRESPONSE = 0;</code>
+     *
+     * <pre>
+     *Message to gate
+     * </pre>
      */
     public static final int CLIENTCOMMONRESPONSE_VALUE = 0;
     /**
@@ -88,21 +112,37 @@ public final class MessagesLocation {
      */
     public static final int GETCHARACTERINFORESPONSE_VALUE = 6;
     /**
-     * <code>ITEMMOVEEVENT = 7;</code>
+     * <code>CHARACTERENTERREQUEST = 7;</code>
      */
-    public static final int ITEMMOVEEVENT_VALUE = 7;
+    public static final int CHARACTERENTERREQUEST_VALUE = 7;
     /**
-     * <code>ITEMCRAATEEVENT = 8;</code>
+     * <code>ITEMMOVEEVENT = 100;</code>
+     *
+     * <pre>
+     *Event from gate
+     * </pre>
      */
-    public static final int ITEMCRAATEEVENT_VALUE = 8;
+    public static final int ITEMMOVEEVENT_VALUE = 100;
     /**
-     * <code>ITEMDESTROYEVENT = 9;</code>
+     * <code>ITEMCRAATEEVENT = 101;</code>
      */
-    public static final int ITEMDESTROYEVENT_VALUE = 9;
+    public static final int ITEMCRAATEEVENT_VALUE = 101;
     /**
-     * <code>CHARACTERCREATEEVENT = 10;</code>
+     * <code>ITEMDESTROYEVENT = 102;</code>
      */
-    public static final int CHARACTERCREATEEVENT_VALUE = 10;
+    public static final int ITEMDESTROYEVENT_VALUE = 102;
+    /**
+     * <code>CHARACTERCREATEEVENT = 103;</code>
+     */
+    public static final int CHARACTERCREATEEVENT_VALUE = 103;
+    /**
+     * <code>CHARACTERMOVE = 1000;</code>
+     *
+     * <pre>
+     * Player control 
+     * </pre>
+     */
+    public static final int CHARACTERMOVE_VALUE = 1000;
 
 
     public final int getNumber() { return value; }
@@ -116,10 +156,12 @@ public final class MessagesLocation {
         case 4: return USERLOGOUTRESPONSE;
         case 5: return GETCHARACTERINFOREQUEST;
         case 6: return GETCHARACTERINFORESPONSE;
-        case 7: return ITEMMOVEEVENT;
-        case 8: return ITEMCRAATEEVENT;
-        case 9: return ITEMDESTROYEVENT;
-        case 10: return CHARACTERCREATEEVENT;
+        case 7: return CHARACTERENTERREQUEST;
+        case 100: return ITEMMOVEEVENT;
+        case 101: return ITEMCRAATEEVENT;
+        case 102: return ITEMDESTROYEVENT;
+        case 103: return CHARACTERCREATEEVENT;
+        case 1000: return CHARACTERMOVE;
         default: return null;
       }
     }
@@ -180,15 +222,16 @@ public final class MessagesLocation {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026message_identify.proto*\232\002\n\017MessageRegi" +
+      "\n\026message_identify.proto*\311\002\n\017MessageRegi" +
       "stry\022\030\n\024CLIENTCOMMONRESPONSE\020\000\022\024\n\020USERLO" +
       "GINREQUEST\020\001\022\025\n\021USERLOGINRESPONSE\020\002\022\025\n\021U" +
       "SERLOGOUTREQUEST\020\003\022\026\n\022USERLOGOUTRESPONSE" +
       "\020\004\022\033\n\027GETCHARACTERINFOREQUEST\020\005\022\034\n\030GETCH" +
-      "ARACTERINFORESPONSE\020\006\022\021\n\rITEMMOVEEVENT\020\007" +
-      "\022\023\n\017ITEMCRAATEEVENT\020\010\022\024\n\020ITEMDESTROYEVEN" +
-      "T\020\t\022\030\n\024CHARACTERCREATEEVENT\020\nB(\n\016com.mmo" +
-      ".serverB\020MessagesLocation\210\001\001\240\001\001"
+      "ARACTERINFORESPONSE\020\006\022\031\n\025CHARACTERENTERR" +
+      "EQUEST\020\007\022\021\n\rITEMMOVEEVENT\020d\022\023\n\017ITEMCRAAT" +
+      "EEVENT\020e\022\024\n\020ITEMDESTROYEVENT\020f\022\030\n\024CHARAC" +
+      "TERCREATEEVENT\020g\022\022\n\rCHARACTERMOVE\020\350\007B(\n\016" +
+      "com.mmo.serverB\020MessagesLocation\210\001\001\240\001\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

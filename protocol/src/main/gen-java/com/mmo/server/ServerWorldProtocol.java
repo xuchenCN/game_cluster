@@ -6,13 +6,7 @@ package com.mmo.server;
 public final class ServerWorldProtocol {
   private ServerWorldProtocol() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface RegionServerInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:RegionServerInfo)
@@ -400,32 +394,6 @@ public final class ServerWorldProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.RegionServerInfo) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.RegionServerInfo)other);
@@ -1062,32 +1030,6 @@ public final class ServerWorldProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest)other);
@@ -1685,32 +1627,6 @@ public final class ServerWorldProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.GateRegisterRequest) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.GateRegisterRequest)other);
@@ -1971,8 +1887,7 @@ public final class ServerWorldProtocol {
                 regions_ = new java.util.ArrayList<com.mmo.server.ServerWorldProtocol.RegionServerInfo>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              regions_.add(
-                  input.readMessage(com.mmo.server.ServerWorldProtocol.RegionServerInfo.parser(), extensionRegistry));
+              regions_.add(input.readMessage(com.mmo.server.ServerWorldProtocol.RegionServerInfo.parser(), extensionRegistry));
               break;
             }
           }
@@ -2254,32 +2169,6 @@ public final class ServerWorldProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.GateRegisterResponse) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.GateRegisterResponse)other);
@@ -2353,7 +2242,7 @@ public final class ServerWorldProtocol {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           com.mmo.server.ServerWorldProtocol.RegionServerInfo, com.mmo.server.ServerWorldProtocol.RegionServerInfo.Builder, com.mmo.server.ServerWorldProtocol.RegionServerInfoOrBuilder> regionsBuilder_;
 
       /**
@@ -2569,11 +2458,11 @@ public final class ServerWorldProtocol {
            getRegionsBuilderList() {
         return getRegionsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
+      private com.google.protobuf.RepeatedFieldBuilder<
           com.mmo.server.ServerWorldProtocol.RegionServerInfo, com.mmo.server.ServerWorldProtocol.RegionServerInfo.Builder, com.mmo.server.ServerWorldProtocol.RegionServerInfoOrBuilder> 
           getRegionsFieldBuilder() {
         if (regionsBuilder_ == null) {
-          regionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          regionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.mmo.server.ServerWorldProtocol.RegionServerInfo, com.mmo.server.ServerWorldProtocol.RegionServerInfo.Builder, com.mmo.server.ServerWorldProtocol.RegionServerInfoOrBuilder>(
                   regions_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -3018,32 +2907,6 @@ public final class ServerWorldProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.RegionRegisterRequest) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.RegionRegisterRequest)other);

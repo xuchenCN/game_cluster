@@ -6,13 +6,7 @@ package com.mmo.server;
 public final class ServerGateProtocol {
   private ServerGateProtocol() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code MapEventType}
@@ -383,32 +377,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPing) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPing)other);
@@ -747,32 +715,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPong) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPong)other);
@@ -1254,32 +1196,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)other);
@@ -1379,7 +1295,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position toPos_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> toPosBuilder_;
       /**
        * <code>optional .Position toPos = 3;</code>
@@ -1481,11 +1397,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .Position toPos = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getToPosFieldBuilder() {
         if (toPosBuilder_ == null) {
-          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getToPos(),
                   getParentForChildren(),
@@ -1796,32 +1712,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)other);
@@ -2072,7 +1962,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -2322,32 +2212,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemMoveEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemMoveEventRequest)other);
@@ -2421,7 +2285,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemMoveEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemMoveEvent event = 2;</code>
@@ -2523,11 +2387,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemMoveEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -2556,7 +2420,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -2790,7 +2654,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -3036,32 +2900,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemCraateEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemCraateEventRequest)other);
@@ -3135,7 +2973,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemCraateEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ItemCraateEvent, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder, com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemCraateEvent event = 2;</code>
@@ -3237,11 +3075,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemCraateEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ItemCraateEvent, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder, com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.ItemCraateEvent, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder, com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -3270,7 +3108,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -3504,7 +3342,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -3750,32 +3588,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest)other);
@@ -3849,7 +3661,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemDestroyEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemDestroyEvent event = 2;</code>
@@ -3951,11 +3763,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemDestroyEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -3984,7 +3796,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -4218,7 +4030,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -4464,32 +4276,6 @@ public final class ServerGateProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest)other);
@@ -4563,7 +4349,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.CharacterCreateEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .CharacterCreateEvent event = 2;</code>
@@ -4665,11 +4451,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .CharacterCreateEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -4698,7 +4484,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -4811,30 +4597,6 @@ public final class ServerGateProtocol {
           com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
-      /**
-       * <code>rpc receivePing(.GateServerPing) returns (.GateServerPong);</code>
-       */
-      public abstract void receivePing(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.GateServerPing request,
-          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
-
-      /**
-       * <code>rpc playBeginChangeMap(.PlayerBeginChangeMapRequest) returns (.CommonResponse);</code>
-       */
-      public abstract void playBeginChangeMap(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
-      /**
-       * <code>rpc PlayerChangeMapCompleted(.PlayerChangeMapCompletedRequest) returns (.CommonResponse);</code>
-       */
-      public abstract void playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
     }
 
     public static com.google.protobuf.Service newReflectiveService(
@@ -4872,30 +4634,6 @@ public final class ServerGateProtocol {
           impl.createCharacterEvent(controller, request, done);
         }
 
-        @java.lang.Override
-        public  void receivePing(
-            com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGateProtocol.GateServerPing request,
-            com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done) {
-          impl.receivePing(controller, request, done);
-        }
-
-        @java.lang.Override
-        public  void playBeginChangeMap(
-            com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-          impl.playBeginChangeMap(controller, request, done);
-        }
-
-        @java.lang.Override
-        public  void playerChangeMapCompleted(
-            com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-          impl.playerChangeMapCompleted(controller, request, done);
-        }
-
       };
     }
 
@@ -4926,12 +4664,6 @@ public final class ServerGateProtocol {
               return impl.destroyItemEvent(controller, (com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest)request);
             case 3:
               return impl.createCharacterEvent(controller, (com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest)request);
-            case 4:
-              return impl.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request);
-            case 5:
-              return impl.playBeginChangeMap(controller, (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)request);
-            case 6:
-              return impl.playerChangeMapCompleted(controller, (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -4954,12 +4686,6 @@ public final class ServerGateProtocol {
               return com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest.getDefaultInstance();
             case 3:
               return com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest.getDefaultInstance();
-            case 4:
-              return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
-            case 5:
-              return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
-            case 6:
-              return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -4981,12 +4707,6 @@ public final class ServerGateProtocol {
             case 2:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
             case 3:
-              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-            case 4:
-              return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
-            case 5:
-              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-            case 6:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
@@ -5026,30 +4746,6 @@ public final class ServerGateProtocol {
     public abstract void createCharacterEvent(
         com.google.protobuf.RpcController controller,
         com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request,
-        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
-    /**
-     * <code>rpc receivePing(.GateServerPing) returns (.GateServerPong);</code>
-     */
-    public abstract void receivePing(
-        com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGateProtocol.GateServerPing request,
-        com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
-
-    /**
-     * <code>rpc playBeginChangeMap(.PlayerBeginChangeMapRequest) returns (.CommonResponse);</code>
-     */
-    public abstract void playBeginChangeMap(
-        com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
-    /**
-     * <code>rpc PlayerChangeMapCompleted(.PlayerChangeMapCompletedRequest) returns (.CommonResponse);</code>
-     */
-    public abstract void playerChangeMapCompleted(
-        com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     public static final
@@ -5094,21 +4790,6 @@ public final class ServerGateProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
-        case 4:
-          this.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request,
-            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.GateServerPong>specializeCallback(
-              done));
-          return;
-        case 5:
-          this.playBeginChangeMap(controller, (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)request,
-            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
-              done));
-          return;
-        case 6:
-          this.playerChangeMapCompleted(controller, (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)request,
-            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
-              done));
-          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -5131,12 +4812,6 @@ public final class ServerGateProtocol {
           return com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest.getDefaultInstance();
         case 3:
           return com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest.getDefaultInstance();
-        case 4:
-          return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
-        case 5:
-          return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
-        case 6:
-          return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -5158,12 +4833,6 @@ public final class ServerGateProtocol {
         case 2:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         case 3:
-          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-        case 4:
-          return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
-        case 5:
-          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-        case 6:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
@@ -5245,51 +4914,6 @@ public final class ServerGateProtocol {
             com.mmo.server.CommonProtocol.CommonResponse.class,
             com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
       }
-
-      public  void receivePing(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.GateServerPing request,
-          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(4),
-          controller,
-          request,
-          com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            com.mmo.server.ServerGateProtocol.GateServerPong.class,
-            com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
-      }
-
-      public  void playBeginChangeMap(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(5),
-          controller,
-          request,
-          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            com.mmo.server.CommonProtocol.CommonResponse.class,
-            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
-      }
-
-      public  void playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(6),
-          controller,
-          request,
-          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            com.mmo.server.CommonProtocol.CommonResponse.class,
-            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
-      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -5316,21 +4940,6 @@ public final class ServerGateProtocol {
       public com.mmo.server.CommonProtocol.CommonResponse createCharacterEvent(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request)
-          throws com.google.protobuf.ServiceException;
-
-      public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.GateServerPing request)
-          throws com.google.protobuf.ServiceException;
-
-      public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request)
-          throws com.google.protobuf.ServiceException;
-
-      public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -5388,13 +4997,351 @@ public final class ServerGateProtocol {
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
       }
 
+    }
+
+    // @@protoc_insertion_point(class_scope:EventDispatcher)
+  }
+
+  /**
+   * Protobuf service {@code GateServerService}
+   */
+  public static abstract class GateServerService
+      implements com.google.protobuf.Service {
+    protected GateServerService() {}
+
+    public interface Interface {
+      /**
+       * <code>rpc receivePing(.GateServerPing) returns (.GateServerPong);</code>
+       */
+      public abstract void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
+
+      /**
+       * <code>rpc playBeginChangeMap(.PlayerBeginChangeMapRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void playBeginChangeMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+      /**
+       * <code>rpc PlayerChangeMapCompleted(.PlayerChangeMapCompletedRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void playerChangeMapCompleted(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    }
+
+    public static com.google.protobuf.Service newReflectiveService(
+        final Interface impl) {
+      return new GateServerService() {
+        @java.lang.Override
+        public  void receivePing(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.GateServerPing request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done) {
+          impl.receivePing(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void playBeginChangeMap(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.playBeginChangeMap(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void playerChangeMapCompleted(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.playerChangeMapCompleted(controller, request, done);
+        }
+
+      };
+    }
+
+    public static com.google.protobuf.BlockingService
+        newReflectiveBlockingService(final BlockingInterface impl) {
+      return new com.google.protobuf.BlockingService() {
+        public final com.google.protobuf.Descriptors.ServiceDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+
+        public final com.google.protobuf.Message callBlockingMethod(
+            com.google.protobuf.Descriptors.MethodDescriptor method,
+            com.google.protobuf.RpcController controller,
+            com.google.protobuf.Message request)
+            throws com.google.protobuf.ServiceException {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.callBlockingMethod() given method descriptor for " +
+              "wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return impl.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request);
+            case 1:
+              return impl.playBeginChangeMap(controller, (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)request);
+            case 2:
+              return impl.playerChangeMapCompleted(controller, (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)request);
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getRequestPrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getRequestPrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
+            case 2:
+              return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getResponsePrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getResponsePrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
+            case 1:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            case 2:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+      };
+    }
+
+    /**
+     * <code>rpc receivePing(.GateServerPing) returns (.GateServerPong);</code>
+     */
+    public abstract void receivePing(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.GateServerPing request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
+
+    /**
+     * <code>rpc playBeginChangeMap(.PlayerBeginChangeMapRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void playBeginChangeMap(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    /**
+     * <code>rpc PlayerChangeMapCompleted(.PlayerChangeMapCompletedRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void playerChangeMapCompleted(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    public static final
+        com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGateProtocol.getDescriptor().getServices().get(1);
+    }
+    public final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+
+    public final void callMethod(
+        com.google.protobuf.Descriptors.MethodDescriptor method,
+        com.google.protobuf.RpcController controller,
+        com.google.protobuf.Message request,
+        com.google.protobuf.RpcCallback<
+          com.google.protobuf.Message> done) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.callMethod() given method descriptor for wrong " +
+          "service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          this.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerGateProtocol.GateServerPong>specializeCallback(
+              done));
+          return;
+        case 1:
+          this.playBeginChangeMap(controller, (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
+        case 2:
+          this.playerChangeMapCompleted(controller, (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getRequestPrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getRequestPrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
+        case 2:
+          return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getResponsePrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getResponsePrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
+        case 1:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        case 2:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public static Stub newStub(
+        com.google.protobuf.RpcChannel channel) {
+      return new Stub(channel);
+    }
+
+    public static final class Stub extends com.mmo.server.ServerGateProtocol.GateServerService implements Interface {
+      private Stub(com.google.protobuf.RpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.RpcChannel channel;
+
+      public com.google.protobuf.RpcChannel getChannel() {
+        return channel;
+      }
+
+      public  void receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerGateProtocol.GateServerPong.class,
+            com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
+      }
+
+      public  void playBeginChangeMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.CommonProtocol.CommonResponse.class,
+            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+      }
+
+      public  void playerChangeMapCompleted(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(2),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.CommonProtocol.CommonResponse.class,
+            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+      }
+    }
+
+    public static BlockingInterface newBlockingStub(
+        com.google.protobuf.BlockingRpcChannel channel) {
+      return new BlockingStub(channel);
+    }
+
+    public interface BlockingInterface {
+      public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.GateServerPing request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request)
+          throws com.google.protobuf.ServiceException;
+    }
+
+    private static final class BlockingStub implements BlockingInterface {
+      private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.BlockingRpcChannel channel;
 
       public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerGateProtocol.GateServerPing request)
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.ServerGateProtocol.GateServerPong) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(4),
+          getDescriptor().getMethods().get(0),
           controller,
           request,
           com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance());
@@ -5406,7 +5353,7 @@ public final class ServerGateProtocol {
           com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request)
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(5),
+          getDescriptor().getMethods().get(1),
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
@@ -5418,7 +5365,7 @@ public final class ServerGateProtocol {
           com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request)
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(6),
+          getDescriptor().getMethods().get(2),
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
@@ -5426,7 +5373,7 @@ public final class ServerGateProtocol {
 
     }
 
-    // @@protoc_insertion_point(class_scope:EventDispatcher)
+    // @@protoc_insertion_point(class_scope:GateServerService)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
@@ -5496,20 +5443,21 @@ public final class ServerGateProtocol {
       "ntType\030\003 \001(\0162\r.MapEventType*f\n\014MapEventT" +
       "ype\022\021\n\rITEMMOVEEVENT\020\000\022\023\n\017ITEMCRAATEEVEN" +
       "T\020\001\022\024\n\020ITEMDESTROYEVENT\020\002\022\030\n\024CHARACTERCR" +
-      "EATEEVENT\020\0032\334\003\n\017EventDispatcher\0225\n\tmoveE" +
+      "EATEEVENT\020\0032\221\002\n\017EventDispatcher\0225\n\tmoveE" +
       "vent\022\025.ItemMoveEventRequest\032\017.CommonResp",
       "onse\"\000\022=\n\017createItemEvent\022\027.ItemCraateEv" +
       "entRequest\032\017.CommonResponse\"\000\022?\n\020destroy" +
       "ItemEvent\022\030.ItemDestroyEventRequest\032\017.Co" +
       "mmonResponse\"\000\022G\n\024createCharacterEvent\022\034" +
       ".CharacterCreateEventRequest\032\017.CommonRes" +
-      "ponse\"\000\0221\n\013receivePing\022\017.GateServerPing\032" +
-      "\017.GateServerPong\"\000\022E\n\022playBeginChangeMap" +
-      "\022\034.PlayerBeginChangeMapRequest\032\017.CommonR" +
-      "esponse\"\000\022O\n\030PlayerChangeMapCompleted\022 ." +
-      "PlayerChangeMapCompletedRequest\032\017.Common",
-      "Response\"\000B*\n\016com.mmo.serverB\022ServerGate" +
-      "Protocol\210\001\001\240\001\001b\006proto3"
+      "ponse\"\0002\336\001\n\021GateServerService\0221\n\013receive" +
+      "Ping\022\017.GateServerPing\032\017.GateServerPong\"\000" +
+      "\022E\n\022playBeginChangeMap\022\034.PlayerBeginChan" +
+      "geMapRequest\032\017.CommonResponse\"\000\022O\n\030Playe" +
+      "rChangeMapCompleted\022 .PlayerChangeMapCom",
+      "pletedRequest\032\017.CommonResponse\"\000B*\n\016com." +
+      "mmo.serverB\022ServerGateProtocol\210\001\001\240\001\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

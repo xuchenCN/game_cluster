@@ -63,33 +63,6 @@ public class EventDispatcherGrpc {
               "EventDispatcher", "createCharacterEvent"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
-  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.GateServerPing,
-      com.mmo.server.ServerGateProtocol.GateServerPong> METHOD_RECEIVE_PING =
-      io.grpc.MethodDescriptor.create(
-          io.grpc.MethodDescriptor.MethodType.UNARY,
-          generateFullMethodName(
-              "EventDispatcher", "receivePing"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance()),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
-  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest,
-      com.mmo.server.CommonProtocol.CommonResponse> METHOD_PLAY_BEGIN_CHANGE_MAP =
-      io.grpc.MethodDescriptor.create(
-          io.grpc.MethodDescriptor.MethodType.UNARY,
-          generateFullMethodName(
-              "EventDispatcher", "playBeginChangeMap"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance()),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
-  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest,
-      com.mmo.server.CommonProtocol.CommonResponse> METHOD_PLAYER_CHANGE_MAP_COMPLETED =
-      io.grpc.MethodDescriptor.create(
-          io.grpc.MethodDescriptor.MethodType.UNARY,
-          generateFullMethodName(
-              "EventDispatcher", "PlayerChangeMapCompleted"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance()),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -137,21 +110,6 @@ public class EventDispatcherGrpc {
      */
     public void createCharacterEvent(com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
-
-    /**
-     */
-    public void receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request,
-        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong> responseObserver);
-
-    /**
-     */
-    public void playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
-
-    /**
-     */
-    public void playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -181,24 +139,6 @@ public class EventDispatcherGrpc {
       asyncUnimplementedUnaryCall(METHOD_CREATE_CHARACTER_EVENT, responseObserver);
     }
 
-    @java.lang.Override
-    public void receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request,
-        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_RECEIVE_PING, responseObserver);
-    }
-
-    @java.lang.Override
-    public void playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PLAY_BEGIN_CHANGE_MAP, responseObserver);
-    }
-
-    @java.lang.Override
-    public void playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PLAYER_CHANGE_MAP_COMPLETED, responseObserver);
-    }
-
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
       return EventDispatcherGrpc.bindService(this);
     }
@@ -223,18 +163,6 @@ public class EventDispatcherGrpc {
     /**
      */
     public com.mmo.server.CommonProtocol.CommonResponse createCharacterEvent(com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request);
-
-    /**
-     */
-    public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request);
-
-    /**
-     */
-    public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request);
-
-    /**
-     */
-    public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request);
   }
 
   /**
@@ -260,21 +188,6 @@ public class EventDispatcherGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> createCharacterEvent(
         com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerGateProtocol.GateServerPong> receivePing(
-        com.mmo.server.ServerGateProtocol.GateServerPing request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playBeginChangeMap(
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playerChangeMapCompleted(
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request);
   }
 
   public static class EventDispatcherStub extends io.grpc.stub.AbstractStub<EventDispatcherStub>
@@ -321,27 +234,6 @@ public class EventDispatcherGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_CREATE_CHARACTER_EVENT, getCallOptions()), request, responseObserver);
     }
-
-    @java.lang.Override
-    public void receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request,
-        io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(METHOD_RECEIVE_PING, getCallOptions()), request, responseObserver);
-    }
-
-    @java.lang.Override
-    public void playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(METHOD_PLAY_BEGIN_CHANGE_MAP, getCallOptions()), request, responseObserver);
-    }
-
-    @java.lang.Override
-    public void playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(METHOD_PLAYER_CHANGE_MAP_COMPLETED, getCallOptions()), request, responseObserver);
-    }
   }
 
   public static class EventDispatcherBlockingStub extends io.grpc.stub.AbstractStub<EventDispatcherBlockingStub>
@@ -383,24 +275,6 @@ public class EventDispatcherGrpc {
     public com.mmo.server.CommonProtocol.CommonResponse createCharacterEvent(com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_CREATE_CHARACTER_EVENT, getCallOptions(), request);
-    }
-
-    @java.lang.Override
-    public com.mmo.server.ServerGateProtocol.GateServerPong receivePing(com.mmo.server.ServerGateProtocol.GateServerPing request) {
-      return blockingUnaryCall(
-          getChannel(), METHOD_RECEIVE_PING, getCallOptions(), request);
-    }
-
-    @java.lang.Override
-    public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request) {
-      return blockingUnaryCall(
-          getChannel(), METHOD_PLAY_BEGIN_CHANGE_MAP, getCallOptions(), request);
-    }
-
-    @java.lang.Override
-    public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request) {
-      return blockingUnaryCall(
-          getChannel(), METHOD_PLAYER_CHANGE_MAP_COMPLETED, getCallOptions(), request);
     }
   }
 
@@ -448,36 +322,12 @@ public class EventDispatcherGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_CREATE_CHARACTER_EVENT, getCallOptions()), request);
     }
-
-    @java.lang.Override
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerGateProtocol.GateServerPong> receivePing(
-        com.mmo.server.ServerGateProtocol.GateServerPing request) {
-      return futureUnaryCall(
-          getChannel().newCall(METHOD_RECEIVE_PING, getCallOptions()), request);
-    }
-
-    @java.lang.Override
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playBeginChangeMap(
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(METHOD_PLAY_BEGIN_CHANGE_MAP, getCallOptions()), request);
-    }
-
-    @java.lang.Override
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playerChangeMapCompleted(
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(METHOD_PLAYER_CHANGE_MAP_COMPLETED, getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_MOVE_EVENT = 0;
   private static final int METHODID_CREATE_ITEM_EVENT = 1;
   private static final int METHODID_DESTROY_ITEM_EVENT = 2;
   private static final int METHODID_CREATE_CHARACTER_EVENT = 3;
-  private static final int METHODID_RECEIVE_PING = 4;
-  private static final int METHODID_PLAY_BEGIN_CHANGE_MAP = 5;
-  private static final int METHODID_PLAYER_CHANGE_MAP_COMPLETED = 6;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -510,18 +360,6 @@ public class EventDispatcherGrpc {
           break;
         case METHODID_CREATE_CHARACTER_EVENT:
           serviceImpl.createCharacterEvent((com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest) request,
-              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
-          break;
-        case METHODID_RECEIVE_PING:
-          serviceImpl.receivePing((com.mmo.server.ServerGateProtocol.GateServerPing) request,
-              (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong>) responseObserver);
-          break;
-        case METHODID_PLAY_BEGIN_CHANGE_MAP:
-          serviceImpl.playBeginChangeMap((com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest) request,
-              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
-          break;
-        case METHODID_PLAYER_CHANGE_MAP_COMPLETED:
-          serviceImpl.playerChangeMapCompleted((com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         default:
@@ -571,27 +409,6 @@ public class EventDispatcherGrpc {
               com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_CREATE_CHARACTER_EVENT)))
-        .addMethod(
-          METHOD_RECEIVE_PING,
-          asyncUnaryCall(
-            new MethodHandlers<
-              com.mmo.server.ServerGateProtocol.GateServerPing,
-              com.mmo.server.ServerGateProtocol.GateServerPong>(
-                serviceImpl, METHODID_RECEIVE_PING)))
-        .addMethod(
-          METHOD_PLAY_BEGIN_CHANGE_MAP,
-          asyncUnaryCall(
-            new MethodHandlers<
-              com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest,
-              com.mmo.server.CommonProtocol.CommonResponse>(
-                serviceImpl, METHODID_PLAY_BEGIN_CHANGE_MAP)))
-        .addMethod(
-          METHOD_PLAYER_CHANGE_MAP_COMPLETED,
-          asyncUnaryCall(
-            new MethodHandlers<
-              com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest,
-              com.mmo.server.CommonProtocol.CommonResponse>(
-                serviceImpl, METHODID_PLAYER_CHANGE_MAP_COMPLETED)))
         .build();
   }
 }

@@ -2,8 +2,6 @@ package org.server.gate.net;
 
 import java.util.List;
 
-import org.server.gate.core.GateRecvMessage;
-
 import com.mmo.server.MessagesLocation.MessageRegistry;
 
 import io.netty.buffer.ByteBuf;

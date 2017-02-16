@@ -2,9 +2,13 @@ package org.server.gate;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.mmo.persistent.UserInfoPersistentService;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.CompositeService;
+import org.mmo.server.common.utils.Constants;
+import org.mmo.server.common.utils.ReflectionUtils;
 import org.server.gate.communicator.WorldServerCommunicator;
+import org.server.gate.core.AccountService;
 import org.server.gate.core.GateServerRouter;
 import org.server.gate.services.GateServerProcessor;
 
@@ -34,9 +38,19 @@ public class GateServer extends CompositeService {
 		WorldServerCommunicator worldServerCommunicator = new WorldServerCommunicator(globalContext.getWorldServerHost(),
 				globalContext.getWorldServerPort());
 		globalContext.setWorldServerCommunicator(worldServerCommunicator);
-
+		
+		UserInfoPersistentService userInfoPersistentService = createUserInfoPersistentService();
+		globalContext.setUserInfoPersistentService(userInfoPersistentService);
+		addIfService(userInfoPersistentService);
+		
+		AccountService accountService = new AccountService();
+		addIfService(accountService);
+		globalContext.setAccountService(accountService);
+		
 		gateServerRouter = new GateServerRouter(globalContext);
 		addIfService(gateServerRouter);
+		globalContext.setGateServerRouter(gateServerRouter);
+		
 		gateServerProcessor = new GateServerProcessor(globalContext);
 		addIfService(gateServerProcessor);
 
@@ -68,6 +82,24 @@ public class GateServer extends CompositeService {
 	protected void serviceStop() throws Exception {
 		// TODO Auto-generated method stub
 		super.serviceStop();
+	}
+
+	protected UserInfoPersistentService createUserInfoPersistentService() {
+		String persistentClassName = getConfig().get(Constants.USER_INFO_PERSISTENT_SERVICE_CALSS,
+				Constants.USER_INFO_PERSISTENT_SERVICE_CALSS_DEFAULT);
+
+		LOG.info("Using persistentClassName: " + persistentClassName);
+		try {
+			Class<?> serviceClass = Class.forName(persistentClassName);
+			if (UserInfoPersistentService.class.isAssignableFrom(serviceClass)) {
+				return (UserInfoPersistentService) ReflectionUtils.newInstance(serviceClass);
+			} else {
+				throw new RuntimeException(
+						"Class: " + persistentClassName + " not instance of " + UserInfoPersistentService.class.getCanonicalName());
+			}
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException("Could not instantiate persistentClass: " + persistentClassName, e);
+		}
 	}
 
 }

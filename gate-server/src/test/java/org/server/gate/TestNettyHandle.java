@@ -1,7 +1,7 @@
 package org.server.gate;
 
-import org.server.gate.core.GateRecvMessage;
 import org.server.gate.net.FlexiblePBDecoder;
+import org.server.gate.net.GateRecvMessage;
 
 import com.mmo.server.MessagesLocation.MessageRegistry;
 import com.mmo.server.ServerClientProtocol.UserLoginRequest;

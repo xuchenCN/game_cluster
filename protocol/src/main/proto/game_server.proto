@@ -31,9 +31,12 @@ message GameServerPong {
 
 /* Services Definition */
 
+service GameServerService {
+	rpc receivePing (GameServerPing) returns (GameServerPong) {}
+}
+
 service UserRegionService {
 	rpc userArrivedRegion (UserArrivedRegionRequest) returns (CommonResponse) {}
-	rpc receivePing (GameServerPing) returns (GameServerPong) {}
 }
 
 service CharacterService {
