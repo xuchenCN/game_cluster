@@ -4,11 +4,11 @@ import com.mmo.server.MessagesLocation.MessageRegistry;
 
 import io.netty.buffer.ByteBuf;
 
-public class GateRecvMessage {
+public class GateClientMessage {
 	public MessageRegistry messageId;
 	public ByteBuf body;
 
-	public GateRecvMessage(MessageRegistry messageId, ByteBuf message) {
+	public GateClientMessage(MessageRegistry messageId, ByteBuf message) {
 		this.messageId = messageId;
 		this.body = message;
 	}

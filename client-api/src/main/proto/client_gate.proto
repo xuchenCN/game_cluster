@@ -14,71 +14,71 @@ enum LoginCode {
    	NOT_EXIST = 3;
 }
 
-enum CommonStat {
+enum ClientCommonStat {
 	OK = 0;
 	ERROR = 1;
 }
 
-enum ItemType {
+enum ClientItemType {
 	BUILD = 0;
 	MATERIAL = 1;
 }
 
 /* Basically Informations */
 
-message Position {
+message ClientPosition {
 	required int32 posX = 1;
 	required int32 posY = 2;
 	required int32 posZ = 3;
 	
 }
 
-message ModInfo {
+message ClientModInfo {
 	required int32 modId = 1;
 	required int32 motion = 2;
 	required int32 orientation = 3;
 }
 
-message MotionInfo {
+message ClientMotionInfo {
 	required int32 motion = 1;
 	required int32 effect = 2;
 	required float speed = 3;
 }
 
-message SurvivalInfo {
+message ClientSurvivalInfo {
 	required int32 hearth = 1;
 	required int32 hungry = 2;
 	required int32 tired = 3;
 }
 
-message IdentifyInfo {
+message ClientIdentifyInfo {
 	required string ID = 1;
 	required string name = 2;
-	required ItemType type = 3;
+	required ClientItemType type = 3;
 }
 
 /* Basically Objects */
 
-message Item {
-	required IdentifyInfo identify = 1;
-	required Position position = 2;
-	required ModInfo modInfo = 3;
-	required SurvivalInfo survivalInfo= 4;
+message ClientItem {
+	required ClientIdentifyInfo identify = 1;
+	required ClientPosition position = 2;
+	required ClientModInfo modInfo = 3;
+	required ClientSurvivalInfo survivalInfo= 4;
 }
 
 
-message Character {
-	required IdentifyInfo identify = 1;
-	required Position position = 2;
-	required ModInfo modInfo = 3;
-	required SurvivalInfo survivalInfo= 4;
+message ClientCharacter {
+	required ClientIdentifyInfo identify = 1;
+	required ClientPosition position = 2;
+	required ClientModInfo modInfo = 3;
+	required ClientSurvivalInfo survivalInfo= 4;
 }
 
 
 /* Accounts */
 
 message ClientCommonResponse {
-	required CommonStat stat = 1;
+	required ClientCommonStat stat = 1;
 }
 
 
@@ -105,7 +105,7 @@ message GetCharacterInfoRequest {
 }
 
 message GetCharacterInfoResponse {
-	required Character character = 1;
+	required ClientCharacter character = 1;
 }
 
 message CharacterEnterRequest {
@@ -115,35 +115,35 @@ message CharacterEnterRequest {
 
 /* Item Events */
 
-message ItemMoveEvent {
-	repeated IdentifyInfo identify = 1;
-	repeated Position fromPos = 2;
-	repeated Position toPos = 3;
-	repeated float speed = 4;
-	repeated MotionInfo playMotion = 5;
+message ClientItemMoveEvent {
+	required ClientIdentifyInfo identify = 1;
+	required ClientPosition fromPos = 2;
+	required ClientPosition toPos = 3;
+	required float speed = 4;
+	required ClientMotionInfo playMotion = 5;
 }
 
-message ItemCraateEvent {
-	repeated Item item = 1;
+message ClientItemCraateEvent {
+	required ClientItem item = 1;
 }
 
-message ItemDestroyEvent {
-	repeated IdentifyInfo identify = 1;
+message ClientItemDestroyEvent {
+	required ClientIdentifyInfo identify = 1;
 }
 
 /* Character Event */
 
-message CharacterCreateEvent {
-	repeated Character character = 1;
+message ClientCharacterCreateEvent {
+	required ClientCharacter character = 1;
 }
 
 
 /* Controls */
 
 
-message CharacterMove {
+message ClientCharacterMove {
 	required string ticket = 1;
-	required Position toPos = 2;
+	required ClientPosition toPos = 2;
 }
 
 
@@ -156,5 +156,5 @@ service ServerGateService {
 }
 
 service ClientSideService {
-	rpc moveTo (CharacterMove) returns (ClientCommonResponse) {}
+	rpc moveTo (ClientCharacterMove) returns (ClientCommonResponse) {}
 }

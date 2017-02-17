@@ -1,19 +1,34 @@
 package org.server.gate.net;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 import java.util.stream.IntStream;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.mmo.server.common.utils.Constants;
 import org.server.gate.GateServerContext;
+import org.server.gate.core.GateSendMessge;
 import org.server.gate.core.InstructionEvent;
+import org.server.gate.utils.ExecutorExceptionHandler;
 
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mmo.server.CommonProtocol.ItemMoveEvent;
 import com.mmo.server.CommonProtocol.Position;
 import com.mmo.server.MessagesLocation.MessageRegistry;
 import com.mmo.server.ServerClientProtocol;
-import com.mmo.server.ServerClientProtocol.CharacterMove;
+import com.mmo.server.ServerClientProtocol.ClientCharacterMove;
 import com.mmo.server.ServerClientProtocol.LoginCode;
 import com.mmo.server.ServerClientProtocol.UserLoginRequest;
 import com.mmo.server.ServerClientProtocol.UserLoginResponse;
 import com.mmo.server.ServerGameProtocol.CharacterMoveReq;
+import com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest;
+import com.mmo.server.ServerGateProtocol.ItemMoveEventRequest;
+import com.mmo.server.ServerGateProtocol.MapEventType;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
@@ -22,15 +37,29 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 
 public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
+	private static final Log LOG = LogFactory.getLog(GateNettyHandler.class);
+
 	private GateServerContext gateServerContext;
+
+	private ExecutorService sendThreadPool;
+
+	private volatile boolean shouldRun;
+
+	private Map<Integer, Map<Integer, Channel>> mapIdToUid = new HashMap<Integer, Map<Integer, Channel>>();
 
 	public GateNettyHandler(GateServerContext gateServerContext) {
 		this.gateServerContext = gateServerContext;
+		sendThreadPool = Executors.newFixedThreadPool(
+				gateServerContext.getConfig().getInt(Constants.GATE_SERVER_RECV_POOL_SIZE,
+						Constants.GATE_SERVER_RECV_POOL_SIZE_DEFAULT),
+				new ThreadFactoryBuilder().setNameFormat("RecvMessagePool #%d")
+						.setUncaughtExceptionHandler(new ExecutorExceptionHandler(this)).build());
 	}
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		System.out.println("channelActive " + ctx.channel().remoteAddress());
+
 	}
 
 	@Override
@@ -56,7 +85,7 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		GateRecvMessage message = (GateRecvMessage) msg;
+		GateClientMessage message = (GateClientMessage) msg;
 
 		switch (message.messageId.getNumber()) {
 
@@ -65,8 +94,18 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 					.decode(UserLoginRequest.getDefaultInstance(), null, message.body);
 
 			UserLoginResponse response = gateServerContext.getAccountService().userLogin(userLoginRequest);
+			if (response.getCode() == LoginCode.SUC) {
+				int uid = gateServerContext.getAccountService().getUidByTicket(response.getTicket());
+				int mapId = gateServerContext.getAccountService().getMapIdByTicket(response.getTicket());
+				Map<Integer, Channel> uid2Channel = mapIdToUid.get(mapId);
+				if (uid2Channel == null) {
+					uid2Channel = new HashMap<Integer, Channel>();
+				}
+				uid2Channel.put(uid, ctx.channel());
+				mapIdToUid.put(mapId, uid2Channel);
+			}
 
-			GateRecvMessage responseMes = new GateRecvMessage(MessageRegistry.USERLOGINRESPONSE,
+			GateClientMessage responseMes = new GateClientMessage(MessageRegistry.USERLOGINRESPONSE,
 					Unpooled.wrappedBuffer(response.toByteArray()));
 			ctx.writeAndFlush(responseMes);
 
@@ -80,7 +119,7 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 			break;
 
 		case MessageRegistry.CHARACTERMOVE_VALUE:
-			CharacterMove characterMove = (CharacterMove) FlexiblePBDecoder.decode(UserLoginRequest.getDefaultInstance(),
+			ClientCharacterMove characterMove = (ClientCharacterMove) FlexiblePBDecoder.decode(ClientCharacterMove.getDefaultInstance(),
 					null, message.body);
 
 			int mapId = gateServerContext.getAccountService().getMapIdByTicket(characterMove.getTicket());
@@ -92,9 +131,9 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 			InstructionEvent instructionEvent = new InstructionEvent(uid, mapId, MessageRegistry.CHARACTERMOVE,
 					characterMoveReq);
-			
+
 			gateServerContext.getGateServerRouter().receiveMessage(instructionEvent);
-			
+
 			break;
 		}
 	}
@@ -105,8 +144,41 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 		ctx.close();
 	}
 
+	private GateClientMessage messageConverter(GateSendMessge gateSendMessge) {
+		switch (gateSendMessge.getType().getNumber()) {
+		case MapEventType.CHARACTERCREATEEVENT_VALUE:
+			CharacterCreateEventRequest characterCreateEventRequest = (CharacterCreateEventRequest) gateSendMessge
+					.getMessage();
+			
+//			CharacterCreateEvent characterCreateEvent = CharacterCreateEvent.newBuilder()
+//					.setCharacter().build();
+//			
+//			return new GateClientMessage(MessageRegistry.CHARACTERCREATEEVENT,
+//					Unpooled.wrappedBuffer(characterCreateEvent.toByteArray()));
+		case MapEventType.ITEMMOVEEVENT_VALUE:
+			ItemMoveEventRequest itemMoveEventRequest = (ItemMoveEventRequest) gateSendMessge.getMessage();
+			ItemMoveEvent itemMoveEvent = ItemMoveEvent.newBuilder()
+					.setIdentify(itemMoveEventRequest.getEvent().getIdentify())
+					.setFromPos(itemMoveEventRequest.getEvent().getFromPos()).setToPos(itemMoveEventRequest.getEvent().getToPos())
+					.setSpeed(itemMoveEventRequest.getEvent().getSpeed())
+					.setPlayMotion(itemMoveEventRequest.getEvent().getPlayMotion()).build();
+			
+			return new GateClientMessage(MessageRegistry.ITEMMOVEEVENT, Unpooled.wrappedBuffer(itemMoveEvent.toByteArray()));
+
+		case MapEventType.ITEMCRAATEEVENT_VALUE:
+//			ItemCraateEventRequest itemCraateEventRequest = (ItemCraateEventRequest)gateSendMessge.getMessage();
+//			ItemCraateEvent itemCraateEvent = ItemCraateEvent.newBuilder().setItem(itemCraateEventRequest.getEvent().getItem()).
+			break;
+		case MapEventType.ITEMDESTROYEVENT_VALUE:
+			break;
+		default:
+			break;
+		}
+		return null;
+	}
+
 	private void testResp(ChannelHandlerContext ctx, Object msg) throws Exception {
-		GateRecvMessage message = (GateRecvMessage) msg;
+		GateClientMessage message = (GateClientMessage) msg;
 
 		System.out.println(message.messageId);
 		System.out.println(message.body);
@@ -123,7 +195,7 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 				ServerClientProtocol.UserLoginResponse resp = ServerClientProtocol.UserLoginResponse.newBuilder()
 						.setCode(LoginCode.SUC).setTicket(Thread.currentThread().getName() + " " + n).build();
 
-				GateRecvMessage responseMes = new GateRecvMessage(MessageRegistry.USERLOGINRESPONSE,
+				GateClientMessage responseMes = new GateClientMessage(MessageRegistry.USERLOGINRESPONSE,
 						Unpooled.wrappedBuffer(resp.toByteArray()));
 				ctx.writeAndFlush(responseMes);
 
@@ -131,10 +203,32 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 		});
 	}
-	
-	class UidChannelPair {
-		Channel channel;
-		int uid;
+
+	class SendMessageActor implements Runnable {
+
+		@Override
+		public void run() {
+			while (shouldRun && !Thread.interrupted()) {
+				try {
+					GateSendMessge gateSendMessge = gateServerContext.getGateServerRouter().pullSendQueue();
+					List<Integer> effects = gateSendMessge.getEffects();
+					boolean isEffects = effects == null || effects.isEmpty();
+					Map<Integer, Channel> uid2Channel = mapIdToUid.get(gateSendMessge.getMapId());
+					if (uid2Channel != null && !uid2Channel.isEmpty()) {
+						uid2Channel.entrySet().stream().filter(map -> isEffects && effects.contains(map.getKey()))
+								.forEach(entry -> {
+
+								});
+					}
+
+				} catch (Exception e) {
+
+				}
+			}
+		}
+
 	}
+	
+	
 
 }

@@ -11,10 +11,10 @@ import io.netty.handler.codec.MessageToByteEncoder;
  * body-length -> messageId -> body
  *
  */
-public class GateProtoEncoder extends MessageToByteEncoder<GateRecvMessage> {
+public class GateProtoEncoder extends MessageToByteEncoder<GateClientMessage> {
 
 	@Override
-	protected void encode(ChannelHandlerContext ctx, GateRecvMessage msg, ByteBuf out) throws Exception {
+	protected void encode(ChannelHandlerContext ctx, GateClientMessage msg, ByteBuf out) throws Exception {
 		int bodyLen = msg.body.readableBytes();
 		int headerLen = computeRawVarint32Size(bodyLen);
 		int msgIdLen = computeRawVarint32Size(msg.messageId.getNumber());

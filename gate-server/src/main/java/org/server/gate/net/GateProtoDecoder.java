@@ -37,7 +37,7 @@ public class GateProtoDecoder extends ByteToMessageDecoder {
 		if (in.readableBytes() < length) {
 			in.resetReaderIndex();
 		} else {
-			GateRecvMessage message = new GateRecvMessage(messageR, in.readRetainedSlice(length));
+			GateClientMessage message = new GateClientMessage(messageR, in.readRetainedSlice(length));
 			out.add(message);
 		}
 	}

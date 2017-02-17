@@ -826,6 +826,11 @@ public final class ServerGateProtocol {
      * <code>optional .Position toPos = 3;</code>
      */
     com.mmo.server.CommonProtocol.PositionOrBuilder getToPosOrBuilder();
+
+    /**
+     * <code>optional int32 uid = 4;</code>
+     */
+    int getUid();
   }
   /**
    * Protobuf type {@code PlayerBeginChangeMapRequest}
@@ -841,6 +846,7 @@ public final class ServerGateProtocol {
     private PlayerBeginChangeMapRequest() {
       from_ = 0;
       to_ = 0;
+      uid_ = 0;
     }
 
     @java.lang.Override
@@ -889,6 +895,11 @@ public final class ServerGateProtocol {
                 toPos_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 32: {
+
+              uid_ = input.readInt32();
               break;
             }
           }
@@ -953,6 +964,15 @@ public final class ServerGateProtocol {
       return getToPos();
     }
 
+    public static final int UID_FIELD_NUMBER = 4;
+    private int uid_;
+    /**
+     * <code>optional int32 uid = 4;</code>
+     */
+    public int getUid() {
+      return uid_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -974,6 +994,9 @@ public final class ServerGateProtocol {
       if (toPos_ != null) {
         output.writeMessage(3, getToPos());
       }
+      if (uid_ != 0) {
+        output.writeInt32(4, uid_);
+      }
     }
 
     public int getSerializedSize() {
@@ -992,6 +1015,10 @@ public final class ServerGateProtocol {
       if (toPos_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getToPos());
+      }
+      if (uid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, uid_);
       }
       memoizedSize = size;
       return size;
@@ -1018,6 +1045,8 @@ public final class ServerGateProtocol {
         result = result && getToPos()
             .equals(other.getToPos());
       }
+      result = result && (getUid()
+          == other.getUid());
       return result;
     }
 
@@ -1036,6 +1065,8 @@ public final class ServerGateProtocol {
         hash = (37 * hash) + TOPOS_FIELD_NUMBER;
         hash = (53 * hash) + getToPos().hashCode();
       }
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1163,6 +1194,8 @@ public final class ServerGateProtocol {
           toPos_ = null;
           toPosBuilder_ = null;
         }
+        uid_ = 0;
+
         return this;
       }
 
@@ -1192,6 +1225,7 @@ public final class ServerGateProtocol {
         } else {
           result.toPos_ = toPosBuilder_.build();
         }
+        result.uid_ = uid_;
         onBuilt();
         return result;
       }
@@ -1215,6 +1249,9 @@ public final class ServerGateProtocol {
         }
         if (other.hasToPos()) {
           mergeToPos(other.getToPos());
+        }
+        if (other.getUid() != 0) {
+          setUid(other.getUid());
         }
         onChanged();
         return this;
@@ -1409,6 +1446,32 @@ public final class ServerGateProtocol {
           toPos_ = null;
         }
         return toPosBuilder_;
+      }
+
+      private int uid_ ;
+      /**
+       * <code>optional int32 uid = 4;</code>
+       */
+      public int getUid() {
+        return uid_;
+      }
+      /**
+       * <code>optional int32 uid = 4;</code>
+       */
+      public Builder setUid(int value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 uid = 4;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0;
+        onChanged();
+        return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1827,6 +1890,19 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     com.mmo.server.ServerGateProtocol.MapEventType getEventType();
+
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    java.util.List<java.lang.Integer> getEffectsList();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffectsCount();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffects(int index);
   }
   /**
    * <pre>
@@ -1846,6 +1922,7 @@ public final class ServerGateProtocol {
     private ItemMoveEventRequest() {
       mapId_ = 0;
       eventType_ = 0;
+      effects_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1897,6 +1974,27 @@ public final class ServerGateProtocol {
               eventType_ = rawValue;
               break;
             }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              effects_.add(input.readInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                effects_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1905,6 +2003,9 @@ public final class ServerGateProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -1920,6 +2021,7 @@ public final class ServerGateProtocol {
               com.mmo.server.ServerGateProtocol.ItemMoveEventRequest.class, com.mmo.server.ServerGateProtocol.ItemMoveEventRequest.Builder.class);
     }
 
+    private int bitField0_;
     public static final int MAPID_FIELD_NUMBER = 1;
     private int mapId_;
     /**
@@ -1966,6 +2068,29 @@ public final class ServerGateProtocol {
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
+    public static final int EFFECTS_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> effects_;
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getEffectsList() {
+      return effects_;
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffectsCount() {
+      return effects_.size();
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffects(int index) {
+      return effects_.get(index);
+    }
+    private int effectsMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1978,6 +2103,7 @@ public final class ServerGateProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (mapId_ != 0) {
         output.writeInt32(1, mapId_);
       }
@@ -1986,6 +2112,13 @@ public final class ServerGateProtocol {
       }
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         output.writeEnum(3, eventType_);
+      }
+      if (getEffectsList().size() > 0) {
+        output.writeRawVarint32(34);
+        output.writeRawVarint32(effectsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < effects_.size(); i++) {
+        output.writeInt32NoTag(effects_.get(i));
       }
     }
 
@@ -2005,6 +2138,20 @@ public final class ServerGateProtocol {
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, eventType_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < effects_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(effects_.get(i));
+        }
+        size += dataSize;
+        if (!getEffectsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        effectsMemoizedSerializedSize = dataSize;
       }
       memoizedSize = size;
       return size;
@@ -2030,6 +2177,8 @@ public final class ServerGateProtocol {
             .equals(other.getEvent());
       }
       result = result && eventType_ == other.eventType_;
+      result = result && getEffectsList()
+          .equals(other.getEffectsList());
       return result;
     }
 
@@ -2048,6 +2197,10 @@ public final class ServerGateProtocol {
       }
       hash = (37 * hash) + EVENTTYPE_FIELD_NUMBER;
       hash = (53 * hash) + eventType_;
+      if (getEffectsCount() > 0) {
+        hash = (37 * hash) + EFFECTS_FIELD_NUMBER;
+        hash = (53 * hash) + getEffectsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2179,6 +2332,8 @@ public final class ServerGateProtocol {
         }
         eventType_ = 0;
 
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -2201,6 +2356,8 @@ public final class ServerGateProtocol {
 
       public com.mmo.server.ServerGateProtocol.ItemMoveEventRequest buildPartial() {
         com.mmo.server.ServerGateProtocol.ItemMoveEventRequest result = new com.mmo.server.ServerGateProtocol.ItemMoveEventRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.mapId_ = mapId_;
         if (eventBuilder_ == null) {
           result.event_ = event_;
@@ -2208,6 +2365,12 @@ public final class ServerGateProtocol {
           result.event_ = eventBuilder_.build();
         }
         result.eventType_ = eventType_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.effects_ = effects_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2231,6 +2394,16 @@ public final class ServerGateProtocol {
         }
         if (other.eventType_ != 0) {
           setEventTypeValue(other.getEventTypeValue());
+        }
+        if (!other.effects_.isEmpty()) {
+          if (effects_.isEmpty()) {
+            effects_ = other.effects_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureEffectsIsMutable();
+            effects_.addAll(other.effects_);
+          }
+          onChanged();
         }
         onChanged();
         return this;
@@ -2257,6 +2430,7 @@ public final class ServerGateProtocol {
         }
         return this;
       }
+      private int bitField0_;
 
       private int mapId_ ;
       /**
@@ -2444,6 +2618,72 @@ public final class ServerGateProtocol {
         onChanged();
         return this;
       }
+
+      private java.util.List<java.lang.Integer> effects_ = java.util.Collections.emptyList();
+      private void ensureEffectsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = new java.util.ArrayList<java.lang.Integer>(effects_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getEffectsList() {
+        return java.util.Collections.unmodifiableList(effects_);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffectsCount() {
+        return effects_.size();
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffects(int index) {
+        return effects_.get(index);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder setEffects(
+          int index, int value) {
+        ensureEffectsIsMutable();
+        effects_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addEffects(int value) {
+        ensureEffectsIsMutable();
+        effects_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addAllEffects(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureEffectsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, effects_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder clearEffects() {
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -2523,6 +2763,19 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     com.mmo.server.ServerGateProtocol.MapEventType getEventType();
+
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    java.util.List<java.lang.Integer> getEffectsList();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffectsCount();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffects(int index);
   }
   /**
    * Protobuf type {@code ItemCraateEventRequest}
@@ -2538,6 +2791,7 @@ public final class ServerGateProtocol {
     private ItemCraateEventRequest() {
       mapId_ = 0;
       eventType_ = 0;
+      effects_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2589,6 +2843,27 @@ public final class ServerGateProtocol {
               eventType_ = rawValue;
               break;
             }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              effects_.add(input.readInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                effects_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2597,6 +2872,9 @@ public final class ServerGateProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -2612,6 +2890,7 @@ public final class ServerGateProtocol {
               com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.class, com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.Builder.class);
     }
 
+    private int bitField0_;
     public static final int MAPID_FIELD_NUMBER = 1;
     private int mapId_;
     /**
@@ -2658,6 +2937,29 @@ public final class ServerGateProtocol {
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
+    public static final int EFFECTS_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> effects_;
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getEffectsList() {
+      return effects_;
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffectsCount() {
+      return effects_.size();
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffects(int index) {
+      return effects_.get(index);
+    }
+    private int effectsMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2670,6 +2972,7 @@ public final class ServerGateProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (mapId_ != 0) {
         output.writeInt32(1, mapId_);
       }
@@ -2678,6 +2981,13 @@ public final class ServerGateProtocol {
       }
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         output.writeEnum(3, eventType_);
+      }
+      if (getEffectsList().size() > 0) {
+        output.writeRawVarint32(34);
+        output.writeRawVarint32(effectsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < effects_.size(); i++) {
+        output.writeInt32NoTag(effects_.get(i));
       }
     }
 
@@ -2697,6 +3007,20 @@ public final class ServerGateProtocol {
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, eventType_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < effects_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(effects_.get(i));
+        }
+        size += dataSize;
+        if (!getEffectsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        effectsMemoizedSerializedSize = dataSize;
       }
       memoizedSize = size;
       return size;
@@ -2722,6 +3046,8 @@ public final class ServerGateProtocol {
             .equals(other.getEvent());
       }
       result = result && eventType_ == other.eventType_;
+      result = result && getEffectsList()
+          .equals(other.getEffectsList());
       return result;
     }
 
@@ -2740,6 +3066,10 @@ public final class ServerGateProtocol {
       }
       hash = (37 * hash) + EVENTTYPE_FIELD_NUMBER;
       hash = (53 * hash) + eventType_;
+      if (getEffectsCount() > 0) {
+        hash = (37 * hash) + EFFECTS_FIELD_NUMBER;
+        hash = (53 * hash) + getEffectsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2867,6 +3197,8 @@ public final class ServerGateProtocol {
         }
         eventType_ = 0;
 
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -2889,6 +3221,8 @@ public final class ServerGateProtocol {
 
       public com.mmo.server.ServerGateProtocol.ItemCraateEventRequest buildPartial() {
         com.mmo.server.ServerGateProtocol.ItemCraateEventRequest result = new com.mmo.server.ServerGateProtocol.ItemCraateEventRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.mapId_ = mapId_;
         if (eventBuilder_ == null) {
           result.event_ = event_;
@@ -2896,6 +3230,12 @@ public final class ServerGateProtocol {
           result.event_ = eventBuilder_.build();
         }
         result.eventType_ = eventType_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.effects_ = effects_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2919,6 +3259,16 @@ public final class ServerGateProtocol {
         }
         if (other.eventType_ != 0) {
           setEventTypeValue(other.getEventTypeValue());
+        }
+        if (!other.effects_.isEmpty()) {
+          if (effects_.isEmpty()) {
+            effects_ = other.effects_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureEffectsIsMutable();
+            effects_.addAll(other.effects_);
+          }
+          onChanged();
         }
         onChanged();
         return this;
@@ -2945,6 +3295,7 @@ public final class ServerGateProtocol {
         }
         return this;
       }
+      private int bitField0_;
 
       private int mapId_ ;
       /**
@@ -3132,6 +3483,72 @@ public final class ServerGateProtocol {
         onChanged();
         return this;
       }
+
+      private java.util.List<java.lang.Integer> effects_ = java.util.Collections.emptyList();
+      private void ensureEffectsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = new java.util.ArrayList<java.lang.Integer>(effects_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getEffectsList() {
+        return java.util.Collections.unmodifiableList(effects_);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffectsCount() {
+        return effects_.size();
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffects(int index) {
+        return effects_.get(index);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder setEffects(
+          int index, int value) {
+        ensureEffectsIsMutable();
+        effects_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addEffects(int value) {
+        ensureEffectsIsMutable();
+        effects_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addAllEffects(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureEffectsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, effects_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder clearEffects() {
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -3211,6 +3628,19 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     com.mmo.server.ServerGateProtocol.MapEventType getEventType();
+
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    java.util.List<java.lang.Integer> getEffectsList();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffectsCount();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffects(int index);
   }
   /**
    * Protobuf type {@code ItemDestroyEventRequest}
@@ -3226,6 +3656,7 @@ public final class ServerGateProtocol {
     private ItemDestroyEventRequest() {
       mapId_ = 0;
       eventType_ = 0;
+      effects_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -3277,6 +3708,27 @@ public final class ServerGateProtocol {
               eventType_ = rawValue;
               break;
             }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              effects_.add(input.readInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                effects_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3285,6 +3737,9 @@ public final class ServerGateProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -3300,6 +3755,7 @@ public final class ServerGateProtocol {
               com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest.class, com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest.Builder.class);
     }
 
+    private int bitField0_;
     public static final int MAPID_FIELD_NUMBER = 1;
     private int mapId_;
     /**
@@ -3346,6 +3802,29 @@ public final class ServerGateProtocol {
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
+    public static final int EFFECTS_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> effects_;
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getEffectsList() {
+      return effects_;
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffectsCount() {
+      return effects_.size();
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffects(int index) {
+      return effects_.get(index);
+    }
+    private int effectsMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3358,6 +3837,7 @@ public final class ServerGateProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (mapId_ != 0) {
         output.writeInt32(1, mapId_);
       }
@@ -3366,6 +3846,13 @@ public final class ServerGateProtocol {
       }
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         output.writeEnum(3, eventType_);
+      }
+      if (getEffectsList().size() > 0) {
+        output.writeRawVarint32(34);
+        output.writeRawVarint32(effectsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < effects_.size(); i++) {
+        output.writeInt32NoTag(effects_.get(i));
       }
     }
 
@@ -3385,6 +3872,20 @@ public final class ServerGateProtocol {
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, eventType_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < effects_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(effects_.get(i));
+        }
+        size += dataSize;
+        if (!getEffectsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        effectsMemoizedSerializedSize = dataSize;
       }
       memoizedSize = size;
       return size;
@@ -3410,6 +3911,8 @@ public final class ServerGateProtocol {
             .equals(other.getEvent());
       }
       result = result && eventType_ == other.eventType_;
+      result = result && getEffectsList()
+          .equals(other.getEffectsList());
       return result;
     }
 
@@ -3428,6 +3931,10 @@ public final class ServerGateProtocol {
       }
       hash = (37 * hash) + EVENTTYPE_FIELD_NUMBER;
       hash = (53 * hash) + eventType_;
+      if (getEffectsCount() > 0) {
+        hash = (37 * hash) + EFFECTS_FIELD_NUMBER;
+        hash = (53 * hash) + getEffectsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3555,6 +4062,8 @@ public final class ServerGateProtocol {
         }
         eventType_ = 0;
 
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -3577,6 +4086,8 @@ public final class ServerGateProtocol {
 
       public com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest buildPartial() {
         com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest result = new com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.mapId_ = mapId_;
         if (eventBuilder_ == null) {
           result.event_ = event_;
@@ -3584,6 +4095,12 @@ public final class ServerGateProtocol {
           result.event_ = eventBuilder_.build();
         }
         result.eventType_ = eventType_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.effects_ = effects_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3607,6 +4124,16 @@ public final class ServerGateProtocol {
         }
         if (other.eventType_ != 0) {
           setEventTypeValue(other.getEventTypeValue());
+        }
+        if (!other.effects_.isEmpty()) {
+          if (effects_.isEmpty()) {
+            effects_ = other.effects_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureEffectsIsMutable();
+            effects_.addAll(other.effects_);
+          }
+          onChanged();
         }
         onChanged();
         return this;
@@ -3633,6 +4160,7 @@ public final class ServerGateProtocol {
         }
         return this;
       }
+      private int bitField0_;
 
       private int mapId_ ;
       /**
@@ -3820,6 +4348,72 @@ public final class ServerGateProtocol {
         onChanged();
         return this;
       }
+
+      private java.util.List<java.lang.Integer> effects_ = java.util.Collections.emptyList();
+      private void ensureEffectsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = new java.util.ArrayList<java.lang.Integer>(effects_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getEffectsList() {
+        return java.util.Collections.unmodifiableList(effects_);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffectsCount() {
+        return effects_.size();
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffects(int index) {
+        return effects_.get(index);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder setEffects(
+          int index, int value) {
+        ensureEffectsIsMutable();
+        effects_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addEffects(int value) {
+        ensureEffectsIsMutable();
+        effects_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addAllEffects(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureEffectsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, effects_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder clearEffects() {
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -3899,6 +4493,19 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     com.mmo.server.ServerGateProtocol.MapEventType getEventType();
+
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    java.util.List<java.lang.Integer> getEffectsList();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffectsCount();
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    int getEffects(int index);
   }
   /**
    * Protobuf type {@code CharacterCreateEventRequest}
@@ -3914,6 +4521,7 @@ public final class ServerGateProtocol {
     private CharacterCreateEventRequest() {
       mapId_ = 0;
       eventType_ = 0;
+      effects_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -3965,6 +4573,27 @@ public final class ServerGateProtocol {
               eventType_ = rawValue;
               break;
             }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              effects_.add(input.readInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                effects_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                effects_.add(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3973,6 +4602,9 @@ public final class ServerGateProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -3988,6 +4620,7 @@ public final class ServerGateProtocol {
               com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest.class, com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest.Builder.class);
     }
 
+    private int bitField0_;
     public static final int MAPID_FIELD_NUMBER = 1;
     private int mapId_;
     /**
@@ -4034,6 +4667,29 @@ public final class ServerGateProtocol {
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
+    public static final int EFFECTS_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> effects_;
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getEffectsList() {
+      return effects_;
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffectsCount() {
+      return effects_.size();
+    }
+    /**
+     * <code>repeated int32 effects = 4;</code>
+     */
+    public int getEffects(int index) {
+      return effects_.get(index);
+    }
+    private int effectsMemoizedSerializedSize = -1;
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4046,6 +4702,7 @@ public final class ServerGateProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (mapId_ != 0) {
         output.writeInt32(1, mapId_);
       }
@@ -4054,6 +4711,13 @@ public final class ServerGateProtocol {
       }
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         output.writeEnum(3, eventType_);
+      }
+      if (getEffectsList().size() > 0) {
+        output.writeRawVarint32(34);
+        output.writeRawVarint32(effectsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < effects_.size(); i++) {
+        output.writeInt32NoTag(effects_.get(i));
       }
     }
 
@@ -4073,6 +4737,20 @@ public final class ServerGateProtocol {
       if (eventType_ != com.mmo.server.ServerGateProtocol.MapEventType.ITEMMOVEEVENT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, eventType_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < effects_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(effects_.get(i));
+        }
+        size += dataSize;
+        if (!getEffectsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        effectsMemoizedSerializedSize = dataSize;
       }
       memoizedSize = size;
       return size;
@@ -4098,6 +4776,8 @@ public final class ServerGateProtocol {
             .equals(other.getEvent());
       }
       result = result && eventType_ == other.eventType_;
+      result = result && getEffectsList()
+          .equals(other.getEffectsList());
       return result;
     }
 
@@ -4116,6 +4796,10 @@ public final class ServerGateProtocol {
       }
       hash = (37 * hash) + EVENTTYPE_FIELD_NUMBER;
       hash = (53 * hash) + eventType_;
+      if (getEffectsCount() > 0) {
+        hash = (37 * hash) + EFFECTS_FIELD_NUMBER;
+        hash = (53 * hash) + getEffectsList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4243,6 +4927,8 @@ public final class ServerGateProtocol {
         }
         eventType_ = 0;
 
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -4265,6 +4951,8 @@ public final class ServerGateProtocol {
 
       public com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest buildPartial() {
         com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest result = new com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.mapId_ = mapId_;
         if (eventBuilder_ == null) {
           result.event_ = event_;
@@ -4272,6 +4960,12 @@ public final class ServerGateProtocol {
           result.event_ = eventBuilder_.build();
         }
         result.eventType_ = eventType_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = java.util.Collections.unmodifiableList(effects_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.effects_ = effects_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -4295,6 +4989,16 @@ public final class ServerGateProtocol {
         }
         if (other.eventType_ != 0) {
           setEventTypeValue(other.getEventTypeValue());
+        }
+        if (!other.effects_.isEmpty()) {
+          if (effects_.isEmpty()) {
+            effects_ = other.effects_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureEffectsIsMutable();
+            effects_.addAll(other.effects_);
+          }
+          onChanged();
         }
         onChanged();
         return this;
@@ -4321,6 +5025,7 @@ public final class ServerGateProtocol {
         }
         return this;
       }
+      private int bitField0_;
 
       private int mapId_ ;
       /**
@@ -4505,6 +5210,72 @@ public final class ServerGateProtocol {
       public Builder clearEventType() {
         
         eventType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> effects_ = java.util.Collections.emptyList();
+      private void ensureEffectsIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          effects_ = new java.util.ArrayList<java.lang.Integer>(effects_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getEffectsList() {
+        return java.util.Collections.unmodifiableList(effects_);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffectsCount() {
+        return effects_.size();
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public int getEffects(int index) {
+        return effects_.get(index);
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder setEffects(
+          int index, int value) {
+        ensureEffectsIsMutable();
+        effects_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addEffects(int value) {
+        ensureEffectsIsMutable();
+        effects_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder addAllEffects(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureEffectsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, effects_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 effects = 4;</code>
+       */
+      public Builder clearEffects() {
+        effects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -5426,38 +6197,40 @@ public final class ServerGateProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\021gate_server.proto\032\014common.proto\"\020\n\016Gat" +
-      "eServerPing\"\020\n\016GateServerPong\"Q\n\033PlayerB" +
+      "eServerPing\"\020\n\016GateServerPong\"^\n\033PlayerB" +
       "eginChangeMapRequest\022\014\n\004from\030\001 \001(\005\022\n\n\002to" +
-      "\030\002 \001(\005\022\030\n\005toPos\030\003 \001(\0132\t.Position\"!\n\037Play" +
-      "erChangeMapCompletedRequest\"f\n\024ItemMoveE" +
-      "ventRequest\022\r\n\005mapId\030\001 \001(\005\022\035\n\005event\030\002 \001(" +
-      "\0132\016.ItemMoveEvent\022 \n\teventType\030\003 \001(\0162\r.M" +
-      "apEventType\"j\n\026ItemCraateEventRequest\022\r\n" +
-      "\005mapId\030\001 \001(\005\022\037\n\005event\030\002 \001(\0132\020.ItemCraate" +
-      "Event\022 \n\teventType\030\003 \001(\0162\r.MapEventType\"",
-      "l\n\027ItemDestroyEventRequest\022\r\n\005mapId\030\001 \001(" +
-      "\005\022 \n\005event\030\002 \001(\0132\021.ItemDestroyEvent\022 \n\te" +
-      "ventType\030\003 \001(\0162\r.MapEventType\"t\n\033Charact" +
-      "erCreateEventRequest\022\r\n\005mapId\030\001 \001(\005\022$\n\005e" +
-      "vent\030\002 \001(\0132\025.CharacterCreateEvent\022 \n\teve" +
-      "ntType\030\003 \001(\0162\r.MapEventType*f\n\014MapEventT" +
-      "ype\022\021\n\rITEMMOVEEVENT\020\000\022\023\n\017ITEMCRAATEEVEN" +
-      "T\020\001\022\024\n\020ITEMDESTROYEVENT\020\002\022\030\n\024CHARACTERCR" +
-      "EATEEVENT\020\0032\221\002\n\017EventDispatcher\0225\n\tmoveE" +
-      "vent\022\025.ItemMoveEventRequest\032\017.CommonResp",
-      "onse\"\000\022=\n\017createItemEvent\022\027.ItemCraateEv" +
-      "entRequest\032\017.CommonResponse\"\000\022?\n\020destroy" +
-      "ItemEvent\022\030.ItemDestroyEventRequest\032\017.Co" +
-      "mmonResponse\"\000\022G\n\024createCharacterEvent\022\034" +
-      ".CharacterCreateEventRequest\032\017.CommonRes" +
-      "ponse\"\0002\336\001\n\021GateServerService\0221\n\013receive" +
-      "Ping\022\017.GateServerPing\032\017.GateServerPong\"\000" +
-      "\022E\n\022playBeginChangeMap\022\034.PlayerBeginChan" +
-      "geMapRequest\032\017.CommonResponse\"\000\022O\n\030Playe" +
-      "rChangeMapCompleted\022 .PlayerChangeMapCom",
-      "pletedRequest\032\017.CommonResponse\"\000B*\n\016com." +
-      "mmo.serverB\022ServerGateProtocol\210\001\001\240\001\001b\006pr" +
-      "oto3"
+      "\030\002 \001(\005\022\030\n\005toPos\030\003 \001(\0132\t.Position\022\013\n\003uid\030" +
+      "\004 \001(\005\"!\n\037PlayerChangeMapCompletedRequest" +
+      "\"w\n\024ItemMoveEventRequest\022\r\n\005mapId\030\001 \001(\005\022" +
+      "\035\n\005event\030\002 \001(\0132\016.ItemMoveEvent\022 \n\teventT" +
+      "ype\030\003 \001(\0162\r.MapEventType\022\017\n\007effects\030\004 \003(" +
+      "\005\"{\n\026ItemCraateEventRequest\022\r\n\005mapId\030\001 \001" +
+      "(\005\022\037\n\005event\030\002 \001(\0132\020.ItemCraateEvent\022 \n\te",
+      "ventType\030\003 \001(\0162\r.MapEventType\022\017\n\007effects" +
+      "\030\004 \003(\005\"}\n\027ItemDestroyEventRequest\022\r\n\005map" +
+      "Id\030\001 \001(\005\022 \n\005event\030\002 \001(\0132\021.ItemDestroyEve" +
+      "nt\022 \n\teventType\030\003 \001(\0162\r.MapEventType\022\017\n\007" +
+      "effects\030\004 \003(\005\"\205\001\n\033CharacterCreateEventRe" +
+      "quest\022\r\n\005mapId\030\001 \001(\005\022$\n\005event\030\002 \001(\0132\025.Ch" +
+      "aracterCreateEvent\022 \n\teventType\030\003 \001(\0162\r." +
+      "MapEventType\022\017\n\007effects\030\004 \003(\005*f\n\014MapEven" +
+      "tType\022\021\n\rITEMMOVEEVENT\020\000\022\023\n\017ITEMCRAATEEV" +
+      "ENT\020\001\022\024\n\020ITEMDESTROYEVENT\020\002\022\030\n\024CHARACTER",
+      "CREATEEVENT\020\0032\221\002\n\017EventDispatcher\0225\n\tmov" +
+      "eEvent\022\025.ItemMoveEventRequest\032\017.CommonRe" +
+      "sponse\"\000\022=\n\017createItemEvent\022\027.ItemCraate" +
+      "EventRequest\032\017.CommonResponse\"\000\022?\n\020destr" +
+      "oyItemEvent\022\030.ItemDestroyEventRequest\032\017." +
+      "CommonResponse\"\000\022G\n\024createCharacterEvent" +
+      "\022\034.CharacterCreateEventRequest\032\017.CommonR" +
+      "esponse\"\0002\336\001\n\021GateServerService\0221\n\013recei" +
+      "vePing\022\017.GateServerPing\032\017.GateServerPong" +
+      "\"\000\022E\n\022playBeginChangeMap\022\034.PlayerBeginCh",
+      "angeMapRequest\032\017.CommonResponse\"\000\022O\n\030Pla" +
+      "yerChangeMapCompleted\022 .PlayerChangeMapC" +
+      "ompletedRequest\032\017.CommonResponse\"\000B*\n\016co" +
+      "m.mmo.serverB\022ServerGateProtocol\210\001\001\240\001\001b\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5489,7 +6262,7 @@ public final class ServerGateProtocol {
     internal_static_PlayerBeginChangeMapRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_PlayerBeginChangeMapRequest_descriptor,
-        new java.lang.String[] { "From", "To", "ToPos", });
+        new java.lang.String[] { "From", "To", "ToPos", "Uid", });
     internal_static_PlayerChangeMapCompletedRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PlayerChangeMapCompletedRequest_fieldAccessorTable = new
@@ -5501,25 +6274,25 @@ public final class ServerGateProtocol {
     internal_static_ItemMoveEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemMoveEventRequest_descriptor,
-        new java.lang.String[] { "MapId", "Event", "EventType", });
+        new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
     internal_static_ItemCraateEventRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_ItemCraateEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemCraateEventRequest_descriptor,
-        new java.lang.String[] { "MapId", "Event", "EventType", });
+        new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
     internal_static_ItemDestroyEventRequest_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_ItemDestroyEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemDestroyEventRequest_descriptor,
-        new java.lang.String[] { "MapId", "Event", "EventType", });
+        new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
     internal_static_CharacterCreateEventRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_CharacterCreateEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterCreateEventRequest_descriptor,
-        new java.lang.String[] { "MapId", "Event", "EventType", });
+        new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
     com.mmo.server.CommonProtocol.getDescriptor();
   }
 

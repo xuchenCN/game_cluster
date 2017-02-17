@@ -80,4 +80,8 @@ public class GateServerContext {
 		this.gateServerRouter = gateServerRouter;
 	}
 
+	public GameConfiguration getConfig() {
+		return config;
+	}
+
 }

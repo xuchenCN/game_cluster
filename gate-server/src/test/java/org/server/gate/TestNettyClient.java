@@ -15,7 +15,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class TestNettyClient {
 
 	public static void main(String[] args) throws Exception {
-		int port = Integer.valueOf(26666);
+		int port = Integer.valueOf(24444);
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 
 		try {

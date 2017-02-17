@@ -1,12 +1,12 @@
 package org.server.gate.core;
 
-import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,6 +16,7 @@ import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.NetUtils;
 import org.server.gate.GateServerContext;
 import org.server.gate.communicator.GameServerCommunicator;
+import org.server.gate.utils.ExecutorExceptionHandler;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mmo.server.CommonProtocol.CommonResponse;
@@ -63,7 +64,14 @@ public class GateServerRouter extends AbstractService {
 		recvThreadPool = Executors.newFixedThreadPool(
 				this.getConfig().getInt(Constants.GATE_SERVER_RECV_POOL_SIZE, Constants.GATE_SERVER_RECV_POOL_SIZE_DEFAULT),
 				new ThreadFactoryBuilder().setNameFormat("RecvMessagePool #%d")
-						.setUncaughtExceptionHandler(new ExecutorExceptionHandler()).build());
+						.setUncaughtExceptionHandler(new ExecutorExceptionHandler(this)).build());
+
+		IntStream
+				.range(0,
+						this.getConfig().getInt(Constants.GATE_SERVER_RECV_POOL_SIZE, Constants.GATE_SERVER_RECV_POOL_SIZE_DEFAULT))
+				.forEach(i -> {
+					recvThreadPool.execute(new GameServerRouter());
+				});
 	}
 
 	@Override
@@ -93,14 +101,6 @@ public class GateServerRouter extends AbstractService {
 	protected void serviceStop() throws Exception {
 		// TODO Auto-generated method stub
 		super.serviceStop();
-	}
-
-	class ExecutorExceptionHandler implements UncaughtExceptionHandler {
-
-		@Override
-		public void uncaughtException(Thread t, Throwable e) {
-			LOG.error("ThreadPool got exception : " + t.getName(), e);
-		}
 	}
 
 	public ForwardService getForwardService() {
@@ -153,7 +153,7 @@ public class GateServerRouter extends AbstractService {
 		@Override
 		public void moveEvent(ItemMoveEventRequest request, StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEffectsList(),request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -164,7 +164,7 @@ public class GateServerRouter extends AbstractService {
 		@Override
 		public void createItemEvent(ItemCraateEventRequest request, StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEffectsList(),request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -175,7 +175,7 @@ public class GateServerRouter extends AbstractService {
 		@Override
 		public void destroyItemEvent(ItemDestroyEventRequest request, StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEffectsList(),request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}
@@ -187,7 +187,7 @@ public class GateServerRouter extends AbstractService {
 		public void createCharacterEvent(CharacterCreateEventRequest request,
 				StreamObserver<CommonResponse> responseObserver) {
 			try {
-				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEvent(), request.getEventType()));
+				sendEventQueue.put(new GateSendMessge(request.getMapId(), request.getEffectsList(),request.getEvent(), request.getEventType()));
 			} catch (InterruptedException e) {
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			}

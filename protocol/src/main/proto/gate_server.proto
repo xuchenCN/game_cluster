@@ -26,6 +26,7 @@ message PlayerBeginChangeMapRequest {
 	int32 from = 1;
 	int32 to = 2;
 	Position toPos = 3;
+	int32 uid = 4;
 }
 
 message PlayerChangeMapCompletedRequest {
@@ -37,24 +38,28 @@ message ItemMoveEventRequest {
 	int32 mapId = 1;
 	ItemMoveEvent event = 2;
 	MapEventType eventType = 3;
+	repeated int32 effects = 4;
 }
 
 message ItemCraateEventRequest {
 	int32 mapId = 1;
 	ItemCraateEvent event = 2;
 	MapEventType eventType = 3;
+	repeated int32 effects = 4;
 }
 
 message ItemDestroyEventRequest {
 	int32 mapId = 1;
 	ItemDestroyEvent event = 2;
 	MapEventType eventType = 3;
+	repeated int32 effects = 4;
 }
 
 message CharacterCreateEventRequest {
 	int32 mapId = 1;
 	CharacterCreateEvent event = 2;
 	MapEventType eventType = 3;
+	repeated int32 effects = 4;
 }
 
 /* Services Definition */
