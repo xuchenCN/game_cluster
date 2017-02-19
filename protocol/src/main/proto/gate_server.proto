@@ -9,9 +9,10 @@ import "common.proto";
 
 enum MapEventType {
 	ITEMMOVEEVENT = 0;
-	ITEMCRAATEEVENT = 1;
+	ITEMCREATEEVENT = 1;
 	ITEMDESTROYEVENT = 2;
 	CHARACTERCREATEEVENT = 3;
+	CHARACHTERENTERMAP = 4;
 }
 
 message GateServerPing {
@@ -22,15 +23,15 @@ message GateServerPong {
 
 }
 
-message PlayerBeginChangeMapRequest {
-	int32 from = 1;
-	int32 to = 2;
-	Position toPos = 3;
-	int32 uid = 4;
-}
 
-message PlayerChangeMapCompletedRequest {
-	
+
+/* Enter map */
+message CharacterEnterMapRequest {
+	CommonStat stat = 1;
+	int32 mapId = 2;
+	repeated Item mapItems = 3;
+	repeated Character mapCharacters = 4;
+	int32 uid = 5;
 }
 
 /* Events */
@@ -41,9 +42,9 @@ message ItemMoveEventRequest {
 	repeated int32 effects = 4;
 }
 
-message ItemCraateEventRequest {
+message ItemCreateEventRequest {
 	int32 mapId = 1;
-	ItemCraateEvent event = 2;
+	ItemCreateEvent event = 2;
 	MapEventType eventType = 3;
 	repeated int32 effects = 4;
 }
@@ -66,16 +67,14 @@ message CharacterCreateEventRequest {
 
 service EventDispatcher {
 	rpc moveEvent (ItemMoveEventRequest) returns (CommonResponse) {}
-	rpc createItemEvent (ItemCraateEventRequest) returns (CommonResponse) {}
+	rpc createItemEvent (ItemCreateEventRequest) returns (CommonResponse) {}
 	rpc destroyItemEvent (ItemDestroyEventRequest) returns (CommonResponse) {}
 	rpc createCharacterEvent (CharacterCreateEventRequest) returns (CommonResponse) {}
-	
 }
 
 service GateServerService {
 	rpc receivePing (GateServerPing) returns (GateServerPong) {}
-	rpc playBeginChangeMap(PlayerBeginChangeMapRequest) returns (CommonResponse) {}
-	rpc PlayerChangeMapCompleted(PlayerChangeMapCompletedRequest) returns (CommonResponse) {}
+	rpc characterEnterMapRequest(CharacterEnterMapRequest) returns (CommonResponse) {}
 }
 
 

@@ -41,15 +41,25 @@ message ModInfo {
 
 message MotionInfo {
 	int32 motion = 1;
-	int32 effect = 2;
+	int32 efficacy = 2;
 	float speed = 3;
 }
 
 message SurvivalInfo {
-	int32 hearth = 1;
-	int32 hungry = 2;
-	int32 tired = 3;
+	int32 health = 1;
+	int32 hunger = 2;
+	int32 spirit = 3;
+	int32 comfort = 4;
+	
 }
+
+message EnergyInfo {
+	int32 strength = 1;
+	int32 endurance = 2;
+	int32 agility = 3;
+	int32 defence = 4;
+}
+
 
 message IdentifyInfo {
 	string ID = 1;
@@ -66,12 +76,27 @@ message Item {
 	SurvivalInfo survivalInfo= 4;
 }
 
+message CharacterEquipMod {
+	ModInfo hair = 1;
+	ModInfo face = 2;
+	ModInfo pants = 3;
+	ModInfo shoes = 4;
+	ModInfo top = 5;
+	ModInfo body = 6;
+	ModInfo wrist = 7;
+	ModInfo leftHold = 8;
+	ModInfo rightHold = 9;
+}
+
 
 message Character {
 	IdentifyInfo identify = 1;
 	Position position = 2;
 	ModInfo modInfo = 3;
 	SurvivalInfo survivalInfo= 4;
+	int32 mapId = 5;
+	EnergyInfo energyInfo = 6;
+	CharacterEquipMod equipMod = 7;
 }
 
 
@@ -89,7 +114,7 @@ message ItemMoveEvent {
 	MotionInfo playMotion = 5;
 }
 
-message ItemCraateEvent {
+message ItemCreateEvent {
 	Item item = 1;
 }
 

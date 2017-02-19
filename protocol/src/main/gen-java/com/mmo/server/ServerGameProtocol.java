@@ -6,7 +6,13 @@ package com.mmo.server;
 public final class ServerGameProtocol {
   private ServerGameProtocol() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface UserArrivedRegionRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:UserArrivedRegionRequest)
@@ -394,6 +400,32 @@ public final class ServerGameProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)other);
@@ -605,6 +637,798 @@ public final class ServerGameProtocol {
     }
 
     public com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserArrivedRegionResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserArrivedRegionResponse)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code UserArrivedRegionResponse}
+   */
+  public  static final class UserArrivedRegionResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:UserArrivedRegionResponse)
+      UserArrivedRegionResponseOrBuilder {
+    // Use UserArrivedRegionResponse.newBuilder() to construct.
+    private UserArrivedRegionResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private UserArrivedRegionResponse() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private UserArrivedRegionResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGameProtocol.internal_static_UserArrivedRegionResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGameProtocol.internal_static_UserArrivedRegionResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.class, com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse other = (com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse) obj;
+
+      boolean result = true;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UserArrivedRegionResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UserArrivedRegionResponse)
+        com.mmo.server.ServerGameProtocol.UserArrivedRegionResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGameProtocol.internal_static_UserArrivedRegionResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGameProtocol.internal_static_UserArrivedRegionResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.class, com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGameProtocol.internal_static_UserArrivedRegionResponse_descriptor;
+      }
+
+      public com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse getDefaultInstanceForType() {
+        return com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse build() {
+        com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse buildPartial() {
+        com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse result = new com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse) {
+          return mergeFrom((com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse other) {
+        if (other == com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse.getDefaultInstance()) return this;
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UserArrivedRegionResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:UserArrivedRegionResponse)
+    private static final com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse();
+    }
+
+    public static com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserArrivedRegionResponse>
+        PARSER = new com.google.protobuf.AbstractParser<UserArrivedRegionResponse>() {
+      public UserArrivedRegionResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UserArrivedRegionResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserArrivedRegionResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserArrivedRegionResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGameProtocol.UserArrivedRegionResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserLeaveRegionRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserLeaveRegionRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 uid = 1;</code>
+     */
+    int getUid();
+  }
+  /**
+   * Protobuf type {@code UserLeaveRegionRequest}
+   */
+  public  static final class UserLeaveRegionRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:UserLeaveRegionRequest)
+      UserLeaveRegionRequestOrBuilder {
+    // Use UserLeaveRegionRequest.newBuilder() to construct.
+    private UserLeaveRegionRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private UserLeaveRegionRequest() {
+      uid_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private UserLeaveRegionRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              uid_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerGameProtocol.internal_static_UserLeaveRegionRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerGameProtocol.internal_static_UserLeaveRegionRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.class, com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.Builder.class);
+    }
+
+    public static final int UID_FIELD_NUMBER = 1;
+    private int uid_;
+    /**
+     * <code>optional int32 uid = 1;</code>
+     */
+    public int getUid() {
+      return uid_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (uid_ != 0) {
+        output.writeInt32(1, uid_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (uid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, uid_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest other = (com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest) obj;
+
+      boolean result = true;
+      result = result && (getUid()
+          == other.getUid());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UserLeaveRegionRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UserLeaveRegionRequest)
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerGameProtocol.internal_static_UserLeaveRegionRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerGameProtocol.internal_static_UserLeaveRegionRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.class, com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        uid_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerGameProtocol.internal_static_UserLeaveRegionRequest_descriptor;
+      }
+
+      public com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest build() {
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest buildPartial() {
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest result = new com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest(this);
+        result.uid_ = uid_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest) {
+          return mergeFrom((com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest other) {
+        if (other == com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.getDefaultInstance()) return this;
+        if (other.getUid() != 0) {
+          setUid(other.getUid());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int uid_ ;
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public int getUid() {
+        return uid_;
+      }
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public Builder setUid(int value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UserLeaveRegionRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:UserLeaveRegionRequest)
+    private static final com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest();
+    }
+
+    public static com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserLeaveRegionRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UserLeaveRegionRequest>() {
+      public UserLeaveRegionRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UserLeaveRegionRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserLeaveRegionRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserLeaveRegionRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -980,6 +1804,32 @@ public final class ServerGameProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.CharacterMoveReq) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.CharacterMoveReq)other);
@@ -1050,7 +1900,7 @@ public final class ServerGameProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position toPos_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> toPosBuilder_;
       /**
        * <code>optional .Position toPos = 2;</code>
@@ -1152,11 +2002,11 @@ public final class ServerGameProtocol {
       /**
        * <code>optional .Position toPos = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getToPosFieldBuilder() {
         if (toPosBuilder_ == null) {
-          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getToPos(),
                   getParentForChildren(),
@@ -1467,6 +2317,32 @@ public final class ServerGameProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.GameServerPing) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.GameServerPing)other);
@@ -1805,6 +2681,32 @@ public final class ServerGameProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGameProtocol.GameServerPong) {
           return mergeFrom((com.mmo.server.ServerGameProtocol.GameServerPong)other);
@@ -2138,6 +3040,14 @@ public final class ServerGameProtocol {
           com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
+      /**
+       * <code>rpc userLeaveRegion(.UserLeaveRegionRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void userLeaveRegion(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
     }
 
     public static com.google.protobuf.Service newReflectiveService(
@@ -2149,6 +3059,14 @@ public final class ServerGameProtocol {
             com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
           impl.userArrivedRegion(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void userLeaveRegion(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.userLeaveRegion(controller, request, done);
         }
 
       };
@@ -2175,6 +3093,8 @@ public final class ServerGameProtocol {
           switch(method.getIndex()) {
             case 0:
               return impl.userArrivedRegion(controller, (com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest)request);
+            case 1:
+              return impl.userLeaveRegion(controller, (com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -2191,6 +3111,8 @@ public final class ServerGameProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -2207,6 +3129,8 @@ public final class ServerGameProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            case 1:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -2221,6 +3145,14 @@ public final class ServerGameProtocol {
     public abstract void userArrivedRegion(
         com.google.protobuf.RpcController controller,
         com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    /**
+     * <code>rpc userLeaveRegion(.UserLeaveRegionRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void userLeaveRegion(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     public static final
@@ -2250,6 +3182,11 @@ public final class ServerGameProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
+        case 1:
+          this.userLeaveRegion(controller, (com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -2266,6 +3203,8 @@ public final class ServerGameProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -2281,6 +3220,8 @@ public final class ServerGameProtocol {
       }
       switch(method.getIndex()) {
         case 0:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        case 1:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
@@ -2317,6 +3258,21 @@ public final class ServerGameProtocol {
             com.mmo.server.CommonProtocol.CommonResponse.class,
             com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
       }
+
+      public  void userLeaveRegion(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.CommonProtocol.CommonResponse.class,
+            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -2328,6 +3284,11 @@ public final class ServerGameProtocol {
       public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.CommonProtocol.CommonResponse userLeaveRegion(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -2344,6 +3305,18 @@ public final class ServerGameProtocol {
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
           getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.CommonProtocol.CommonResponse userLeaveRegion(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
@@ -2592,6 +3565,16 @@ public final class ServerGameProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_UserArrivedRegionRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UserArrivedRegionResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UserArrivedRegionResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UserLeaveRegionRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UserLeaveRegionRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CharacterMoveReq_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2617,17 +3600,20 @@ public final class ServerGameProtocol {
     java.lang.String[] descriptorData = {
       "\n\021game_server.proto\032\014common.proto\"K\n\030Use" +
       "rArrivedRegionRequest\022\020\n\010gateHost\030\001 \001(\t\022" +
-      "\020\n\010gatePort\030\002 \001(\005\022\013\n\003uid\030\003 \001(\005\"9\n\020Charac" +
-      "terMoveReq\022\013\n\003uid\030\001 \001(\005\022\030\n\005toPos\030\002 \001(\0132\t" +
-      ".Position\"\020\n\016GameServerPing\"\020\n\016GameServe" +
-      "rPong2F\n\021GameServerService\0221\n\013receivePin" +
-      "g\022\017.GameServerPing\032\017.GameServerPong\"\0002V\n" +
-      "\021UserRegionService\022A\n\021userArrivedRegion\022" +
-      "\031.UserArrivedRegionRequest\032\017.CommonRespo" +
-      "nse\"\0002B\n\020CharacterService\022.\n\006moveTo\022\021.Ch",
-      "aracterMoveReq\032\017.CommonResponse\"\000B*\n\016com" +
-      ".mmo.serverB\022ServerGameProtocol\210\001\001\240\001\001b\006p" +
-      "roto3"
+      "\020\n\010gatePort\030\002 \001(\005\022\013\n\003uid\030\003 \001(\005\"\033\n\031UserAr" +
+      "rivedRegionResponse\"%\n\026UserLeaveRegionRe" +
+      "quest\022\013\n\003uid\030\001 \001(\005\"9\n\020CharacterMoveReq\022\013" +
+      "\n\003uid\030\001 \001(\005\022\030\n\005toPos\030\002 \001(\0132\t.Position\"\020\n" +
+      "\016GameServerPing\"\020\n\016GameServerPong2F\n\021Gam" +
+      "eServerService\0221\n\013receivePing\022\017.GameServ" +
+      "erPing\032\017.GameServerPong\"\0002\225\001\n\021UserRegion" +
+      "Service\022A\n\021userArrivedRegion\022\031.UserArriv",
+      "edRegionRequest\032\017.CommonResponse\"\000\022=\n\017us" +
+      "erLeaveRegion\022\027.UserLeaveRegionRequest\032\017" +
+      ".CommonResponse\"\0002B\n\020CharacterService\022.\n" +
+      "\006moveTo\022\021.CharacterMoveReq\032\017.CommonRespo" +
+      "nse\"\000B*\n\016com.mmo.serverB\022ServerGameProto" +
+      "col\210\001\001\240\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2648,20 +3634,32 @@ public final class ServerGameProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserArrivedRegionRequest_descriptor,
         new java.lang.String[] { "GateHost", "GatePort", "Uid", });
-    internal_static_CharacterMoveReq_descriptor =
+    internal_static_UserArrivedRegionResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_UserArrivedRegionResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UserArrivedRegionResponse_descriptor,
+        new java.lang.String[] { });
+    internal_static_UserLeaveRegionRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_UserLeaveRegionRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UserLeaveRegionRequest_descriptor,
+        new java.lang.String[] { "Uid", });
+    internal_static_CharacterMoveReq_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_CharacterMoveReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterMoveReq_descriptor,
         new java.lang.String[] { "Uid", "ToPos", });
     internal_static_GameServerPing_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_GameServerPing_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GameServerPing_descriptor,
         new java.lang.String[] { });
     internal_static_GameServerPong_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_GameServerPong_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GameServerPong_descriptor,

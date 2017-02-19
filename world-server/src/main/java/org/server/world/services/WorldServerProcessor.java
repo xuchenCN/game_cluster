@@ -74,8 +74,8 @@ public class WorldServerProcessor extends AbstractService {
 
 		@Override
 		public void userArrivedWorld(UserArrivedWorldRequest request, StreamObserver<CommonResponse> responseObserver) {
-			// TODO Auto-generated method stub
-			super.userArrivedWorld(request, responseObserver);
+			responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.OK).build());
+			responseObserver.onCompleted();
 		}
 
 	}

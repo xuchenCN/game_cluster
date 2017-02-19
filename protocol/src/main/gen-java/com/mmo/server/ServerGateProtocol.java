@@ -6,7 +6,13 @@ package com.mmo.server;
 public final class ServerGateProtocol {
   private ServerGateProtocol() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code MapEventType}
@@ -18,9 +24,9 @@ public final class ServerGateProtocol {
      */
     ITEMMOVEEVENT(0),
     /**
-     * <code>ITEMCRAATEEVENT = 1;</code>
+     * <code>ITEMCREATEEVENT = 1;</code>
      */
-    ITEMCRAATEEVENT(1),
+    ITEMCREATEEVENT(1),
     /**
      * <code>ITEMDESTROYEVENT = 2;</code>
      */
@@ -29,6 +35,10 @@ public final class ServerGateProtocol {
      * <code>CHARACTERCREATEEVENT = 3;</code>
      */
     CHARACTERCREATEEVENT(3),
+    /**
+     * <code>CHARACHTERENTERMAP = 4;</code>
+     */
+    CHARACHTERENTERMAP(4),
     UNRECOGNIZED(-1),
     ;
 
@@ -37,9 +47,9 @@ public final class ServerGateProtocol {
      */
     public static final int ITEMMOVEEVENT_VALUE = 0;
     /**
-     * <code>ITEMCRAATEEVENT = 1;</code>
+     * <code>ITEMCREATEEVENT = 1;</code>
      */
-    public static final int ITEMCRAATEEVENT_VALUE = 1;
+    public static final int ITEMCREATEEVENT_VALUE = 1;
     /**
      * <code>ITEMDESTROYEVENT = 2;</code>
      */
@@ -48,6 +58,10 @@ public final class ServerGateProtocol {
      * <code>CHARACTERCREATEEVENT = 3;</code>
      */
     public static final int CHARACTERCREATEEVENT_VALUE = 3;
+    /**
+     * <code>CHARACHTERENTERMAP = 4;</code>
+     */
+    public static final int CHARACHTERENTERMAP_VALUE = 4;
 
 
     public final int getNumber() {
@@ -69,9 +83,10 @@ public final class ServerGateProtocol {
     public static MapEventType forNumber(int value) {
       switch (value) {
         case 0: return ITEMMOVEEVENT;
-        case 1: return ITEMCRAATEEVENT;
+        case 1: return ITEMCREATEEVENT;
         case 2: return ITEMDESTROYEVENT;
         case 3: return CHARACTERCREATEEVENT;
+        case 4: return CHARACHTERENTERMAP;
         default: return null;
       }
     }
@@ -377,6 +392,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPing) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPing)other);
@@ -715,6 +756,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPong) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPong)other);
@@ -800,52 +867,97 @@ public final class ServerGateProtocol {
 
   }
 
-  public interface PlayerBeginChangeMapRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PlayerBeginChangeMapRequest)
+  public interface CharacterEnterMapRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CharacterEnterMapRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 from = 1;</code>
+     * <code>optional .CommonStat stat = 1;</code>
      */
-    int getFrom();
+    int getStatValue();
+    /**
+     * <code>optional .CommonStat stat = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.CommonStat getStat();
 
     /**
-     * <code>optional int32 to = 2;</code>
+     * <code>optional int32 mapId = 2;</code>
      */
-    int getTo();
+    int getMapId();
 
     /**
-     * <code>optional .Position toPos = 3;</code>
+     * <code>repeated .Item mapItems = 3;</code>
      */
-    boolean hasToPos();
+    java.util.List<com.mmo.server.CommonProtocol.Item> 
+        getMapItemsList();
     /**
-     * <code>optional .Position toPos = 3;</code>
+     * <code>repeated .Item mapItems = 3;</code>
      */
-    com.mmo.server.CommonProtocol.Position getToPos();
+    com.mmo.server.CommonProtocol.Item getMapItems(int index);
     /**
-     * <code>optional .Position toPos = 3;</code>
+     * <code>repeated .Item mapItems = 3;</code>
      */
-    com.mmo.server.CommonProtocol.PositionOrBuilder getToPosOrBuilder();
+    int getMapItemsCount();
+    /**
+     * <code>repeated .Item mapItems = 3;</code>
+     */
+    java.util.List<? extends com.mmo.server.CommonProtocol.ItemOrBuilder> 
+        getMapItemsOrBuilderList();
+    /**
+     * <code>repeated .Item mapItems = 3;</code>
+     */
+    com.mmo.server.CommonProtocol.ItemOrBuilder getMapItemsOrBuilder(
+        int index);
 
     /**
-     * <code>optional int32 uid = 4;</code>
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    java.util.List<com.mmo.server.CommonProtocol.Character> 
+        getMapCharactersList();
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    com.mmo.server.CommonProtocol.Character getMapCharacters(int index);
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    int getMapCharactersCount();
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    java.util.List<? extends com.mmo.server.CommonProtocol.CharacterOrBuilder> 
+        getMapCharactersOrBuilderList();
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    com.mmo.server.CommonProtocol.CharacterOrBuilder getMapCharactersOrBuilder(
+        int index);
+
+    /**
+     * <code>optional int32 uid = 5;</code>
      */
     int getUid();
   }
   /**
-   * Protobuf type {@code PlayerBeginChangeMapRequest}
+   * <pre>
+   * Enter map 
+   * </pre>
+   *
+   * Protobuf type {@code CharacterEnterMapRequest}
    */
-  public  static final class PlayerBeginChangeMapRequest extends
+  public  static final class CharacterEnterMapRequest extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:PlayerBeginChangeMapRequest)
-      PlayerBeginChangeMapRequestOrBuilder {
-    // Use PlayerBeginChangeMapRequest.newBuilder() to construct.
-    private PlayerBeginChangeMapRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:CharacterEnterMapRequest)
+      CharacterEnterMapRequestOrBuilder {
+    // Use CharacterEnterMapRequest.newBuilder() to construct.
+    private CharacterEnterMapRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private PlayerBeginChangeMapRequest() {
-      from_ = 0;
-      to_ = 0;
+    private CharacterEnterMapRequest() {
+      stat_ = 0;
+      mapId_ = 0;
+      mapItems_ = java.util.Collections.emptyList();
+      mapCharacters_ = java.util.Collections.emptyList();
       uid_ = 0;
     }
 
@@ -854,7 +966,7 @@ public final class ServerGateProtocol {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private PlayerBeginChangeMapRequest(
+    private CharacterEnterMapRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -875,29 +987,35 @@ public final class ServerGateProtocol {
               break;
             }
             case 8: {
+              int rawValue = input.readEnum();
 
-              from_ = input.readInt32();
+              stat_ = rawValue;
               break;
             }
             case 16: {
 
-              to_ = input.readInt32();
+              mapId_ = input.readInt32();
               break;
             }
             case 26: {
-              com.mmo.server.CommonProtocol.Position.Builder subBuilder = null;
-              if (toPos_ != null) {
-                subBuilder = toPos_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                mapItems_ = new java.util.ArrayList<com.mmo.server.CommonProtocol.Item>();
+                mutable_bitField0_ |= 0x00000004;
               }
-              toPos_ = input.readMessage(com.mmo.server.CommonProtocol.Position.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(toPos_);
-                toPos_ = subBuilder.buildPartial();
-              }
-
+              mapItems_.add(
+                  input.readMessage(com.mmo.server.CommonProtocol.Item.parser(), extensionRegistry));
               break;
             }
-            case 32: {
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                mapCharacters_ = new java.util.ArrayList<com.mmo.server.CommonProtocol.Character>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              mapCharacters_.add(
+                  input.readMessage(com.mmo.server.CommonProtocol.Character.parser(), extensionRegistry));
+              break;
+            }
+            case 40: {
 
               uid_ = input.readInt32();
               break;
@@ -910,64 +1028,127 @@ public final class ServerGateProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          mapItems_ = java.util.Collections.unmodifiableList(mapItems_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          mapCharacters_ = java.util.Collections.unmodifiableList(mapCharacters_);
+        }
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.mmo.server.ServerGateProtocol.internal_static_PlayerBeginChangeMapRequest_descriptor;
+      return com.mmo.server.ServerGateProtocol.internal_static_CharacterEnterMapRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.mmo.server.ServerGateProtocol.internal_static_PlayerBeginChangeMapRequest_fieldAccessorTable
+      return com.mmo.server.ServerGateProtocol.internal_static_CharacterEnterMapRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.class, com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.Builder.class);
+              com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.class, com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.Builder.class);
     }
 
-    public static final int FROM_FIELD_NUMBER = 1;
-    private int from_;
+    private int bitField0_;
+    public static final int STAT_FIELD_NUMBER = 1;
+    private int stat_;
     /**
-     * <code>optional int32 from = 1;</code>
+     * <code>optional .CommonStat stat = 1;</code>
      */
-    public int getFrom() {
-      return from_;
+    public int getStatValue() {
+      return stat_;
+    }
+    /**
+     * <code>optional .CommonStat stat = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.CommonStat getStat() {
+      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
+      return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
     }
 
-    public static final int TO_FIELD_NUMBER = 2;
-    private int to_;
+    public static final int MAPID_FIELD_NUMBER = 2;
+    private int mapId_;
     /**
-     * <code>optional int32 to = 2;</code>
+     * <code>optional int32 mapId = 2;</code>
      */
-    public int getTo() {
-      return to_;
+    public int getMapId() {
+      return mapId_;
     }
 
-    public static final int TOPOS_FIELD_NUMBER = 3;
-    private com.mmo.server.CommonProtocol.Position toPos_;
+    public static final int MAPITEMS_FIELD_NUMBER = 3;
+    private java.util.List<com.mmo.server.CommonProtocol.Item> mapItems_;
     /**
-     * <code>optional .Position toPos = 3;</code>
+     * <code>repeated .Item mapItems = 3;</code>
      */
-    public boolean hasToPos() {
-      return toPos_ != null;
+    public java.util.List<com.mmo.server.CommonProtocol.Item> getMapItemsList() {
+      return mapItems_;
     }
     /**
-     * <code>optional .Position toPos = 3;</code>
+     * <code>repeated .Item mapItems = 3;</code>
      */
-    public com.mmo.server.CommonProtocol.Position getToPos() {
-      return toPos_ == null ? com.mmo.server.CommonProtocol.Position.getDefaultInstance() : toPos_;
+    public java.util.List<? extends com.mmo.server.CommonProtocol.ItemOrBuilder> 
+        getMapItemsOrBuilderList() {
+      return mapItems_;
     }
     /**
-     * <code>optional .Position toPos = 3;</code>
+     * <code>repeated .Item mapItems = 3;</code>
      */
-    public com.mmo.server.CommonProtocol.PositionOrBuilder getToPosOrBuilder() {
-      return getToPos();
+    public int getMapItemsCount() {
+      return mapItems_.size();
+    }
+    /**
+     * <code>repeated .Item mapItems = 3;</code>
+     */
+    public com.mmo.server.CommonProtocol.Item getMapItems(int index) {
+      return mapItems_.get(index);
+    }
+    /**
+     * <code>repeated .Item mapItems = 3;</code>
+     */
+    public com.mmo.server.CommonProtocol.ItemOrBuilder getMapItemsOrBuilder(
+        int index) {
+      return mapItems_.get(index);
     }
 
-    public static final int UID_FIELD_NUMBER = 4;
+    public static final int MAPCHARACTERS_FIELD_NUMBER = 4;
+    private java.util.List<com.mmo.server.CommonProtocol.Character> mapCharacters_;
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    public java.util.List<com.mmo.server.CommonProtocol.Character> getMapCharactersList() {
+      return mapCharacters_;
+    }
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    public java.util.List<? extends com.mmo.server.CommonProtocol.CharacterOrBuilder> 
+        getMapCharactersOrBuilderList() {
+      return mapCharacters_;
+    }
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    public int getMapCharactersCount() {
+      return mapCharacters_.size();
+    }
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    public com.mmo.server.CommonProtocol.Character getMapCharacters(int index) {
+      return mapCharacters_.get(index);
+    }
+    /**
+     * <code>repeated .Character mapCharacters = 4;</code>
+     */
+    public com.mmo.server.CommonProtocol.CharacterOrBuilder getMapCharactersOrBuilder(
+        int index) {
+      return mapCharacters_.get(index);
+    }
+
+    public static final int UID_FIELD_NUMBER = 5;
     private int uid_;
     /**
-     * <code>optional int32 uid = 4;</code>
+     * <code>optional int32 uid = 5;</code>
      */
     public int getUid() {
       return uid_;
@@ -985,17 +1166,20 @@ public final class ServerGateProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (from_ != 0) {
-        output.writeInt32(1, from_);
+      if (stat_ != com.mmo.server.CommonProtocol.CommonStat.OK.getNumber()) {
+        output.writeEnum(1, stat_);
       }
-      if (to_ != 0) {
-        output.writeInt32(2, to_);
+      if (mapId_ != 0) {
+        output.writeInt32(2, mapId_);
       }
-      if (toPos_ != null) {
-        output.writeMessage(3, getToPos());
+      for (int i = 0; i < mapItems_.size(); i++) {
+        output.writeMessage(3, mapItems_.get(i));
+      }
+      for (int i = 0; i < mapCharacters_.size(); i++) {
+        output.writeMessage(4, mapCharacters_.get(i));
       }
       if (uid_ != 0) {
-        output.writeInt32(4, uid_);
+        output.writeInt32(5, uid_);
       }
     }
 
@@ -1004,21 +1188,25 @@ public final class ServerGateProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (from_ != 0) {
+      if (stat_ != com.mmo.server.CommonProtocol.CommonStat.OK.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, from_);
+          .computeEnumSize(1, stat_);
       }
-      if (to_ != 0) {
+      if (mapId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, to_);
+          .computeInt32Size(2, mapId_);
       }
-      if (toPos_ != null) {
+      for (int i = 0; i < mapItems_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getToPos());
+          .computeMessageSize(3, mapItems_.get(i));
+      }
+      for (int i = 0; i < mapCharacters_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, mapCharacters_.get(i));
       }
       if (uid_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, uid_);
+          .computeInt32Size(5, uid_);
       }
       memoizedSize = size;
       return size;
@@ -1030,21 +1218,19 @@ public final class ServerGateProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)) {
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest)) {
         return super.equals(obj);
       }
-      com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest other = (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest) obj;
+      com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest other = (com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest) obj;
 
       boolean result = true;
-      result = result && (getFrom()
-          == other.getFrom());
-      result = result && (getTo()
-          == other.getTo());
-      result = result && (hasToPos() == other.hasToPos());
-      if (hasToPos()) {
-        result = result && getToPos()
-            .equals(other.getToPos());
-      }
+      result = result && stat_ == other.stat_;
+      result = result && (getMapId()
+          == other.getMapId());
+      result = result && getMapItemsList()
+          .equals(other.getMapItemsList());
+      result = result && getMapCharactersList()
+          .equals(other.getMapCharactersList());
       result = result && (getUid()
           == other.getUid());
       return result;
@@ -1057,13 +1243,17 @@ public final class ServerGateProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + FROM_FIELD_NUMBER;
-      hash = (53 * hash) + getFrom();
-      hash = (37 * hash) + TO_FIELD_NUMBER;
-      hash = (53 * hash) + getTo();
-      if (hasToPos()) {
-        hash = (37 * hash) + TOPOS_FIELD_NUMBER;
-        hash = (53 * hash) + getToPos().hashCode();
+      hash = (37 * hash) + STAT_FIELD_NUMBER;
+      hash = (53 * hash) + stat_;
+      hash = (37 * hash) + MAPID_FIELD_NUMBER;
+      hash = (53 * hash) + getMapId();
+      if (getMapItemsCount() > 0) {
+        hash = (37 * hash) + MAPITEMS_FIELD_NUMBER;
+        hash = (53 * hash) + getMapItemsList().hashCode();
+      }
+      if (getMapCharactersCount() > 0) {
+        hash = (37 * hash) + MAPCHARACTERS_FIELD_NUMBER;
+        hash = (53 * hash) + getMapCharactersList().hashCode();
       }
       hash = (37 * hash) + UID_FIELD_NUMBER;
       hash = (53 * hash) + getUid();
@@ -1072,58 +1262,58 @@ public final class ServerGateProtocol {
       return hash;
     }
 
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(byte[] data)
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(java.io.InputStream input)
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseDelimitedFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1135,7 +1325,7 @@ public final class ServerGateProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest prototype) {
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1150,25 +1340,29 @@ public final class ServerGateProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code PlayerBeginChangeMapRequest}
+     * <pre>
+     * Enter map 
+     * </pre>
+     *
+     * Protobuf type {@code CharacterEnterMapRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PlayerBeginChangeMapRequest)
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:CharacterEnterMapRequest)
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.mmo.server.ServerGateProtocol.internal_static_PlayerBeginChangeMapRequest_descriptor;
+        return com.mmo.server.ServerGateProtocol.internal_static_CharacterEnterMapRequest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.mmo.server.ServerGateProtocol.internal_static_PlayerBeginChangeMapRequest_fieldAccessorTable
+        return com.mmo.server.ServerGateProtocol.internal_static_CharacterEnterMapRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.class, com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.Builder.class);
+                com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.class, com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.Builder.class);
       }
 
-      // Construct using com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.newBuilder()
+      // Construct using com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1180,19 +1374,27 @@ public final class ServerGateProtocol {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMapItemsFieldBuilder();
+          getMapCharactersFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
-        from_ = 0;
+        stat_ = 0;
 
-        to_ = 0;
+        mapId_ = 0;
 
-        if (toPosBuilder_ == null) {
-          toPos_ = null;
+        if (mapItemsBuilder_ == null) {
+          mapItems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
-          toPos_ = null;
-          toPosBuilder_ = null;
+          mapItemsBuilder_.clear();
+        }
+        if (mapCharactersBuilder_ == null) {
+          mapCharacters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          mapCharactersBuilder_.clear();
         }
         uid_ = 0;
 
@@ -1201,54 +1403,145 @@ public final class ServerGateProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.mmo.server.ServerGateProtocol.internal_static_PlayerBeginChangeMapRequest_descriptor;
+        return com.mmo.server.ServerGateProtocol.internal_static_CharacterEnterMapRequest_descriptor;
       }
 
-      public com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest getDefaultInstanceForType() {
-        return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
+      public com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.getDefaultInstance();
       }
 
-      public com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest build() {
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest result = buildPartial();
+      public com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest build() {
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest buildPartial() {
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest result = new com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest(this);
-        result.from_ = from_;
-        result.to_ = to_;
-        if (toPosBuilder_ == null) {
-          result.toPos_ = toPos_;
+      public com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest buildPartial() {
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest result = new com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.stat_ = stat_;
+        result.mapId_ = mapId_;
+        if (mapItemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            mapItems_ = java.util.Collections.unmodifiableList(mapItems_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.mapItems_ = mapItems_;
         } else {
-          result.toPos_ = toPosBuilder_.build();
+          result.mapItems_ = mapItemsBuilder_.build();
+        }
+        if (mapCharactersBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            mapCharacters_ = java.util.Collections.unmodifiableList(mapCharacters_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.mapCharacters_ = mapCharacters_;
+        } else {
+          result.mapCharacters_ = mapCharactersBuilder_.build();
         }
         result.uid_ = uid_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest) {
-          return mergeFrom((com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)other);
+        if (other instanceof com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest other) {
-        if (other == com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance()) return this;
-        if (other.getFrom() != 0) {
-          setFrom(other.getFrom());
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest other) {
+        if (other == com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.getDefaultInstance()) return this;
+        if (other.stat_ != 0) {
+          setStatValue(other.getStatValue());
         }
-        if (other.getTo() != 0) {
-          setTo(other.getTo());
+        if (other.getMapId() != 0) {
+          setMapId(other.getMapId());
         }
-        if (other.hasToPos()) {
-          mergeToPos(other.getToPos());
+        if (mapItemsBuilder_ == null) {
+          if (!other.mapItems_.isEmpty()) {
+            if (mapItems_.isEmpty()) {
+              mapItems_ = other.mapItems_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureMapItemsIsMutable();
+              mapItems_.addAll(other.mapItems_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mapItems_.isEmpty()) {
+            if (mapItemsBuilder_.isEmpty()) {
+              mapItemsBuilder_.dispose();
+              mapItemsBuilder_ = null;
+              mapItems_ = other.mapItems_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              mapItemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMapItemsFieldBuilder() : null;
+            } else {
+              mapItemsBuilder_.addAllMessages(other.mapItems_);
+            }
+          }
+        }
+        if (mapCharactersBuilder_ == null) {
+          if (!other.mapCharacters_.isEmpty()) {
+            if (mapCharacters_.isEmpty()) {
+              mapCharacters_ = other.mapCharacters_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureMapCharactersIsMutable();
+              mapCharacters_.addAll(other.mapCharacters_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.mapCharacters_.isEmpty()) {
+            if (mapCharactersBuilder_.isEmpty()) {
+              mapCharactersBuilder_.dispose();
+              mapCharactersBuilder_ = null;
+              mapCharacters_ = other.mapCharacters_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              mapCharactersBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMapCharactersFieldBuilder() : null;
+            } else {
+              mapCharactersBuilder_.addAllMessages(other.mapCharacters_);
+            }
+          }
         }
         if (other.getUid() != 0) {
           setUid(other.getUid());
@@ -1265,11 +1558,11 @@ public final class ServerGateProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest parsedMessage = null;
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest) e.getUnfinishedMessage();
+          parsedMessage = (com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1278,185 +1571,567 @@ public final class ServerGateProtocol {
         }
         return this;
       }
+      private int bitField0_;
 
-      private int from_ ;
+      private int stat_ = 0;
       /**
-       * <code>optional int32 from = 1;</code>
+       * <code>optional .CommonStat stat = 1;</code>
        */
-      public int getFrom() {
-        return from_;
+      public int getStatValue() {
+        return stat_;
       }
       /**
-       * <code>optional int32 from = 1;</code>
+       * <code>optional .CommonStat stat = 1;</code>
        */
-      public Builder setFrom(int value) {
-        
-        from_ = value;
+      public Builder setStatValue(int value) {
+        stat_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 from = 1;</code>
+       * <code>optional .CommonStat stat = 1;</code>
        */
-      public Builder clearFrom() {
-        
-        from_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int to_ ;
-      /**
-       * <code>optional int32 to = 2;</code>
-       */
-      public int getTo() {
-        return to_;
+      public com.mmo.server.CommonProtocol.CommonStat getStat() {
+        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
+        return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
       }
       /**
-       * <code>optional int32 to = 2;</code>
+       * <code>optional .CommonStat stat = 1;</code>
        */
-      public Builder setTo(int value) {
+      public Builder setStat(com.mmo.server.CommonProtocol.CommonStat value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         
-        to_ = value;
+        stat_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 to = 2;</code>
+       * <code>optional .CommonStat stat = 1;</code>
        */
-      public Builder clearTo() {
+      public Builder clearStat() {
         
-        to_ = 0;
+        stat_ = 0;
         onChanged();
         return this;
       }
 
-      private com.mmo.server.CommonProtocol.Position toPos_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
-          com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> toPosBuilder_;
+      private int mapId_ ;
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>optional int32 mapId = 2;</code>
        */
-      public boolean hasToPos() {
-        return toPosBuilder_ != null || toPos_ != null;
+      public int getMapId() {
+        return mapId_;
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>optional int32 mapId = 2;</code>
        */
-      public com.mmo.server.CommonProtocol.Position getToPos() {
-        if (toPosBuilder_ == null) {
-          return toPos_ == null ? com.mmo.server.CommonProtocol.Position.getDefaultInstance() : toPos_;
+      public Builder setMapId(int value) {
+        
+        mapId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 mapId = 2;</code>
+       */
+      public Builder clearMapId() {
+        
+        mapId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.mmo.server.CommonProtocol.Item> mapItems_ =
+        java.util.Collections.emptyList();
+      private void ensureMapItemsIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          mapItems_ = new java.util.ArrayList<com.mmo.server.CommonProtocol.Item>(mapItems_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> mapItemsBuilder_;
+
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public java.util.List<com.mmo.server.CommonProtocol.Item> getMapItemsList() {
+        if (mapItemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mapItems_);
         } else {
-          return toPosBuilder_.getMessage();
+          return mapItemsBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      public Builder setToPos(com.mmo.server.CommonProtocol.Position value) {
-        if (toPosBuilder_ == null) {
+      public int getMapItemsCount() {
+        if (mapItemsBuilder_ == null) {
+          return mapItems_.size();
+        } else {
+          return mapItemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.Item getMapItems(int index) {
+        if (mapItemsBuilder_ == null) {
+          return mapItems_.get(index);
+        } else {
+          return mapItemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public Builder setMapItems(
+          int index, com.mmo.server.CommonProtocol.Item value) {
+        if (mapItemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          toPos_ = value;
+          ensureMapItemsIsMutable();
+          mapItems_.set(index, value);
           onChanged();
         } else {
-          toPosBuilder_.setMessage(value);
+          mapItemsBuilder_.setMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      public Builder setToPos(
-          com.mmo.server.CommonProtocol.Position.Builder builderForValue) {
-        if (toPosBuilder_ == null) {
-          toPos_ = builderForValue.build();
+      public Builder setMapItems(
+          int index, com.mmo.server.CommonProtocol.Item.Builder builderForValue) {
+        if (mapItemsBuilder_ == null) {
+          ensureMapItemsIsMutable();
+          mapItems_.set(index, builderForValue.build());
           onChanged();
         } else {
-          toPosBuilder_.setMessage(builderForValue.build());
+          mapItemsBuilder_.setMessage(index, builderForValue.build());
         }
-
         return this;
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      public Builder mergeToPos(com.mmo.server.CommonProtocol.Position value) {
-        if (toPosBuilder_ == null) {
-          if (toPos_ != null) {
-            toPos_ =
-              com.mmo.server.CommonProtocol.Position.newBuilder(toPos_).mergeFrom(value).buildPartial();
-          } else {
-            toPos_ = value;
+      public Builder addMapItems(com.mmo.server.CommonProtocol.Item value) {
+        if (mapItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
+          ensureMapItemsIsMutable();
+          mapItems_.add(value);
           onChanged();
         } else {
-          toPosBuilder_.mergeFrom(value);
+          mapItemsBuilder_.addMessage(value);
         }
-
         return this;
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      public Builder clearToPos() {
-        if (toPosBuilder_ == null) {
-          toPos_ = null;
+      public Builder addMapItems(
+          int index, com.mmo.server.CommonProtocol.Item value) {
+        if (mapItemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapItemsIsMutable();
+          mapItems_.add(index, value);
           onChanged();
         } else {
-          toPos_ = null;
-          toPosBuilder_ = null;
+          mapItemsBuilder_.addMessage(index, value);
         }
-
         return this;
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      public com.mmo.server.CommonProtocol.Position.Builder getToPosBuilder() {
-        
-        onChanged();
-        return getToPosFieldBuilder().getBuilder();
+      public Builder addMapItems(
+          com.mmo.server.CommonProtocol.Item.Builder builderForValue) {
+        if (mapItemsBuilder_ == null) {
+          ensureMapItemsIsMutable();
+          mapItems_.add(builderForValue.build());
+          onChanged();
+        } else {
+          mapItemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      public com.mmo.server.CommonProtocol.PositionOrBuilder getToPosOrBuilder() {
-        if (toPosBuilder_ != null) {
-          return toPosBuilder_.getMessageOrBuilder();
+      public Builder addMapItems(
+          int index, com.mmo.server.CommonProtocol.Item.Builder builderForValue) {
+        if (mapItemsBuilder_ == null) {
+          ensureMapItemsIsMutable();
+          mapItems_.add(index, builderForValue.build());
+          onChanged();
         } else {
-          return toPos_ == null ?
-              com.mmo.server.CommonProtocol.Position.getDefaultInstance() : toPos_;
+          mapItemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public Builder addAllMapItems(
+          java.lang.Iterable<? extends com.mmo.server.CommonProtocol.Item> values) {
+        if (mapItemsBuilder_ == null) {
+          ensureMapItemsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, mapItems_);
+          onChanged();
+        } else {
+          mapItemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public Builder clearMapItems() {
+        if (mapItemsBuilder_ == null) {
+          mapItems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          mapItemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public Builder removeMapItems(int index) {
+        if (mapItemsBuilder_ == null) {
+          ensureMapItemsIsMutable();
+          mapItems_.remove(index);
+          onChanged();
+        } else {
+          mapItemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.Item.Builder getMapItemsBuilder(
+          int index) {
+        return getMapItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.ItemOrBuilder getMapItemsOrBuilder(
+          int index) {
+        if (mapItemsBuilder_ == null) {
+          return mapItems_.get(index);  } else {
+          return mapItemsBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .Position toPos = 3;</code>
+       * <code>repeated .Item mapItems = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
-          getToPosFieldBuilder() {
-        if (toPosBuilder_ == null) {
-          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
-                  getToPos(),
+      public java.util.List<? extends com.mmo.server.CommonProtocol.ItemOrBuilder> 
+           getMapItemsOrBuilderList() {
+        if (mapItemsBuilder_ != null) {
+          return mapItemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mapItems_);
+        }
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.Item.Builder addMapItemsBuilder() {
+        return getMapItemsFieldBuilder().addBuilder(
+            com.mmo.server.CommonProtocol.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.Item.Builder addMapItemsBuilder(
+          int index) {
+        return getMapItemsFieldBuilder().addBuilder(
+            index, com.mmo.server.CommonProtocol.Item.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Item mapItems = 3;</code>
+       */
+      public java.util.List<com.mmo.server.CommonProtocol.Item.Builder> 
+           getMapItemsBuilderList() {
+        return getMapItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> 
+          getMapItemsFieldBuilder() {
+        if (mapItemsBuilder_ == null) {
+          mapItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder>(
+                  mapItems_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
-          toPos_ = null;
+          mapItems_ = null;
         }
-        return toPosBuilder_;
+        return mapItemsBuilder_;
+      }
+
+      private java.util.List<com.mmo.server.CommonProtocol.Character> mapCharacters_ =
+        java.util.Collections.emptyList();
+      private void ensureMapCharactersIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          mapCharacters_ = new java.util.ArrayList<com.mmo.server.CommonProtocol.Character>(mapCharacters_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> mapCharactersBuilder_;
+
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public java.util.List<com.mmo.server.CommonProtocol.Character> getMapCharactersList() {
+        if (mapCharactersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(mapCharacters_);
+        } else {
+          return mapCharactersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public int getMapCharactersCount() {
+        if (mapCharactersBuilder_ == null) {
+          return mapCharacters_.size();
+        } else {
+          return mapCharactersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character getMapCharacters(int index) {
+        if (mapCharactersBuilder_ == null) {
+          return mapCharacters_.get(index);
+        } else {
+          return mapCharactersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder setMapCharacters(
+          int index, com.mmo.server.CommonProtocol.Character value) {
+        if (mapCharactersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapCharactersIsMutable();
+          mapCharacters_.set(index, value);
+          onChanged();
+        } else {
+          mapCharactersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder setMapCharacters(
+          int index, com.mmo.server.CommonProtocol.Character.Builder builderForValue) {
+        if (mapCharactersBuilder_ == null) {
+          ensureMapCharactersIsMutable();
+          mapCharacters_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          mapCharactersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder addMapCharacters(com.mmo.server.CommonProtocol.Character value) {
+        if (mapCharactersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapCharactersIsMutable();
+          mapCharacters_.add(value);
+          onChanged();
+        } else {
+          mapCharactersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder addMapCharacters(
+          int index, com.mmo.server.CommonProtocol.Character value) {
+        if (mapCharactersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMapCharactersIsMutable();
+          mapCharacters_.add(index, value);
+          onChanged();
+        } else {
+          mapCharactersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder addMapCharacters(
+          com.mmo.server.CommonProtocol.Character.Builder builderForValue) {
+        if (mapCharactersBuilder_ == null) {
+          ensureMapCharactersIsMutable();
+          mapCharacters_.add(builderForValue.build());
+          onChanged();
+        } else {
+          mapCharactersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder addMapCharacters(
+          int index, com.mmo.server.CommonProtocol.Character.Builder builderForValue) {
+        if (mapCharactersBuilder_ == null) {
+          ensureMapCharactersIsMutable();
+          mapCharacters_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          mapCharactersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder addAllMapCharacters(
+          java.lang.Iterable<? extends com.mmo.server.CommonProtocol.Character> values) {
+        if (mapCharactersBuilder_ == null) {
+          ensureMapCharactersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, mapCharacters_);
+          onChanged();
+        } else {
+          mapCharactersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder clearMapCharacters() {
+        if (mapCharactersBuilder_ == null) {
+          mapCharacters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          mapCharactersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public Builder removeMapCharacters(int index) {
+        if (mapCharactersBuilder_ == null) {
+          ensureMapCharactersIsMutable();
+          mapCharacters_.remove(index);
+          onChanged();
+        } else {
+          mapCharactersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character.Builder getMapCharactersBuilder(
+          int index) {
+        return getMapCharactersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.CharacterOrBuilder getMapCharactersOrBuilder(
+          int index) {
+        if (mapCharactersBuilder_ == null) {
+          return mapCharacters_.get(index);  } else {
+          return mapCharactersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public java.util.List<? extends com.mmo.server.CommonProtocol.CharacterOrBuilder> 
+           getMapCharactersOrBuilderList() {
+        if (mapCharactersBuilder_ != null) {
+          return mapCharactersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(mapCharacters_);
+        }
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character.Builder addMapCharactersBuilder() {
+        return getMapCharactersFieldBuilder().addBuilder(
+            com.mmo.server.CommonProtocol.Character.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character.Builder addMapCharactersBuilder(
+          int index) {
+        return getMapCharactersFieldBuilder().addBuilder(
+            index, com.mmo.server.CommonProtocol.Character.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .Character mapCharacters = 4;</code>
+       */
+      public java.util.List<com.mmo.server.CommonProtocol.Character.Builder> 
+           getMapCharactersBuilderList() {
+        return getMapCharactersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
+          getMapCharactersFieldBuilder() {
+        if (mapCharactersBuilder_ == null) {
+          mapCharactersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
+                  mapCharacters_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          mapCharacters_ = null;
+        }
+        return mapCharactersBuilder_;
       }
 
       private int uid_ ;
       /**
-       * <code>optional int32 uid = 4;</code>
+       * <code>optional int32 uid = 5;</code>
        */
       public int getUid() {
         return uid_;
       }
       /**
-       * <code>optional int32 uid = 4;</code>
+       * <code>optional int32 uid = 5;</code>
        */
       public Builder setUid(int value) {
         
@@ -1465,7 +2140,7 @@ public final class ServerGateProtocol {
         return this;
       }
       /**
-       * <code>optional int32 uid = 4;</code>
+       * <code>optional int32 uid = 5;</code>
        */
       public Builder clearUid() {
         
@@ -1484,377 +2159,39 @@ public final class ServerGateProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:PlayerBeginChangeMapRequest)
+      // @@protoc_insertion_point(builder_scope:CharacterEnterMapRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:PlayerBeginChangeMapRequest)
-    private static final com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:CharacterEnterMapRequest)
+    private static final com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest();
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest();
     }
 
-    public static com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest getDefaultInstance() {
+    public static com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PlayerBeginChangeMapRequest>
-        PARSER = new com.google.protobuf.AbstractParser<PlayerBeginChangeMapRequest>() {
-      public PlayerBeginChangeMapRequest parsePartialFrom(
+    private static final com.google.protobuf.Parser<CharacterEnterMapRequest>
+        PARSER = new com.google.protobuf.AbstractParser<CharacterEnterMapRequest>() {
+      public CharacterEnterMapRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PlayerBeginChangeMapRequest(input, extensionRegistry);
+          return new CharacterEnterMapRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PlayerBeginChangeMapRequest> parser() {
+    public static com.google.protobuf.Parser<CharacterEnterMapRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PlayerBeginChangeMapRequest> getParserForType() {
+    public com.google.protobuf.Parser<CharacterEnterMapRequest> getParserForType() {
       return PARSER;
     }
 
-    public com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface PlayerChangeMapCompletedRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PlayerChangeMapCompletedRequest)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code PlayerChangeMapCompletedRequest}
-   */
-  public  static final class PlayerChangeMapCompletedRequest extends
-      com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:PlayerChangeMapCompletedRequest)
-      PlayerChangeMapCompletedRequestOrBuilder {
-    // Use PlayerChangeMapCompletedRequest.newBuilder() to construct.
-    private PlayerChangeMapCompletedRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-    }
-    private PlayerChangeMapCompletedRequest() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private PlayerChangeMapCompletedRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.mmo.server.ServerGateProtocol.internal_static_PlayerChangeMapCompletedRequest_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.mmo.server.ServerGateProtocol.internal_static_PlayerChangeMapCompletedRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.class, com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)) {
-        return super.equals(obj);
-      }
-      com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest other = (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest) obj;
-
-      boolean result = true;
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessage
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code PlayerChangeMapCompletedRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PlayerChangeMapCompletedRequest)
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.mmo.server.ServerGateProtocol.internal_static_PlayerChangeMapCompletedRequest_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.mmo.server.ServerGateProtocol.internal_static_PlayerChangeMapCompletedRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.class, com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.Builder.class);
-      }
-
-      // Construct using com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.mmo.server.ServerGateProtocol.internal_static_PlayerChangeMapCompletedRequest_descriptor;
-      }
-
-      public com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest getDefaultInstanceForType() {
-        return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
-      }
-
-      public com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest build() {
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest buildPartial() {
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest result = new com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest(this);
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest) {
-          return mergeFrom((com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest other) {
-        if (other == com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance()) return this;
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:PlayerChangeMapCompletedRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:PlayerChangeMapCompletedRequest)
-    private static final com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest();
-    }
-
-    public static com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<PlayerChangeMapCompletedRequest>
-        PARSER = new com.google.protobuf.AbstractParser<PlayerChangeMapCompletedRequest>() {
-      public PlayerChangeMapCompletedRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new PlayerChangeMapCompletedRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<PlayerChangeMapCompletedRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PlayerChangeMapCompletedRequest> getParserForType() {
-      return PARSER;
-    }
-
-    public com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest getDefaultInstanceForType() {
+    public com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2064,7 +2401,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -2114,8 +2451,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -2375,6 +2712,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemMoveEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemMoveEventRequest)other);
@@ -2459,7 +2822,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemMoveEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemMoveEvent event = 2;</code>
@@ -2561,11 +2924,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemMoveEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -2594,7 +2957,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -2733,8 +3096,8 @@ public final class ServerGateProtocol {
 
   }
 
-  public interface ItemCraateEventRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ItemCraateEventRequest)
+  public interface ItemCreateEventRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ItemCreateEventRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2743,17 +3106,17 @@ public final class ServerGateProtocol {
     int getMapId();
 
     /**
-     * <code>optional .ItemCraateEvent event = 2;</code>
+     * <code>optional .ItemCreateEvent event = 2;</code>
      */
     boolean hasEvent();
     /**
-     * <code>optional .ItemCraateEvent event = 2;</code>
+     * <code>optional .ItemCreateEvent event = 2;</code>
      */
-    com.mmo.server.CommonProtocol.ItemCraateEvent getEvent();
+    com.mmo.server.CommonProtocol.ItemCreateEvent getEvent();
     /**
-     * <code>optional .ItemCraateEvent event = 2;</code>
+     * <code>optional .ItemCreateEvent event = 2;</code>
      */
-    com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder getEventOrBuilder();
+    com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder getEventOrBuilder();
 
     /**
      * <code>optional .MapEventType eventType = 3;</code>
@@ -2778,17 +3141,17 @@ public final class ServerGateProtocol {
     int getEffects(int index);
   }
   /**
-   * Protobuf type {@code ItemCraateEventRequest}
+   * Protobuf type {@code ItemCreateEventRequest}
    */
-  public  static final class ItemCraateEventRequest extends
+  public  static final class ItemCreateEventRequest extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ItemCraateEventRequest)
-      ItemCraateEventRequestOrBuilder {
-    // Use ItemCraateEventRequest.newBuilder() to construct.
-    private ItemCraateEventRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ItemCreateEventRequest)
+      ItemCreateEventRequestOrBuilder {
+    // Use ItemCreateEventRequest.newBuilder() to construct.
+    private ItemCreateEventRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private ItemCraateEventRequest() {
+    private ItemCreateEventRequest() {
       mapId_ = 0;
       eventType_ = 0;
       effects_ = java.util.Collections.emptyList();
@@ -2799,7 +3162,7 @@ public final class ServerGateProtocol {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private ItemCraateEventRequest(
+    private ItemCreateEventRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2825,11 +3188,11 @@ public final class ServerGateProtocol {
               break;
             }
             case 18: {
-              com.mmo.server.CommonProtocol.ItemCraateEvent.Builder subBuilder = null;
+              com.mmo.server.CommonProtocol.ItemCreateEvent.Builder subBuilder = null;
               if (event_ != null) {
                 subBuilder = event_.toBuilder();
               }
-              event_ = input.readMessage(com.mmo.server.CommonProtocol.ItemCraateEvent.parser(), extensionRegistry);
+              event_ = input.readMessage(com.mmo.server.CommonProtocol.ItemCreateEvent.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(event_);
                 event_ = subBuilder.buildPartial();
@@ -2880,14 +3243,14 @@ public final class ServerGateProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.mmo.server.ServerGateProtocol.internal_static_ItemCraateEventRequest_descriptor;
+      return com.mmo.server.ServerGateProtocol.internal_static_ItemCreateEventRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.mmo.server.ServerGateProtocol.internal_static_ItemCraateEventRequest_fieldAccessorTable
+      return com.mmo.server.ServerGateProtocol.internal_static_ItemCreateEventRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.class, com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.Builder.class);
+              com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.class, com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.Builder.class);
     }
 
     private int bitField0_;
@@ -2901,23 +3264,23 @@ public final class ServerGateProtocol {
     }
 
     public static final int EVENT_FIELD_NUMBER = 2;
-    private com.mmo.server.CommonProtocol.ItemCraateEvent event_;
+    private com.mmo.server.CommonProtocol.ItemCreateEvent event_;
     /**
-     * <code>optional .ItemCraateEvent event = 2;</code>
+     * <code>optional .ItemCreateEvent event = 2;</code>
      */
     public boolean hasEvent() {
       return event_ != null;
     }
     /**
-     * <code>optional .ItemCraateEvent event = 2;</code>
+     * <code>optional .ItemCreateEvent event = 2;</code>
      */
-    public com.mmo.server.CommonProtocol.ItemCraateEvent getEvent() {
-      return event_ == null ? com.mmo.server.CommonProtocol.ItemCraateEvent.getDefaultInstance() : event_;
+    public com.mmo.server.CommonProtocol.ItemCreateEvent getEvent() {
+      return event_ == null ? com.mmo.server.CommonProtocol.ItemCreateEvent.getDefaultInstance() : event_;
     }
     /**
-     * <code>optional .ItemCraateEvent event = 2;</code>
+     * <code>optional .ItemCreateEvent event = 2;</code>
      */
-    public com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder getEventOrBuilder() {
+    public com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder getEventOrBuilder() {
       return getEvent();
     }
 
@@ -2933,7 +3296,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -2983,8 +3346,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -3032,10 +3395,10 @@ public final class ServerGateProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.mmo.server.ServerGateProtocol.ItemCraateEventRequest)) {
+      if (!(obj instanceof com.mmo.server.ServerGateProtocol.ItemCreateEventRequest)) {
         return super.equals(obj);
       }
-      com.mmo.server.ServerGateProtocol.ItemCraateEventRequest other = (com.mmo.server.ServerGateProtocol.ItemCraateEventRequest) obj;
+      com.mmo.server.ServerGateProtocol.ItemCreateEventRequest other = (com.mmo.server.ServerGateProtocol.ItemCreateEventRequest) obj;
 
       boolean result = true;
       result = result && (getMapId()
@@ -3075,58 +3438,58 @@ public final class ServerGateProtocol {
       return hash;
     }
 
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(byte[] data)
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(java.io.InputStream input)
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseDelimitedFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parseFrom(
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3138,7 +3501,7 @@ public final class ServerGateProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest prototype) {
+    public static Builder newBuilder(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -3153,25 +3516,25 @@ public final class ServerGateProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code ItemCraateEventRequest}
+     * Protobuf type {@code ItemCreateEventRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ItemCraateEventRequest)
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ItemCreateEventRequest)
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.mmo.server.ServerGateProtocol.internal_static_ItemCraateEventRequest_descriptor;
+        return com.mmo.server.ServerGateProtocol.internal_static_ItemCreateEventRequest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.mmo.server.ServerGateProtocol.internal_static_ItemCraateEventRequest_fieldAccessorTable
+        return com.mmo.server.ServerGateProtocol.internal_static_ItemCreateEventRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.class, com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.Builder.class);
+                com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.class, com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.Builder.class);
       }
 
-      // Construct using com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.newBuilder()
+      // Construct using com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3204,23 +3567,23 @@ public final class ServerGateProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.mmo.server.ServerGateProtocol.internal_static_ItemCraateEventRequest_descriptor;
+        return com.mmo.server.ServerGateProtocol.internal_static_ItemCreateEventRequest_descriptor;
       }
 
-      public com.mmo.server.ServerGateProtocol.ItemCraateEventRequest getDefaultInstanceForType() {
-        return com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.getDefaultInstance();
+      public com.mmo.server.ServerGateProtocol.ItemCreateEventRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.getDefaultInstance();
       }
 
-      public com.mmo.server.ServerGateProtocol.ItemCraateEventRequest build() {
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequest result = buildPartial();
+      public com.mmo.server.ServerGateProtocol.ItemCreateEventRequest build() {
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.mmo.server.ServerGateProtocol.ItemCraateEventRequest buildPartial() {
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequest result = new com.mmo.server.ServerGateProtocol.ItemCraateEventRequest(this);
+      public com.mmo.server.ServerGateProtocol.ItemCreateEventRequest buildPartial() {
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequest result = new com.mmo.server.ServerGateProtocol.ItemCreateEventRequest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.mapId_ = mapId_;
@@ -3240,17 +3603,43 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.mmo.server.ServerGateProtocol.ItemCraateEventRequest) {
-          return mergeFrom((com.mmo.server.ServerGateProtocol.ItemCraateEventRequest)other);
+        if (other instanceof com.mmo.server.ServerGateProtocol.ItemCreateEventRequest) {
+          return mergeFrom((com.mmo.server.ServerGateProtocol.ItemCreateEventRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest other) {
-        if (other == com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest other) {
+        if (other == com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.getDefaultInstance()) return this;
         if (other.getMapId() != 0) {
           setMapId(other.getMapId());
         }
@@ -3282,11 +3671,11 @@ public final class ServerGateProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequest parsedMessage = null;
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.mmo.server.ServerGateProtocol.ItemCraateEventRequest) e.getUnfinishedMessage();
+          parsedMessage = (com.mmo.server.ServerGateProtocol.ItemCreateEventRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3323,29 +3712,29 @@ public final class ServerGateProtocol {
         return this;
       }
 
-      private com.mmo.server.CommonProtocol.ItemCraateEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
-          com.mmo.server.CommonProtocol.ItemCraateEvent, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder, com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder> eventBuilder_;
+      private com.mmo.server.CommonProtocol.ItemCreateEvent event_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ItemCreateEvent, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder, com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder> eventBuilder_;
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
       public boolean hasEvent() {
         return eventBuilder_ != null || event_ != null;
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      public com.mmo.server.CommonProtocol.ItemCraateEvent getEvent() {
+      public com.mmo.server.CommonProtocol.ItemCreateEvent getEvent() {
         if (eventBuilder_ == null) {
-          return event_ == null ? com.mmo.server.CommonProtocol.ItemCraateEvent.getDefaultInstance() : event_;
+          return event_ == null ? com.mmo.server.CommonProtocol.ItemCreateEvent.getDefaultInstance() : event_;
         } else {
           return eventBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      public Builder setEvent(com.mmo.server.CommonProtocol.ItemCraateEvent value) {
+      public Builder setEvent(com.mmo.server.CommonProtocol.ItemCreateEvent value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3359,10 +3748,10 @@ public final class ServerGateProtocol {
         return this;
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
       public Builder setEvent(
-          com.mmo.server.CommonProtocol.ItemCraateEvent.Builder builderForValue) {
+          com.mmo.server.CommonProtocol.ItemCreateEvent.Builder builderForValue) {
         if (eventBuilder_ == null) {
           event_ = builderForValue.build();
           onChanged();
@@ -3373,13 +3762,13 @@ public final class ServerGateProtocol {
         return this;
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      public Builder mergeEvent(com.mmo.server.CommonProtocol.ItemCraateEvent value) {
+      public Builder mergeEvent(com.mmo.server.CommonProtocol.ItemCreateEvent value) {
         if (eventBuilder_ == null) {
           if (event_ != null) {
             event_ =
-              com.mmo.server.CommonProtocol.ItemCraateEvent.newBuilder(event_).mergeFrom(value).buildPartial();
+              com.mmo.server.CommonProtocol.ItemCreateEvent.newBuilder(event_).mergeFrom(value).buildPartial();
           } else {
             event_ = value;
           }
@@ -3391,7 +3780,7 @@ public final class ServerGateProtocol {
         return this;
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
@@ -3405,33 +3794,33 @@ public final class ServerGateProtocol {
         return this;
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      public com.mmo.server.CommonProtocol.ItemCraateEvent.Builder getEventBuilder() {
+      public com.mmo.server.CommonProtocol.ItemCreateEvent.Builder getEventBuilder() {
         
         onChanged();
         return getEventFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      public com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder getEventOrBuilder() {
+      public com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder getEventOrBuilder() {
         if (eventBuilder_ != null) {
           return eventBuilder_.getMessageOrBuilder();
         } else {
           return event_ == null ?
-              com.mmo.server.CommonProtocol.ItemCraateEvent.getDefaultInstance() : event_;
+              com.mmo.server.CommonProtocol.ItemCreateEvent.getDefaultInstance() : event_;
         }
       }
       /**
-       * <code>optional .ItemCraateEvent event = 2;</code>
+       * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.mmo.server.CommonProtocol.ItemCraateEvent, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder, com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder> 
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ItemCreateEvent, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder, com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.mmo.server.CommonProtocol.ItemCraateEvent, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder, com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder>(
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ItemCreateEvent, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder, com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
                   isClean());
@@ -3459,7 +3848,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -3560,39 +3949,39 @@ public final class ServerGateProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ItemCraateEventRequest)
+      // @@protoc_insertion_point(builder_scope:ItemCreateEventRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:ItemCraateEventRequest)
-    private static final com.mmo.server.ServerGateProtocol.ItemCraateEventRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ItemCreateEventRequest)
+    private static final com.mmo.server.ServerGateProtocol.ItemCreateEventRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.ItemCraateEventRequest();
+      DEFAULT_INSTANCE = new com.mmo.server.ServerGateProtocol.ItemCreateEventRequest();
     }
 
-    public static com.mmo.server.ServerGateProtocol.ItemCraateEventRequest getDefaultInstance() {
+    public static com.mmo.server.ServerGateProtocol.ItemCreateEventRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ItemCraateEventRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ItemCraateEventRequest>() {
-      public ItemCraateEventRequest parsePartialFrom(
+    private static final com.google.protobuf.Parser<ItemCreateEventRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ItemCreateEventRequest>() {
+      public ItemCreateEventRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ItemCraateEventRequest(input, extensionRegistry);
+          return new ItemCreateEventRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ItemCraateEventRequest> parser() {
+    public static com.google.protobuf.Parser<ItemCreateEventRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ItemCraateEventRequest> getParserForType() {
+    public com.google.protobuf.Parser<ItemCreateEventRequest> getParserForType() {
       return PARSER;
     }
 
-    public com.mmo.server.ServerGateProtocol.ItemCraateEventRequest getDefaultInstanceForType() {
+    public com.mmo.server.ServerGateProtocol.ItemCreateEventRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3798,7 +4187,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -3848,8 +4237,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -4105,6 +4494,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest)other);
@@ -4189,7 +4604,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemDestroyEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemDestroyEvent event = 2;</code>
@@ -4291,11 +4706,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemDestroyEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -4324,7 +4739,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -4663,7 +5078,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -4713,8 +5128,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -4970,6 +5385,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest)other);
@@ -5054,7 +5495,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.CharacterCreateEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .CharacterCreateEvent event = 2;</code>
@@ -5156,11 +5597,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .CharacterCreateEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -5189,7 +5630,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -5345,11 +5786,11 @@ public final class ServerGateProtocol {
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
       /**
-       * <code>rpc createItemEvent(.ItemCraateEventRequest) returns (.CommonResponse);</code>
+       * <code>rpc createItemEvent(.ItemCreateEventRequest) returns (.CommonResponse);</code>
        */
       public abstract void createItemEvent(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+          com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
       /**
@@ -5384,7 +5825,7 @@ public final class ServerGateProtocol {
         @java.lang.Override
         public  void createItemEvent(
             com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+            com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
           impl.createItemEvent(controller, request, done);
         }
@@ -5430,7 +5871,7 @@ public final class ServerGateProtocol {
             case 0:
               return impl.moveEvent(controller, (com.mmo.server.ServerGateProtocol.ItemMoveEventRequest)request);
             case 1:
-              return impl.createItemEvent(controller, (com.mmo.server.ServerGateProtocol.ItemCraateEventRequest)request);
+              return impl.createItemEvent(controller, (com.mmo.server.ServerGateProtocol.ItemCreateEventRequest)request);
             case 2:
               return impl.destroyItemEvent(controller, (com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest)request);
             case 3:
@@ -5452,7 +5893,7 @@ public final class ServerGateProtocol {
             case 0:
               return com.mmo.server.ServerGateProtocol.ItemMoveEventRequest.getDefaultInstance();
             case 1:
-              return com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.getDefaultInstance();
+              return com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.getDefaultInstance();
             case 2:
               return com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest.getDefaultInstance();
             case 3:
@@ -5496,11 +5937,11 @@ public final class ServerGateProtocol {
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     /**
-     * <code>rpc createItemEvent(.ItemCraateEventRequest) returns (.CommonResponse);</code>
+     * <code>rpc createItemEvent(.ItemCreateEventRequest) returns (.CommonResponse);</code>
      */
     public abstract void createItemEvent(
         com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     /**
@@ -5547,7 +5988,7 @@ public final class ServerGateProtocol {
               done));
           return;
         case 1:
-          this.createItemEvent(controller, (com.mmo.server.ServerGateProtocol.ItemCraateEventRequest)request,
+          this.createItemEvent(controller, (com.mmo.server.ServerGateProtocol.ItemCreateEventRequest)request,
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
@@ -5578,7 +6019,7 @@ public final class ServerGateProtocol {
         case 0:
           return com.mmo.server.ServerGateProtocol.ItemMoveEventRequest.getDefaultInstance();
         case 1:
-          return com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.getDefaultInstance();
+          return com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.getDefaultInstance();
         case 2:
           return com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest.getDefaultInstance();
         case 3:
@@ -5643,7 +6084,7 @@ public final class ServerGateProtocol {
 
       public  void createItemEvent(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+          com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
         channel.callMethod(
           getDescriptor().getMethods().get(1),
@@ -5700,7 +6141,7 @@ public final class ServerGateProtocol {
 
       public com.mmo.server.CommonProtocol.CommonResponse createItemEvent(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request)
+          com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request)
           throws com.google.protobuf.ServiceException;
 
       public com.mmo.server.CommonProtocol.CommonResponse destroyItemEvent(
@@ -5735,7 +6176,7 @@ public final class ServerGateProtocol {
 
       public com.mmo.server.CommonProtocol.CommonResponse createItemEvent(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request)
+          com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request)
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
           getDescriptor().getMethods().get(1),
@@ -5790,19 +6231,11 @@ public final class ServerGateProtocol {
           com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
 
       /**
-       * <code>rpc playBeginChangeMap(.PlayerBeginChangeMapRequest) returns (.CommonResponse);</code>
+       * <code>rpc characterEnterMapRequest(.CharacterEnterMapRequest) returns (.CommonResponse);</code>
        */
-      public abstract void playBeginChangeMap(
+      public abstract void characterEnterMapRequest(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
-      /**
-       * <code>rpc PlayerChangeMapCompleted(.PlayerChangeMapCompletedRequest) returns (.CommonResponse);</code>
-       */
-      public abstract void playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+          com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     }
@@ -5819,19 +6252,11 @@ public final class ServerGateProtocol {
         }
 
         @java.lang.Override
-        public  void playBeginChangeMap(
+        public  void characterEnterMapRequest(
             com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+            com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-          impl.playBeginChangeMap(controller, request, done);
-        }
-
-        @java.lang.Override
-        public  void playerChangeMapCompleted(
-            com.google.protobuf.RpcController controller,
-            com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-          impl.playerChangeMapCompleted(controller, request, done);
+          impl.characterEnterMapRequest(controller, request, done);
         }
 
       };
@@ -5859,9 +6284,7 @@ public final class ServerGateProtocol {
             case 0:
               return impl.receivePing(controller, (com.mmo.server.ServerGateProtocol.GateServerPing)request);
             case 1:
-              return impl.playBeginChangeMap(controller, (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)request);
-            case 2:
-              return impl.playerChangeMapCompleted(controller, (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)request);
+              return impl.characterEnterMapRequest(controller, (com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -5879,9 +6302,7 @@ public final class ServerGateProtocol {
             case 0:
               return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
             case 1:
-              return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
-            case 2:
-              return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
+              return com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -5900,8 +6321,6 @@ public final class ServerGateProtocol {
               return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
             case 1:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-            case 2:
-              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -5919,19 +6338,11 @@ public final class ServerGateProtocol {
         com.google.protobuf.RpcCallback<com.mmo.server.ServerGateProtocol.GateServerPong> done);
 
     /**
-     * <code>rpc playBeginChangeMap(.PlayerBeginChangeMapRequest) returns (.CommonResponse);</code>
+     * <code>rpc characterEnterMapRequest(.CharacterEnterMapRequest) returns (.CommonResponse);</code>
      */
-    public abstract void playBeginChangeMap(
+    public abstract void characterEnterMapRequest(
         com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
-
-    /**
-     * <code>rpc PlayerChangeMapCompleted(.PlayerChangeMapCompletedRequest) returns (.CommonResponse);</code>
-     */
-    public abstract void playerChangeMapCompleted(
-        com.google.protobuf.RpcController controller,
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     public static final
@@ -5962,12 +6373,7 @@ public final class ServerGateProtocol {
               done));
           return;
         case 1:
-          this.playBeginChangeMap(controller, (com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest)request,
-            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
-              done));
-          return;
-        case 2:
-          this.playerChangeMapCompleted(controller, (com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest)request,
+          this.characterEnterMapRequest(controller, (com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest)request,
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
@@ -5988,9 +6394,7 @@ public final class ServerGateProtocol {
         case 0:
           return com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance();
         case 1:
-          return com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance();
-        case 2:
-          return com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance();
+          return com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -6008,8 +6412,6 @@ public final class ServerGateProtocol {
         case 0:
           return com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance();
         case 1:
-          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
-        case 2:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
@@ -6047,27 +6449,12 @@ public final class ServerGateProtocol {
             com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
       }
 
-      public  void playBeginChangeMap(
+      public  void characterEnterMapRequest(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+          com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
         channel.callMethod(
           getDescriptor().getMethods().get(1),
-          controller,
-          request,
-          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            com.mmo.server.CommonProtocol.CommonResponse.class,
-            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
-      }
-
-      public  void playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(2),
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
@@ -6089,14 +6476,9 @@ public final class ServerGateProtocol {
           com.mmo.server.ServerGateProtocol.GateServerPing request)
           throws com.google.protobuf.ServiceException;
 
-      public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(
+      public com.mmo.server.CommonProtocol.CommonResponse characterEnterMapRequest(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request)
-          throws com.google.protobuf.ServiceException;
-
-      public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request)
+          com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -6119,24 +6501,12 @@ public final class ServerGateProtocol {
       }
 
 
-      public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(
+      public com.mmo.server.CommonProtocol.CommonResponse characterEnterMapRequest(
           com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request)
+          com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request)
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
           getDescriptor().getMethods().get(1),
-          controller,
-          request,
-          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
-      }
-
-
-      public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(
-          com.google.protobuf.RpcController controller,
-          com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request)
-          throws com.google.protobuf.ServiceException {
-        return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(2),
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
@@ -6158,25 +6528,20 @@ public final class ServerGateProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_GateServerPong_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PlayerBeginChangeMapRequest_descriptor;
+    internal_static_CharacterEnterMapRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_PlayerBeginChangeMapRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PlayerChangeMapCompletedRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_PlayerChangeMapCompletedRequest_fieldAccessorTable;
+      internal_static_CharacterEnterMapRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ItemMoveEventRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ItemMoveEventRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ItemCraateEventRequest_descriptor;
+    internal_static_ItemCreateEventRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ItemCraateEventRequest_fieldAccessorTable;
+      internal_static_ItemCreateEventRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ItemDestroyEventRequest_descriptor;
   private static final 
@@ -6197,40 +6562,39 @@ public final class ServerGateProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\021gate_server.proto\032\014common.proto\"\020\n\016Gat" +
-      "eServerPing\"\020\n\016GateServerPong\"^\n\033PlayerB" +
-      "eginChangeMapRequest\022\014\n\004from\030\001 \001(\005\022\n\n\002to" +
-      "\030\002 \001(\005\022\030\n\005toPos\030\003 \001(\0132\t.Position\022\013\n\003uid\030" +
-      "\004 \001(\005\"!\n\037PlayerChangeMapCompletedRequest" +
-      "\"w\n\024ItemMoveEventRequest\022\r\n\005mapId\030\001 \001(\005\022" +
-      "\035\n\005event\030\002 \001(\0132\016.ItemMoveEvent\022 \n\teventT" +
-      "ype\030\003 \001(\0162\r.MapEventType\022\017\n\007effects\030\004 \003(" +
-      "\005\"{\n\026ItemCraateEventRequest\022\r\n\005mapId\030\001 \001" +
-      "(\005\022\037\n\005event\030\002 \001(\0132\020.ItemCraateEvent\022 \n\te",
-      "ventType\030\003 \001(\0162\r.MapEventType\022\017\n\007effects" +
-      "\030\004 \003(\005\"}\n\027ItemDestroyEventRequest\022\r\n\005map" +
-      "Id\030\001 \001(\005\022 \n\005event\030\002 \001(\0132\021.ItemDestroyEve" +
-      "nt\022 \n\teventType\030\003 \001(\0162\r.MapEventType\022\017\n\007" +
-      "effects\030\004 \003(\005\"\205\001\n\033CharacterCreateEventRe" +
-      "quest\022\r\n\005mapId\030\001 \001(\005\022$\n\005event\030\002 \001(\0132\025.Ch" +
-      "aracterCreateEvent\022 \n\teventType\030\003 \001(\0162\r." +
-      "MapEventType\022\017\n\007effects\030\004 \003(\005*f\n\014MapEven" +
-      "tType\022\021\n\rITEMMOVEEVENT\020\000\022\023\n\017ITEMCRAATEEV" +
-      "ENT\020\001\022\024\n\020ITEMDESTROYEVENT\020\002\022\030\n\024CHARACTER",
-      "CREATEEVENT\020\0032\221\002\n\017EventDispatcher\0225\n\tmov" +
-      "eEvent\022\025.ItemMoveEventRequest\032\017.CommonRe" +
-      "sponse\"\000\022=\n\017createItemEvent\022\027.ItemCraate" +
-      "EventRequest\032\017.CommonResponse\"\000\022?\n\020destr" +
-      "oyItemEvent\022\030.ItemDestroyEventRequest\032\017." +
-      "CommonResponse\"\000\022G\n\024createCharacterEvent" +
-      "\022\034.CharacterCreateEventRequest\032\017.CommonR" +
-      "esponse\"\0002\336\001\n\021GateServerService\0221\n\013recei" +
-      "vePing\022\017.GateServerPing\032\017.GateServerPong" +
-      "\"\000\022E\n\022playBeginChangeMap\022\034.PlayerBeginCh",
-      "angeMapRequest\032\017.CommonResponse\"\000\022O\n\030Pla" +
-      "yerChangeMapCompleted\022 .PlayerChangeMapC" +
-      "ompletedRequest\032\017.CommonResponse\"\000B*\n\016co" +
-      "m.mmo.serverB\022ServerGateProtocol\210\001\001\240\001\001b\006" +
-      "proto3"
+      "eServerPing\"\020\n\016GateServerPong\"\215\001\n\030Charac" +
+      "terEnterMapRequest\022\031\n\004stat\030\001 \001(\0162\013.Commo" +
+      "nStat\022\r\n\005mapId\030\002 \001(\005\022\027\n\010mapItems\030\003 \003(\0132\005" +
+      ".Item\022!\n\rmapCharacters\030\004 \003(\0132\n.Character" +
+      "\022\013\n\003uid\030\005 \001(\005\"w\n\024ItemMoveEventRequest\022\r\n" +
+      "\005mapId\030\001 \001(\005\022\035\n\005event\030\002 \001(\0132\016.ItemMoveEv" +
+      "ent\022 \n\teventType\030\003 \001(\0162\r.MapEventType\022\017\n" +
+      "\007effects\030\004 \003(\005\"{\n\026ItemCreateEventRequest" +
+      "\022\r\n\005mapId\030\001 \001(\005\022\037\n\005event\030\002 \001(\0132\020.ItemCre",
+      "ateEvent\022 \n\teventType\030\003 \001(\0162\r.MapEventTy" +
+      "pe\022\017\n\007effects\030\004 \003(\005\"}\n\027ItemDestroyEventR" +
+      "equest\022\r\n\005mapId\030\001 \001(\005\022 \n\005event\030\002 \001(\0132\021.I" +
+      "temDestroyEvent\022 \n\teventType\030\003 \001(\0162\r.Map" +
+      "EventType\022\017\n\007effects\030\004 \003(\005\"\205\001\n\033Character" +
+      "CreateEventRequest\022\r\n\005mapId\030\001 \001(\005\022$\n\005eve" +
+      "nt\030\002 \001(\0132\025.CharacterCreateEvent\022 \n\tevent" +
+      "Type\030\003 \001(\0162\r.MapEventType\022\017\n\007effects\030\004 \003" +
+      "(\005*~\n\014MapEventType\022\021\n\rITEMMOVEEVENT\020\000\022\023\n" +
+      "\017ITEMCREATEEVENT\020\001\022\024\n\020ITEMDESTROYEVENT\020\002",
+      "\022\030\n\024CHARACTERCREATEEVENT\020\003\022\026\n\022CHARACHTER" +
+      "ENTERMAP\020\0042\221\002\n\017EventDispatcher\0225\n\tmoveEv" +
+      "ent\022\025.ItemMoveEventRequest\032\017.CommonRespo" +
+      "nse\"\000\022=\n\017createItemEvent\022\027.ItemCreateEve" +
+      "ntRequest\032\017.CommonResponse\"\000\022?\n\020destroyI" +
+      "temEvent\022\030.ItemDestroyEventRequest\032\017.Com" +
+      "monResponse\"\000\022G\n\024createCharacterEvent\022\034." +
+      "CharacterCreateEventRequest\032\017.CommonResp" +
+      "onse\"\0002\220\001\n\021GateServerService\0221\n\013receiveP" +
+      "ing\022\017.GateServerPing\032\017.GateServerPong\"\000\022",
+      "H\n\030characterEnterMapRequest\022\031.CharacterE" +
+      "nterMapRequest\032\017.CommonResponse\"\000B*\n\016com" +
+      ".mmo.serverB\022ServerGateProtocol\210\001\001\240\001\001b\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6257,38 +6621,32 @@ public final class ServerGateProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GateServerPong_descriptor,
         new java.lang.String[] { });
-    internal_static_PlayerBeginChangeMapRequest_descriptor =
+    internal_static_CharacterEnterMapRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_PlayerBeginChangeMapRequest_fieldAccessorTable = new
+    internal_static_CharacterEnterMapRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_PlayerBeginChangeMapRequest_descriptor,
-        new java.lang.String[] { "From", "To", "ToPos", "Uid", });
-    internal_static_PlayerChangeMapCompletedRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_PlayerChangeMapCompletedRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_PlayerChangeMapCompletedRequest_descriptor,
-        new java.lang.String[] { });
+        internal_static_CharacterEnterMapRequest_descriptor,
+        new java.lang.String[] { "Stat", "MapId", "MapItems", "MapCharacters", "Uid", });
     internal_static_ItemMoveEventRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_ItemMoveEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemMoveEventRequest_descriptor,
         new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
-    internal_static_ItemCraateEventRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_ItemCraateEventRequest_fieldAccessorTable = new
+    internal_static_ItemCreateEventRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ItemCreateEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ItemCraateEventRequest_descriptor,
+        internal_static_ItemCreateEventRequest_descriptor,
         new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
     internal_static_ItemDestroyEventRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_ItemDestroyEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemDestroyEventRequest_descriptor,
         new java.lang.String[] { "MapId", "Event", "EventType", "Effects", });
     internal_static_CharacterCreateEventRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_CharacterCreateEventRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterCreateEventRequest_descriptor,

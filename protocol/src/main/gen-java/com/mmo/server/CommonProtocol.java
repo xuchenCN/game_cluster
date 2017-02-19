@@ -6,7 +6,13 @@ package com.mmo.server;
 public final class CommonProtocol {
   private CommonProtocol() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code LoginCode}
@@ -676,6 +682,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.Position) {
           return mergeFrom((com.mmo.server.CommonProtocol.Position)other);
@@ -1204,6 +1236,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ModInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.ModInfo)other);
@@ -1386,9 +1444,9 @@ public final class CommonProtocol {
     int getMotion();
 
     /**
-     * <code>optional int32 effect = 2;</code>
+     * <code>optional int32 efficacy = 2;</code>
      */
-    int getEffect();
+    int getEfficacy();
 
     /**
      * <code>optional float speed = 3;</code>
@@ -1408,7 +1466,7 @@ public final class CommonProtocol {
     }
     private MotionInfo() {
       motion_ = 0;
-      effect_ = 0;
+      efficacy_ = 0;
       speed_ = 0F;
     }
 
@@ -1444,7 +1502,7 @@ public final class CommonProtocol {
             }
             case 16: {
 
-              effect_ = input.readInt32();
+              efficacy_ = input.readInt32();
               break;
             }
             case 29: {
@@ -1484,13 +1542,13 @@ public final class CommonProtocol {
       return motion_;
     }
 
-    public static final int EFFECT_FIELD_NUMBER = 2;
-    private int effect_;
+    public static final int EFFICACY_FIELD_NUMBER = 2;
+    private int efficacy_;
     /**
-     * <code>optional int32 effect = 2;</code>
+     * <code>optional int32 efficacy = 2;</code>
      */
-    public int getEffect() {
-      return effect_;
+    public int getEfficacy() {
+      return efficacy_;
     }
 
     public static final int SPEED_FIELD_NUMBER = 3;
@@ -1517,8 +1575,8 @@ public final class CommonProtocol {
       if (motion_ != 0) {
         output.writeInt32(1, motion_);
       }
-      if (effect_ != 0) {
-        output.writeInt32(2, effect_);
+      if (efficacy_ != 0) {
+        output.writeInt32(2, efficacy_);
       }
       if (speed_ != 0F) {
         output.writeFloat(3, speed_);
@@ -1534,9 +1592,9 @@ public final class CommonProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, motion_);
       }
-      if (effect_ != 0) {
+      if (efficacy_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, effect_);
+          .computeInt32Size(2, efficacy_);
       }
       if (speed_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
@@ -1560,8 +1618,8 @@ public final class CommonProtocol {
       boolean result = true;
       result = result && (getMotion()
           == other.getMotion());
-      result = result && (getEffect()
-          == other.getEffect());
+      result = result && (getEfficacy()
+          == other.getEfficacy());
       result = result && (
           java.lang.Float.floatToIntBits(getSpeed())
           == java.lang.Float.floatToIntBits(
@@ -1578,8 +1636,8 @@ public final class CommonProtocol {
       hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + MOTION_FIELD_NUMBER;
       hash = (53 * hash) + getMotion();
-      hash = (37 * hash) + EFFECT_FIELD_NUMBER;
-      hash = (53 * hash) + getEffect();
+      hash = (37 * hash) + EFFICACY_FIELD_NUMBER;
+      hash = (53 * hash) + getEfficacy();
       hash = (37 * hash) + SPEED_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getSpeed());
@@ -1702,7 +1760,7 @@ public final class CommonProtocol {
         super.clear();
         motion_ = 0;
 
-        effect_ = 0;
+        efficacy_ = 0;
 
         speed_ = 0F;
 
@@ -1729,12 +1787,38 @@ public final class CommonProtocol {
       public com.mmo.server.CommonProtocol.MotionInfo buildPartial() {
         com.mmo.server.CommonProtocol.MotionInfo result = new com.mmo.server.CommonProtocol.MotionInfo(this);
         result.motion_ = motion_;
-        result.effect_ = effect_;
+        result.efficacy_ = efficacy_;
         result.speed_ = speed_;
         onBuilt();
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.MotionInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.MotionInfo)other);
@@ -1749,8 +1833,8 @@ public final class CommonProtocol {
         if (other.getMotion() != 0) {
           setMotion(other.getMotion());
         }
-        if (other.getEffect() != 0) {
-          setEffect(other.getEffect());
+        if (other.getEfficacy() != 0) {
+          setEfficacy(other.getEfficacy());
         }
         if (other.getSpeed() != 0F) {
           setSpeed(other.getSpeed());
@@ -1807,28 +1891,28 @@ public final class CommonProtocol {
         return this;
       }
 
-      private int effect_ ;
+      private int efficacy_ ;
       /**
-       * <code>optional int32 effect = 2;</code>
+       * <code>optional int32 efficacy = 2;</code>
        */
-      public int getEffect() {
-        return effect_;
+      public int getEfficacy() {
+        return efficacy_;
       }
       /**
-       * <code>optional int32 effect = 2;</code>
+       * <code>optional int32 efficacy = 2;</code>
        */
-      public Builder setEffect(int value) {
+      public Builder setEfficacy(int value) {
         
-        effect_ = value;
+        efficacy_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 effect = 2;</code>
+       * <code>optional int32 efficacy = 2;</code>
        */
-      public Builder clearEffect() {
+      public Builder clearEfficacy() {
         
-        effect_ = 0;
+        efficacy_ = 0;
         onChanged();
         return this;
       }
@@ -1912,19 +1996,24 @@ public final class CommonProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional int32 hearth = 1;</code>
+     * <code>optional int32 health = 1;</code>
      */
-    int getHearth();
+    int getHealth();
 
     /**
-     * <code>optional int32 hungry = 2;</code>
+     * <code>optional int32 hunger = 2;</code>
      */
-    int getHungry();
+    int getHunger();
 
     /**
-     * <code>optional int32 tired = 3;</code>
+     * <code>optional int32 spirit = 3;</code>
      */
-    int getTired();
+    int getSpirit();
+
+    /**
+     * <code>optional int32 comfort = 4;</code>
+     */
+    int getComfort();
   }
   /**
    * Protobuf type {@code SurvivalInfo}
@@ -1938,9 +2027,10 @@ public final class CommonProtocol {
       super(builder);
     }
     private SurvivalInfo() {
-      hearth_ = 0;
-      hungry_ = 0;
-      tired_ = 0;
+      health_ = 0;
+      hunger_ = 0;
+      spirit_ = 0;
+      comfort_ = 0;
     }
 
     @java.lang.Override
@@ -1970,17 +2060,22 @@ public final class CommonProtocol {
             }
             case 8: {
 
-              hearth_ = input.readInt32();
+              health_ = input.readInt32();
               break;
             }
             case 16: {
 
-              hungry_ = input.readInt32();
+              hunger_ = input.readInt32();
               break;
             }
             case 24: {
 
-              tired_ = input.readInt32();
+              spirit_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              comfort_ = input.readInt32();
               break;
             }
           }
@@ -2006,31 +2101,40 @@ public final class CommonProtocol {
               com.mmo.server.CommonProtocol.SurvivalInfo.class, com.mmo.server.CommonProtocol.SurvivalInfo.Builder.class);
     }
 
-    public static final int HEARTH_FIELD_NUMBER = 1;
-    private int hearth_;
+    public static final int HEALTH_FIELD_NUMBER = 1;
+    private int health_;
     /**
-     * <code>optional int32 hearth = 1;</code>
+     * <code>optional int32 health = 1;</code>
      */
-    public int getHearth() {
-      return hearth_;
+    public int getHealth() {
+      return health_;
     }
 
-    public static final int HUNGRY_FIELD_NUMBER = 2;
-    private int hungry_;
+    public static final int HUNGER_FIELD_NUMBER = 2;
+    private int hunger_;
     /**
-     * <code>optional int32 hungry = 2;</code>
+     * <code>optional int32 hunger = 2;</code>
      */
-    public int getHungry() {
-      return hungry_;
+    public int getHunger() {
+      return hunger_;
     }
 
-    public static final int TIRED_FIELD_NUMBER = 3;
-    private int tired_;
+    public static final int SPIRIT_FIELD_NUMBER = 3;
+    private int spirit_;
     /**
-     * <code>optional int32 tired = 3;</code>
+     * <code>optional int32 spirit = 3;</code>
      */
-    public int getTired() {
-      return tired_;
+    public int getSpirit() {
+      return spirit_;
+    }
+
+    public static final int COMFORT_FIELD_NUMBER = 4;
+    private int comfort_;
+    /**
+     * <code>optional int32 comfort = 4;</code>
+     */
+    public int getComfort() {
+      return comfort_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2045,14 +2149,17 @@ public final class CommonProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (hearth_ != 0) {
-        output.writeInt32(1, hearth_);
+      if (health_ != 0) {
+        output.writeInt32(1, health_);
       }
-      if (hungry_ != 0) {
-        output.writeInt32(2, hungry_);
+      if (hunger_ != 0) {
+        output.writeInt32(2, hunger_);
       }
-      if (tired_ != 0) {
-        output.writeInt32(3, tired_);
+      if (spirit_ != 0) {
+        output.writeInt32(3, spirit_);
+      }
+      if (comfort_ != 0) {
+        output.writeInt32(4, comfort_);
       }
     }
 
@@ -2061,17 +2168,21 @@ public final class CommonProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (hearth_ != 0) {
+      if (health_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, hearth_);
+          .computeInt32Size(1, health_);
       }
-      if (hungry_ != 0) {
+      if (hunger_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, hungry_);
+          .computeInt32Size(2, hunger_);
       }
-      if (tired_ != 0) {
+      if (spirit_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, tired_);
+          .computeInt32Size(3, spirit_);
+      }
+      if (comfort_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, comfort_);
       }
       memoizedSize = size;
       return size;
@@ -2089,12 +2200,14 @@ public final class CommonProtocol {
       com.mmo.server.CommonProtocol.SurvivalInfo other = (com.mmo.server.CommonProtocol.SurvivalInfo) obj;
 
       boolean result = true;
-      result = result && (getHearth()
-          == other.getHearth());
-      result = result && (getHungry()
-          == other.getHungry());
-      result = result && (getTired()
-          == other.getTired());
+      result = result && (getHealth()
+          == other.getHealth());
+      result = result && (getHunger()
+          == other.getHunger());
+      result = result && (getSpirit()
+          == other.getSpirit());
+      result = result && (getComfort()
+          == other.getComfort());
       return result;
     }
 
@@ -2105,12 +2218,14 @@ public final class CommonProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + HEARTH_FIELD_NUMBER;
-      hash = (53 * hash) + getHearth();
-      hash = (37 * hash) + HUNGRY_FIELD_NUMBER;
-      hash = (53 * hash) + getHungry();
-      hash = (37 * hash) + TIRED_FIELD_NUMBER;
-      hash = (53 * hash) + getTired();
+      hash = (37 * hash) + HEALTH_FIELD_NUMBER;
+      hash = (53 * hash) + getHealth();
+      hash = (37 * hash) + HUNGER_FIELD_NUMBER;
+      hash = (53 * hash) + getHunger();
+      hash = (37 * hash) + SPIRIT_FIELD_NUMBER;
+      hash = (53 * hash) + getSpirit();
+      hash = (37 * hash) + COMFORT_FIELD_NUMBER;
+      hash = (53 * hash) + getComfort();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2228,11 +2343,13 @@ public final class CommonProtocol {
       }
       public Builder clear() {
         super.clear();
-        hearth_ = 0;
+        health_ = 0;
 
-        hungry_ = 0;
+        hunger_ = 0;
 
-        tired_ = 0;
+        spirit_ = 0;
+
+        comfort_ = 0;
 
         return this;
       }
@@ -2256,13 +2373,40 @@ public final class CommonProtocol {
 
       public com.mmo.server.CommonProtocol.SurvivalInfo buildPartial() {
         com.mmo.server.CommonProtocol.SurvivalInfo result = new com.mmo.server.CommonProtocol.SurvivalInfo(this);
-        result.hearth_ = hearth_;
-        result.hungry_ = hungry_;
-        result.tired_ = tired_;
+        result.health_ = health_;
+        result.hunger_ = hunger_;
+        result.spirit_ = spirit_;
+        result.comfort_ = comfort_;
         onBuilt();
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.SurvivalInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.SurvivalInfo)other);
@@ -2274,14 +2418,17 @@ public final class CommonProtocol {
 
       public Builder mergeFrom(com.mmo.server.CommonProtocol.SurvivalInfo other) {
         if (other == com.mmo.server.CommonProtocol.SurvivalInfo.getDefaultInstance()) return this;
-        if (other.getHearth() != 0) {
-          setHearth(other.getHearth());
+        if (other.getHealth() != 0) {
+          setHealth(other.getHealth());
         }
-        if (other.getHungry() != 0) {
-          setHungry(other.getHungry());
+        if (other.getHunger() != 0) {
+          setHunger(other.getHunger());
         }
-        if (other.getTired() != 0) {
-          setTired(other.getTired());
+        if (other.getSpirit() != 0) {
+          setSpirit(other.getSpirit());
+        }
+        if (other.getComfort() != 0) {
+          setComfort(other.getComfort());
         }
         onChanged();
         return this;
@@ -2309,80 +2456,106 @@ public final class CommonProtocol {
         return this;
       }
 
-      private int hearth_ ;
+      private int health_ ;
       /**
-       * <code>optional int32 hearth = 1;</code>
+       * <code>optional int32 health = 1;</code>
        */
-      public int getHearth() {
-        return hearth_;
+      public int getHealth() {
+        return health_;
       }
       /**
-       * <code>optional int32 hearth = 1;</code>
+       * <code>optional int32 health = 1;</code>
        */
-      public Builder setHearth(int value) {
+      public Builder setHealth(int value) {
         
-        hearth_ = value;
+        health_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 hearth = 1;</code>
+       * <code>optional int32 health = 1;</code>
        */
-      public Builder clearHearth() {
+      public Builder clearHealth() {
         
-        hearth_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int hungry_ ;
-      /**
-       * <code>optional int32 hungry = 2;</code>
-       */
-      public int getHungry() {
-        return hungry_;
-      }
-      /**
-       * <code>optional int32 hungry = 2;</code>
-       */
-      public Builder setHungry(int value) {
-        
-        hungry_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 hungry = 2;</code>
-       */
-      public Builder clearHungry() {
-        
-        hungry_ = 0;
+        health_ = 0;
         onChanged();
         return this;
       }
 
-      private int tired_ ;
+      private int hunger_ ;
       /**
-       * <code>optional int32 tired = 3;</code>
+       * <code>optional int32 hunger = 2;</code>
        */
-      public int getTired() {
-        return tired_;
+      public int getHunger() {
+        return hunger_;
       }
       /**
-       * <code>optional int32 tired = 3;</code>
+       * <code>optional int32 hunger = 2;</code>
        */
-      public Builder setTired(int value) {
+      public Builder setHunger(int value) {
         
-        tired_ = value;
+        hunger_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 tired = 3;</code>
+       * <code>optional int32 hunger = 2;</code>
        */
-      public Builder clearTired() {
+      public Builder clearHunger() {
         
-        tired_ = 0;
+        hunger_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int spirit_ ;
+      /**
+       * <code>optional int32 spirit = 3;</code>
+       */
+      public int getSpirit() {
+        return spirit_;
+      }
+      /**
+       * <code>optional int32 spirit = 3;</code>
+       */
+      public Builder setSpirit(int value) {
+        
+        spirit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 spirit = 3;</code>
+       */
+      public Builder clearSpirit() {
+        
+        spirit_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int comfort_ ;
+      /**
+       * <code>optional int32 comfort = 4;</code>
+       */
+      public int getComfort() {
+        return comfort_;
+      }
+      /**
+       * <code>optional int32 comfort = 4;</code>
+       */
+      public Builder setComfort(int value) {
+        
+        comfort_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 comfort = 4;</code>
+       */
+      public Builder clearComfort() {
+        
+        comfort_ = 0;
         onChanged();
         return this;
       }
@@ -2430,6 +2603,623 @@ public final class CommonProtocol {
     }
 
     public com.mmo.server.CommonProtocol.SurvivalInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EnergyInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EnergyInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 strength = 1;</code>
+     */
+    int getStrength();
+
+    /**
+     * <code>optional int32 endurance = 2;</code>
+     */
+    int getEndurance();
+
+    /**
+     * <code>optional int32 agility = 3;</code>
+     */
+    int getAgility();
+
+    /**
+     * <code>optional int32 defence = 4;</code>
+     */
+    int getDefence();
+  }
+  /**
+   * Protobuf type {@code EnergyInfo}
+   */
+  public  static final class EnergyInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:EnergyInfo)
+      EnergyInfoOrBuilder {
+    // Use EnergyInfo.newBuilder() to construct.
+    private EnergyInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private EnergyInfo() {
+      strength_ = 0;
+      endurance_ = 0;
+      agility_ = 0;
+      defence_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private EnergyInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              strength_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              endurance_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              agility_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              defence_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.CommonProtocol.internal_static_EnergyInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.CommonProtocol.internal_static_EnergyInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.CommonProtocol.EnergyInfo.class, com.mmo.server.CommonProtocol.EnergyInfo.Builder.class);
+    }
+
+    public static final int STRENGTH_FIELD_NUMBER = 1;
+    private int strength_;
+    /**
+     * <code>optional int32 strength = 1;</code>
+     */
+    public int getStrength() {
+      return strength_;
+    }
+
+    public static final int ENDURANCE_FIELD_NUMBER = 2;
+    private int endurance_;
+    /**
+     * <code>optional int32 endurance = 2;</code>
+     */
+    public int getEndurance() {
+      return endurance_;
+    }
+
+    public static final int AGILITY_FIELD_NUMBER = 3;
+    private int agility_;
+    /**
+     * <code>optional int32 agility = 3;</code>
+     */
+    public int getAgility() {
+      return agility_;
+    }
+
+    public static final int DEFENCE_FIELD_NUMBER = 4;
+    private int defence_;
+    /**
+     * <code>optional int32 defence = 4;</code>
+     */
+    public int getDefence() {
+      return defence_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (strength_ != 0) {
+        output.writeInt32(1, strength_);
+      }
+      if (endurance_ != 0) {
+        output.writeInt32(2, endurance_);
+      }
+      if (agility_ != 0) {
+        output.writeInt32(3, agility_);
+      }
+      if (defence_ != 0) {
+        output.writeInt32(4, defence_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (strength_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, strength_);
+      }
+      if (endurance_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, endurance_);
+      }
+      if (agility_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, agility_);
+      }
+      if (defence_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, defence_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.CommonProtocol.EnergyInfo)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.CommonProtocol.EnergyInfo other = (com.mmo.server.CommonProtocol.EnergyInfo) obj;
+
+      boolean result = true;
+      result = result && (getStrength()
+          == other.getStrength());
+      result = result && (getEndurance()
+          == other.getEndurance());
+      result = result && (getAgility()
+          == other.getAgility());
+      result = result && (getDefence()
+          == other.getDefence());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + STRENGTH_FIELD_NUMBER;
+      hash = (53 * hash) + getStrength();
+      hash = (37 * hash) + ENDURANCE_FIELD_NUMBER;
+      hash = (53 * hash) + getEndurance();
+      hash = (37 * hash) + AGILITY_FIELD_NUMBER;
+      hash = (53 * hash) + getAgility();
+      hash = (37 * hash) + DEFENCE_FIELD_NUMBER;
+      hash = (53 * hash) + getDefence();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.CommonProtocol.EnergyInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.CommonProtocol.EnergyInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code EnergyInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:EnergyInfo)
+        com.mmo.server.CommonProtocol.EnergyInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.CommonProtocol.internal_static_EnergyInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.CommonProtocol.internal_static_EnergyInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.CommonProtocol.EnergyInfo.class, com.mmo.server.CommonProtocol.EnergyInfo.Builder.class);
+      }
+
+      // Construct using com.mmo.server.CommonProtocol.EnergyInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        strength_ = 0;
+
+        endurance_ = 0;
+
+        agility_ = 0;
+
+        defence_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.CommonProtocol.internal_static_EnergyInfo_descriptor;
+      }
+
+      public com.mmo.server.CommonProtocol.EnergyInfo getDefaultInstanceForType() {
+        return com.mmo.server.CommonProtocol.EnergyInfo.getDefaultInstance();
+      }
+
+      public com.mmo.server.CommonProtocol.EnergyInfo build() {
+        com.mmo.server.CommonProtocol.EnergyInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.CommonProtocol.EnergyInfo buildPartial() {
+        com.mmo.server.CommonProtocol.EnergyInfo result = new com.mmo.server.CommonProtocol.EnergyInfo(this);
+        result.strength_ = strength_;
+        result.endurance_ = endurance_;
+        result.agility_ = agility_;
+        result.defence_ = defence_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.CommonProtocol.EnergyInfo) {
+          return mergeFrom((com.mmo.server.CommonProtocol.EnergyInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.CommonProtocol.EnergyInfo other) {
+        if (other == com.mmo.server.CommonProtocol.EnergyInfo.getDefaultInstance()) return this;
+        if (other.getStrength() != 0) {
+          setStrength(other.getStrength());
+        }
+        if (other.getEndurance() != 0) {
+          setEndurance(other.getEndurance());
+        }
+        if (other.getAgility() != 0) {
+          setAgility(other.getAgility());
+        }
+        if (other.getDefence() != 0) {
+          setDefence(other.getDefence());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.CommonProtocol.EnergyInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.CommonProtocol.EnergyInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int strength_ ;
+      /**
+       * <code>optional int32 strength = 1;</code>
+       */
+      public int getStrength() {
+        return strength_;
+      }
+      /**
+       * <code>optional int32 strength = 1;</code>
+       */
+      public Builder setStrength(int value) {
+        
+        strength_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 strength = 1;</code>
+       */
+      public Builder clearStrength() {
+        
+        strength_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int endurance_ ;
+      /**
+       * <code>optional int32 endurance = 2;</code>
+       */
+      public int getEndurance() {
+        return endurance_;
+      }
+      /**
+       * <code>optional int32 endurance = 2;</code>
+       */
+      public Builder setEndurance(int value) {
+        
+        endurance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 endurance = 2;</code>
+       */
+      public Builder clearEndurance() {
+        
+        endurance_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int agility_ ;
+      /**
+       * <code>optional int32 agility = 3;</code>
+       */
+      public int getAgility() {
+        return agility_;
+      }
+      /**
+       * <code>optional int32 agility = 3;</code>
+       */
+      public Builder setAgility(int value) {
+        
+        agility_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 agility = 3;</code>
+       */
+      public Builder clearAgility() {
+        
+        agility_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int defence_ ;
+      /**
+       * <code>optional int32 defence = 4;</code>
+       */
+      public int getDefence() {
+        return defence_;
+      }
+      /**
+       * <code>optional int32 defence = 4;</code>
+       */
+      public Builder setDefence(int value) {
+        
+        defence_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 defence = 4;</code>
+       */
+      public Builder clearDefence() {
+        
+        defence_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:EnergyInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:EnergyInfo)
+    private static final com.mmo.server.CommonProtocol.EnergyInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.CommonProtocol.EnergyInfo();
+    }
+
+    public static com.mmo.server.CommonProtocol.EnergyInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<EnergyInfo>
+        PARSER = new com.google.protobuf.AbstractParser<EnergyInfo>() {
+      public EnergyInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new EnergyInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<EnergyInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EnergyInfo> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.CommonProtocol.EnergyInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2631,7 +3421,7 @@ public final class CommonProtocol {
      * <code>optional .ItemType type = 3;</code>
      */
     public com.mmo.server.CommonProtocol.ItemType getType() {
-      com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.forNumber(type_);
+      com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.valueOf(type_);
       return result == null ? com.mmo.server.CommonProtocol.ItemType.UNRECOGNIZED : result;
     }
 
@@ -2862,6 +3652,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.IdentifyInfo) {
           return mergeFrom((com.mmo.server.CommonProtocol.IdentifyInfo)other);
@@ -3067,7 +3883,7 @@ public final class CommonProtocol {
        * <code>optional .ItemType type = 3;</code>
        */
       public com.mmo.server.CommonProtocol.ItemType getType() {
-        com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.forNumber(type_);
+        com.mmo.server.CommonProtocol.ItemType result = com.mmo.server.CommonProtocol.ItemType.valueOf(type_);
         return result == null ? com.mmo.server.CommonProtocol.ItemType.UNRECOGNIZED : result;
       }
       /**
@@ -3690,6 +4506,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.Item) {
           return mergeFrom((com.mmo.server.CommonProtocol.Item)other);
@@ -3740,7 +4582,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -3842,11 +4684,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -3857,7 +4699,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position position_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> positionBuilder_;
       /**
        * <code>optional .Position position = 2;</code>
@@ -3959,11 +4801,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position position = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getPositionFieldBuilder() {
         if (positionBuilder_ == null) {
-          positionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getPosition(),
                   getParentForChildren(),
@@ -3974,7 +4816,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ModInfo modInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> modInfoBuilder_;
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
@@ -4076,11 +4918,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
           getModInfoFieldBuilder() {
         if (modInfoBuilder_ == null) {
-          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
                   getModInfo(),
                   getParentForChildren(),
@@ -4091,7 +4933,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.SurvivalInfo survivalInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> survivalInfoBuilder_;
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
@@ -4193,11 +5035,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> 
           getSurvivalInfoFieldBuilder() {
         if (survivalInfoBuilder_ == null) {
-          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder>(
                   getSurvivalInfo(),
                   getParentForChildren(),
@@ -4250,6 +5092,2117 @@ public final class CommonProtocol {
     }
 
     public com.mmo.server.CommonProtocol.Item getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CharacterEquipModOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CharacterEquipMod)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .ModInfo hair = 1;</code>
+     */
+    boolean hasHair();
+    /**
+     * <code>optional .ModInfo hair = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getHair();
+    /**
+     * <code>optional .ModInfo hair = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getHairOrBuilder();
+
+    /**
+     * <code>optional .ModInfo face = 2;</code>
+     */
+    boolean hasFace();
+    /**
+     * <code>optional .ModInfo face = 2;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getFace();
+    /**
+     * <code>optional .ModInfo face = 2;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getFaceOrBuilder();
+
+    /**
+     * <code>optional .ModInfo pants = 3;</code>
+     */
+    boolean hasPants();
+    /**
+     * <code>optional .ModInfo pants = 3;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getPants();
+    /**
+     * <code>optional .ModInfo pants = 3;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getPantsOrBuilder();
+
+    /**
+     * <code>optional .ModInfo shoes = 4;</code>
+     */
+    boolean hasShoes();
+    /**
+     * <code>optional .ModInfo shoes = 4;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getShoes();
+    /**
+     * <code>optional .ModInfo shoes = 4;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getShoesOrBuilder();
+
+    /**
+     * <code>optional .ModInfo top = 5;</code>
+     */
+    boolean hasTop();
+    /**
+     * <code>optional .ModInfo top = 5;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getTop();
+    /**
+     * <code>optional .ModInfo top = 5;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getTopOrBuilder();
+
+    /**
+     * <code>optional .ModInfo body = 6;</code>
+     */
+    boolean hasBody();
+    /**
+     * <code>optional .ModInfo body = 6;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getBody();
+    /**
+     * <code>optional .ModInfo body = 6;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getBodyOrBuilder();
+
+    /**
+     * <code>optional .ModInfo wrist = 7;</code>
+     */
+    boolean hasWrist();
+    /**
+     * <code>optional .ModInfo wrist = 7;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getWrist();
+    /**
+     * <code>optional .ModInfo wrist = 7;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getWristOrBuilder();
+
+    /**
+     * <code>optional .ModInfo leftHold = 8;</code>
+     */
+    boolean hasLeftHold();
+    /**
+     * <code>optional .ModInfo leftHold = 8;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getLeftHold();
+    /**
+     * <code>optional .ModInfo leftHold = 8;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getLeftHoldOrBuilder();
+
+    /**
+     * <code>optional .ModInfo rightHold = 9;</code>
+     */
+    boolean hasRightHold();
+    /**
+     * <code>optional .ModInfo rightHold = 9;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfo getRightHold();
+    /**
+     * <code>optional .ModInfo rightHold = 9;</code>
+     */
+    com.mmo.server.CommonProtocol.ModInfoOrBuilder getRightHoldOrBuilder();
+  }
+  /**
+   * Protobuf type {@code CharacterEquipMod}
+   */
+  public  static final class CharacterEquipMod extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CharacterEquipMod)
+      CharacterEquipModOrBuilder {
+    // Use CharacterEquipMod.newBuilder() to construct.
+    private CharacterEquipMod(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private CharacterEquipMod() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private CharacterEquipMod(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (hair_ != null) {
+                subBuilder = hair_.toBuilder();
+              }
+              hair_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(hair_);
+                hair_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (face_ != null) {
+                subBuilder = face_.toBuilder();
+              }
+              face_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(face_);
+                face_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (pants_ != null) {
+                subBuilder = pants_.toBuilder();
+              }
+              pants_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(pants_);
+                pants_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (shoes_ != null) {
+                subBuilder = shoes_.toBuilder();
+              }
+              shoes_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(shoes_);
+                shoes_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 42: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (top_ != null) {
+                subBuilder = top_.toBuilder();
+              }
+              top_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(top_);
+                top_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (body_ != null) {
+                subBuilder = body_.toBuilder();
+              }
+              body_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(body_);
+                body_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 58: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (wrist_ != null) {
+                subBuilder = wrist_.toBuilder();
+              }
+              wrist_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(wrist_);
+                wrist_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 66: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (leftHold_ != null) {
+                subBuilder = leftHold_.toBuilder();
+              }
+              leftHold_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(leftHold_);
+                leftHold_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 74: {
+              com.mmo.server.CommonProtocol.ModInfo.Builder subBuilder = null;
+              if (rightHold_ != null) {
+                subBuilder = rightHold_.toBuilder();
+              }
+              rightHold_ = input.readMessage(com.mmo.server.CommonProtocol.ModInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(rightHold_);
+                rightHold_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.CommonProtocol.internal_static_CharacterEquipMod_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.CommonProtocol.internal_static_CharacterEquipMod_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.CommonProtocol.CharacterEquipMod.class, com.mmo.server.CommonProtocol.CharacterEquipMod.Builder.class);
+    }
+
+    public static final int HAIR_FIELD_NUMBER = 1;
+    private com.mmo.server.CommonProtocol.ModInfo hair_;
+    /**
+     * <code>optional .ModInfo hair = 1;</code>
+     */
+    public boolean hasHair() {
+      return hair_ != null;
+    }
+    /**
+     * <code>optional .ModInfo hair = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getHair() {
+      return hair_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : hair_;
+    }
+    /**
+     * <code>optional .ModInfo hair = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getHairOrBuilder() {
+      return getHair();
+    }
+
+    public static final int FACE_FIELD_NUMBER = 2;
+    private com.mmo.server.CommonProtocol.ModInfo face_;
+    /**
+     * <code>optional .ModInfo face = 2;</code>
+     */
+    public boolean hasFace() {
+      return face_ != null;
+    }
+    /**
+     * <code>optional .ModInfo face = 2;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getFace() {
+      return face_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : face_;
+    }
+    /**
+     * <code>optional .ModInfo face = 2;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getFaceOrBuilder() {
+      return getFace();
+    }
+
+    public static final int PANTS_FIELD_NUMBER = 3;
+    private com.mmo.server.CommonProtocol.ModInfo pants_;
+    /**
+     * <code>optional .ModInfo pants = 3;</code>
+     */
+    public boolean hasPants() {
+      return pants_ != null;
+    }
+    /**
+     * <code>optional .ModInfo pants = 3;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getPants() {
+      return pants_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : pants_;
+    }
+    /**
+     * <code>optional .ModInfo pants = 3;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getPantsOrBuilder() {
+      return getPants();
+    }
+
+    public static final int SHOES_FIELD_NUMBER = 4;
+    private com.mmo.server.CommonProtocol.ModInfo shoes_;
+    /**
+     * <code>optional .ModInfo shoes = 4;</code>
+     */
+    public boolean hasShoes() {
+      return shoes_ != null;
+    }
+    /**
+     * <code>optional .ModInfo shoes = 4;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getShoes() {
+      return shoes_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : shoes_;
+    }
+    /**
+     * <code>optional .ModInfo shoes = 4;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getShoesOrBuilder() {
+      return getShoes();
+    }
+
+    public static final int TOP_FIELD_NUMBER = 5;
+    private com.mmo.server.CommonProtocol.ModInfo top_;
+    /**
+     * <code>optional .ModInfo top = 5;</code>
+     */
+    public boolean hasTop() {
+      return top_ != null;
+    }
+    /**
+     * <code>optional .ModInfo top = 5;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getTop() {
+      return top_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : top_;
+    }
+    /**
+     * <code>optional .ModInfo top = 5;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getTopOrBuilder() {
+      return getTop();
+    }
+
+    public static final int BODY_FIELD_NUMBER = 6;
+    private com.mmo.server.CommonProtocol.ModInfo body_;
+    /**
+     * <code>optional .ModInfo body = 6;</code>
+     */
+    public boolean hasBody() {
+      return body_ != null;
+    }
+    /**
+     * <code>optional .ModInfo body = 6;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getBody() {
+      return body_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : body_;
+    }
+    /**
+     * <code>optional .ModInfo body = 6;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getBodyOrBuilder() {
+      return getBody();
+    }
+
+    public static final int WRIST_FIELD_NUMBER = 7;
+    private com.mmo.server.CommonProtocol.ModInfo wrist_;
+    /**
+     * <code>optional .ModInfo wrist = 7;</code>
+     */
+    public boolean hasWrist() {
+      return wrist_ != null;
+    }
+    /**
+     * <code>optional .ModInfo wrist = 7;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getWrist() {
+      return wrist_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : wrist_;
+    }
+    /**
+     * <code>optional .ModInfo wrist = 7;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getWristOrBuilder() {
+      return getWrist();
+    }
+
+    public static final int LEFTHOLD_FIELD_NUMBER = 8;
+    private com.mmo.server.CommonProtocol.ModInfo leftHold_;
+    /**
+     * <code>optional .ModInfo leftHold = 8;</code>
+     */
+    public boolean hasLeftHold() {
+      return leftHold_ != null;
+    }
+    /**
+     * <code>optional .ModInfo leftHold = 8;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getLeftHold() {
+      return leftHold_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : leftHold_;
+    }
+    /**
+     * <code>optional .ModInfo leftHold = 8;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getLeftHoldOrBuilder() {
+      return getLeftHold();
+    }
+
+    public static final int RIGHTHOLD_FIELD_NUMBER = 9;
+    private com.mmo.server.CommonProtocol.ModInfo rightHold_;
+    /**
+     * <code>optional .ModInfo rightHold = 9;</code>
+     */
+    public boolean hasRightHold() {
+      return rightHold_ != null;
+    }
+    /**
+     * <code>optional .ModInfo rightHold = 9;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfo getRightHold() {
+      return rightHold_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : rightHold_;
+    }
+    /**
+     * <code>optional .ModInfo rightHold = 9;</code>
+     */
+    public com.mmo.server.CommonProtocol.ModInfoOrBuilder getRightHoldOrBuilder() {
+      return getRightHold();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (hair_ != null) {
+        output.writeMessage(1, getHair());
+      }
+      if (face_ != null) {
+        output.writeMessage(2, getFace());
+      }
+      if (pants_ != null) {
+        output.writeMessage(3, getPants());
+      }
+      if (shoes_ != null) {
+        output.writeMessage(4, getShoes());
+      }
+      if (top_ != null) {
+        output.writeMessage(5, getTop());
+      }
+      if (body_ != null) {
+        output.writeMessage(6, getBody());
+      }
+      if (wrist_ != null) {
+        output.writeMessage(7, getWrist());
+      }
+      if (leftHold_ != null) {
+        output.writeMessage(8, getLeftHold());
+      }
+      if (rightHold_ != null) {
+        output.writeMessage(9, getRightHold());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (hair_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getHair());
+      }
+      if (face_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getFace());
+      }
+      if (pants_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getPants());
+      }
+      if (shoes_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getShoes());
+      }
+      if (top_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getTop());
+      }
+      if (body_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getBody());
+      }
+      if (wrist_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getWrist());
+      }
+      if (leftHold_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getLeftHold());
+      }
+      if (rightHold_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getRightHold());
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.CommonProtocol.CharacterEquipMod)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.CommonProtocol.CharacterEquipMod other = (com.mmo.server.CommonProtocol.CharacterEquipMod) obj;
+
+      boolean result = true;
+      result = result && (hasHair() == other.hasHair());
+      if (hasHair()) {
+        result = result && getHair()
+            .equals(other.getHair());
+      }
+      result = result && (hasFace() == other.hasFace());
+      if (hasFace()) {
+        result = result && getFace()
+            .equals(other.getFace());
+      }
+      result = result && (hasPants() == other.hasPants());
+      if (hasPants()) {
+        result = result && getPants()
+            .equals(other.getPants());
+      }
+      result = result && (hasShoes() == other.hasShoes());
+      if (hasShoes()) {
+        result = result && getShoes()
+            .equals(other.getShoes());
+      }
+      result = result && (hasTop() == other.hasTop());
+      if (hasTop()) {
+        result = result && getTop()
+            .equals(other.getTop());
+      }
+      result = result && (hasBody() == other.hasBody());
+      if (hasBody()) {
+        result = result && getBody()
+            .equals(other.getBody());
+      }
+      result = result && (hasWrist() == other.hasWrist());
+      if (hasWrist()) {
+        result = result && getWrist()
+            .equals(other.getWrist());
+      }
+      result = result && (hasLeftHold() == other.hasLeftHold());
+      if (hasLeftHold()) {
+        result = result && getLeftHold()
+            .equals(other.getLeftHold());
+      }
+      result = result && (hasRightHold() == other.hasRightHold());
+      if (hasRightHold()) {
+        result = result && getRightHold()
+            .equals(other.getRightHold());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasHair()) {
+        hash = (37 * hash) + HAIR_FIELD_NUMBER;
+        hash = (53 * hash) + getHair().hashCode();
+      }
+      if (hasFace()) {
+        hash = (37 * hash) + FACE_FIELD_NUMBER;
+        hash = (53 * hash) + getFace().hashCode();
+      }
+      if (hasPants()) {
+        hash = (37 * hash) + PANTS_FIELD_NUMBER;
+        hash = (53 * hash) + getPants().hashCode();
+      }
+      if (hasShoes()) {
+        hash = (37 * hash) + SHOES_FIELD_NUMBER;
+        hash = (53 * hash) + getShoes().hashCode();
+      }
+      if (hasTop()) {
+        hash = (37 * hash) + TOP_FIELD_NUMBER;
+        hash = (53 * hash) + getTop().hashCode();
+      }
+      if (hasBody()) {
+        hash = (37 * hash) + BODY_FIELD_NUMBER;
+        hash = (53 * hash) + getBody().hashCode();
+      }
+      if (hasWrist()) {
+        hash = (37 * hash) + WRIST_FIELD_NUMBER;
+        hash = (53 * hash) + getWrist().hashCode();
+      }
+      if (hasLeftHold()) {
+        hash = (37 * hash) + LEFTHOLD_FIELD_NUMBER;
+        hash = (53 * hash) + getLeftHold().hashCode();
+      }
+      if (hasRightHold()) {
+        hash = (37 * hash) + RIGHTHOLD_FIELD_NUMBER;
+        hash = (53 * hash) + getRightHold().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.CommonProtocol.CharacterEquipMod prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CharacterEquipMod}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CharacterEquipMod)
+        com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.CommonProtocol.internal_static_CharacterEquipMod_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.CommonProtocol.internal_static_CharacterEquipMod_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.CommonProtocol.CharacterEquipMod.class, com.mmo.server.CommonProtocol.CharacterEquipMod.Builder.class);
+      }
+
+      // Construct using com.mmo.server.CommonProtocol.CharacterEquipMod.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (hairBuilder_ == null) {
+          hair_ = null;
+        } else {
+          hair_ = null;
+          hairBuilder_ = null;
+        }
+        if (faceBuilder_ == null) {
+          face_ = null;
+        } else {
+          face_ = null;
+          faceBuilder_ = null;
+        }
+        if (pantsBuilder_ == null) {
+          pants_ = null;
+        } else {
+          pants_ = null;
+          pantsBuilder_ = null;
+        }
+        if (shoesBuilder_ == null) {
+          shoes_ = null;
+        } else {
+          shoes_ = null;
+          shoesBuilder_ = null;
+        }
+        if (topBuilder_ == null) {
+          top_ = null;
+        } else {
+          top_ = null;
+          topBuilder_ = null;
+        }
+        if (bodyBuilder_ == null) {
+          body_ = null;
+        } else {
+          body_ = null;
+          bodyBuilder_ = null;
+        }
+        if (wristBuilder_ == null) {
+          wrist_ = null;
+        } else {
+          wrist_ = null;
+          wristBuilder_ = null;
+        }
+        if (leftHoldBuilder_ == null) {
+          leftHold_ = null;
+        } else {
+          leftHold_ = null;
+          leftHoldBuilder_ = null;
+        }
+        if (rightHoldBuilder_ == null) {
+          rightHold_ = null;
+        } else {
+          rightHold_ = null;
+          rightHoldBuilder_ = null;
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.CommonProtocol.internal_static_CharacterEquipMod_descriptor;
+      }
+
+      public com.mmo.server.CommonProtocol.CharacterEquipMod getDefaultInstanceForType() {
+        return com.mmo.server.CommonProtocol.CharacterEquipMod.getDefaultInstance();
+      }
+
+      public com.mmo.server.CommonProtocol.CharacterEquipMod build() {
+        com.mmo.server.CommonProtocol.CharacterEquipMod result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.CommonProtocol.CharacterEquipMod buildPartial() {
+        com.mmo.server.CommonProtocol.CharacterEquipMod result = new com.mmo.server.CommonProtocol.CharacterEquipMod(this);
+        if (hairBuilder_ == null) {
+          result.hair_ = hair_;
+        } else {
+          result.hair_ = hairBuilder_.build();
+        }
+        if (faceBuilder_ == null) {
+          result.face_ = face_;
+        } else {
+          result.face_ = faceBuilder_.build();
+        }
+        if (pantsBuilder_ == null) {
+          result.pants_ = pants_;
+        } else {
+          result.pants_ = pantsBuilder_.build();
+        }
+        if (shoesBuilder_ == null) {
+          result.shoes_ = shoes_;
+        } else {
+          result.shoes_ = shoesBuilder_.build();
+        }
+        if (topBuilder_ == null) {
+          result.top_ = top_;
+        } else {
+          result.top_ = topBuilder_.build();
+        }
+        if (bodyBuilder_ == null) {
+          result.body_ = body_;
+        } else {
+          result.body_ = bodyBuilder_.build();
+        }
+        if (wristBuilder_ == null) {
+          result.wrist_ = wrist_;
+        } else {
+          result.wrist_ = wristBuilder_.build();
+        }
+        if (leftHoldBuilder_ == null) {
+          result.leftHold_ = leftHold_;
+        } else {
+          result.leftHold_ = leftHoldBuilder_.build();
+        }
+        if (rightHoldBuilder_ == null) {
+          result.rightHold_ = rightHold_;
+        } else {
+          result.rightHold_ = rightHoldBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.CommonProtocol.CharacterEquipMod) {
+          return mergeFrom((com.mmo.server.CommonProtocol.CharacterEquipMod)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.CommonProtocol.CharacterEquipMod other) {
+        if (other == com.mmo.server.CommonProtocol.CharacterEquipMod.getDefaultInstance()) return this;
+        if (other.hasHair()) {
+          mergeHair(other.getHair());
+        }
+        if (other.hasFace()) {
+          mergeFace(other.getFace());
+        }
+        if (other.hasPants()) {
+          mergePants(other.getPants());
+        }
+        if (other.hasShoes()) {
+          mergeShoes(other.getShoes());
+        }
+        if (other.hasTop()) {
+          mergeTop(other.getTop());
+        }
+        if (other.hasBody()) {
+          mergeBody(other.getBody());
+        }
+        if (other.hasWrist()) {
+          mergeWrist(other.getWrist());
+        }
+        if (other.hasLeftHold()) {
+          mergeLeftHold(other.getLeftHold());
+        }
+        if (other.hasRightHold()) {
+          mergeRightHold(other.getRightHold());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.CommonProtocol.CharacterEquipMod parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.CommonProtocol.CharacterEquipMod) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo hair_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> hairBuilder_;
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public boolean hasHair() {
+        return hairBuilder_ != null || hair_ != null;
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getHair() {
+        if (hairBuilder_ == null) {
+          return hair_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : hair_;
+        } else {
+          return hairBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public Builder setHair(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (hairBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          hair_ = value;
+          onChanged();
+        } else {
+          hairBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public Builder setHair(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (hairBuilder_ == null) {
+          hair_ = builderForValue.build();
+          onChanged();
+        } else {
+          hairBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public Builder mergeHair(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (hairBuilder_ == null) {
+          if (hair_ != null) {
+            hair_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(hair_).mergeFrom(value).buildPartial();
+          } else {
+            hair_ = value;
+          }
+          onChanged();
+        } else {
+          hairBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public Builder clearHair() {
+        if (hairBuilder_ == null) {
+          hair_ = null;
+          onChanged();
+        } else {
+          hair_ = null;
+          hairBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getHairBuilder() {
+        
+        onChanged();
+        return getHairFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getHairOrBuilder() {
+        if (hairBuilder_ != null) {
+          return hairBuilder_.getMessageOrBuilder();
+        } else {
+          return hair_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : hair_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo hair = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getHairFieldBuilder() {
+        if (hairBuilder_ == null) {
+          hairBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getHair(),
+                  getParentForChildren(),
+                  isClean());
+          hair_ = null;
+        }
+        return hairBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo face_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> faceBuilder_;
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public boolean hasFace() {
+        return faceBuilder_ != null || face_ != null;
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getFace() {
+        if (faceBuilder_ == null) {
+          return face_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : face_;
+        } else {
+          return faceBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public Builder setFace(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (faceBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          face_ = value;
+          onChanged();
+        } else {
+          faceBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public Builder setFace(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (faceBuilder_ == null) {
+          face_ = builderForValue.build();
+          onChanged();
+        } else {
+          faceBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public Builder mergeFace(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (faceBuilder_ == null) {
+          if (face_ != null) {
+            face_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(face_).mergeFrom(value).buildPartial();
+          } else {
+            face_ = value;
+          }
+          onChanged();
+        } else {
+          faceBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public Builder clearFace() {
+        if (faceBuilder_ == null) {
+          face_ = null;
+          onChanged();
+        } else {
+          face_ = null;
+          faceBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getFaceBuilder() {
+        
+        onChanged();
+        return getFaceFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getFaceOrBuilder() {
+        if (faceBuilder_ != null) {
+          return faceBuilder_.getMessageOrBuilder();
+        } else {
+          return face_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : face_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo face = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getFaceFieldBuilder() {
+        if (faceBuilder_ == null) {
+          faceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getFace(),
+                  getParentForChildren(),
+                  isClean());
+          face_ = null;
+        }
+        return faceBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo pants_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> pantsBuilder_;
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public boolean hasPants() {
+        return pantsBuilder_ != null || pants_ != null;
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getPants() {
+        if (pantsBuilder_ == null) {
+          return pants_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : pants_;
+        } else {
+          return pantsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public Builder setPants(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (pantsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          pants_ = value;
+          onChanged();
+        } else {
+          pantsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public Builder setPants(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (pantsBuilder_ == null) {
+          pants_ = builderForValue.build();
+          onChanged();
+        } else {
+          pantsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public Builder mergePants(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (pantsBuilder_ == null) {
+          if (pants_ != null) {
+            pants_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(pants_).mergeFrom(value).buildPartial();
+          } else {
+            pants_ = value;
+          }
+          onChanged();
+        } else {
+          pantsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public Builder clearPants() {
+        if (pantsBuilder_ == null) {
+          pants_ = null;
+          onChanged();
+        } else {
+          pants_ = null;
+          pantsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getPantsBuilder() {
+        
+        onChanged();
+        return getPantsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getPantsOrBuilder() {
+        if (pantsBuilder_ != null) {
+          return pantsBuilder_.getMessageOrBuilder();
+        } else {
+          return pants_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : pants_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo pants = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getPantsFieldBuilder() {
+        if (pantsBuilder_ == null) {
+          pantsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getPants(),
+                  getParentForChildren(),
+                  isClean());
+          pants_ = null;
+        }
+        return pantsBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo shoes_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> shoesBuilder_;
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public boolean hasShoes() {
+        return shoesBuilder_ != null || shoes_ != null;
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getShoes() {
+        if (shoesBuilder_ == null) {
+          return shoes_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : shoes_;
+        } else {
+          return shoesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public Builder setShoes(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (shoesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          shoes_ = value;
+          onChanged();
+        } else {
+          shoesBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public Builder setShoes(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (shoesBuilder_ == null) {
+          shoes_ = builderForValue.build();
+          onChanged();
+        } else {
+          shoesBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public Builder mergeShoes(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (shoesBuilder_ == null) {
+          if (shoes_ != null) {
+            shoes_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(shoes_).mergeFrom(value).buildPartial();
+          } else {
+            shoes_ = value;
+          }
+          onChanged();
+        } else {
+          shoesBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public Builder clearShoes() {
+        if (shoesBuilder_ == null) {
+          shoes_ = null;
+          onChanged();
+        } else {
+          shoes_ = null;
+          shoesBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getShoesBuilder() {
+        
+        onChanged();
+        return getShoesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getShoesOrBuilder() {
+        if (shoesBuilder_ != null) {
+          return shoesBuilder_.getMessageOrBuilder();
+        } else {
+          return shoes_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : shoes_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo shoes = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getShoesFieldBuilder() {
+        if (shoesBuilder_ == null) {
+          shoesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getShoes(),
+                  getParentForChildren(),
+                  isClean());
+          shoes_ = null;
+        }
+        return shoesBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo top_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> topBuilder_;
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public boolean hasTop() {
+        return topBuilder_ != null || top_ != null;
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getTop() {
+        if (topBuilder_ == null) {
+          return top_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : top_;
+        } else {
+          return topBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public Builder setTop(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (topBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          top_ = value;
+          onChanged();
+        } else {
+          topBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public Builder setTop(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (topBuilder_ == null) {
+          top_ = builderForValue.build();
+          onChanged();
+        } else {
+          topBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public Builder mergeTop(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (topBuilder_ == null) {
+          if (top_ != null) {
+            top_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(top_).mergeFrom(value).buildPartial();
+          } else {
+            top_ = value;
+          }
+          onChanged();
+        } else {
+          topBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public Builder clearTop() {
+        if (topBuilder_ == null) {
+          top_ = null;
+          onChanged();
+        } else {
+          top_ = null;
+          topBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getTopBuilder() {
+        
+        onChanged();
+        return getTopFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getTopOrBuilder() {
+        if (topBuilder_ != null) {
+          return topBuilder_.getMessageOrBuilder();
+        } else {
+          return top_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : top_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo top = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getTopFieldBuilder() {
+        if (topBuilder_ == null) {
+          topBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getTop(),
+                  getParentForChildren(),
+                  isClean());
+          top_ = null;
+        }
+        return topBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo body_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> bodyBuilder_;
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public boolean hasBody() {
+        return bodyBuilder_ != null || body_ != null;
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getBody() {
+        if (bodyBuilder_ == null) {
+          return body_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : body_;
+        } else {
+          return bodyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public Builder setBody(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (bodyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          body_ = value;
+          onChanged();
+        } else {
+          bodyBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public Builder setBody(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (bodyBuilder_ == null) {
+          body_ = builderForValue.build();
+          onChanged();
+        } else {
+          bodyBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public Builder mergeBody(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (bodyBuilder_ == null) {
+          if (body_ != null) {
+            body_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(body_).mergeFrom(value).buildPartial();
+          } else {
+            body_ = value;
+          }
+          onChanged();
+        } else {
+          bodyBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public Builder clearBody() {
+        if (bodyBuilder_ == null) {
+          body_ = null;
+          onChanged();
+        } else {
+          body_ = null;
+          bodyBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getBodyBuilder() {
+        
+        onChanged();
+        return getBodyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getBodyOrBuilder() {
+        if (bodyBuilder_ != null) {
+          return bodyBuilder_.getMessageOrBuilder();
+        } else {
+          return body_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : body_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo body = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getBodyFieldBuilder() {
+        if (bodyBuilder_ == null) {
+          bodyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getBody(),
+                  getParentForChildren(),
+                  isClean());
+          body_ = null;
+        }
+        return bodyBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo wrist_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> wristBuilder_;
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public boolean hasWrist() {
+        return wristBuilder_ != null || wrist_ != null;
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getWrist() {
+        if (wristBuilder_ == null) {
+          return wrist_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : wrist_;
+        } else {
+          return wristBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public Builder setWrist(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (wristBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          wrist_ = value;
+          onChanged();
+        } else {
+          wristBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public Builder setWrist(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (wristBuilder_ == null) {
+          wrist_ = builderForValue.build();
+          onChanged();
+        } else {
+          wristBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public Builder mergeWrist(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (wristBuilder_ == null) {
+          if (wrist_ != null) {
+            wrist_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(wrist_).mergeFrom(value).buildPartial();
+          } else {
+            wrist_ = value;
+          }
+          onChanged();
+        } else {
+          wristBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public Builder clearWrist() {
+        if (wristBuilder_ == null) {
+          wrist_ = null;
+          onChanged();
+        } else {
+          wrist_ = null;
+          wristBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getWristBuilder() {
+        
+        onChanged();
+        return getWristFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getWristOrBuilder() {
+        if (wristBuilder_ != null) {
+          return wristBuilder_.getMessageOrBuilder();
+        } else {
+          return wrist_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : wrist_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo wrist = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getWristFieldBuilder() {
+        if (wristBuilder_ == null) {
+          wristBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getWrist(),
+                  getParentForChildren(),
+                  isClean());
+          wrist_ = null;
+        }
+        return wristBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo leftHold_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> leftHoldBuilder_;
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public boolean hasLeftHold() {
+        return leftHoldBuilder_ != null || leftHold_ != null;
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getLeftHold() {
+        if (leftHoldBuilder_ == null) {
+          return leftHold_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : leftHold_;
+        } else {
+          return leftHoldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public Builder setLeftHold(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (leftHoldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          leftHold_ = value;
+          onChanged();
+        } else {
+          leftHoldBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public Builder setLeftHold(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (leftHoldBuilder_ == null) {
+          leftHold_ = builderForValue.build();
+          onChanged();
+        } else {
+          leftHoldBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public Builder mergeLeftHold(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (leftHoldBuilder_ == null) {
+          if (leftHold_ != null) {
+            leftHold_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(leftHold_).mergeFrom(value).buildPartial();
+          } else {
+            leftHold_ = value;
+          }
+          onChanged();
+        } else {
+          leftHoldBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public Builder clearLeftHold() {
+        if (leftHoldBuilder_ == null) {
+          leftHold_ = null;
+          onChanged();
+        } else {
+          leftHold_ = null;
+          leftHoldBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getLeftHoldBuilder() {
+        
+        onChanged();
+        return getLeftHoldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getLeftHoldOrBuilder() {
+        if (leftHoldBuilder_ != null) {
+          return leftHoldBuilder_.getMessageOrBuilder();
+        } else {
+          return leftHold_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : leftHold_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo leftHold = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getLeftHoldFieldBuilder() {
+        if (leftHoldBuilder_ == null) {
+          leftHoldBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getLeftHold(),
+                  getParentForChildren(),
+                  isClean());
+          leftHold_ = null;
+        }
+        return leftHoldBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.ModInfo rightHold_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> rightHoldBuilder_;
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public boolean hasRightHold() {
+        return rightHoldBuilder_ != null || rightHold_ != null;
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo getRightHold() {
+        if (rightHoldBuilder_ == null) {
+          return rightHold_ == null ? com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : rightHold_;
+        } else {
+          return rightHoldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public Builder setRightHold(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (rightHoldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          rightHold_ = value;
+          onChanged();
+        } else {
+          rightHoldBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public Builder setRightHold(
+          com.mmo.server.CommonProtocol.ModInfo.Builder builderForValue) {
+        if (rightHoldBuilder_ == null) {
+          rightHold_ = builderForValue.build();
+          onChanged();
+        } else {
+          rightHoldBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public Builder mergeRightHold(com.mmo.server.CommonProtocol.ModInfo value) {
+        if (rightHoldBuilder_ == null) {
+          if (rightHold_ != null) {
+            rightHold_ =
+              com.mmo.server.CommonProtocol.ModInfo.newBuilder(rightHold_).mergeFrom(value).buildPartial();
+          } else {
+            rightHold_ = value;
+          }
+          onChanged();
+        } else {
+          rightHoldBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public Builder clearRightHold() {
+        if (rightHoldBuilder_ == null) {
+          rightHold_ = null;
+          onChanged();
+        } else {
+          rightHold_ = null;
+          rightHoldBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfo.Builder getRightHoldBuilder() {
+        
+        onChanged();
+        return getRightHoldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      public com.mmo.server.CommonProtocol.ModInfoOrBuilder getRightHoldOrBuilder() {
+        if (rightHoldBuilder_ != null) {
+          return rightHoldBuilder_.getMessageOrBuilder();
+        } else {
+          return rightHold_ == null ?
+              com.mmo.server.CommonProtocol.ModInfo.getDefaultInstance() : rightHold_;
+        }
+      }
+      /**
+       * <code>optional .ModInfo rightHold = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
+          getRightHoldFieldBuilder() {
+        if (rightHoldBuilder_ == null) {
+          rightHoldBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
+                  getRightHold(),
+                  getParentForChildren(),
+                  isClean());
+          rightHold_ = null;
+        }
+        return rightHoldBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CharacterEquipMod)
+    }
+
+    // @@protoc_insertion_point(class_scope:CharacterEquipMod)
+    private static final com.mmo.server.CommonProtocol.CharacterEquipMod DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.CommonProtocol.CharacterEquipMod();
+    }
+
+    public static com.mmo.server.CommonProtocol.CharacterEquipMod getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CharacterEquipMod>
+        PARSER = new com.google.protobuf.AbstractParser<CharacterEquipMod>() {
+      public CharacterEquipMod parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CharacterEquipMod(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CharacterEquipMod> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CharacterEquipMod> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.CommonProtocol.CharacterEquipMod getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4310,6 +7263,37 @@ public final class CommonProtocol {
      * <code>optional .SurvivalInfo survivalInfo = 4;</code>
      */
     com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder getSurvivalInfoOrBuilder();
+
+    /**
+     * <code>optional int32 mapId = 5;</code>
+     */
+    int getMapId();
+
+    /**
+     * <code>optional .EnergyInfo energyInfo = 6;</code>
+     */
+    boolean hasEnergyInfo();
+    /**
+     * <code>optional .EnergyInfo energyInfo = 6;</code>
+     */
+    com.mmo.server.CommonProtocol.EnergyInfo getEnergyInfo();
+    /**
+     * <code>optional .EnergyInfo energyInfo = 6;</code>
+     */
+    com.mmo.server.CommonProtocol.EnergyInfoOrBuilder getEnergyInfoOrBuilder();
+
+    /**
+     * <code>optional .CharacterEquipMod equipMod = 7;</code>
+     */
+    boolean hasEquipMod();
+    /**
+     * <code>optional .CharacterEquipMod equipMod = 7;</code>
+     */
+    com.mmo.server.CommonProtocol.CharacterEquipMod getEquipMod();
+    /**
+     * <code>optional .CharacterEquipMod equipMod = 7;</code>
+     */
+    com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder getEquipModOrBuilder();
   }
   /**
    * Protobuf type {@code Character}
@@ -4323,6 +7307,7 @@ public final class CommonProtocol {
       super(builder);
     }
     private Character() {
+      mapId_ = 0;
     }
 
     @java.lang.Override
@@ -4398,6 +7383,37 @@ public final class CommonProtocol {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(survivalInfo_);
                 survivalInfo_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 40: {
+
+              mapId_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              com.mmo.server.CommonProtocol.EnergyInfo.Builder subBuilder = null;
+              if (energyInfo_ != null) {
+                subBuilder = energyInfo_.toBuilder();
+              }
+              energyInfo_ = input.readMessage(com.mmo.server.CommonProtocol.EnergyInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(energyInfo_);
+                energyInfo_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 58: {
+              com.mmo.server.CommonProtocol.CharacterEquipMod.Builder subBuilder = null;
+              if (equipMod_ != null) {
+                subBuilder = equipMod_.toBuilder();
+              }
+              equipMod_ = input.readMessage(com.mmo.server.CommonProtocol.CharacterEquipMod.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(equipMod_);
+                equipMod_ = subBuilder.buildPartial();
               }
 
               break;
@@ -4509,6 +7525,57 @@ public final class CommonProtocol {
       return getSurvivalInfo();
     }
 
+    public static final int MAPID_FIELD_NUMBER = 5;
+    private int mapId_;
+    /**
+     * <code>optional int32 mapId = 5;</code>
+     */
+    public int getMapId() {
+      return mapId_;
+    }
+
+    public static final int ENERGYINFO_FIELD_NUMBER = 6;
+    private com.mmo.server.CommonProtocol.EnergyInfo energyInfo_;
+    /**
+     * <code>optional .EnergyInfo energyInfo = 6;</code>
+     */
+    public boolean hasEnergyInfo() {
+      return energyInfo_ != null;
+    }
+    /**
+     * <code>optional .EnergyInfo energyInfo = 6;</code>
+     */
+    public com.mmo.server.CommonProtocol.EnergyInfo getEnergyInfo() {
+      return energyInfo_ == null ? com.mmo.server.CommonProtocol.EnergyInfo.getDefaultInstance() : energyInfo_;
+    }
+    /**
+     * <code>optional .EnergyInfo energyInfo = 6;</code>
+     */
+    public com.mmo.server.CommonProtocol.EnergyInfoOrBuilder getEnergyInfoOrBuilder() {
+      return getEnergyInfo();
+    }
+
+    public static final int EQUIPMOD_FIELD_NUMBER = 7;
+    private com.mmo.server.CommonProtocol.CharacterEquipMod equipMod_;
+    /**
+     * <code>optional .CharacterEquipMod equipMod = 7;</code>
+     */
+    public boolean hasEquipMod() {
+      return equipMod_ != null;
+    }
+    /**
+     * <code>optional .CharacterEquipMod equipMod = 7;</code>
+     */
+    public com.mmo.server.CommonProtocol.CharacterEquipMod getEquipMod() {
+      return equipMod_ == null ? com.mmo.server.CommonProtocol.CharacterEquipMod.getDefaultInstance() : equipMod_;
+    }
+    /**
+     * <code>optional .CharacterEquipMod equipMod = 7;</code>
+     */
+    public com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder getEquipModOrBuilder() {
+      return getEquipMod();
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4533,6 +7600,15 @@ public final class CommonProtocol {
       if (survivalInfo_ != null) {
         output.writeMessage(4, getSurvivalInfo());
       }
+      if (mapId_ != 0) {
+        output.writeInt32(5, mapId_);
+      }
+      if (energyInfo_ != null) {
+        output.writeMessage(6, getEnergyInfo());
+      }
+      if (equipMod_ != null) {
+        output.writeMessage(7, getEquipMod());
+      }
     }
 
     public int getSerializedSize() {
@@ -4555,6 +7631,18 @@ public final class CommonProtocol {
       if (survivalInfo_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getSurvivalInfo());
+      }
+      if (mapId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, mapId_);
+      }
+      if (energyInfo_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getEnergyInfo());
+      }
+      if (equipMod_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getEquipMod());
       }
       memoizedSize = size;
       return size;
@@ -4592,6 +7680,18 @@ public final class CommonProtocol {
         result = result && getSurvivalInfo()
             .equals(other.getSurvivalInfo());
       }
+      result = result && (getMapId()
+          == other.getMapId());
+      result = result && (hasEnergyInfo() == other.hasEnergyInfo());
+      if (hasEnergyInfo()) {
+        result = result && getEnergyInfo()
+            .equals(other.getEnergyInfo());
+      }
+      result = result && (hasEquipMod() == other.hasEquipMod());
+      if (hasEquipMod()) {
+        result = result && getEquipMod()
+            .equals(other.getEquipMod());
+      }
       return result;
     }
 
@@ -4617,6 +7717,16 @@ public final class CommonProtocol {
       if (hasSurvivalInfo()) {
         hash = (37 * hash) + SURVIVALINFO_FIELD_NUMBER;
         hash = (53 * hash) + getSurvivalInfo().hashCode();
+      }
+      hash = (37 * hash) + MAPID_FIELD_NUMBER;
+      hash = (53 * hash) + getMapId();
+      if (hasEnergyInfo()) {
+        hash = (37 * hash) + ENERGYINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getEnergyInfo().hashCode();
+      }
+      if (hasEquipMod()) {
+        hash = (37 * hash) + EQUIPMOD_FIELD_NUMBER;
+        hash = (53 * hash) + getEquipMod().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4759,6 +7869,20 @@ public final class CommonProtocol {
           survivalInfo_ = null;
           survivalInfoBuilder_ = null;
         }
+        mapId_ = 0;
+
+        if (energyInfoBuilder_ == null) {
+          energyInfo_ = null;
+        } else {
+          energyInfo_ = null;
+          energyInfoBuilder_ = null;
+        }
+        if (equipModBuilder_ == null) {
+          equipMod_ = null;
+        } else {
+          equipMod_ = null;
+          equipModBuilder_ = null;
+        }
         return this;
       }
 
@@ -4801,10 +7925,47 @@ public final class CommonProtocol {
         } else {
           result.survivalInfo_ = survivalInfoBuilder_.build();
         }
+        result.mapId_ = mapId_;
+        if (energyInfoBuilder_ == null) {
+          result.energyInfo_ = energyInfo_;
+        } else {
+          result.energyInfo_ = energyInfoBuilder_.build();
+        }
+        if (equipModBuilder_ == null) {
+          result.equipMod_ = equipMod_;
+        } else {
+          result.equipMod_ = equipModBuilder_.build();
+        }
         onBuilt();
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.Character) {
           return mergeFrom((com.mmo.server.CommonProtocol.Character)other);
@@ -4827,6 +7988,15 @@ public final class CommonProtocol {
         }
         if (other.hasSurvivalInfo()) {
           mergeSurvivalInfo(other.getSurvivalInfo());
+        }
+        if (other.getMapId() != 0) {
+          setMapId(other.getMapId());
+        }
+        if (other.hasEnergyInfo()) {
+          mergeEnergyInfo(other.getEnergyInfo());
+        }
+        if (other.hasEquipMod()) {
+          mergeEquipMod(other.getEquipMod());
         }
         onChanged();
         return this;
@@ -4855,7 +8025,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -4957,11 +8127,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -4972,7 +8142,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position position_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> positionBuilder_;
       /**
        * <code>optional .Position position = 2;</code>
@@ -5074,11 +8244,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position position = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getPositionFieldBuilder() {
         if (positionBuilder_ == null) {
-          positionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          positionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getPosition(),
                   getParentForChildren(),
@@ -5089,7 +8259,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ModInfo modInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> modInfoBuilder_;
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
@@ -5191,11 +8361,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .ModInfo modInfo = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder> 
           getModInfoFieldBuilder() {
         if (modInfoBuilder_ == null) {
-          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          modInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ModInfo, com.mmo.server.CommonProtocol.ModInfo.Builder, com.mmo.server.CommonProtocol.ModInfoOrBuilder>(
                   getModInfo(),
                   getParentForChildren(),
@@ -5206,7 +8376,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.SurvivalInfo survivalInfo_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> survivalInfoBuilder_;
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
@@ -5308,11 +8478,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .SurvivalInfo survivalInfo = 4;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder> 
           getSurvivalInfoFieldBuilder() {
         if (survivalInfoBuilder_ == null) {
-          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          survivalInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.SurvivalInfo, com.mmo.server.CommonProtocol.SurvivalInfo.Builder, com.mmo.server.CommonProtocol.SurvivalInfoOrBuilder>(
                   getSurvivalInfo(),
                   getParentForChildren(),
@@ -5320,6 +8490,266 @@ public final class CommonProtocol {
           survivalInfo_ = null;
         }
         return survivalInfoBuilder_;
+      }
+
+      private int mapId_ ;
+      /**
+       * <code>optional int32 mapId = 5;</code>
+       */
+      public int getMapId() {
+        return mapId_;
+      }
+      /**
+       * <code>optional int32 mapId = 5;</code>
+       */
+      public Builder setMapId(int value) {
+        
+        mapId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 mapId = 5;</code>
+       */
+      public Builder clearMapId() {
+        
+        mapId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.mmo.server.CommonProtocol.EnergyInfo energyInfo_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.EnergyInfo, com.mmo.server.CommonProtocol.EnergyInfo.Builder, com.mmo.server.CommonProtocol.EnergyInfoOrBuilder> energyInfoBuilder_;
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public boolean hasEnergyInfo() {
+        return energyInfoBuilder_ != null || energyInfo_ != null;
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public com.mmo.server.CommonProtocol.EnergyInfo getEnergyInfo() {
+        if (energyInfoBuilder_ == null) {
+          return energyInfo_ == null ? com.mmo.server.CommonProtocol.EnergyInfo.getDefaultInstance() : energyInfo_;
+        } else {
+          return energyInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public Builder setEnergyInfo(com.mmo.server.CommonProtocol.EnergyInfo value) {
+        if (energyInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          energyInfo_ = value;
+          onChanged();
+        } else {
+          energyInfoBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public Builder setEnergyInfo(
+          com.mmo.server.CommonProtocol.EnergyInfo.Builder builderForValue) {
+        if (energyInfoBuilder_ == null) {
+          energyInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          energyInfoBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public Builder mergeEnergyInfo(com.mmo.server.CommonProtocol.EnergyInfo value) {
+        if (energyInfoBuilder_ == null) {
+          if (energyInfo_ != null) {
+            energyInfo_ =
+              com.mmo.server.CommonProtocol.EnergyInfo.newBuilder(energyInfo_).mergeFrom(value).buildPartial();
+          } else {
+            energyInfo_ = value;
+          }
+          onChanged();
+        } else {
+          energyInfoBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public Builder clearEnergyInfo() {
+        if (energyInfoBuilder_ == null) {
+          energyInfo_ = null;
+          onChanged();
+        } else {
+          energyInfo_ = null;
+          energyInfoBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public com.mmo.server.CommonProtocol.EnergyInfo.Builder getEnergyInfoBuilder() {
+        
+        onChanged();
+        return getEnergyInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      public com.mmo.server.CommonProtocol.EnergyInfoOrBuilder getEnergyInfoOrBuilder() {
+        if (energyInfoBuilder_ != null) {
+          return energyInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return energyInfo_ == null ?
+              com.mmo.server.CommonProtocol.EnergyInfo.getDefaultInstance() : energyInfo_;
+        }
+      }
+      /**
+       * <code>optional .EnergyInfo energyInfo = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.EnergyInfo, com.mmo.server.CommonProtocol.EnergyInfo.Builder, com.mmo.server.CommonProtocol.EnergyInfoOrBuilder> 
+          getEnergyInfoFieldBuilder() {
+        if (energyInfoBuilder_ == null) {
+          energyInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.EnergyInfo, com.mmo.server.CommonProtocol.EnergyInfo.Builder, com.mmo.server.CommonProtocol.EnergyInfoOrBuilder>(
+                  getEnergyInfo(),
+                  getParentForChildren(),
+                  isClean());
+          energyInfo_ = null;
+        }
+        return energyInfoBuilder_;
+      }
+
+      private com.mmo.server.CommonProtocol.CharacterEquipMod equipMod_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.CharacterEquipMod, com.mmo.server.CommonProtocol.CharacterEquipMod.Builder, com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder> equipModBuilder_;
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public boolean hasEquipMod() {
+        return equipModBuilder_ != null || equipMod_ != null;
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public com.mmo.server.CommonProtocol.CharacterEquipMod getEquipMod() {
+        if (equipModBuilder_ == null) {
+          return equipMod_ == null ? com.mmo.server.CommonProtocol.CharacterEquipMod.getDefaultInstance() : equipMod_;
+        } else {
+          return equipModBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public Builder setEquipMod(com.mmo.server.CommonProtocol.CharacterEquipMod value) {
+        if (equipModBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          equipMod_ = value;
+          onChanged();
+        } else {
+          equipModBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public Builder setEquipMod(
+          com.mmo.server.CommonProtocol.CharacterEquipMod.Builder builderForValue) {
+        if (equipModBuilder_ == null) {
+          equipMod_ = builderForValue.build();
+          onChanged();
+        } else {
+          equipModBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public Builder mergeEquipMod(com.mmo.server.CommonProtocol.CharacterEquipMod value) {
+        if (equipModBuilder_ == null) {
+          if (equipMod_ != null) {
+            equipMod_ =
+              com.mmo.server.CommonProtocol.CharacterEquipMod.newBuilder(equipMod_).mergeFrom(value).buildPartial();
+          } else {
+            equipMod_ = value;
+          }
+          onChanged();
+        } else {
+          equipModBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public Builder clearEquipMod() {
+        if (equipModBuilder_ == null) {
+          equipMod_ = null;
+          onChanged();
+        } else {
+          equipMod_ = null;
+          equipModBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public com.mmo.server.CommonProtocol.CharacterEquipMod.Builder getEquipModBuilder() {
+        
+        onChanged();
+        return getEquipModFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      public com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder getEquipModOrBuilder() {
+        if (equipModBuilder_ != null) {
+          return equipModBuilder_.getMessageOrBuilder();
+        } else {
+          return equipMod_ == null ?
+              com.mmo.server.CommonProtocol.CharacterEquipMod.getDefaultInstance() : equipMod_;
+        }
+      }
+      /**
+       * <code>optional .CharacterEquipMod equipMod = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.mmo.server.CommonProtocol.CharacterEquipMod, com.mmo.server.CommonProtocol.CharacterEquipMod.Builder, com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder> 
+          getEquipModFieldBuilder() {
+        if (equipModBuilder_ == null) {
+          equipModBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.mmo.server.CommonProtocol.CharacterEquipMod, com.mmo.server.CommonProtocol.CharacterEquipMod.Builder, com.mmo.server.CommonProtocol.CharacterEquipModOrBuilder>(
+                  getEquipMod(),
+                  getParentForChildren(),
+                  isClean());
+          equipMod_ = null;
+        }
+        return equipModBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5464,7 +8894,7 @@ public final class CommonProtocol {
      * <code>optional .CommonStat stat = 1;</code>
      */
     public com.mmo.server.CommonProtocol.CommonStat getStat() {
-      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.forNumber(stat_);
+      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
       return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
     }
 
@@ -5669,6 +9099,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.CommonResponse) {
           return mergeFrom((com.mmo.server.CommonProtocol.CommonResponse)other);
@@ -5728,7 +9184,7 @@ public final class CommonProtocol {
        * <code>optional .CommonStat stat = 1;</code>
        */
       public com.mmo.server.CommonProtocol.CommonStat getStat() {
-        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.forNumber(stat_);
+        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
         return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
       }
       /**
@@ -6388,6 +9844,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ItemMoveEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.ItemMoveEvent)other);
@@ -6441,7 +9923,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -6543,11 +10025,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -6558,7 +10040,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position fromPos_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> fromPosBuilder_;
       /**
        * <code>optional .Position fromPos = 2;</code>
@@ -6660,11 +10142,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position fromPos = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getFromPosFieldBuilder() {
         if (fromPosBuilder_ == null) {
-          fromPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          fromPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getFromPos(),
                   getParentForChildren(),
@@ -6675,7 +10157,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Position toPos_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> toPosBuilder_;
       /**
        * <code>optional .Position toPos = 3;</code>
@@ -6777,11 +10259,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Position toPos = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder> 
           getToPosFieldBuilder() {
         if (toPosBuilder_ == null) {
-          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          toPosBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Position, com.mmo.server.CommonProtocol.Position.Builder, com.mmo.server.CommonProtocol.PositionOrBuilder>(
                   getToPos(),
                   getParentForChildren(),
@@ -6818,7 +10300,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.MotionInfo playMotion_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.MotionInfo, com.mmo.server.CommonProtocol.MotionInfo.Builder, com.mmo.server.CommonProtocol.MotionInfoOrBuilder> playMotionBuilder_;
       /**
        * <code>optional .MotionInfo playMotion = 5;</code>
@@ -6920,11 +10402,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .MotionInfo playMotion = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.MotionInfo, com.mmo.server.CommonProtocol.MotionInfo.Builder, com.mmo.server.CommonProtocol.MotionInfoOrBuilder> 
           getPlayMotionFieldBuilder() {
         if (playMotionBuilder_ == null) {
-          playMotionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          playMotionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.MotionInfo, com.mmo.server.CommonProtocol.MotionInfo.Builder, com.mmo.server.CommonProtocol.MotionInfoOrBuilder>(
                   getPlayMotion(),
                   getParentForChildren(),
@@ -6982,8 +10464,8 @@ public final class CommonProtocol {
 
   }
 
-  public interface ItemCraateEventOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ItemCraateEvent)
+  public interface ItemCreateEventOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ItemCreateEvent)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7000,17 +10482,17 @@ public final class CommonProtocol {
     com.mmo.server.CommonProtocol.ItemOrBuilder getItemOrBuilder();
   }
   /**
-   * Protobuf type {@code ItemCraateEvent}
+   * Protobuf type {@code ItemCreateEvent}
    */
-  public  static final class ItemCraateEvent extends
+  public  static final class ItemCreateEvent extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ItemCraateEvent)
-      ItemCraateEventOrBuilder {
-    // Use ItemCraateEvent.newBuilder() to construct.
-    private ItemCraateEvent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ItemCreateEvent)
+      ItemCreateEventOrBuilder {
+    // Use ItemCreateEvent.newBuilder() to construct.
+    private ItemCreateEvent(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private ItemCraateEvent() {
+    private ItemCreateEvent() {
     }
 
     @java.lang.Override
@@ -7018,7 +10500,7 @@ public final class CommonProtocol {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private ItemCraateEvent(
+    private ItemCreateEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7064,14 +10546,14 @@ public final class CommonProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.mmo.server.CommonProtocol.internal_static_ItemCraateEvent_descriptor;
+      return com.mmo.server.CommonProtocol.internal_static_ItemCreateEvent_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.mmo.server.CommonProtocol.internal_static_ItemCraateEvent_fieldAccessorTable
+      return com.mmo.server.CommonProtocol.internal_static_ItemCreateEvent_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.mmo.server.CommonProtocol.ItemCraateEvent.class, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder.class);
+              com.mmo.server.CommonProtocol.ItemCreateEvent.class, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder.class);
     }
 
     public static final int ITEM_FIELD_NUMBER = 1;
@@ -7131,10 +10613,10 @@ public final class CommonProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.mmo.server.CommonProtocol.ItemCraateEvent)) {
+      if (!(obj instanceof com.mmo.server.CommonProtocol.ItemCreateEvent)) {
         return super.equals(obj);
       }
-      com.mmo.server.CommonProtocol.ItemCraateEvent other = (com.mmo.server.CommonProtocol.ItemCraateEvent) obj;
+      com.mmo.server.CommonProtocol.ItemCreateEvent other = (com.mmo.server.CommonProtocol.ItemCreateEvent) obj;
 
       boolean result = true;
       result = result && (hasItem() == other.hasItem());
@@ -7161,58 +10643,58 @@ public final class CommonProtocol {
       return hash;
     }
 
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(byte[] data)
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(java.io.InputStream input)
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseDelimitedFrom(java.io.InputStream input)
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseDelimitedFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent parseFrom(
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7224,7 +10706,7 @@ public final class CommonProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.mmo.server.CommonProtocol.ItemCraateEvent prototype) {
+    public static Builder newBuilder(com.mmo.server.CommonProtocol.ItemCreateEvent prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -7239,25 +10721,25 @@ public final class CommonProtocol {
       return builder;
     }
     /**
-     * Protobuf type {@code ItemCraateEvent}
+     * Protobuf type {@code ItemCreateEvent}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ItemCraateEvent)
-        com.mmo.server.CommonProtocol.ItemCraateEventOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ItemCreateEvent)
+        com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.mmo.server.CommonProtocol.internal_static_ItemCraateEvent_descriptor;
+        return com.mmo.server.CommonProtocol.internal_static_ItemCreateEvent_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.mmo.server.CommonProtocol.internal_static_ItemCraateEvent_fieldAccessorTable
+        return com.mmo.server.CommonProtocol.internal_static_ItemCreateEvent_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.mmo.server.CommonProtocol.ItemCraateEvent.class, com.mmo.server.CommonProtocol.ItemCraateEvent.Builder.class);
+                com.mmo.server.CommonProtocol.ItemCreateEvent.class, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder.class);
       }
 
-      // Construct using com.mmo.server.CommonProtocol.ItemCraateEvent.newBuilder()
+      // Construct using com.mmo.server.CommonProtocol.ItemCreateEvent.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7284,23 +10766,23 @@ public final class CommonProtocol {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.mmo.server.CommonProtocol.internal_static_ItemCraateEvent_descriptor;
+        return com.mmo.server.CommonProtocol.internal_static_ItemCreateEvent_descriptor;
       }
 
-      public com.mmo.server.CommonProtocol.ItemCraateEvent getDefaultInstanceForType() {
-        return com.mmo.server.CommonProtocol.ItemCraateEvent.getDefaultInstance();
+      public com.mmo.server.CommonProtocol.ItemCreateEvent getDefaultInstanceForType() {
+        return com.mmo.server.CommonProtocol.ItemCreateEvent.getDefaultInstance();
       }
 
-      public com.mmo.server.CommonProtocol.ItemCraateEvent build() {
-        com.mmo.server.CommonProtocol.ItemCraateEvent result = buildPartial();
+      public com.mmo.server.CommonProtocol.ItemCreateEvent build() {
+        com.mmo.server.CommonProtocol.ItemCreateEvent result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.mmo.server.CommonProtocol.ItemCraateEvent buildPartial() {
-        com.mmo.server.CommonProtocol.ItemCraateEvent result = new com.mmo.server.CommonProtocol.ItemCraateEvent(this);
+      public com.mmo.server.CommonProtocol.ItemCreateEvent buildPartial() {
+        com.mmo.server.CommonProtocol.ItemCreateEvent result = new com.mmo.server.CommonProtocol.ItemCreateEvent(this);
         if (itemBuilder_ == null) {
           result.item_ = item_;
         } else {
@@ -7310,17 +10792,43 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.mmo.server.CommonProtocol.ItemCraateEvent) {
-          return mergeFrom((com.mmo.server.CommonProtocol.ItemCraateEvent)other);
+        if (other instanceof com.mmo.server.CommonProtocol.ItemCreateEvent) {
+          return mergeFrom((com.mmo.server.CommonProtocol.ItemCreateEvent)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.mmo.server.CommonProtocol.ItemCraateEvent other) {
-        if (other == com.mmo.server.CommonProtocol.ItemCraateEvent.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.mmo.server.CommonProtocol.ItemCreateEvent other) {
+        if (other == com.mmo.server.CommonProtocol.ItemCreateEvent.getDefaultInstance()) return this;
         if (other.hasItem()) {
           mergeItem(other.getItem());
         }
@@ -7336,11 +10844,11 @@ public final class CommonProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.mmo.server.CommonProtocol.ItemCraateEvent parsedMessage = null;
+        com.mmo.server.CommonProtocol.ItemCreateEvent parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.mmo.server.CommonProtocol.ItemCraateEvent) e.getUnfinishedMessage();
+          parsedMessage = (com.mmo.server.CommonProtocol.ItemCreateEvent) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7351,7 +10859,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Item item_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> itemBuilder_;
       /**
        * <code>optional .Item item = 1;</code>
@@ -7453,11 +10961,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Item item = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> 
           getItemFieldBuilder() {
         if (itemBuilder_ == null) {
-          itemBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          itemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder>(
                   getItem(),
                   getParentForChildren(),
@@ -7477,39 +10985,39 @@ public final class CommonProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ItemCraateEvent)
+      // @@protoc_insertion_point(builder_scope:ItemCreateEvent)
     }
 
-    // @@protoc_insertion_point(class_scope:ItemCraateEvent)
-    private static final com.mmo.server.CommonProtocol.ItemCraateEvent DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ItemCreateEvent)
+    private static final com.mmo.server.CommonProtocol.ItemCreateEvent DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.mmo.server.CommonProtocol.ItemCraateEvent();
+      DEFAULT_INSTANCE = new com.mmo.server.CommonProtocol.ItemCreateEvent();
     }
 
-    public static com.mmo.server.CommonProtocol.ItemCraateEvent getDefaultInstance() {
+    public static com.mmo.server.CommonProtocol.ItemCreateEvent getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ItemCraateEvent>
-        PARSER = new com.google.protobuf.AbstractParser<ItemCraateEvent>() {
-      public ItemCraateEvent parsePartialFrom(
+    private static final com.google.protobuf.Parser<ItemCreateEvent>
+        PARSER = new com.google.protobuf.AbstractParser<ItemCreateEvent>() {
+      public ItemCreateEvent parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ItemCraateEvent(input, extensionRegistry);
+          return new ItemCreateEvent(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ItemCraateEvent> parser() {
+    public static com.google.protobuf.Parser<ItemCreateEvent> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ItemCraateEvent> getParserForType() {
+    public com.google.protobuf.Parser<ItemCreateEvent> getParserForType() {
       return PARSER;
     }
 
-    public com.mmo.server.CommonProtocol.ItemCraateEvent getDefaultInstanceForType() {
+    public com.mmo.server.CommonProtocol.ItemCreateEvent getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7843,6 +11351,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.ItemDestroyEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.ItemDestroyEvent)other);
@@ -7884,7 +11418,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.IdentifyInfo identify_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> identifyBuilder_;
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
@@ -7986,11 +11520,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .IdentifyInfo identify = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder> 
           getIdentifyFieldBuilder() {
         if (identifyBuilder_ == null) {
-          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          identifyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.IdentifyInfo, com.mmo.server.CommonProtocol.IdentifyInfo.Builder, com.mmo.server.CommonProtocol.IdentifyInfoOrBuilder>(
                   getIdentify(),
                   getParentForChildren(),
@@ -8376,6 +11910,32 @@ public final class CommonProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.CommonProtocol.CharacterCreateEvent) {
           return mergeFrom((com.mmo.server.CommonProtocol.CharacterCreateEvent)other);
@@ -8417,7 +11977,7 @@ public final class CommonProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Character character_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> characterBuilder_;
       /**
        * <code>optional .Character character = 1;</code>
@@ -8519,11 +12079,11 @@ public final class CommonProtocol {
       /**
        * <code>optional .Character character = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
           getCharacterFieldBuilder() {
         if (characterBuilder_ == null) {
-          characterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          characterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
                   getCharacter(),
                   getParentForChildren(),
@@ -8602,6 +12162,11 @@ public final class CommonProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SurvivalInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_EnergyInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_EnergyInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_IdentifyInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -8611,6 +12176,11 @@ public final class CommonProtocol {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Item_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CharacterEquipMod_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CharacterEquipMod_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Character_descriptor;
   private static final 
@@ -8627,10 +12197,10 @@ public final class CommonProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ItemMoveEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ItemCraateEvent_descriptor;
+    internal_static_ItemCreateEvent_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ItemCraateEvent_fieldAccessorTable;
+      internal_static_ItemCreateEvent_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ItemDestroyEvent_descriptor;
   private static final 
@@ -8653,24 +12223,35 @@ public final class CommonProtocol {
       "\n\014common.proto\"4\n\010Position\022\014\n\004posX\030\001 \001(\005" +
       "\022\014\n\004posY\030\002 \001(\005\022\014\n\004posZ\030\003 \001(\005\"=\n\007ModInfo\022" +
       "\r\n\005modId\030\001 \001(\005\022\016\n\006motion\030\002 \001(\005\022\023\n\013orient" +
-      "ation\030\003 \001(\005\";\n\nMotionInfo\022\016\n\006motion\030\001 \001(" +
-      "\005\022\016\n\006effect\030\002 \001(\005\022\r\n\005speed\030\003 \001(\002\"=\n\014Surv" +
-      "ivalInfo\022\016\n\006hearth\030\001 \001(\005\022\016\n\006hungry\030\002 \001(\005" +
-      "\022\r\n\005tired\030\003 \001(\005\"A\n\014IdentifyInfo\022\n\n\002ID\030\001 " +
-      "\001(\t\022\014\n\004name\030\002 \001(\t\022\027\n\004type\030\003 \001(\0162\t.ItemTy" +
-      "pe\"\204\001\n\004Item\022\037\n\010identify\030\001 \001(\0132\r.Identify" +
-      "Info\022\033\n\010position\030\002 \001(\0132\t.Position\022\031\n\007mod",
-      "Info\030\003 \001(\0132\010.ModInfo\022#\n\014survivalInfo\030\004 \001" +
-      "(\0132\r.SurvivalInfo\"\211\001\n\tCharacter\022\037\n\010ident" +
-      "ify\030\001 \001(\0132\r.IdentifyInfo\022\033\n\010position\030\002 \001" +
-      "(\0132\t.Position\022\031\n\007modInfo\030\003 \001(\0132\010.ModInfo" +
-      "\022#\n\014survivalInfo\030\004 \001(\0132\r.SurvivalInfo\"+\n" +
+      "ation\030\003 \001(\005\"=\n\nMotionInfo\022\016\n\006motion\030\001 \001(" +
+      "\005\022\020\n\010efficacy\030\002 \001(\005\022\r\n\005speed\030\003 \001(\002\"O\n\014Su" +
+      "rvivalInfo\022\016\n\006health\030\001 \001(\005\022\016\n\006hunger\030\002 \001" +
+      "(\005\022\016\n\006spirit\030\003 \001(\005\022\017\n\007comfort\030\004 \001(\005\"S\n\nE" +
+      "nergyInfo\022\020\n\010strength\030\001 \001(\005\022\021\n\tendurance" +
+      "\030\002 \001(\005\022\017\n\007agility\030\003 \001(\005\022\017\n\007defence\030\004 \001(\005" +
+      "\"A\n\014IdentifyInfo\022\n\n\002ID\030\001 \001(\t\022\014\n\004name\030\002 \001",
+      "(\t\022\027\n\004type\030\003 \001(\0162\t.ItemType\"\204\001\n\004Item\022\037\n\010" +
+      "identify\030\001 \001(\0132\r.IdentifyInfo\022\033\n\010positio" +
+      "n\030\002 \001(\0132\t.Position\022\031\n\007modInfo\030\003 \001(\0132\010.Mo" +
+      "dInfo\022#\n\014survivalInfo\030\004 \001(\0132\r.SurvivalIn" +
+      "fo\"\366\001\n\021CharacterEquipMod\022\026\n\004hair\030\001 \001(\0132\010" +
+      ".ModInfo\022\026\n\004face\030\002 \001(\0132\010.ModInfo\022\027\n\005pant" +
+      "s\030\003 \001(\0132\010.ModInfo\022\027\n\005shoes\030\004 \001(\0132\010.ModIn" +
+      "fo\022\025\n\003top\030\005 \001(\0132\010.ModInfo\022\026\n\004body\030\006 \001(\0132" +
+      "\010.ModInfo\022\027\n\005wrist\030\007 \001(\0132\010.ModInfo\022\032\n\010le" +
+      "ftHold\030\010 \001(\0132\010.ModInfo\022\033\n\trightHold\030\t \001(",
+      "\0132\010.ModInfo\"\337\001\n\tCharacter\022\037\n\010identify\030\001 " +
+      "\001(\0132\r.IdentifyInfo\022\033\n\010position\030\002 \001(\0132\t.P" +
+      "osition\022\031\n\007modInfo\030\003 \001(\0132\010.ModInfo\022#\n\014su" +
+      "rvivalInfo\030\004 \001(\0132\r.SurvivalInfo\022\r\n\005mapId" +
+      "\030\005 \001(\005\022\037\n\nenergyInfo\030\006 \001(\0132\013.EnergyInfo\022" +
+      "$\n\010equipMod\030\007 \001(\0132\022.CharacterEquipMod\"+\n" +
       "\016CommonResponse\022\031\n\004stat\030\001 \001(\0162\013.CommonSt" +
       "at\"\226\001\n\rItemMoveEvent\022\037\n\010identify\030\001 \001(\0132\r" +
       ".IdentifyInfo\022\032\n\007fromPos\030\002 \001(\0132\t.Positio" +
-      "n\022\030\n\005toPos\030\003 \001(\0132\t.Position\022\r\n\005speed\030\004 \001" +
-      "(\002\022\037\n\nplayMotion\030\005 \001(\0132\013.MotionInfo\"&\n\017I",
-      "temCraateEvent\022\023\n\004item\030\001 \001(\0132\005.Item\"3\n\020I" +
+      "n\022\030\n\005toPos\030\003 \001(\0132\t.Position\022\r\n\005speed\030\004 \001",
+      "(\002\022\037\n\nplayMotion\030\005 \001(\0132\013.MotionInfo\"&\n\017I" +
+      "temCreateEvent\022\023\n\004item\030\001 \001(\0132\005.Item\"3\n\020I" +
       "temDestroyEvent\022\037\n\010identify\030\001 \001(\0132\r.Iden" +
       "tifyInfo\"5\n\024CharacterCreateEvent\022\035\n\tchar" +
       "acter\030\001 \001(\0132\n.Character*@\n\tLoginCode\022\007\n\003" +
@@ -8709,57 +12290,69 @@ public final class CommonProtocol {
     internal_static_MotionInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_MotionInfo_descriptor,
-        new java.lang.String[] { "Motion", "Effect", "Speed", });
+        new java.lang.String[] { "Motion", "Efficacy", "Speed", });
     internal_static_SurvivalInfo_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_SurvivalInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_SurvivalInfo_descriptor,
-        new java.lang.String[] { "Hearth", "Hungry", "Tired", });
-    internal_static_IdentifyInfo_descriptor =
+        new java.lang.String[] { "Health", "Hunger", "Spirit", "Comfort", });
+    internal_static_EnergyInfo_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_EnergyInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_EnergyInfo_descriptor,
+        new java.lang.String[] { "Strength", "Endurance", "Agility", "Defence", });
+    internal_static_IdentifyInfo_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_IdentifyInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_IdentifyInfo_descriptor,
         new java.lang.String[] { "ID", "Name", "Type", });
     internal_static_Item_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Item_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Item_descriptor,
         new java.lang.String[] { "Identify", "Position", "ModInfo", "SurvivalInfo", });
+    internal_static_CharacterEquipMod_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_CharacterEquipMod_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CharacterEquipMod_descriptor,
+        new java.lang.String[] { "Hair", "Face", "Pants", "Shoes", "Top", "Body", "Wrist", "LeftHold", "RightHold", });
     internal_static_Character_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_Character_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Character_descriptor,
-        new java.lang.String[] { "Identify", "Position", "ModInfo", "SurvivalInfo", });
+        new java.lang.String[] { "Identify", "Position", "ModInfo", "SurvivalInfo", "MapId", "EnergyInfo", "EquipMod", });
     internal_static_CommonResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_CommonResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CommonResponse_descriptor,
         new java.lang.String[] { "Stat", });
     internal_static_ItemMoveEvent_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_ItemMoveEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemMoveEvent_descriptor,
         new java.lang.String[] { "Identify", "FromPos", "ToPos", "Speed", "PlayMotion", });
-    internal_static_ItemCraateEvent_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_ItemCraateEvent_fieldAccessorTable = new
+    internal_static_ItemCreateEvent_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_ItemCreateEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ItemCraateEvent_descriptor,
+        internal_static_ItemCreateEvent_descriptor,
         new java.lang.String[] { "Item", });
     internal_static_ItemDestroyEvent_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_ItemDestroyEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ItemDestroyEvent_descriptor,
         new java.lang.String[] { "Identify", });
     internal_static_CharacterCreateEvent_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_CharacterCreateEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_CharacterCreateEvent_descriptor,

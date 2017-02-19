@@ -36,6 +36,15 @@ public class UserRegionServiceGrpc {
               "UserRegionService", "userArrivedRegion"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_USER_LEAVE_REGION =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "UserRegionService", "userLeaveRegion"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -68,6 +77,11 @@ public class UserRegionServiceGrpc {
      */
     public void userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
+
+    /**
+     */
+    public void userLeaveRegion(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -77,6 +91,12 @@ public class UserRegionServiceGrpc {
     public void userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_USER_ARRIVED_REGION, responseObserver);
+    }
+
+    @java.lang.Override
+    public void userLeaveRegion(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_USER_LEAVE_REGION, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -91,6 +111,10 @@ public class UserRegionServiceGrpc {
     /**
      */
     public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request);
+
+    /**
+     */
+    public com.mmo.server.CommonProtocol.CommonResponse userLeaveRegion(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request);
   }
 
   /**
@@ -101,6 +125,11 @@ public class UserRegionServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userArrivedRegion(
         com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userLeaveRegion(
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request);
   }
 
   public static class UserRegionServiceStub extends io.grpc.stub.AbstractStub<UserRegionServiceStub>
@@ -126,6 +155,13 @@ public class UserRegionServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_REGION, getCallOptions()), request, responseObserver);
     }
+
+    @java.lang.Override
+    public void userLeaveRegion(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_USER_LEAVE_REGION, getCallOptions()), request, responseObserver);
+    }
   }
 
   public static class UserRegionServiceBlockingStub extends io.grpc.stub.AbstractStub<UserRegionServiceBlockingStub>
@@ -149,6 +185,12 @@ public class UserRegionServiceGrpc {
     public com.mmo.server.CommonProtocol.CommonResponse userArrivedRegion(com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_USER_ARRIVED_REGION, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.CommonProtocol.CommonResponse userLeaveRegion(com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_USER_LEAVE_REGION, getCallOptions(), request);
     }
   }
 
@@ -175,9 +217,17 @@ public class UserRegionServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_REGION, getCallOptions()), request);
     }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userLeaveRegion(
+        com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_USER_LEAVE_REGION, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_USER_ARRIVED_REGION = 0;
+  private static final int METHODID_USER_LEAVE_REGION = 1;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -198,6 +248,10 @@ public class UserRegionServiceGrpc {
       switch (methodId) {
         case METHODID_USER_ARRIVED_REGION:
           serviceImpl.userArrivedRegion((com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
+          break;
+        case METHODID_USER_LEAVE_REGION:
+          serviceImpl.userLeaveRegion((com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         default:
@@ -226,6 +280,13 @@ public class UserRegionServiceGrpc {
               com.mmo.server.ServerGameProtocol.UserArrivedRegionRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_USER_ARRIVED_REGION)))
+        .addMethod(
+          METHOD_USER_LEAVE_REGION,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerGameProtocol.UserLeaveRegionRequest,
+              com.mmo.server.CommonProtocol.CommonResponse>(
+                serviceImpl, METHODID_USER_LEAVE_REGION)))
         .build();
   }
 }

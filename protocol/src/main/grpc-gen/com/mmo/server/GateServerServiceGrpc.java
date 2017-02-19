@@ -37,22 +37,13 @@ public class GateServerServiceGrpc {
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.GateServerPing.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.GateServerPong.getDefaultInstance()));
   @io.grpc.ExperimentalApi
-  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest,
-      com.mmo.server.CommonProtocol.CommonResponse> METHOD_PLAY_BEGIN_CHANGE_MAP =
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_CHARACTER_ENTER_MAP_REQUEST =
       io.grpc.MethodDescriptor.create(
           io.grpc.MethodDescriptor.MethodType.UNARY,
           generateFullMethodName(
-              "GateServerService", "playBeginChangeMap"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest.getDefaultInstance()),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
-  @io.grpc.ExperimentalApi
-  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest,
-      com.mmo.server.CommonProtocol.CommonResponse> METHOD_PLAYER_CHANGE_MAP_COMPLETED =
-      io.grpc.MethodDescriptor.create(
-          io.grpc.MethodDescriptor.MethodType.UNARY,
-          generateFullMethodName(
-              "GateServerService", "PlayerChangeMapCompleted"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest.getDefaultInstance()),
+              "GateServerService", "characterEnterMapRequest"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
 
   /**
@@ -89,12 +80,7 @@ public class GateServerServiceGrpc {
 
     /**
      */
-    public void playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
-
-    /**
-     */
-    public void playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
+    public void characterEnterMapRequest(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
 
@@ -108,15 +94,9 @@ public class GateServerServiceGrpc {
     }
 
     @java.lang.Override
-    public void playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+    public void characterEnterMapRequest(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PLAY_BEGIN_CHANGE_MAP, responseObserver);
-    }
-
-    @java.lang.Override
-    public void playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_PLAYER_CHANGE_MAP_COMPLETED, responseObserver);
+      asyncUnimplementedUnaryCall(METHOD_CHARACTER_ENTER_MAP_REQUEST, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -134,11 +114,7 @@ public class GateServerServiceGrpc {
 
     /**
      */
-    public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request);
-
-    /**
-     */
-    public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request);
+    public com.mmo.server.CommonProtocol.CommonResponse characterEnterMapRequest(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request);
   }
 
   /**
@@ -152,13 +128,8 @@ public class GateServerServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playBeginChangeMap(
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request);
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playerChangeMapCompleted(
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request);
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> characterEnterMapRequest(
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request);
   }
 
   public static class GateServerServiceStub extends io.grpc.stub.AbstractStub<GateServerServiceStub>
@@ -186,17 +157,10 @@ public class GateServerServiceGrpc {
     }
 
     @java.lang.Override
-    public void playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request,
+    public void characterEnterMapRequest(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_PLAY_BEGIN_CHANGE_MAP, getCallOptions()), request, responseObserver);
-    }
-
-    @java.lang.Override
-    public void playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(METHOD_PLAYER_CHANGE_MAP_COMPLETED, getCallOptions()), request, responseObserver);
+          getChannel().newCall(METHOD_CHARACTER_ENTER_MAP_REQUEST, getCallOptions()), request, responseObserver);
     }
   }
 
@@ -224,15 +188,9 @@ public class GateServerServiceGrpc {
     }
 
     @java.lang.Override
-    public com.mmo.server.CommonProtocol.CommonResponse playBeginChangeMap(com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request) {
+    public com.mmo.server.CommonProtocol.CommonResponse characterEnterMapRequest(com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_PLAY_BEGIN_CHANGE_MAP, getCallOptions(), request);
-    }
-
-    @java.lang.Override
-    public com.mmo.server.CommonProtocol.CommonResponse playerChangeMapCompleted(com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request) {
-      return blockingUnaryCall(
-          getChannel(), METHOD_PLAYER_CHANGE_MAP_COMPLETED, getCallOptions(), request);
+          getChannel(), METHOD_CHARACTER_ENTER_MAP_REQUEST, getCallOptions(), request);
     }
   }
 
@@ -261,23 +219,15 @@ public class GateServerServiceGrpc {
     }
 
     @java.lang.Override
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playBeginChangeMap(
-        com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> characterEnterMapRequest(
+        com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_PLAY_BEGIN_CHANGE_MAP, getCallOptions()), request);
-    }
-
-    @java.lang.Override
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> playerChangeMapCompleted(
-        com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(METHOD_PLAYER_CHANGE_MAP_COMPLETED, getCallOptions()), request);
+          getChannel().newCall(METHOD_CHARACTER_ENTER_MAP_REQUEST, getCallOptions()), request);
     }
   }
 
   private static final int METHODID_RECEIVE_PING = 0;
-  private static final int METHODID_PLAY_BEGIN_CHANGE_MAP = 1;
-  private static final int METHODID_PLAYER_CHANGE_MAP_COMPLETED = 2;
+  private static final int METHODID_CHARACTER_ENTER_MAP_REQUEST = 1;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -300,12 +250,8 @@ public class GateServerServiceGrpc {
           serviceImpl.receivePing((com.mmo.server.ServerGateProtocol.GateServerPing) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.ServerGateProtocol.GateServerPong>) responseObserver);
           break;
-        case METHODID_PLAY_BEGIN_CHANGE_MAP:
-          serviceImpl.playBeginChangeMap((com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest) request,
-              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
-          break;
-        case METHODID_PLAYER_CHANGE_MAP_COMPLETED:
-          serviceImpl.playerChangeMapCompleted((com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest) request,
+        case METHODID_CHARACTER_ENTER_MAP_REQUEST:
+          serviceImpl.characterEnterMapRequest((com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         default:
@@ -335,19 +281,12 @@ public class GateServerServiceGrpc {
               com.mmo.server.ServerGateProtocol.GateServerPong>(
                 serviceImpl, METHODID_RECEIVE_PING)))
         .addMethod(
-          METHOD_PLAY_BEGIN_CHANGE_MAP,
+          METHOD_CHARACTER_ENTER_MAP_REQUEST,
           asyncUnaryCall(
             new MethodHandlers<
-              com.mmo.server.ServerGateProtocol.PlayerBeginChangeMapRequest,
+              com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
-                serviceImpl, METHODID_PLAY_BEGIN_CHANGE_MAP)))
-        .addMethod(
-          METHOD_PLAYER_CHANGE_MAP_COMPLETED,
-          asyncUnaryCall(
-            new MethodHandlers<
-              com.mmo.server.ServerGateProtocol.PlayerChangeMapCompletedRequest,
-              com.mmo.server.CommonProtocol.CommonResponse>(
-                serviceImpl, METHODID_PLAYER_CHANGE_MAP_COMPLETED)))
+                serviceImpl, METHODID_CHARACTER_ENTER_MAP_REQUEST)))
         .build();
   }
 }

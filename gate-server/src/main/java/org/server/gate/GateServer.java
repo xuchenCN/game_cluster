@@ -10,6 +10,7 @@ import org.mmo.server.common.utils.ReflectionUtils;
 import org.server.gate.communicator.WorldServerCommunicator;
 import org.server.gate.core.AccountService;
 import org.server.gate.core.GateServerRouter;
+import org.server.gate.net.GateNettyServer;
 import org.server.gate.services.GateServerProcessor;
 
 import io.grpc.Server;
@@ -24,6 +25,8 @@ public class GateServer extends CompositeService {
 	private GateServerRouter gateServerRouter;
 
 	private GateServerProcessor gateServerProcessor;
+	
+	private GateNettyServer gateNettyServer;
 
 	private Server grpcServer;
 
@@ -43,7 +46,7 @@ public class GateServer extends CompositeService {
 		globalContext.setUserInfoPersistentService(userInfoPersistentService);
 		addIfService(userInfoPersistentService);
 		
-		AccountService accountService = new AccountService();
+		AccountService accountService = new AccountService(globalContext);
 		addIfService(accountService);
 		globalContext.setAccountService(accountService);
 		
@@ -53,6 +56,8 @@ public class GateServer extends CompositeService {
 		
 		gateServerProcessor = new GateServerProcessor(globalContext);
 		addIfService(gateServerProcessor);
+		
+		gateNettyServer = new GateNettyServer(globalContext);
 
 		super.serviceInit(conf);
 	}
@@ -60,7 +65,7 @@ public class GateServer extends CompositeService {
 	@Override
 	protected void serviceStart() throws Exception {
 
-		grpcServer = ServerBuilder.forPort(0).addService(gateServerRouter.getForwardService()).build();
+		grpcServer = ServerBuilder.forPort(0).addService(gateServerRouter.getForwardService()).addService(gateServerRouter.getGateServerService()).build();
 		grpcServer.start();
 		globalContext.setListenOn(grpcServer.getPort());
 		LOG.info("Gate Server started , listening on " + globalContext.getListenOn());
@@ -75,12 +80,15 @@ public class GateServer extends CompositeService {
 		};
 		grpcThread.join();
 		grpcThread.start();
+		
+		gateNettyServer.start();
+		
 		super.serviceStart();
 	}
 
 	@Override
 	protected void serviceStop() throws Exception {
-		// TODO Auto-generated method stub
+		gateNettyServer.start();
 		super.serviceStop();
 	}
 

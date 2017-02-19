@@ -37,13 +37,13 @@ public class EventDispatcherGrpc {
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.ItemMoveEventRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
   @io.grpc.ExperimentalApi
-  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.ItemCraateEventRequest,
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.ItemCreateEventRequest,
       com.mmo.server.CommonProtocol.CommonResponse> METHOD_CREATE_ITEM_EVENT =
       io.grpc.MethodDescriptor.create(
           io.grpc.MethodDescriptor.MethodType.UNARY,
           generateFullMethodName(
               "EventDispatcher", "createItemEvent"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
   @io.grpc.ExperimentalApi
   public static final io.grpc.MethodDescriptor<com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest,
@@ -98,7 +98,7 @@ public class EventDispatcherGrpc {
 
     /**
      */
-    public void createItemEvent(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+    public void createItemEvent(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
 
     /**
@@ -122,7 +122,7 @@ public class EventDispatcherGrpc {
     }
 
     @java.lang.Override
-    public void createItemEvent(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+    public void createItemEvent(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_CREATE_ITEM_EVENT, responseObserver);
     }
@@ -154,7 +154,7 @@ public class EventDispatcherGrpc {
 
     /**
      */
-    public com.mmo.server.CommonProtocol.CommonResponse createItemEvent(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request);
+    public com.mmo.server.CommonProtocol.CommonResponse createItemEvent(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request);
 
     /**
      */
@@ -177,7 +177,7 @@ public class EventDispatcherGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> createItemEvent(
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request);
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request);
 
     /**
      */
@@ -215,7 +215,7 @@ public class EventDispatcherGrpc {
     }
 
     @java.lang.Override
-    public void createItemEvent(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request,
+    public void createItemEvent(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_CREATE_ITEM_EVENT, getCallOptions()), request, responseObserver);
@@ -260,7 +260,7 @@ public class EventDispatcherGrpc {
     }
 
     @java.lang.Override
-    public com.mmo.server.CommonProtocol.CommonResponse createItemEvent(com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request) {
+    public com.mmo.server.CommonProtocol.CommonResponse createItemEvent(com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_CREATE_ITEM_EVENT, getCallOptions(), request);
     }
@@ -304,7 +304,7 @@ public class EventDispatcherGrpc {
 
     @java.lang.Override
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> createItemEvent(
-        com.mmo.server.ServerGateProtocol.ItemCraateEventRequest request) {
+        com.mmo.server.ServerGateProtocol.ItemCreateEventRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_CREATE_ITEM_EVENT, getCallOptions()), request);
     }
@@ -351,7 +351,7 @@ public class EventDispatcherGrpc {
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         case METHODID_CREATE_ITEM_EVENT:
-          serviceImpl.createItemEvent((com.mmo.server.ServerGateProtocol.ItemCraateEventRequest) request,
+          serviceImpl.createItemEvent((com.mmo.server.ServerGateProtocol.ItemCreateEventRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         case METHODID_DESTROY_ITEM_EVENT:
@@ -392,7 +392,7 @@ public class EventDispatcherGrpc {
           METHOD_CREATE_ITEM_EVENT,
           asyncUnaryCall(
             new MethodHandlers<
-              com.mmo.server.ServerGateProtocol.ItemCraateEventRequest,
+              com.mmo.server.ServerGateProtocol.ItemCreateEventRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_CREATE_ITEM_EVENT)))
         .addMethod(

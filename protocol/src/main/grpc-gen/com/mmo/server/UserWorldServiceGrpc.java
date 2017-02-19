@@ -36,6 +36,15 @@ public class UserWorldServiceGrpc {
               "UserWorldService", "userArrivedWorld"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerWorldProtocol.UserTransToMapRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_USER_TRANS_TO_MAP =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "UserWorldService", "userTransToMap"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -68,6 +77,11 @@ public class UserWorldServiceGrpc {
      */
     public void userArrivedWorld(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
+
+    /**
+     */
+    public void userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -77,6 +91,12 @@ public class UserWorldServiceGrpc {
     public void userArrivedWorld(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_USER_ARRIVED_WORLD, responseObserver);
+    }
+
+    @java.lang.Override
+    public void userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_USER_TRANS_TO_MAP, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -91,6 +111,10 @@ public class UserWorldServiceGrpc {
     /**
      */
     public com.mmo.server.CommonProtocol.CommonResponse userArrivedWorld(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request);
+
+    /**
+     */
+    public com.mmo.server.CommonProtocol.CommonResponse userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request);
   }
 
   /**
@@ -101,6 +125,11 @@ public class UserWorldServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userArrivedWorld(
         com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userTransToMap(
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request);
   }
 
   public static class UserWorldServiceStub extends io.grpc.stub.AbstractStub<UserWorldServiceStub>
@@ -126,6 +155,13 @@ public class UserWorldServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_WORLD, getCallOptions()), request, responseObserver);
     }
+
+    @java.lang.Override
+    public void userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_USER_TRANS_TO_MAP, getCallOptions()), request, responseObserver);
+    }
   }
 
   public static class UserWorldServiceBlockingStub extends io.grpc.stub.AbstractStub<UserWorldServiceBlockingStub>
@@ -149,6 +185,12 @@ public class UserWorldServiceGrpc {
     public com.mmo.server.CommonProtocol.CommonResponse userArrivedWorld(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_USER_ARRIVED_WORLD, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.CommonProtocol.CommonResponse userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_USER_TRANS_TO_MAP, getCallOptions(), request);
     }
   }
 
@@ -175,9 +217,17 @@ public class UserWorldServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_WORLD, getCallOptions()), request);
     }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userTransToMap(
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_USER_TRANS_TO_MAP, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_USER_ARRIVED_WORLD = 0;
+  private static final int METHODID_USER_TRANS_TO_MAP = 1;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -198,6 +248,10 @@ public class UserWorldServiceGrpc {
       switch (methodId) {
         case METHODID_USER_ARRIVED_WORLD:
           serviceImpl.userArrivedWorld((com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
+          break;
+        case METHODID_USER_TRANS_TO_MAP:
+          serviceImpl.userTransToMap((com.mmo.server.ServerWorldProtocol.UserTransToMapRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         default:
@@ -226,6 +280,13 @@ public class UserWorldServiceGrpc {
               com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_USER_ARRIVED_WORLD)))
+        .addMethod(
+          METHOD_USER_TRANS_TO_MAP,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerWorldProtocol.UserTransToMapRequest,
+              com.mmo.server.CommonProtocol.CommonResponse>(
+                serviceImpl, METHODID_USER_TRANS_TO_MAP)))
         .build();
   }
 }

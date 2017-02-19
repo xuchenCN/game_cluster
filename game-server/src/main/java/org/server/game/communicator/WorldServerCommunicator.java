@@ -30,9 +30,9 @@ public class WorldServerCommunicator {
 		worldServerStub = WorldServiceGrpc.newBlockingStub(channel);
 	}
 
-	public void registerRegion(String host, int port) {
+	public void registerRegion(String host, int port,int mapId) {
 		RegionRegisterRequest request = RegionRegisterRequest.newBuilder().setServerHost(host).setServerPort(port)
-				.build();
+				.setMapId(mapId).build();
 		CommonResponse response = worldServerStub.registerRegion(request);
 		if (!(CommonStat.OK == response.getStat())) {
 			throw new RuntimeException("Failed to register");

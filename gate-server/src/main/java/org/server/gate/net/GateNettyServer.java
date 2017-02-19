@@ -83,6 +83,8 @@ public class GateNettyServer {
 			throw new IOException("Failed to bind", future.cause());
 		}
 		channel = future.channel();
+		
+		LOG.info("GateNettyServer listen on : " + port);
 	}
 
 	public void await() {

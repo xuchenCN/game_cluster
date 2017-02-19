@@ -6,7 +6,13 @@ package com.mmo.server;
 public final class ServerWorldProtocol {
   private ServerWorldProtocol() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface RegionServerInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:RegionServerInfo)
@@ -394,6 +400,32 @@ public final class ServerWorldProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.RegionServerInfo) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.RegionServerInfo)other);
@@ -1030,6 +1062,32 @@ public final class ServerWorldProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest)other);
@@ -1270,6 +1328,1051 @@ public final class ServerWorldProtocol {
     }
 
     public com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserTransToMapRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserTransToMapRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 fromId = 1;</code>
+     */
+    int getFromId();
+
+    /**
+     * <code>optional int32 toId = 2;</code>
+     */
+    int getToId();
+
+    /**
+     * <code>optional int32 uid = 3;</code>
+     */
+    int getUid();
+  }
+  /**
+   * Protobuf type {@code UserTransToMapRequest}
+   */
+  public  static final class UserTransToMapRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:UserTransToMapRequest)
+      UserTransToMapRequestOrBuilder {
+    // Use UserTransToMapRequest.newBuilder() to construct.
+    private UserTransToMapRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private UserTransToMapRequest() {
+      fromId_ = 0;
+      toId_ = 0;
+      uid_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private UserTransToMapRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              fromId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              toId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              uid_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerWorldProtocol.internal_static_UserTransToMapRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerWorldProtocol.internal_static_UserTransToMapRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.class, com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.Builder.class);
+    }
+
+    public static final int FROMID_FIELD_NUMBER = 1;
+    private int fromId_;
+    /**
+     * <code>optional int32 fromId = 1;</code>
+     */
+    public int getFromId() {
+      return fromId_;
+    }
+
+    public static final int TOID_FIELD_NUMBER = 2;
+    private int toId_;
+    /**
+     * <code>optional int32 toId = 2;</code>
+     */
+    public int getToId() {
+      return toId_;
+    }
+
+    public static final int UID_FIELD_NUMBER = 3;
+    private int uid_;
+    /**
+     * <code>optional int32 uid = 3;</code>
+     */
+    public int getUid() {
+      return uid_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (fromId_ != 0) {
+        output.writeInt32(1, fromId_);
+      }
+      if (toId_ != 0) {
+        output.writeInt32(2, toId_);
+      }
+      if (uid_ != 0) {
+        output.writeInt32(3, uid_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (fromId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, fromId_);
+      }
+      if (toId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, toId_);
+      }
+      if (uid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, uid_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerWorldProtocol.UserTransToMapRequest)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerWorldProtocol.UserTransToMapRequest other = (com.mmo.server.ServerWorldProtocol.UserTransToMapRequest) obj;
+
+      boolean result = true;
+      result = result && (getFromId()
+          == other.getFromId());
+      result = result && (getToId()
+          == other.getToId());
+      result = result && (getUid()
+          == other.getUid());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + FROMID_FIELD_NUMBER;
+      hash = (53 * hash) + getFromId();
+      hash = (37 * hash) + TOID_FIELD_NUMBER;
+      hash = (53 * hash) + getToId();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UserTransToMapRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UserTransToMapRequest)
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerWorldProtocol.internal_static_UserTransToMapRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerWorldProtocol.internal_static_UserTransToMapRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.class, com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        fromId_ = 0;
+
+        toId_ = 0;
+
+        uid_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerWorldProtocol.internal_static_UserTransToMapRequest_descriptor;
+      }
+
+      public com.mmo.server.ServerWorldProtocol.UserTransToMapRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerWorldProtocol.UserTransToMapRequest build() {
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerWorldProtocol.UserTransToMapRequest buildPartial() {
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequest result = new com.mmo.server.ServerWorldProtocol.UserTransToMapRequest(this);
+        result.fromId_ = fromId_;
+        result.toId_ = toId_;
+        result.uid_ = uid_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerWorldProtocol.UserTransToMapRequest) {
+          return mergeFrom((com.mmo.server.ServerWorldProtocol.UserTransToMapRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest other) {
+        if (other == com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.getDefaultInstance()) return this;
+        if (other.getFromId() != 0) {
+          setFromId(other.getFromId());
+        }
+        if (other.getToId() != 0) {
+          setToId(other.getToId());
+        }
+        if (other.getUid() != 0) {
+          setUid(other.getUid());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerWorldProtocol.UserTransToMapRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int fromId_ ;
+      /**
+       * <code>optional int32 fromId = 1;</code>
+       */
+      public int getFromId() {
+        return fromId_;
+      }
+      /**
+       * <code>optional int32 fromId = 1;</code>
+       */
+      public Builder setFromId(int value) {
+        
+        fromId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 fromId = 1;</code>
+       */
+      public Builder clearFromId() {
+        
+        fromId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int toId_ ;
+      /**
+       * <code>optional int32 toId = 2;</code>
+       */
+      public int getToId() {
+        return toId_;
+      }
+      /**
+       * <code>optional int32 toId = 2;</code>
+       */
+      public Builder setToId(int value) {
+        
+        toId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 toId = 2;</code>
+       */
+      public Builder clearToId() {
+        
+        toId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int uid_ ;
+      /**
+       * <code>optional int32 uid = 3;</code>
+       */
+      public int getUid() {
+        return uid_;
+      }
+      /**
+       * <code>optional int32 uid = 3;</code>
+       */
+      public Builder setUid(int value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 uid = 3;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UserTransToMapRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:UserTransToMapRequest)
+    private static final com.mmo.server.ServerWorldProtocol.UserTransToMapRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerWorldProtocol.UserTransToMapRequest();
+    }
+
+    public static com.mmo.server.ServerWorldProtocol.UserTransToMapRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserTransToMapRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UserTransToMapRequest>() {
+      public UserTransToMapRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UserTransToMapRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserTransToMapRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserTransToMapRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerWorldProtocol.UserTransToMapRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserLeaveWorldRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserLeaveWorldRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 uid = 1;</code>
+     */
+    int getUid();
+
+    /**
+     * <code>optional int32 mapId = 2;</code>
+     */
+    int getMapId();
+  }
+  /**
+   * Protobuf type {@code UserLeaveWorldRequest}
+   */
+  public  static final class UserLeaveWorldRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:UserLeaveWorldRequest)
+      UserLeaveWorldRequestOrBuilder {
+    // Use UserLeaveWorldRequest.newBuilder() to construct.
+    private UserLeaveWorldRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private UserLeaveWorldRequest() {
+      uid_ = 0;
+      mapId_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private UserLeaveWorldRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              uid_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              mapId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerWorldProtocol.internal_static_UserLeaveWorldRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerWorldProtocol.internal_static_UserLeaveWorldRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.class, com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.Builder.class);
+    }
+
+    public static final int UID_FIELD_NUMBER = 1;
+    private int uid_;
+    /**
+     * <code>optional int32 uid = 1;</code>
+     */
+    public int getUid() {
+      return uid_;
+    }
+
+    public static final int MAPID_FIELD_NUMBER = 2;
+    private int mapId_;
+    /**
+     * <code>optional int32 mapId = 2;</code>
+     */
+    public int getMapId() {
+      return mapId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (uid_ != 0) {
+        output.writeInt32(1, uid_);
+      }
+      if (mapId_ != 0) {
+        output.writeInt32(2, mapId_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (uid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, uid_);
+      }
+      if (mapId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, mapId_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest other = (com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest) obj;
+
+      boolean result = true;
+      result = result && (getUid()
+          == other.getUid());
+      result = result && (getMapId()
+          == other.getMapId());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid();
+      hash = (37 * hash) + MAPID_FIELD_NUMBER;
+      hash = (53 * hash) + getMapId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UserLeaveWorldRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UserLeaveWorldRequest)
+        com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerWorldProtocol.internal_static_UserLeaveWorldRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerWorldProtocol.internal_static_UserLeaveWorldRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.class, com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        uid_ = 0;
+
+        mapId_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerWorldProtocol.internal_static_UserLeaveWorldRequest_descriptor;
+      }
+
+      public com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest build() {
+        com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest buildPartial() {
+        com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest result = new com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest(this);
+        result.uid_ = uid_;
+        result.mapId_ = mapId_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest) {
+          return mergeFrom((com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest other) {
+        if (other == com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.getDefaultInstance()) return this;
+        if (other.getUid() != 0) {
+          setUid(other.getUid());
+        }
+        if (other.getMapId() != 0) {
+          setMapId(other.getMapId());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int uid_ ;
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public int getUid() {
+        return uid_;
+      }
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public Builder setUid(int value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int mapId_ ;
+      /**
+       * <code>optional int32 mapId = 2;</code>
+       */
+      public int getMapId() {
+        return mapId_;
+      }
+      /**
+       * <code>optional int32 mapId = 2;</code>
+       */
+      public Builder setMapId(int value) {
+        
+        mapId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 mapId = 2;</code>
+       */
+      public Builder clearMapId() {
+        
+        mapId_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UserLeaveWorldRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:UserLeaveWorldRequest)
+    private static final com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest();
+    }
+
+    public static com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserLeaveWorldRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UserLeaveWorldRequest>() {
+      public UserLeaveWorldRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UserLeaveWorldRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserLeaveWorldRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserLeaveWorldRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1627,6 +2730,32 @@ public final class ServerWorldProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.GateRegisterRequest) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.GateRegisterRequest)other);
@@ -1887,7 +3016,8 @@ public final class ServerWorldProtocol {
                 regions_ = new java.util.ArrayList<com.mmo.server.ServerWorldProtocol.RegionServerInfo>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              regions_.add(input.readMessage(com.mmo.server.ServerWorldProtocol.RegionServerInfo.parser(), extensionRegistry));
+              regions_.add(
+                  input.readMessage(com.mmo.server.ServerWorldProtocol.RegionServerInfo.parser(), extensionRegistry));
               break;
             }
           }
@@ -2169,6 +3299,32 @@ public final class ServerWorldProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.GateRegisterResponse) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.GateRegisterResponse)other);
@@ -2242,7 +3398,7 @@ public final class ServerWorldProtocol {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.mmo.server.ServerWorldProtocol.RegionServerInfo, com.mmo.server.ServerWorldProtocol.RegionServerInfo.Builder, com.mmo.server.ServerWorldProtocol.RegionServerInfoOrBuilder> regionsBuilder_;
 
       /**
@@ -2458,11 +3614,11 @@ public final class ServerWorldProtocol {
            getRegionsBuilderList() {
         return getRegionsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.mmo.server.ServerWorldProtocol.RegionServerInfo, com.mmo.server.ServerWorldProtocol.RegionServerInfo.Builder, com.mmo.server.ServerWorldProtocol.RegionServerInfoOrBuilder> 
           getRegionsFieldBuilder() {
         if (regionsBuilder_ == null) {
-          regionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          regionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.mmo.server.ServerWorldProtocol.RegionServerInfo, com.mmo.server.ServerWorldProtocol.RegionServerInfo.Builder, com.mmo.server.ServerWorldProtocol.RegionServerInfoOrBuilder>(
                   regions_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
@@ -2907,6 +4063,32 @@ public final class ServerWorldProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerWorldProtocol.RegionRegisterRequest) {
           return mergeFrom((com.mmo.server.ServerWorldProtocol.RegionRegisterRequest)other);
@@ -3139,6 +4321,14 @@ public final class ServerWorldProtocol {
           com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
+      /**
+       * <code>rpc userTransToMap(.UserTransToMapRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void userTransToMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
     }
 
     public static com.google.protobuf.Service newReflectiveService(
@@ -3150,6 +4340,14 @@ public final class ServerWorldProtocol {
             com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
           impl.userArrivedWorld(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void userTransToMap(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.userTransToMap(controller, request, done);
         }
 
       };
@@ -3176,6 +4374,8 @@ public final class ServerWorldProtocol {
           switch(method.getIndex()) {
             case 0:
               return impl.userArrivedWorld(controller, (com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest)request);
+            case 1:
+              return impl.userTransToMap(controller, (com.mmo.server.ServerWorldProtocol.UserTransToMapRequest)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -3192,6 +4392,8 @@ public final class ServerWorldProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -3208,6 +4410,8 @@ public final class ServerWorldProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            case 1:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -3222,6 +4426,14 @@ public final class ServerWorldProtocol {
     public abstract void userArrivedWorld(
         com.google.protobuf.RpcController controller,
         com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    /**
+     * <code>rpc userTransToMap(.UserTransToMapRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void userTransToMap(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     public static final
@@ -3251,6 +4463,11 @@ public final class ServerWorldProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
               done));
           return;
+        case 1:
+          this.userTransToMap(controller, (com.mmo.server.ServerWorldProtocol.UserTransToMapRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -3267,6 +4484,8 @@ public final class ServerWorldProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerWorldProtocol.UserTransToMapRequest.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -3282,6 +4501,8 @@ public final class ServerWorldProtocol {
       }
       switch(method.getIndex()) {
         case 0:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        case 1:
           return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
@@ -3318,6 +4539,21 @@ public final class ServerWorldProtocol {
             com.mmo.server.CommonProtocol.CommonResponse.class,
             com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
       }
+
+      public  void userTransToMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.CommonProtocol.CommonResponse.class,
+            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -3329,6 +4565,11 @@ public final class ServerWorldProtocol {
       public com.mmo.server.CommonProtocol.CommonResponse userArrivedWorld(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.CommonProtocol.CommonResponse userTransToMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -3345,6 +4586,18 @@ public final class ServerWorldProtocol {
           throws com.google.protobuf.ServiceException {
         return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
           getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.CommonProtocol.CommonResponse userTransToMap(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
           controller,
           request,
           com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
@@ -3669,6 +4922,16 @@ public final class ServerWorldProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_UserArrivedWorldRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UserTransToMapRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UserTransToMapRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UserLeaveWorldRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UserLeaveWorldRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GateRegisterRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -3697,18 +4960,23 @@ public final class ServerWorldProtocol {
       "rverPort\030\002 \001(\005\022\r\n\005mapid\030\003 \001(\005\"Y\n\027UserArr" +
       "ivedWorldRequest\022\020\n\010gateHost\030\001 \001(\t\022\020\n\010ga" +
       "tePort\030\002 \001(\005\022\013\n\003uid\030\003 \001(\005\022\r\n\005mapId\030\004 \001(\005" +
-      "\"9\n\023GateRegisterRequest\022\020\n\010gateHost\030\001 \001(" +
-      "\t\022\020\n\010gatePort\030\002 \001(\005\":\n\024GateRegisterRespo" +
-      "nse\022\"\n\007regions\030\001 \003(\0132\021.RegionServerInfo\"" +
-      "N\n\025RegionRegisterRequest\022\022\n\nserverHost\030\001" +
-      " \001(\t\022\022\n\nserverPort\030\002 \001(\005\022\r\n\005mapId\030\003 \001(\0052",
-      "S\n\020UserWorldService\022?\n\020userArrivedWorld\022" +
-      "\030.UserArrivedWorldRequest\032\017.CommonRespon" +
-      "se\"\0002\212\001\n\014WorldService\022=\n\014registerGate\022\024." +
-      "GateRegisterRequest\032\025.GateRegisterRespon" +
-      "se\"\000\022;\n\016registerRegion\022\026.RegionRegisterR" +
-      "equest\032\017.CommonResponse\"\000B+\n\016com.mmo.ser" +
-      "verB\023ServerWorldProtocol\210\001\001\240\001\001b\006proto3"
+      "\"B\n\025UserTransToMapRequest\022\016\n\006fromId\030\001 \001(" +
+      "\005\022\014\n\004toId\030\002 \001(\005\022\013\n\003uid\030\003 \001(\005\"3\n\025UserLeav" +
+      "eWorldRequest\022\013\n\003uid\030\001 \001(\005\022\r\n\005mapId\030\002 \001(" +
+      "\005\"9\n\023GateRegisterRequest\022\020\n\010gateHost\030\001 \001" +
+      "(\t\022\020\n\010gatePort\030\002 \001(\005\":\n\024GateRegisterResp",
+      "onse\022\"\n\007regions\030\001 \003(\0132\021.RegionServerInfo" +
+      "\"N\n\025RegionRegisterRequest\022\022\n\nserverHost\030" +
+      "\001 \001(\t\022\022\n\nserverPort\030\002 \001(\005\022\r\n\005mapId\030\003 \001(\005" +
+      "2\220\001\n\020UserWorldService\022?\n\020userArrivedWorl" +
+      "d\022\030.UserArrivedWorldRequest\032\017.CommonResp" +
+      "onse\"\000\022;\n\016userTransToMap\022\026.UserTransToMa" +
+      "pRequest\032\017.CommonResponse\"\0002\212\001\n\014WorldSer" +
+      "vice\022=\n\014registerGate\022\024.GateRegisterReque" +
+      "st\032\025.GateRegisterResponse\"\000\022;\n\016registerR" +
+      "egion\022\026.RegionRegisterRequest\032\017.CommonRe",
+      "sponse\"\000B+\n\016com.mmo.serverB\023ServerWorldP" +
+      "rotocol\210\001\001\240\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3735,20 +5003,32 @@ public final class ServerWorldProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_UserArrivedWorldRequest_descriptor,
         new java.lang.String[] { "GateHost", "GatePort", "Uid", "MapId", });
-    internal_static_GateRegisterRequest_descriptor =
+    internal_static_UserTransToMapRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_UserTransToMapRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UserTransToMapRequest_descriptor,
+        new java.lang.String[] { "FromId", "ToId", "Uid", });
+    internal_static_UserLeaveWorldRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_UserLeaveWorldRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UserLeaveWorldRequest_descriptor,
+        new java.lang.String[] { "Uid", "MapId", });
+    internal_static_GateRegisterRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_GateRegisterRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GateRegisterRequest_descriptor,
         new java.lang.String[] { "GateHost", "GatePort", });
     internal_static_GateRegisterResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_GateRegisterResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GateRegisterResponse_descriptor,
         new java.lang.String[] { "Regions", });
     internal_static_RegionRegisterRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_RegionRegisterRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_RegionRegisterRequest_descriptor,

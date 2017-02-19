@@ -1,4 +1,4 @@
-package org.server.gate.utils;
+package org.mmo.server.common.utils;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 

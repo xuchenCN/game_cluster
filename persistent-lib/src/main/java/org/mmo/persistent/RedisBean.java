@@ -25,9 +25,9 @@ public abstract class RedisBean {
 					Method m = p.getReadMethod();
 					Object value = m.invoke(this);
 					if (value != null) {
-						System.out.println(
-								"p.getDisplayName()=" + p.getDisplayName() + "," + "String.valueOf(value)=" + String
-										.valueOf(value));
+//						System.out.println(
+//								"p.getDisplayName()=" + p.getDisplayName() + "," + "String.valueOf(value)=" + String
+//										.valueOf(value));
 						propMap.put(p.getDisplayName(), String.valueOf(value));
 					}
 				}

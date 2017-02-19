@@ -20,6 +20,17 @@ message UserArrivedWorldRequest {
 	int32 mapId = 4;
 }
 
+message UserTransToMapRequest {
+	int32 fromId = 1;
+	int32 toId = 2;
+	int32 uid = 3;
+}
+
+message UserLeaveWorldRequest {
+	int32 uid = 1;
+	int32 mapId = 2;
+}
+
 message GateRegisterRequest {
 	string gateHost = 1;
 	int32 gatePort = 2;
@@ -37,6 +48,7 @@ message RegionRegisterRequest {
 
 service UserWorldService {
 	rpc userArrivedWorld (UserArrivedWorldRequest) returns (CommonResponse) {}
+	rpc userTransToMap (UserTransToMapRequest) returns (CommonResponse) {}
 }
 
 service WorldService {

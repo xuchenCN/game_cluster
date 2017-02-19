@@ -41,20 +41,41 @@ message ClientModInfo {
 
 message ClientMotionInfo {
 	required int32 motion = 1;
-	required int32 effect = 2;
+	required int32 efficacy = 2;
 	required float speed = 3;
 }
 
 message ClientSurvivalInfo {
-	required int32 hearth = 1;
-	required int32 hungry = 2;
-	required int32 tired = 3;
+	required int32 health = 1;
+	required int32 hunger = 2;
+	required int32 spirit = 3;
+	required int32 comfort = 4;
 }
+
+message ClientEnergyInfo {
+	required int32 strength = 1;
+	required int32 endurance = 2;
+	required int32 agility = 3;
+	required int32 defence = 4;
+}
+
+message CharacterEquipMod {
+	required ClientModInfo hair = 1;
+	required ClientModInfo face = 2;
+	required ClientModInfo pants = 3;
+	required ClientModInfo shoes = 4;
+	required ClientModInfo top = 5;
+	required ClientModInfo body = 6;
+	required ClientModInfo wrist = 7;
+	required ClientModInfo leftHold = 8;
+	required ClientModInfo rightHold = 9;
+}
+
 
 message ClientIdentifyInfo {
 	required string ID = 1;
 	required string name = 2;
-	required ClientItemType type = 3;
+	optional ClientItemType type = 3;
 }
 
 /* Basically Objects */
@@ -70,8 +91,11 @@ message ClientItem {
 message ClientCharacter {
 	required ClientIdentifyInfo identify = 1;
 	required ClientPosition position = 2;
-	required ClientModInfo modInfo = 3;
-	required ClientSurvivalInfo survivalInfo= 4;
+	optional ClientModInfo modInfo = 3;
+	optional ClientSurvivalInfo survivalInfo= 4;
+	required int32 mapId = 5;
+	optional ClientEnergyInfo energyInfo = 6;
+	optional CharacterEquipMod equipMod = 7;
 }
 
 
@@ -89,7 +113,8 @@ message UserLoginRequest {
 
 message UserLoginResponse {
 	required LoginCode code = 1;
-	required string ticket = 2;
+	optional string ticket = 2;
+	optional ClientCharacter character = 3;
 }
 
 message UserLogoutRequest {
@@ -108,10 +133,16 @@ message GetCharacterInfoResponse {
 	required ClientCharacter character = 1;
 }
 
-message CharacterEnterRequest {
+message ClientCharacterEnterRequest {
 	required string ticket = 1;
 }
-
+/* Enter map */
+message ClientCharacterEnterEvent {
+	required ClientCommonStat stat = 1;
+	required int32 mapId = 2;
+	repeated ClientItem mapItems = 3;
+	repeated ClientCharacter mapCharacters = 4;
+}
 
 /* Item Events */
 
@@ -123,7 +154,7 @@ message ClientItemMoveEvent {
 	required ClientMotionInfo playMotion = 5;
 }
 
-message ClientItemCraateEvent {
+message ClientItemCreateEvent {
 	required ClientItem item = 1;
 }
 

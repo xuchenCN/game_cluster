@@ -13,12 +13,21 @@ message UserArrivedRegionRequest {
 	int32 uid = 3;
 }
 
+message UserArrivedRegionResponse {
+	
+}
+
+message UserLeaveRegionRequest {
+	int32 uid = 1;
+}
+
 
 /* Controls */
 message CharacterMoveReq {
 	int32 uid = 1;
 	Position toPos = 2;
 }
+
 
 message GameServerPing {
 
@@ -37,6 +46,7 @@ service GameServerService {
 
 service UserRegionService {
 	rpc userArrivedRegion (UserArrivedRegionRequest) returns (CommonResponse) {}
+	rpc userLeaveRegion (UserLeaveRegionRequest) returns (CommonResponse) {}
 }
 
 service CharacterService {

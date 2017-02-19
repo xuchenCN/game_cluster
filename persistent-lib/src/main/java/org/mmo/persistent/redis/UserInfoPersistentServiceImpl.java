@@ -1,19 +1,24 @@
 package org.mmo.persistent.redis;
 
+import java.util.Map;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.apache.hadoop.io.IOUtils;
+import org.mmo.persistent.CharacterAttrInfo;
 import org.mmo.persistent.UserInfoPersistenceBeanFactory;
 import org.mmo.persistent.UserInfoPersistentBean;
 import org.mmo.persistent.UserInfoPersistentService;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.AbstractService;
+import org.mmo.server.common.utils.StringUtils;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-public class UserInfoPersistentServiceImpl extends AbstractService implements UserInfoPersistentService,UserInfoPersistenceBeanFactory {
+public class UserInfoPersistentServiceImpl extends AbstractService
+		implements UserInfoPersistentService, UserInfoPersistenceBeanFactory {
 	private static final Log LOG = LogFactory.getLog(UserInfoPersistentServiceImpl.class);
 
 	private JedisPool pool;
@@ -52,13 +57,13 @@ public class UserInfoPersistentServiceImpl extends AbstractService implements Us
 		IOUtils.cleanup(LOG, pool);
 	}
 
-
 	@Override
 	public void putUserInfo(UserInfoPersistentBean userInfo) {
 		try (Jedis conn = pool.getResource()) {
-			UserInfoRedisImpl userInfoBean = (UserInfoRedisImpl)userInfo;
+			UserInfoRedisImpl userInfoBean = (UserInfoRedisImpl) userInfo;
 			conn.hmset(userInfoBean.key(), userInfoBean.redisMap());
-		} catch(Exception e) {
+			conn.set(KeyConstants.USER_UID_NAME_PREFIX + userInfo.getUid(), userInfo.getName());
+		} catch (Exception e) {
 			LOG.error(e);
 		}
 	}
@@ -66,12 +71,20 @@ public class UserInfoPersistentServiceImpl extends AbstractService implements Us
 	@Override
 	public UserInfoPersistentBean getUserInfo(UserInfoPersistentBean condition) {
 		try (Jedis conn = pool.getResource()) {
-			UserInfoRedisImpl conditionBean = (UserInfoRedisImpl)condition;
-			UserInfoRedisImpl userInfo = new UserInfoRedisImpl();
-			userInfo.redisBean(conn.hgetAll(conditionBean.key()));
-			
-			return userInfo;
-		} catch(Exception e) {
+			UserInfoRedisImpl conditionBean = (UserInfoRedisImpl) condition;
+			if(StringUtils.isEmpty(conditionBean.getName()) &&  conditionBean.getUid() > 0) {
+				
+				conditionBean.setName(conn.get(conditionBean.getUid() + ""));
+			}
+			if(!StringUtils.isEmpty(conditionBean.getName()) && !"null".equalsIgnoreCase(conditionBean.getName())) {
+				Map<String, String> redisMap = conn.hgetAll(conditionBean.key());
+				if (redisMap != null && !redisMap.isEmpty()) {
+					UserInfoRedisImpl userInfo = new UserInfoRedisImpl();
+					userInfo.redisBean(redisMap);
+					return userInfo;
+				}
+			}
+		} catch (Exception e) {
 			LOG.error(e);
 		}
 		return null;
@@ -88,9 +101,25 @@ public class UserInfoPersistentServiceImpl extends AbstractService implements Us
 			throw e;
 		}
 	}
-	
+
 	@Override
-	public UserInfoPersistentBean getUserInfoPersistentBean() {
+	public UserInfoPersistentBean createUserInfoPersistentBean() {
 		return new UserInfoRedisImpl();
 	}
+
+	@Override
+	public CharacterAttrInfo createCharacterAttrInfo() {
+		return new CharacterAttrInfoImpl();
+	}
+
+	@Override
+	public CharacterAttrInfo getCharacterAttrInfoByUid(Integer uid) {
+		return null;
+	}
+
+	@Override
+	public UserInfoPersistenceBeanFactory getBeanFactory() {
+		return this;
+	}
+
 }

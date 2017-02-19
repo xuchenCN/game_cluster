@@ -64,7 +64,7 @@ public class GameServer extends CompositeService {
 
 		// Register this region
 		globalContext.getWorldServerCommunicator().registerRegion(NetUtils.getLocalIpAddress(getConfig()),
-				globalContext.getListenOn());
+				globalContext.getListenOn(),globalContext.getGameServerId());
 
 		super.serviceStart();
 	}
