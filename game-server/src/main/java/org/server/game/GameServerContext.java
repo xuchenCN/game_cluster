@@ -2,6 +2,7 @@ package org.server.game;
 
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.utils.Constants;
+import org.server.game.communicator.CharacterServerCommunicator;
 import org.server.game.communicator.WorldServerCommunicator;
 
 public class GameServerContext {
@@ -10,6 +11,8 @@ public class GameServerContext {
 	private int listenOn;
 
 	private WorldServerCommunicator worldServerCommunicator;
+	
+	private CharacterServerCommunicator characterServerCommunicator;
 
 	public GameServerContext(GameConfiguration config) {
 		this.config = config;
@@ -45,6 +48,15 @@ public class GameServerContext {
 
 	public void setWorldServerCommunicator(WorldServerCommunicator worldServerCommunicator) {
 		this.worldServerCommunicator = worldServerCommunicator;
+	}
+	
+
+	public CharacterServerCommunicator getCharacterServerCommunicator() {
+		return characterServerCommunicator;
+	}
+
+	public void setCharacterServerCommunicator(CharacterServerCommunicator characterServerCommunicator) {
+		this.characterServerCommunicator = characterServerCommunicator;
 	}
 
 	public GameConfiguration getConfig() {

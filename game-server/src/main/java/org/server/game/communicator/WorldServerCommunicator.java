@@ -3,9 +3,9 @@ package org.server.game.communicator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.mmo.server.CommonProtocol.CommonResponse;
-import com.mmo.server.CommonProtocol.CommonStat;
+import com.mmo.server.ServerWorldProtocol.CharacterServerInfo;
 import com.mmo.server.ServerWorldProtocol.RegionRegisterRequest;
+import com.mmo.server.ServerWorldProtocol.RegionRegisterResponse;
 import com.mmo.server.UserWorldServiceGrpc;
 import com.mmo.server.UserWorldServiceGrpc.UserWorldServiceBlockingStub;
 import com.mmo.server.WorldServiceGrpc;
@@ -22,6 +22,7 @@ public class WorldServerCommunicator {
 
 	private UserWorldServiceBlockingStub userWorldStub;
 	private WorldServiceBlockingStub worldServerStub;
+	
 
 	public WorldServerCommunicator(String host, int port) {
 		ManagedChannelBuilder channelBuilder = ManagedChannelBuilder.forAddress(host, port).usePlaintext(true);
@@ -30,14 +31,18 @@ public class WorldServerCommunicator {
 		worldServerStub = WorldServiceGrpc.newBlockingStub(channel);
 	}
 
-	public void registerRegion(String host, int port,int mapId) {
+	public CharacterServerCommunicator registerRegion(String host, int port,int mapId) {
 		RegionRegisterRequest request = RegionRegisterRequest.newBuilder().setServerHost(host).setServerPort(port)
 				.setMapId(mapId).build();
-		CommonResponse response = worldServerStub.registerRegion(request);
-		if (!(CommonStat.OK == response.getStat())) {
+		RegionRegisterResponse response = worldServerStub.registerRegion(request);
+		if(response.getCharServersCount() <= 0) {
 			throw new RuntimeException("Failed to register");
 		}
 		
+		CharacterServerInfo characterServerInfo = response.getCharServersList().get(0);
+		
 		LOG.info("Register success !");
+		
+		return new CharacterServerCommunicator(characterServerInfo.getServerHost(),characterServerInfo.getServerPort());
 	}
 }

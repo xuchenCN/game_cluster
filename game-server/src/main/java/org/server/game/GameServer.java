@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.CompositeService;
 import org.mmo.server.common.utils.NetUtils;
+import org.server.game.communicator.CharacterServerCommunicator;
 import org.server.game.communicator.WorldServerCommunicator;
 import org.server.game.core.CharactorLogic;
 import org.server.game.services.GameServerProcessor;
@@ -63,8 +64,13 @@ public class GameServer extends CompositeService {
 		grpcThread.start();
 
 		// Register this region
-		globalContext.getWorldServerCommunicator().registerRegion(NetUtils.getLocalIpAddress(getConfig()),
+		CharacterServerCommunicator characterServerCommunicator = globalContext.getWorldServerCommunicator().registerRegion(NetUtils.getLocalIpAddress(getConfig()),
 				globalContext.getListenOn(),globalContext.getGameServerId());
+		if(characterServerCommunicator != null) {
+			globalContext.setCharacterServerCommunicator(characterServerCommunicator);
+		} else {
+			new RuntimeException("Error get characterServerCommunicator");
+		}
 
 		super.serviceStart();
 	}

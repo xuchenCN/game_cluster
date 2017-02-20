@@ -14,6 +14,7 @@ import org.mmo.server.common.service.AbstractService;
 import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.ExecutorExceptionHandler;
 import org.server.game.GameServerContext;
+import org.server.game.communicator.CharacterServerCommunicator;
 import org.server.game.communicator.GateServerCommunicator;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
@@ -182,7 +183,7 @@ public class GameServerProcessor extends AbstractService {
 		Integer uid = request.getUid();
 
 		GateServerCommunicator gateServerCommunicator = getGateServerCommunicator(uid);
-
+		//FIXME use characterServerCommunicator
 		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(uid + "").setName("" + uid).build();
 		Position position = Position.newBuilder().setPosX(14).setPosY(0).setPosZ(15).build();
 		CommonProtocol.Character character = CommonProtocol.Character.newBuilder()
