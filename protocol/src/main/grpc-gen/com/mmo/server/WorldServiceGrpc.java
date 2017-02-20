@@ -38,12 +38,21 @@ public class WorldServiceGrpc {
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.GateRegisterResponse.getDefaultInstance()));
   @io.grpc.ExperimentalApi
   public static final io.grpc.MethodDescriptor<com.mmo.server.ServerWorldProtocol.RegionRegisterRequest,
-      com.mmo.server.CommonProtocol.CommonResponse> METHOD_REGISTER_REGION =
+      com.mmo.server.ServerWorldProtocol.RegionRegisterResponse> METHOD_REGISTER_REGION =
       io.grpc.MethodDescriptor.create(
           io.grpc.MethodDescriptor.MethodType.UNARY,
           generateFullMethodName(
               "WorldService", "registerRegion"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.RegionRegisterResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_REGISTER_CHARACTER_SERVER =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "WorldService", "registerCharacterServer"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
 
   /**
@@ -81,6 +90,11 @@ public class WorldServiceGrpc {
     /**
      */
     public void registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerWorldProtocol.RegionRegisterResponse> responseObserver);
+
+    /**
+     */
+    public void registerCharacterServer(com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
 
@@ -95,8 +109,14 @@ public class WorldServiceGrpc {
 
     @java.lang.Override
     public void registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerWorldProtocol.RegionRegisterResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_REGISTER_REGION, responseObserver);
+    }
+
+    @java.lang.Override
+    public void registerCharacterServer(com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_REGISTER_CHARACTER_SERVER, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -114,7 +134,11 @@ public class WorldServiceGrpc {
 
     /**
      */
-    public com.mmo.server.CommonProtocol.CommonResponse registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request);
+    public com.mmo.server.ServerWorldProtocol.RegionRegisterResponse registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request);
+
+    /**
+     */
+    public com.mmo.server.CommonProtocol.CommonResponse registerCharacterServer(com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request);
   }
 
   /**
@@ -128,8 +152,13 @@ public class WorldServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> registerRegion(
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerWorldProtocol.RegionRegisterResponse> registerRegion(
         com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> registerCharacterServer(
+        com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request);
   }
 
   public static class WorldServiceStub extends io.grpc.stub.AbstractStub<WorldServiceStub>
@@ -158,9 +187,16 @@ public class WorldServiceGrpc {
 
     @java.lang.Override
     public void registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request,
-        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerWorldProtocol.RegionRegisterResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_REGISTER_REGION, getCallOptions()), request, responseObserver);
+    }
+
+    @java.lang.Override
+    public void registerCharacterServer(com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_REGISTER_CHARACTER_SERVER, getCallOptions()), request, responseObserver);
     }
   }
 
@@ -188,9 +224,15 @@ public class WorldServiceGrpc {
     }
 
     @java.lang.Override
-    public com.mmo.server.CommonProtocol.CommonResponse registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request) {
+    public com.mmo.server.ServerWorldProtocol.RegionRegisterResponse registerRegion(com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_REGISTER_REGION, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.CommonProtocol.CommonResponse registerCharacterServer(com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_REGISTER_CHARACTER_SERVER, getCallOptions(), request);
     }
   }
 
@@ -219,15 +261,23 @@ public class WorldServiceGrpc {
     }
 
     @java.lang.Override
-    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> registerRegion(
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerWorldProtocol.RegionRegisterResponse> registerRegion(
         com.mmo.server.ServerWorldProtocol.RegionRegisterRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_REGISTER_REGION, getCallOptions()), request);
+    }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> registerCharacterServer(
+        com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_REGISTER_CHARACTER_SERVER, getCallOptions()), request);
     }
   }
 
   private static final int METHODID_REGISTER_GATE = 0;
   private static final int METHODID_REGISTER_REGION = 1;
+  private static final int METHODID_REGISTER_CHARACTER_SERVER = 2;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -252,6 +302,10 @@ public class WorldServiceGrpc {
           break;
         case METHODID_REGISTER_REGION:
           serviceImpl.registerRegion((com.mmo.server.ServerWorldProtocol.RegionRegisterRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerWorldProtocol.RegionRegisterResponse>) responseObserver);
+          break;
+        case METHODID_REGISTER_CHARACTER_SERVER:
+          serviceImpl.registerCharacterServer((com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         default:
@@ -285,8 +339,15 @@ public class WorldServiceGrpc {
           asyncUnaryCall(
             new MethodHandlers<
               com.mmo.server.ServerWorldProtocol.RegionRegisterRequest,
-              com.mmo.server.CommonProtocol.CommonResponse>(
+              com.mmo.server.ServerWorldProtocol.RegionRegisterResponse>(
                 serviceImpl, METHODID_REGISTER_REGION)))
+        .addMethod(
+          METHOD_REGISTER_CHARACTER_SERVER,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest,
+              com.mmo.server.CommonProtocol.CommonResponse>(
+                serviceImpl, METHODID_REGISTER_CHARACTER_SERVER)))
         .build();
   }
 }

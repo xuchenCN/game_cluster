@@ -2,29 +2,34 @@ package org.server.world.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.AbstractService;
-import org.server.world.WorldServer;
 import org.server.world.WorldServerContext;
 
 import com.mmo.server.CommonProtocol.CommonResponse;
 import com.mmo.server.CommonProtocol.CommonStat;
+import com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest;
+import com.mmo.server.ServerWorldProtocol.CharacterServerInfo;
 import com.mmo.server.ServerWorldProtocol.GateRegisterRequest;
 import com.mmo.server.ServerWorldProtocol.GateRegisterResponse;
 import com.mmo.server.ServerWorldProtocol.RegionRegisterRequest;
+import com.mmo.server.ServerWorldProtocol.RegionRegisterResponse;
 import com.mmo.server.ServerWorldProtocol.RegionServerInfo;
 import com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest;
+import com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest;
+import com.mmo.server.ServerWorldProtocol.UserTransToMapRequest;
 import com.mmo.server.UserWorldServiceGrpc.AbstractUserWorldService;
 import com.mmo.server.WorldServiceGrpc.AbstractWorldService;
 
 import io.grpc.stub.StreamObserver;
 
 public class WorldServerProcessor extends AbstractService {
-	
+
 	private static final Log LOG = LogFactory.getLog(WorldServerProcessor.class);
 
 	private WorldServerContext globalContext;
@@ -35,6 +40,8 @@ public class WorldServerProcessor extends AbstractService {
 	private Map<Integer, RegionServerInfo> regionMapping = new HashMap<Integer, RegionServerInfo>();
 
 	private Map<String, GateServerInfo> gateMapping = new HashMap<String, GateServerInfo>();
+
+	private Map<String, CharacterServerInfo> charMapping = new HashMap<String, CharacterServerInfo>();
 
 	public WorldServerProcessor(WorldServerContext globalContext) {
 		super("WorldServerProcessor");
@@ -78,6 +85,18 @@ public class WorldServerProcessor extends AbstractService {
 			responseObserver.onCompleted();
 		}
 
+		@Override
+		public void userLeaveWorld(UserLeaveWorldRequest request, StreamObserver<CommonResponse> responseObserver) {
+			// TODO Auto-generated method stub
+			super.userLeaveWorld(request, responseObserver);
+		}
+
+		@Override
+		public void userTransToMap(UserTransToMapRequest request, StreamObserver<CommonResponse> responseObserver) {
+			// TODO Auto-generated method stub
+			super.userTransToMap(request, responseObserver);
+		}
+
 	}
 
 	class WorldService extends AbstractWorldService {
@@ -92,22 +111,26 @@ public class WorldServerProcessor extends AbstractService {
 				responseObserver.onCompleted();
 				return;
 			}
-			
-			GateRegisterResponse.Builder responseBuilder = GateRegisterResponse.newBuilder().addAllRegions(new ArrayList<RegionServerInfo>(regionMapping.values()));
+
+			GateRegisterResponse.Builder responseBuilder = GateRegisterResponse.newBuilder()
+					.addAllRegions(new ArrayList<RegionServerInfo>(regionMapping.values()));
 			responseObserver.onNext(responseBuilder.build());
 			responseObserver.onCompleted();
-			
+
 			GateServerInfo gateInfo = new GateServerInfo(host, port);
 			gateMapping.put(key, gateInfo);
-			
+
 			LOG.info("Gate registered " + key);
 		}
 
 		@Override
-		public void registerRegion(RegionRegisterRequest request, StreamObserver<CommonResponse> responseObserver) {
+		public void registerRegion(RegionRegisterRequest request,
+				StreamObserver<RegionRegisterResponse> responseObserver) {
+
+			List<CharacterServerInfo> characterServers = new ArrayList<CharacterServerInfo>();
 
 			if (regionMapping.containsKey(request.getMapId())) {
-				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
+				responseObserver.onNext(RegionRegisterResponse.newBuilder().addAllCharServers(characterServers).build());
 				responseObserver.onCompleted();
 				return;
 			}
@@ -117,11 +140,33 @@ public class WorldServerProcessor extends AbstractService {
 			regionServerInfoB.setServerPort(request.getServerPort());
 			regionServerInfoB.setMapid(request.getMapId());
 
-			responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.OK).build());
+			characterServers.addAll(charMapping.values());
+			responseObserver.onNext(RegionRegisterResponse.newBuilder().addAllCharServers(characterServers).build());
 			responseObserver.onCompleted();
-			
+
 			regionMapping.put(request.getMapId(), regionServerInfoB.build());
 			LOG.info("Region registered mapId : " + request.getMapId());
+		}
+
+		@Override
+		public void registerCharacterServer(CharacterRegisterRequest request,
+				StreamObserver<CommonResponse> responseObserver) {
+
+			String host = request.getServerHost();
+			int port = request.getServerPort();
+			String key = host + ":" + port;
+			CharacterServerInfo characterServerInfo = charMapping.get(key);
+			if (characterServerInfo != null) {
+				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
+				responseObserver.onCompleted();
+				return;
+			}
+
+			characterServerInfo = CharacterServerInfo.newBuilder().setServerHost(host).setServerPort(port).build();
+			charMapping.put(key, characterServerInfo);
+
+			responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.OK).build());
+			responseObserver.onCompleted();
 		}
 
 	}

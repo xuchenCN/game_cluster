@@ -72,11 +72,11 @@ public class UserInfoPersistentServiceImpl extends AbstractService
 	public UserInfoPersistentBean getUserInfo(UserInfoPersistentBean condition) {
 		try (Jedis conn = pool.getResource()) {
 			UserInfoRedisImpl conditionBean = (UserInfoRedisImpl) condition;
-			if(StringUtils.isEmpty(conditionBean.getName()) &&  conditionBean.getUid() > 0) {
-				
+			if (StringUtils.isEmpty(conditionBean.getName()) && conditionBean.getUid() > 0) {
+
 				conditionBean.setName(conn.get(conditionBean.getUid() + ""));
 			}
-			if(!StringUtils.isEmpty(conditionBean.getName()) && !"null".equalsIgnoreCase(conditionBean.getName())) {
+			if (!StringUtils.isEmpty(conditionBean.getName()) && !"null".equalsIgnoreCase(conditionBean.getName())) {
 				Map<String, String> redisMap = conn.hgetAll(conditionBean.key());
 				if (redisMap != null && !redisMap.isEmpty()) {
 					UserInfoRedisImpl userInfo = new UserInfoRedisImpl();
@@ -93,9 +93,7 @@ public class UserInfoPersistentServiceImpl extends AbstractService
 	public void testConnection() throws Exception {
 		try (Jedis conn = pool.getResource()) {
 
-			// conn.set("tensorhusky_test_conn_str_key",
-			// "tensorhusky_test_conn_str_val");
-			conn.del("tensorhusky_test_conn_str_key");
+			conn.del("game_server_test_conn_str_key");
 
 		} catch (Exception e) {
 			throw e;
@@ -113,7 +111,32 @@ public class UserInfoPersistentServiceImpl extends AbstractService
 	}
 
 	@Override
+	public void putCharacterAttrInfo(CharacterAttrInfo characterAttrInfo) {
+		if (characterAttrInfo != null && characterAttrInfo.getUid() > 0) {
+
+			CharacterAttrInfoImpl characterAttrInfoImpl = (CharacterAttrInfoImpl) characterAttrInfo;
+			try (Jedis conn = pool.getResource()) {
+				conn.hmset(characterAttrInfoImpl.key(), characterAttrInfoImpl.redisMap());
+			} catch (Exception e) {
+				LOG.error(e);
+			}
+		}
+
+	}
+
+	@Override
 	public CharacterAttrInfo getCharacterAttrInfoByUid(Integer uid) {
+		try (Jedis conn = pool.getResource()) {
+			CharacterAttrInfoImpl characterAttrInfoImpl = new CharacterAttrInfoImpl();
+			characterAttrInfoImpl.setUid(uid);
+			Map<String, String> redisMap = conn.hgetAll(characterAttrInfoImpl.key());
+			if (redisMap != null && !redisMap.isEmpty()) {
+				characterAttrInfoImpl.redisBean(redisMap);
+				return characterAttrInfoImpl;
+			}
+		} catch (Exception e) {
+			LOG.error(e);
+		}
 		return null;
 	}
 

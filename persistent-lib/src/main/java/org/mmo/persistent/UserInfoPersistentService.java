@@ -9,4 +9,6 @@ public interface UserInfoPersistentService {
 	public CharacterAttrInfo getCharacterAttrInfoByUid(Integer uid);
 	
 	public UserInfoPersistenceBeanFactory getBeanFactory();
+	
+	public void putCharacterAttrInfo(CharacterAttrInfo characterAttrInfo);
  }

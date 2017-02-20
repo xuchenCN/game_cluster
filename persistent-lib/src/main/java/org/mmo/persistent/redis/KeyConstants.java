@@ -11,7 +11,9 @@ public class KeyConstants {
 	public static final String REDIS_HOST = "redis.host";
 	public static final String REDIS_PORT = "redis.port";
 
-	public static String USER_INFO_PREFIX = "user_info_name";
+	public static String USER_INFO_PREFIX = "user_info_name_";
 	
-	public static String USER_UID_NAME_PREFIX  = "user_uid_name";
+	public static String USER_UID_NAME_PREFIX  = "user_uid_name_";
+	
+	public static String CHARACTER_ATTR_PREFIX = "chacater_attr_uid_";
 }

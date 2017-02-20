@@ -33,9 +33,36 @@ public class ServerCharacterServiceGrpc {
       io.grpc.MethodDescriptor.create(
           io.grpc.MethodDescriptor.MethodType.UNARY,
           generateFullMethodName(
-              "ServerCharacterService", "GetCharacter"),
+              "ServerCharacterService", "getCharacter"),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerCharacterProtocol.GetCharacterRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerCharacterProtocol.GetCharacterResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_UPDATE_CHARACTER =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "ServerCharacterService", "updateCharacter"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest,
+      com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> METHOD_CREATE_CHARACTER =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "ServerCharacterService", "createCharacter"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_CHARACTER_UNLOAD =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "ServerCharacterService", "characterUnload"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -68,6 +95,21 @@ public class ServerCharacterServiceGrpc {
      */
     public void getCharacter(com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse> responseObserver);
+
+    /**
+     */
+    public void updateCharacter(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
+
+    /**
+     */
+    public void createCharacter(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> responseObserver);
+
+    /**
+     */
+    public void characterUnload(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
 
   @io.grpc.ExperimentalApi
@@ -77,6 +119,24 @@ public class ServerCharacterServiceGrpc {
     public void getCharacter(com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_GET_CHARACTER, responseObserver);
+    }
+
+    @java.lang.Override
+    public void updateCharacter(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_UPDATE_CHARACTER, responseObserver);
+    }
+
+    @java.lang.Override
+    public void createCharacter(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_CREATE_CHARACTER, responseObserver);
+    }
+
+    @java.lang.Override
+    public void characterUnload(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_CHARACTER_UNLOAD, responseObserver);
     }
 
     @java.lang.Override public io.grpc.ServerServiceDefinition bindService() {
@@ -91,6 +151,18 @@ public class ServerCharacterServiceGrpc {
     /**
      */
     public com.mmo.server.ServerCharacterProtocol.GetCharacterResponse getCharacter(com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request);
+
+    /**
+     */
+    public com.mmo.server.CommonProtocol.CommonResponse updateCharacter(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request);
+
+    /**
+     */
+    public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse createCharacter(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request);
+
+    /**
+     */
+    public com.mmo.server.CommonProtocol.CommonResponse characterUnload(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request);
   }
 
   /**
@@ -101,6 +173,21 @@ public class ServerCharacterServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse> getCharacter(
         com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> updateCharacter(
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> createCharacter(
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> characterUnload(
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request);
   }
 
   public static class ServerCharacterServiceStub extends io.grpc.stub.AbstractStub<ServerCharacterServiceStub>
@@ -126,6 +213,27 @@ public class ServerCharacterServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_GET_CHARACTER, getCallOptions()), request, responseObserver);
     }
+
+    @java.lang.Override
+    public void updateCharacter(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_UPDATE_CHARACTER, getCallOptions()), request, responseObserver);
+    }
+
+    @java.lang.Override
+    public void createCharacter(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_CREATE_CHARACTER, getCallOptions()), request, responseObserver);
+    }
+
+    @java.lang.Override
+    public void characterUnload(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_CHARACTER_UNLOAD, getCallOptions()), request, responseObserver);
+    }
   }
 
   public static class ServerCharacterServiceBlockingStub extends io.grpc.stub.AbstractStub<ServerCharacterServiceBlockingStub>
@@ -149,6 +257,24 @@ public class ServerCharacterServiceGrpc {
     public com.mmo.server.ServerCharacterProtocol.GetCharacterResponse getCharacter(com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GET_CHARACTER, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.CommonProtocol.CommonResponse updateCharacter(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_UPDATE_CHARACTER, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse createCharacter(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_CREATE_CHARACTER, getCallOptions(), request);
+    }
+
+    @java.lang.Override
+    public com.mmo.server.CommonProtocol.CommonResponse characterUnload(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_CHARACTER_UNLOAD, getCallOptions(), request);
     }
   }
 
@@ -175,9 +301,33 @@ public class ServerCharacterServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GET_CHARACTER, getCallOptions()), request);
     }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> updateCharacter(
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_UPDATE_CHARACTER, getCallOptions()), request);
+    }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> createCharacter(
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_CREATE_CHARACTER, getCallOptions()), request);
+    }
+
+    @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> characterUnload(
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_CHARACTER_UNLOAD, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_CHARACTER = 0;
+  private static final int METHODID_UPDATE_CHARACTER = 1;
+  private static final int METHODID_CREATE_CHARACTER = 2;
+  private static final int METHODID_CHARACTER_UNLOAD = 3;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -199,6 +349,18 @@ public class ServerCharacterServiceGrpc {
         case METHODID_GET_CHARACTER:
           serviceImpl.getCharacter((com.mmo.server.ServerCharacterProtocol.GetCharacterRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_CHARACTER:
+          serviceImpl.updateCharacter((com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_CHARACTER:
+          serviceImpl.createCharacter((com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse>) responseObserver);
+          break;
+        case METHODID_CHARACTER_UNLOAD:
+          serviceImpl.characterUnload((com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -226,6 +388,27 @@ public class ServerCharacterServiceGrpc {
               com.mmo.server.ServerCharacterProtocol.GetCharacterRequest,
               com.mmo.server.ServerCharacterProtocol.GetCharacterResponse>(
                 serviceImpl, METHODID_GET_CHARACTER)))
+        .addMethod(
+          METHOD_UPDATE_CHARACTER,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest,
+              com.mmo.server.CommonProtocol.CommonResponse>(
+                serviceImpl, METHODID_UPDATE_CHARACTER)))
+        .addMethod(
+          METHOD_CREATE_CHARACTER,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest,
+              com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse>(
+                serviceImpl, METHODID_CREATE_CHARACTER)))
+        .addMethod(
+          METHOD_CHARACTER_UNLOAD,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest,
+              com.mmo.server.CommonProtocol.CommonResponse>(
+                serviceImpl, METHODID_CHARACTER_UNLOAD)))
         .build();
   }
 }

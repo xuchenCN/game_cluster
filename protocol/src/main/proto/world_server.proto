@@ -13,6 +13,11 @@ message RegionServerInfo {
 	int32 mapid = 3;
 }
 
+message CharacterServerInfo {
+	string serverHost = 1;
+	int32 serverPort = 2;
+}
+
 message UserArrivedWorldRequest {
 	string gateHost = 1;
 	int32 gatePort = 2;
@@ -38,6 +43,7 @@ message GateRegisterRequest {
 
 message GateRegisterResponse {
 	repeated RegionServerInfo regions = 1;
+	repeated CharacterServerInfo charServers = 2;
 }
 
 message RegionRegisterRequest {
@@ -46,12 +52,26 @@ message RegionRegisterRequest {
 	int32 mapId = 3;
 }
 
+message RegionRegisterResponse {
+	repeated CharacterServerInfo charServers = 1;
+}
+
+
+message CharacterRegisterRequest {
+	string serverHost = 1;
+	int32 serverPort = 2;
+}
+
+
+
 service UserWorldService {
 	rpc userArrivedWorld (UserArrivedWorldRequest) returns (CommonResponse) {}
+	rpc userLeaveWorld (UserLeaveWorldRequest) returns (CommonResponse) {}
 	rpc userTransToMap (UserTransToMapRequest) returns (CommonResponse) {}
 }
 
 service WorldService {
 	rpc registerGate (GateRegisterRequest) returns (GateRegisterResponse) {}
-	rpc registerRegion (RegionRegisterRequest) returns (CommonResponse) {}
+	rpc registerRegion (RegionRegisterRequest) returns (RegionRegisterResponse) {}
+	rpc registerCharacterServer (CharacterRegisterRequest) returns (CommonResponse) {}
 }

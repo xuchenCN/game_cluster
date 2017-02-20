@@ -15,7 +15,25 @@ message GetCharacterResponse {
 	Character character = 1;
 }
 
+message UpdateCharacterRequest {
+	Character character = 1;
+}
+
+message CreateCharacterRequest {
+	Character character = 1;
+}
+
+message CreateCharacterResponse {
+	LoginCode code = 1;
+}
+
+message CharacterUnloadRequest {
+	int32 uid = 1;
+}
 
 service ServerCharacterService {
-	rpc GetCharacter (GetCharacterRequest) returns (GetCharacterResponse) {}
+	rpc getCharacter (GetCharacterRequest) returns (GetCharacterResponse) {}
+	rpc updateCharacter(UpdateCharacterRequest) returns (CommonResponse) {}
+	rpc createCharacter(CreateCharacterRequest) returns (CreateCharacterResponse) {}
+	rpc characterUnload(CharacterUnloadRequest) returns (CommonResponse) {}
 }

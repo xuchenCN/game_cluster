@@ -98,7 +98,17 @@ public class GameConfiguration {
 		try {
 			return Integer.valueOf(v);
 		} catch (Exception e) {
-			LOG.warn("Configuration cannot evaluate key " + key + " as boolean.");
+			LOG.warn("Configuration cannot evaluate key " + key + " as integer.");
+		}
+		return defaultValue;
+	}
+	
+	public long getLong(final String key, final long defaultValue) {
+		String v = properties.getProperty(key);
+		try {
+			return Long.valueOf(v);
+		} catch (Exception e) {
+			LOG.warn("Configuration cannot evaluate key " + key + " as long.");
 		}
 		return defaultValue;
 	}

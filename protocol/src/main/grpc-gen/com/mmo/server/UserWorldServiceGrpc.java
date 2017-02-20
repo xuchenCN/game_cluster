@@ -37,6 +37,15 @@ public class UserWorldServiceGrpc {
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
   @io.grpc.ExperimentalApi
+  public static final io.grpc.MethodDescriptor<com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest,
+      com.mmo.server.CommonProtocol.CommonResponse> METHOD_USER_LEAVE_WORLD =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "UserWorldService", "userLeaveWorld"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+  @io.grpc.ExperimentalApi
   public static final io.grpc.MethodDescriptor<com.mmo.server.ServerWorldProtocol.UserTransToMapRequest,
       com.mmo.server.CommonProtocol.CommonResponse> METHOD_USER_TRANS_TO_MAP =
       io.grpc.MethodDescriptor.create(
@@ -80,6 +89,11 @@ public class UserWorldServiceGrpc {
 
     /**
      */
+    public void userLeaveWorld(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
+
+    /**
+     */
     public void userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver);
   }
@@ -91,6 +105,12 @@ public class UserWorldServiceGrpc {
     public void userArrivedWorld(com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request,
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_USER_ARRIVED_WORLD, responseObserver);
+    }
+
+    @java.lang.Override
+    public void userLeaveWorld(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_USER_LEAVE_WORLD, responseObserver);
     }
 
     @java.lang.Override
@@ -114,6 +134,10 @@ public class UserWorldServiceGrpc {
 
     /**
      */
+    public com.mmo.server.CommonProtocol.CommonResponse userLeaveWorld(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request);
+
+    /**
+     */
     public com.mmo.server.CommonProtocol.CommonResponse userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request);
   }
 
@@ -125,6 +149,11 @@ public class UserWorldServiceGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userArrivedWorld(
         com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest request);
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userLeaveWorld(
+        com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request);
 
     /**
      */
@@ -154,6 +183,13 @@ public class UserWorldServiceGrpc {
         io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_USER_ARRIVED_WORLD, getCallOptions()), request, responseObserver);
+    }
+
+    @java.lang.Override
+    public void userLeaveWorld(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request,
+        io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_USER_LEAVE_WORLD, getCallOptions()), request, responseObserver);
     }
 
     @java.lang.Override
@@ -188,6 +224,12 @@ public class UserWorldServiceGrpc {
     }
 
     @java.lang.Override
+    public com.mmo.server.CommonProtocol.CommonResponse userLeaveWorld(com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_USER_LEAVE_WORLD, getCallOptions(), request);
+    }
+
+    @java.lang.Override
     public com.mmo.server.CommonProtocol.CommonResponse userTransToMap(com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_USER_TRANS_TO_MAP, getCallOptions(), request);
@@ -219,6 +261,13 @@ public class UserWorldServiceGrpc {
     }
 
     @java.lang.Override
+    public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userLeaveWorld(
+        com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_USER_LEAVE_WORLD, getCallOptions()), request);
+    }
+
+    @java.lang.Override
     public com.google.common.util.concurrent.ListenableFuture<com.mmo.server.CommonProtocol.CommonResponse> userTransToMap(
         com.mmo.server.ServerWorldProtocol.UserTransToMapRequest request) {
       return futureUnaryCall(
@@ -227,7 +276,8 @@ public class UserWorldServiceGrpc {
   }
 
   private static final int METHODID_USER_ARRIVED_WORLD = 0;
-  private static final int METHODID_USER_TRANS_TO_MAP = 1;
+  private static final int METHODID_USER_LEAVE_WORLD = 1;
+  private static final int METHODID_USER_TRANS_TO_MAP = 2;
 
   private static class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -248,6 +298,10 @@ public class UserWorldServiceGrpc {
       switch (methodId) {
         case METHODID_USER_ARRIVED_WORLD:
           serviceImpl.userArrivedWorld((com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest) request,
+              (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
+          break;
+        case METHODID_USER_LEAVE_WORLD:
+          serviceImpl.userLeaveWorld((com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest) request,
               (io.grpc.stub.StreamObserver<com.mmo.server.CommonProtocol.CommonResponse>) responseObserver);
           break;
         case METHODID_USER_TRANS_TO_MAP:
@@ -280,6 +334,13 @@ public class UserWorldServiceGrpc {
               com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest,
               com.mmo.server.CommonProtocol.CommonResponse>(
                 serviceImpl, METHODID_USER_ARRIVED_WORLD)))
+        .addMethod(
+          METHOD_USER_LEAVE_WORLD,
+          asyncUnaryCall(
+            new MethodHandlers<
+              com.mmo.server.ServerWorldProtocol.UserLeaveWorldRequest,
+              com.mmo.server.CommonProtocol.CommonResponse>(
+                serviceImpl, METHODID_USER_LEAVE_WORLD)))
         .addMethod(
           METHOD_USER_TRANS_TO_MAP,
           asyncUnaryCall(

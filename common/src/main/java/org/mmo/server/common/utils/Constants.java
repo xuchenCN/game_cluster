@@ -17,6 +17,12 @@ public class Constants {
 	public static final String GATE_SERVER_PORT = "gate-netty.port";
 	public static final int GATE_SERVER_PORT_DEFAULT = 24444;
 	
+	public static final String CHAR_SERVER_PERSIST_INTERVAL_MS = "char-server.persist.interval";
+	public static final long CHAR_SERVER_PERSIST_INTERVAL_MS_DEFAULT = 5 * 60 * 1000; // 5 minute
+	
+	public static final String CHAR_SERVER_HOST = "char-server.host";
+	public static final String CHAR_SERVER_HOST_DEFAULT = "localhost";
+	
 	public static final String GAME_SERVER_SEND_QUEUE_SIZE = "gate-server.send-queue.size";
 	public static final int GAME_SERVER_SEND_QUEUE_SIZE_DEFAULT = 1024;
 	

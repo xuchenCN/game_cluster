@@ -6,13 +6,7 @@ package com.mmo.server;
 public final class ServerCharacterProtocol {
   private ServerCharacterProtocol() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
-
-  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface GetCharacterRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:GetCharacterRequest)
@@ -302,32 +296,6 @@ public final class ServerCharacterProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerCharacterProtocol.GetCharacterRequest) {
           return mergeFrom((com.mmo.server.ServerCharacterProtocol.GetCharacterRequest)other);
@@ -770,32 +738,6 @@ public final class ServerCharacterProtocol {
         return result;
       }
 
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerCharacterProtocol.GetCharacterResponse) {
           return mergeFrom((com.mmo.server.ServerCharacterProtocol.GetCharacterResponse)other);
@@ -837,7 +779,7 @@ public final class ServerCharacterProtocol {
       }
 
       private com.mmo.server.CommonProtocol.Character character_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> characterBuilder_;
       /**
        * <code>optional .Character character = 1;</code>
@@ -939,11 +881,11 @@ public final class ServerCharacterProtocol {
       /**
        * <code>optional .Character character = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
+      private com.google.protobuf.SingleFieldBuilder<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
           getCharacterFieldBuilder() {
         if (characterBuilder_ == null) {
-          characterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          characterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
               com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
                   getCharacter(),
                   getParentForChildren(),
@@ -1001,6 +943,1905 @@ public final class ServerCharacterProtocol {
 
   }
 
+  public interface UpdateCharacterRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UpdateCharacterRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    boolean hasCharacter();
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.Character getCharacter();
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.CharacterOrBuilder getCharacterOrBuilder();
+  }
+  /**
+   * Protobuf type {@code UpdateCharacterRequest}
+   */
+  public  static final class UpdateCharacterRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:UpdateCharacterRequest)
+      UpdateCharacterRequestOrBuilder {
+    // Use UpdateCharacterRequest.newBuilder() to construct.
+    private UpdateCharacterRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private UpdateCharacterRequest() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private UpdateCharacterRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.mmo.server.CommonProtocol.Character.Builder subBuilder = null;
+              if (character_ != null) {
+                subBuilder = character_.toBuilder();
+              }
+              character_ = input.readMessage(com.mmo.server.CommonProtocol.Character.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(character_);
+                character_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_UpdateCharacterRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_UpdateCharacterRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.class, com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.Builder.class);
+    }
+
+    public static final int CHARACTER_FIELD_NUMBER = 1;
+    private com.mmo.server.CommonProtocol.Character character_;
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    public boolean hasCharacter() {
+      return character_ != null;
+    }
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.Character getCharacter() {
+      return character_ == null ? com.mmo.server.CommonProtocol.Character.getDefaultInstance() : character_;
+    }
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.CharacterOrBuilder getCharacterOrBuilder() {
+      return getCharacter();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (character_ != null) {
+        output.writeMessage(1, getCharacter());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (character_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getCharacter());
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest other = (com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest) obj;
+
+      boolean result = true;
+      result = result && (hasCharacter() == other.hasCharacter());
+      if (hasCharacter()) {
+        result = result && getCharacter()
+            .equals(other.getCharacter());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasCharacter()) {
+        hash = (37 * hash) + CHARACTER_FIELD_NUMBER;
+        hash = (53 * hash) + getCharacter().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UpdateCharacterRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UpdateCharacterRequest)
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_UpdateCharacterRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_UpdateCharacterRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.class, com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (characterBuilder_ == null) {
+          character_ = null;
+        } else {
+          character_ = null;
+          characterBuilder_ = null;
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_UpdateCharacterRequest_descriptor;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest build() {
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest buildPartial() {
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest result = new com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest(this);
+        if (characterBuilder_ == null) {
+          result.character_ = character_;
+        } else {
+          result.character_ = characterBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest) {
+          return mergeFrom((com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest other) {
+        if (other == com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.getDefaultInstance()) return this;
+        if (other.hasCharacter()) {
+          mergeCharacter(other.getCharacter());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.mmo.server.CommonProtocol.Character character_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> characterBuilder_;
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public boolean hasCharacter() {
+        return characterBuilder_ != null || character_ != null;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character getCharacter() {
+        if (characterBuilder_ == null) {
+          return character_ == null ? com.mmo.server.CommonProtocol.Character.getDefaultInstance() : character_;
+        } else {
+          return characterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder setCharacter(com.mmo.server.CommonProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          character_ = value;
+          onChanged();
+        } else {
+          characterBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder setCharacter(
+          com.mmo.server.CommonProtocol.Character.Builder builderForValue) {
+        if (characterBuilder_ == null) {
+          character_ = builderForValue.build();
+          onChanged();
+        } else {
+          characterBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder mergeCharacter(com.mmo.server.CommonProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (character_ != null) {
+            character_ =
+              com.mmo.server.CommonProtocol.Character.newBuilder(character_).mergeFrom(value).buildPartial();
+          } else {
+            character_ = value;
+          }
+          onChanged();
+        } else {
+          characterBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder clearCharacter() {
+        if (characterBuilder_ == null) {
+          character_ = null;
+          onChanged();
+        } else {
+          character_ = null;
+          characterBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character.Builder getCharacterBuilder() {
+        
+        onChanged();
+        return getCharacterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.CharacterOrBuilder getCharacterOrBuilder() {
+        if (characterBuilder_ != null) {
+          return characterBuilder_.getMessageOrBuilder();
+        } else {
+          return character_ == null ?
+              com.mmo.server.CommonProtocol.Character.getDefaultInstance() : character_;
+        }
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
+          getCharacterFieldBuilder() {
+        if (characterBuilder_ == null) {
+          characterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
+                  getCharacter(),
+                  getParentForChildren(),
+                  isClean());
+          character_ = null;
+        }
+        return characterBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UpdateCharacterRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:UpdateCharacterRequest)
+    private static final com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest();
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UpdateCharacterRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UpdateCharacterRequest>() {
+      public UpdateCharacterRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UpdateCharacterRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UpdateCharacterRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UpdateCharacterRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CreateCharacterRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CreateCharacterRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    boolean hasCharacter();
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.Character getCharacter();
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.CharacterOrBuilder getCharacterOrBuilder();
+  }
+  /**
+   * Protobuf type {@code CreateCharacterRequest}
+   */
+  public  static final class CreateCharacterRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CreateCharacterRequest)
+      CreateCharacterRequestOrBuilder {
+    // Use CreateCharacterRequest.newBuilder() to construct.
+    private CreateCharacterRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private CreateCharacterRequest() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private CreateCharacterRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.mmo.server.CommonProtocol.Character.Builder subBuilder = null;
+              if (character_ != null) {
+                subBuilder = character_.toBuilder();
+              }
+              character_ = input.readMessage(com.mmo.server.CommonProtocol.Character.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(character_);
+                character_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.class, com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.Builder.class);
+    }
+
+    public static final int CHARACTER_FIELD_NUMBER = 1;
+    private com.mmo.server.CommonProtocol.Character character_;
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    public boolean hasCharacter() {
+      return character_ != null;
+    }
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.Character getCharacter() {
+      return character_ == null ? com.mmo.server.CommonProtocol.Character.getDefaultInstance() : character_;
+    }
+    /**
+     * <code>optional .Character character = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.CharacterOrBuilder getCharacterOrBuilder() {
+      return getCharacter();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (character_ != null) {
+        output.writeMessage(1, getCharacter());
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (character_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getCharacter());
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest other = (com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest) obj;
+
+      boolean result = true;
+      result = result && (hasCharacter() == other.hasCharacter());
+      if (hasCharacter()) {
+        result = result && getCharacter()
+            .equals(other.getCharacter());
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasCharacter()) {
+        hash = (37 * hash) + CHARACTER_FIELD_NUMBER;
+        hash = (53 * hash) + getCharacter().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CreateCharacterRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CreateCharacterRequest)
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.class, com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (characterBuilder_ == null) {
+          character_ = null;
+        } else {
+          character_ = null;
+          characterBuilder_ = null;
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterRequest_descriptor;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest build() {
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest buildPartial() {
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest result = new com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest(this);
+        if (characterBuilder_ == null) {
+          result.character_ = character_;
+        } else {
+          result.character_ = characterBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest) {
+          return mergeFrom((com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest other) {
+        if (other == com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.getDefaultInstance()) return this;
+        if (other.hasCharacter()) {
+          mergeCharacter(other.getCharacter());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.mmo.server.CommonProtocol.Character character_ = null;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> characterBuilder_;
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public boolean hasCharacter() {
+        return characterBuilder_ != null || character_ != null;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character getCharacter() {
+        if (characterBuilder_ == null) {
+          return character_ == null ? com.mmo.server.CommonProtocol.Character.getDefaultInstance() : character_;
+        } else {
+          return characterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder setCharacter(com.mmo.server.CommonProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          character_ = value;
+          onChanged();
+        } else {
+          characterBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder setCharacter(
+          com.mmo.server.CommonProtocol.Character.Builder builderForValue) {
+        if (characterBuilder_ == null) {
+          character_ = builderForValue.build();
+          onChanged();
+        } else {
+          characterBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder mergeCharacter(com.mmo.server.CommonProtocol.Character value) {
+        if (characterBuilder_ == null) {
+          if (character_ != null) {
+            character_ =
+              com.mmo.server.CommonProtocol.Character.newBuilder(character_).mergeFrom(value).buildPartial();
+          } else {
+            character_ = value;
+          }
+          onChanged();
+        } else {
+          characterBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public Builder clearCharacter() {
+        if (characterBuilder_ == null) {
+          character_ = null;
+          onChanged();
+        } else {
+          character_ = null;
+          characterBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.Character.Builder getCharacterBuilder() {
+        
+        onChanged();
+        return getCharacterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.CharacterOrBuilder getCharacterOrBuilder() {
+        if (characterBuilder_ != null) {
+          return characterBuilder_.getMessageOrBuilder();
+        } else {
+          return character_ == null ?
+              com.mmo.server.CommonProtocol.Character.getDefaultInstance() : character_;
+        }
+      }
+      /**
+       * <code>optional .Character character = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
+          getCharacterFieldBuilder() {
+        if (characterBuilder_ == null) {
+          characterBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
+                  getCharacter(),
+                  getParentForChildren(),
+                  isClean());
+          character_ = null;
+        }
+        return characterBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CreateCharacterRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:CreateCharacterRequest)
+    private static final com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest();
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CreateCharacterRequest>
+        PARSER = new com.google.protobuf.AbstractParser<CreateCharacterRequest>() {
+      public CreateCharacterRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CreateCharacterRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CreateCharacterRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CreateCharacterRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CreateCharacterResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CreateCharacterResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .LoginCode code = 1;</code>
+     */
+    int getCodeValue();
+    /**
+     * <code>optional .LoginCode code = 1;</code>
+     */
+    com.mmo.server.CommonProtocol.LoginCode getCode();
+  }
+  /**
+   * Protobuf type {@code CreateCharacterResponse}
+   */
+  public  static final class CreateCharacterResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CreateCharacterResponse)
+      CreateCharacterResponseOrBuilder {
+    // Use CreateCharacterResponse.newBuilder() to construct.
+    private CreateCharacterResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private CreateCharacterResponse() {
+      code_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private CreateCharacterResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+
+              code_ = rawValue;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterResponse_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.class, com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.Builder.class);
+    }
+
+    public static final int CODE_FIELD_NUMBER = 1;
+    private int code_;
+    /**
+     * <code>optional .LoginCode code = 1;</code>
+     */
+    public int getCodeValue() {
+      return code_;
+    }
+    /**
+     * <code>optional .LoginCode code = 1;</code>
+     */
+    public com.mmo.server.CommonProtocol.LoginCode getCode() {
+      com.mmo.server.CommonProtocol.LoginCode result = com.mmo.server.CommonProtocol.LoginCode.forNumber(code_);
+      return result == null ? com.mmo.server.CommonProtocol.LoginCode.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (code_ != com.mmo.server.CommonProtocol.LoginCode.SUC.getNumber()) {
+        output.writeEnum(1, code_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (code_ != com.mmo.server.CommonProtocol.LoginCode.SUC.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, code_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse other = (com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse) obj;
+
+      boolean result = true;
+      result = result && code_ == other.code_;
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + code_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CreateCharacterResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CreateCharacterResponse)
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterResponse_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.class, com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        code_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CreateCharacterResponse_descriptor;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse getDefaultInstanceForType() {
+        return com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse build() {
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse buildPartial() {
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse result = new com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse(this);
+        result.code_ = code_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse) {
+          return mergeFrom((com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse other) {
+        if (other == com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance()) return this;
+        if (other.code_ != 0) {
+          setCodeValue(other.getCodeValue());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int code_ = 0;
+      /**
+       * <code>optional .LoginCode code = 1;</code>
+       */
+      public int getCodeValue() {
+        return code_;
+      }
+      /**
+       * <code>optional .LoginCode code = 1;</code>
+       */
+      public Builder setCodeValue(int value) {
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .LoginCode code = 1;</code>
+       */
+      public com.mmo.server.CommonProtocol.LoginCode getCode() {
+        com.mmo.server.CommonProtocol.LoginCode result = com.mmo.server.CommonProtocol.LoginCode.forNumber(code_);
+        return result == null ? com.mmo.server.CommonProtocol.LoginCode.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>optional .LoginCode code = 1;</code>
+       */
+      public Builder setCode(com.mmo.server.CommonProtocol.LoginCode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        code_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .LoginCode code = 1;</code>
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CreateCharacterResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:CreateCharacterResponse)
+    private static final com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse();
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CreateCharacterResponse>
+        PARSER = new com.google.protobuf.AbstractParser<CreateCharacterResponse>() {
+      public CreateCharacterResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CreateCharacterResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CreateCharacterResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CreateCharacterResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CharacterUnloadRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CharacterUnloadRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 uid = 1;</code>
+     */
+    int getUid();
+  }
+  /**
+   * Protobuf type {@code CharacterUnloadRequest}
+   */
+  public  static final class CharacterUnloadRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:CharacterUnloadRequest)
+      CharacterUnloadRequestOrBuilder {
+    // Use CharacterUnloadRequest.newBuilder() to construct.
+    private CharacterUnloadRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private CharacterUnloadRequest() {
+      uid_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private CharacterUnloadRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              uid_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_CharacterUnloadRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.mmo.server.ServerCharacterProtocol.internal_static_CharacterUnloadRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.class, com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.Builder.class);
+    }
+
+    public static final int UID_FIELD_NUMBER = 1;
+    private int uid_;
+    /**
+     * <code>optional int32 uid = 1;</code>
+     */
+    public int getUid() {
+      return uid_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (uid_ != 0) {
+        output.writeInt32(1, uid_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (uid_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, uid_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest)) {
+        return super.equals(obj);
+      }
+      com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest other = (com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest) obj;
+
+      boolean result = true;
+      result = result && (getUid()
+          == other.getUid());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + getUid();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code CharacterUnloadRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:CharacterUnloadRequest)
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CharacterUnloadRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CharacterUnloadRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.class, com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.Builder.class);
+      }
+
+      // Construct using com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        uid_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.mmo.server.ServerCharacterProtocol.internal_static_CharacterUnloadRequest_descriptor;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest getDefaultInstanceForType() {
+        return com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.getDefaultInstance();
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest build() {
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest buildPartial() {
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest result = new com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest(this);
+        result.uid_ = uid_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest) {
+          return mergeFrom((com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest other) {
+        if (other == com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.getDefaultInstance()) return this;
+        if (other.getUid() != 0) {
+          setUid(other.getUid());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int uid_ ;
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public int getUid() {
+        return uid_;
+      }
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public Builder setUid(int value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 uid = 1;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:CharacterUnloadRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:CharacterUnloadRequest)
+    private static final com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest();
+    }
+
+    public static com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CharacterUnloadRequest>
+        PARSER = new com.google.protobuf.AbstractParser<CharacterUnloadRequest>() {
+      public CharacterUnloadRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new CharacterUnloadRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CharacterUnloadRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CharacterUnloadRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   /**
    * Protobuf service {@code ServerCharacterService}
    */
@@ -1010,12 +2851,36 @@ public final class ServerCharacterProtocol {
 
     public interface Interface {
       /**
-       * <code>rpc GetCharacter(.GetCharacterRequest) returns (.GetCharacterResponse);</code>
+       * <code>rpc getCharacter(.GetCharacterRequest) returns (.GetCharacterResponse);</code>
        */
       public abstract void getCharacter(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request,
           com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse> done);
+
+      /**
+       * <code>rpc updateCharacter(.UpdateCharacterRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void updateCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+      /**
+       * <code>rpc createCharacter(.CreateCharacterRequest) returns (.CreateCharacterResponse);</code>
+       */
+      public abstract void createCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> done);
+
+      /**
+       * <code>rpc characterUnload(.CharacterUnloadRequest) returns (.CommonResponse);</code>
+       */
+      public abstract void characterUnload(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     }
 
@@ -1028,6 +2893,30 @@ public final class ServerCharacterProtocol {
             com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request,
             com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse> done) {
           impl.getCharacter(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void updateCharacter(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.updateCharacter(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void createCharacter(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> done) {
+          impl.createCharacter(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void characterUnload(
+            com.google.protobuf.RpcController controller,
+            com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+            com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+          impl.characterUnload(controller, request, done);
         }
 
       };
@@ -1054,6 +2943,12 @@ public final class ServerCharacterProtocol {
           switch(method.getIndex()) {
             case 0:
               return impl.getCharacter(controller, (com.mmo.server.ServerCharacterProtocol.GetCharacterRequest)request);
+            case 1:
+              return impl.updateCharacter(controller, (com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest)request);
+            case 2:
+              return impl.createCharacter(controller, (com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest)request);
+            case 3:
+              return impl.characterUnload(controller, (com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest)request);
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1070,6 +2965,12 @@ public final class ServerCharacterProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerCharacterProtocol.GetCharacterRequest.getDefaultInstance();
+            case 1:
+              return com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.getDefaultInstance();
+            case 2:
+              return com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.getDefaultInstance();
+            case 3:
+              return com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1086,6 +2987,12 @@ public final class ServerCharacterProtocol {
           switch(method.getIndex()) {
             case 0:
               return com.mmo.server.ServerCharacterProtocol.GetCharacterResponse.getDefaultInstance();
+            case 1:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+            case 2:
+              return com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance();
+            case 3:
+              return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
             default:
               throw new java.lang.AssertionError("Can't get here.");
           }
@@ -1095,12 +3002,36 @@ public final class ServerCharacterProtocol {
     }
 
     /**
-     * <code>rpc GetCharacter(.GetCharacterRequest) returns (.GetCharacterResponse);</code>
+     * <code>rpc getCharacter(.GetCharacterRequest) returns (.GetCharacterResponse);</code>
      */
     public abstract void getCharacter(
         com.google.protobuf.RpcController controller,
         com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request,
         com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse> done);
+
+    /**
+     * <code>rpc updateCharacter(.UpdateCharacterRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void updateCharacter(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
+
+    /**
+     * <code>rpc createCharacter(.CreateCharacterRequest) returns (.CreateCharacterResponse);</code>
+     */
+    public abstract void createCharacter(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> done);
+
+    /**
+     * <code>rpc characterUnload(.CharacterUnloadRequest) returns (.CommonResponse);</code>
+     */
+    public abstract void characterUnload(
+        com.google.protobuf.RpcController controller,
+        com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+        com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done);
 
     public static final
         com.google.protobuf.Descriptors.ServiceDescriptor
@@ -1129,6 +3060,21 @@ public final class ServerCharacterProtocol {
             com.google.protobuf.RpcUtil.<com.mmo.server.ServerCharacterProtocol.GetCharacterResponse>specializeCallback(
               done));
           return;
+        case 1:
+          this.updateCharacter(controller, (com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
+        case 2:
+          this.createCharacter(controller, (com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse>specializeCallback(
+              done));
+          return;
+        case 3:
+          this.characterUnload(controller, (com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest)request,
+            com.google.protobuf.RpcUtil.<com.mmo.server.CommonProtocol.CommonResponse>specializeCallback(
+              done));
+          return;
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1145,6 +3091,12 @@ public final class ServerCharacterProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerCharacterProtocol.GetCharacterRequest.getDefaultInstance();
+        case 1:
+          return com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest.getDefaultInstance();
+        case 2:
+          return com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest.getDefaultInstance();
+        case 3:
+          return com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1161,6 +3113,12 @@ public final class ServerCharacterProtocol {
       switch(method.getIndex()) {
         case 0:
           return com.mmo.server.ServerCharacterProtocol.GetCharacterResponse.getDefaultInstance();
+        case 1:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
+        case 2:
+          return com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance();
+        case 3:
+          return com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance();
         default:
           throw new java.lang.AssertionError("Can't get here.");
       }
@@ -1196,6 +3154,51 @@ public final class ServerCharacterProtocol {
             com.mmo.server.ServerCharacterProtocol.GetCharacterResponse.class,
             com.mmo.server.ServerCharacterProtocol.GetCharacterResponse.getDefaultInstance()));
       }
+
+      public  void updateCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.CommonProtocol.CommonResponse.class,
+            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+      }
+
+      public  void createCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(2),
+          controller,
+          request,
+          com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.class,
+            com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance()));
+      }
+
+      public  void characterUnload(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request,
+          com.google.protobuf.RpcCallback<com.mmo.server.CommonProtocol.CommonResponse> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(3),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.mmo.server.CommonProtocol.CommonResponse.class,
+            com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance()));
+      }
     }
 
     public static BlockingInterface newBlockingStub(
@@ -1207,6 +3210,21 @@ public final class ServerCharacterProtocol {
       public com.mmo.server.ServerCharacterProtocol.GetCharacterResponse getCharacter(
           com.google.protobuf.RpcController controller,
           com.mmo.server.ServerCharacterProtocol.GetCharacterRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.CommonProtocol.CommonResponse updateCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse createCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.mmo.server.CommonProtocol.CommonResponse characterUnload(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request)
           throws com.google.protobuf.ServiceException;
     }
 
@@ -1228,6 +3246,42 @@ public final class ServerCharacterProtocol {
           com.mmo.server.ServerCharacterProtocol.GetCharacterResponse.getDefaultInstance());
       }
 
+
+      public com.mmo.server.CommonProtocol.CommonResponse updateCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.UpdateCharacterRequest request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse createCharacter(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CreateCharacterRequest request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(2),
+          controller,
+          request,
+          com.mmo.server.ServerCharacterProtocol.CreateCharacterResponse.getDefaultInstance());
+      }
+
+
+      public com.mmo.server.CommonProtocol.CommonResponse characterUnload(
+          com.google.protobuf.RpcController controller,
+          com.mmo.server.ServerCharacterProtocol.CharacterUnloadRequest request)
+          throws com.google.protobuf.ServiceException {
+        return (com.mmo.server.CommonProtocol.CommonResponse) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(3),
+          controller,
+          request,
+          com.mmo.server.CommonProtocol.CommonResponse.getDefaultInstance());
+      }
+
     }
 
     // @@protoc_insertion_point(class_scope:ServerCharacterService)
@@ -1243,6 +3297,26 @@ public final class ServerCharacterProtocol {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_GetCharacterResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UpdateCharacterRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_UpdateCharacterRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CreateCharacterRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CreateCharacterRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CreateCharacterResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CreateCharacterResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CharacterUnloadRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CharacterUnloadRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1255,10 +3329,20 @@ public final class ServerCharacterProtocol {
       "\n\021char_server.proto\032\014common.proto\"\"\n\023Get" +
       "CharacterRequest\022\013\n\003uid\030\001 \001(\005\"5\n\024GetChar" +
       "acterResponse\022\035\n\tcharacter\030\001 \001(\0132\n.Chara" +
-      "cter2W\n\026ServerCharacterService\022=\n\014GetCha" +
-      "racter\022\024.GetCharacterRequest\032\025.GetCharac" +
-      "terResponse\"\000B/\n\016com.mmo.serverB\027ServerC" +
-      "haracterProtocol\210\001\001\240\001\001b\006proto3"
+      "cter\"7\n\026UpdateCharacterRequest\022\035\n\tcharac" +
+      "ter\030\001 \001(\0132\n.Character\"7\n\026CreateCharacter" +
+      "Request\022\035\n\tcharacter\030\001 \001(\0132\n.Character\"3" +
+      "\n\027CreateCharacterResponse\022\030\n\004code\030\001 \001(\0162" +
+      "\n.LoginCode\"%\n\026CharacterUnloadRequest\022\013\n" +
+      "\003uid\030\001 \001(\0052\235\002\n\026ServerCharacterService\022=\n" +
+      "\014getCharacter\022\024.GetCharacterRequest\032\025.Ge",
+      "tCharacterResponse\"\000\022=\n\017updateCharacter\022" +
+      "\027.UpdateCharacterRequest\032\017.CommonRespons" +
+      "e\"\000\022F\n\017createCharacter\022\027.CreateCharacter" +
+      "Request\032\030.CreateCharacterResponse\"\000\022=\n\017c" +
+      "haracterUnload\022\027.CharacterUnloadRequest\032" +
+      "\017.CommonResponse\"\000B/\n\016com.mmo.serverB\027Se" +
+      "rverCharacterProtocol\210\001\001\240\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1285,6 +3369,30 @@ public final class ServerCharacterProtocol {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_GetCharacterResponse_descriptor,
         new java.lang.String[] { "Character", });
+    internal_static_UpdateCharacterRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_UpdateCharacterRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_UpdateCharacterRequest_descriptor,
+        new java.lang.String[] { "Character", });
+    internal_static_CreateCharacterRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_CreateCharacterRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CreateCharacterRequest_descriptor,
+        new java.lang.String[] { "Character", });
+    internal_static_CreateCharacterResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_CreateCharacterResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CreateCharacterResponse_descriptor,
+        new java.lang.String[] { "Code", });
+    internal_static_CharacterUnloadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_CharacterUnloadRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_CharacterUnloadRequest_descriptor,
+        new java.lang.String[] { "Uid", });
     com.mmo.server.CommonProtocol.getDescriptor();
   }
 
