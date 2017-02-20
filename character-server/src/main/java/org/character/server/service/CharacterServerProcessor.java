@@ -164,7 +164,8 @@ public class CharacterServerProcessor extends AbstractService {
 		public void characterUnload(CharacterUnloadRequest request, StreamObserver<CommonResponse> responseObserver) {
 			Integer uid = request.getUid();
 			if(uid > 0) {
-				characterInfoMap.remove(uid);
+				Pair<CharacterAttrInfo, Long> CharacterAttrInfoPair = characterInfoMap.remove(uid);
+				//TODO persit CharacterAttrInfo;
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.OK).build());
 				responseObserver.onCompleted();
 				return;
