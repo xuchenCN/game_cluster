@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.character.server.CharacterContext;
 import org.mmo.persistent.CharacterAttrInfo;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.AbstractService;
-import org.mmo.server.common.utils.SystemClock;
+import org.mmo.server.common.utils.Time;
 
 import com.mmo.server.CommonProtocol.CommonResponse;
 import com.mmo.server.CommonProtocol.CommonStat;
@@ -28,11 +30,13 @@ import io.grpc.stub.StreamObserver;
 
 public class CharacterServerProcessor extends AbstractService {
 
+	private static final Log LOG = LogFactory.getLog(CharacterServerProcessor.class);
+
 	private CharacterContext characterContext;
 	private CharacterService characterService;
-	private SystemClock clock = new SystemClock();
-	
+
 	private volatile boolean shouldRun;
+	private Thread persistor;
 
 	private Map<Integer, Pair<CharacterAttrInfo, Long>> characterInfoMap = new HashMap<Integer, Pair<CharacterAttrInfo, Long>>();
 
@@ -44,12 +48,16 @@ public class CharacterServerProcessor extends AbstractService {
 	@Override
 	protected void serviceInit(GameConfiguration conf) throws Exception {
 		this.characterService = new CharacterService();
+		persistor = new Thread(new CharacterPersistor());
+		persistor.setName("CharacterPersistor");
+		persistor.setDaemon(true);
 		super.serviceInit(conf);
 	}
 
 	@Override
 	protected void serviceStart() throws Exception {
-
+		shouldRun = true;
+		persistor.start();
 		super.serviceStart();
 	}
 
@@ -123,7 +131,7 @@ public class CharacterServerProcessor extends AbstractService {
 				CharacterAttrInfo characterAttrInfo = characterContext.getUserInfoPersistentService()
 						.getCharacterAttrInfoByUid(uid);
 				if (characterAttrInfo != null) {
-					characterAttrInfoPair = Pair.of(characterAttrInfo, clock.getTime());
+					characterAttrInfoPair = Pair.of(characterAttrInfo, Time.monotonicNow());
 					characterInfoMap.put(uid, characterAttrInfoPair);
 
 					GetCharacterResponse response = GetCharacterResponse.newBuilder()
@@ -145,7 +153,7 @@ public class CharacterServerProcessor extends AbstractService {
 			CharacterAttrInfo characterAttrInfo = toCharacterAttrInfo(request.getCharacter());
 			Pair<CharacterAttrInfo, Long> characterAttrInfoPair = characterInfoMap.get(characterAttrInfo.getUid());
 			if (characterAttrInfoPair == null) {
-				characterInfoMap.put(characterAttrInfo.getUid(), Pair.of(characterAttrInfo, clock.getTime()));
+				characterInfoMap.put(characterAttrInfo.getUid(), Pair.of(characterAttrInfo, Time.monotonicNow()));
 			} else {
 				characterInfoMap.put(characterAttrInfo.getUid(),
 						Pair.of(characterAttrInfo, characterAttrInfoPair.getRight()));
@@ -184,7 +192,36 @@ public class CharacterServerProcessor extends AbstractService {
 
 		@Override
 		public void run() {
-			while(shouldRun && !Thread.interrupted()) {
+			while (shouldRun && !Thread.interrupted()) {
+
+				try {
+					LOG.info("Begin persist characters.");
+					long beginTime = Time.monotonicNow();
+
+					characterInfoMap.forEach((uid, pair) -> {
+						long current = Time.monotonicNow();
+						if ((current - pair.getRight()) > characterContext.getCharServerPersitInterval()) {
+							characterContext.getUserInfoPersistentService().putCharacterAttrInfo(pair.getLeft());
+							pair.setValue(current);
+						}
+					});
+
+					long cost = Time.monotonicNow() - beginTime;
+					long chargeTime = characterContext.getCharServerPersitInterval() - cost;
+					long nextInterval = Math.max(1, characterContext.getCharServerPersitInterval() + chargeTime);
+
+					if (chargeTime < 0) {
+						LOG.warn("Persit cost longer than " + characterContext.getCharServerPersitInterval() + "ms cost :"
+								+ cost + "ms");
+					} else {
+						LOG.info("Persit cost + " + cost + "ms");
+					}
+
+					Thread.sleep(nextInterval);
+				} catch (Exception e) {
+					LOG.error(e);
+				}
+
 			}
 		}
 
