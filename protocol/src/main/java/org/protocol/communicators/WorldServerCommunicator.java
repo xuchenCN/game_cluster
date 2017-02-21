@@ -1,14 +1,22 @@
-package org.server.game.communicator;
+package org.protocol.communicators;
+
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.mmo.server.ServerWorldProtocol.CharacterRegisterRequest;
 import com.mmo.server.ServerWorldProtocol.CharacterServerInfo;
+import com.mmo.server.ServerWorldProtocol.GateRegisterRequest;
 import com.mmo.server.ServerWorldProtocol.RegionRegisterRequest;
 import com.mmo.server.ServerWorldProtocol.RegionRegisterResponse;
+import com.mmo.server.ServerWorldProtocol.RegionServerInfo;
+import com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest;
 import com.mmo.server.UserWorldServiceGrpc;
 import com.mmo.server.UserWorldServiceGrpc.UserWorldServiceBlockingStub;
 import com.mmo.server.WorldServiceGrpc;
+import com.mmo.server.CommonProtocol.CommonResponse;
+import com.mmo.server.CommonProtocol.CommonStat;
 import com.mmo.server.WorldServiceGrpc.WorldServiceBlockingStub;
 
 import io.grpc.ManagedChannel;
@@ -44,5 +52,25 @@ public class WorldServerCommunicator {
 		LOG.info("Register success !");
 		
 		return new CharacterServerCommunicator(characterServerInfo.getServerHost(),characterServerInfo.getServerPort());
+	}
+	
+	public List<RegionServerInfo> registerGate(String host, int port) {
+		GateRegisterRequest request = GateRegisterRequest.newBuilder().setGateHost(host).setGatePort(port).build();
+		return worldServerStub.registerGate(request).getRegionsList();
+	}
+	
+	public CommonResponse userArrivedWorld(UserArrivedWorldRequest request) {
+		return userWorldStub.userArrivedWorld(request);
+	}
+	
+
+	public void registerServer(String host, int port) {
+		CharacterRegisterRequest request = CharacterRegisterRequest.newBuilder().setServerHost(host).setServerPort(port).build();
+		CommonResponse response = worldServerStub.registerCharacterServer(request);
+		if (!(CommonStat.OK == response.getStat())) {
+			throw new RuntimeException("Failed to register");
+		}
+		
+		LOG.info("Register success !");
 	}
 }

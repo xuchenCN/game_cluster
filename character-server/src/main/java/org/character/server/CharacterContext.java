@@ -1,10 +1,10 @@
 package org.character.server;
 
-import org.character.server.communicator.WorldServerCommunicator;
 import org.character.server.service.CharacterServerProcessor;
 import org.mmo.persistent.UserInfoPersistentService;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.utils.Constants;
+import org.protocol.communicators.WorldServerCommunicator;
 
 public class CharacterContext {
 	private GameConfiguration config;

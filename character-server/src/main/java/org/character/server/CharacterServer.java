@@ -2,13 +2,13 @@ package org.character.server;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.character.server.communicator.WorldServerCommunicator;
 import org.character.server.service.CharacterServerProcessor;
 import org.mmo.persistent.UserInfoPersistentService;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.CompositeService;
 import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.ReflectionUtils;
+import org.protocol.communicators.WorldServerCommunicator;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

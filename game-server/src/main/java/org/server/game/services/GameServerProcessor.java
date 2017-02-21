@@ -13,9 +13,8 @@ import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.AbstractService;
 import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.ExecutorExceptionHandler;
+import org.protocol.communicators.GateServerCommunicator;
 import org.server.game.GameServerContext;
-import org.server.game.communicator.CharacterServerCommunicator;
-import org.server.game.communicator.GateServerCommunicator;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mmo.server.CharacterServiceGrpc.AbstractCharacterService;
@@ -110,8 +109,7 @@ public class GameServerProcessor extends AbstractService {
 	class UserRegionService extends AbstractUserRegionService {
 
 		@Override
-		public void userArrivedRegion(UserArrivedRegionRequest request,
-				StreamObserver<CommonResponse> responseObserver) {
+		public void userArrivedRegion(UserArrivedRegionRequest request, StreamObserver<CommonResponse> responseObserver) {
 
 			String gateHost = request.getGateHost();
 			int gatePort = request.getGatePort();
@@ -155,13 +153,13 @@ public class GameServerProcessor extends AbstractService {
 	private void onItemMove(CharacterMoveReq request) {
 		Integer uid = request.getUid();
 		Position toPos = request.getToPos();
-		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(uid + "").setName(uid + "").build();
+		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(uid).setName(uid + "").build();
 
 		ItemMoveEvent itemMoveEvent = ItemMoveEvent.newBuilder().setIdentify(identifyInfo).setToPos(toPos).build();
 
 		ItemMoveEventRequest itemMoveEventRequest = ItemMoveEventRequest.newBuilder()
-				.setMapId(globalContext.getGameServerId()).setEvent(itemMoveEvent)
-				.setEventType(MapEventType.ITEMMOVEEVENT).build();
+				.setMapId(globalContext.getGameServerId()).setEvent(itemMoveEvent).setEventType(MapEventType.ITEMMOVEEVENT)
+				.build();
 
 		// Broadcast message to all gates
 		keyToGate.forEach((k, v) -> {
@@ -181,37 +179,35 @@ public class GameServerProcessor extends AbstractService {
 	private void onUserArrived(UserArrivedRegionRequest request) {
 
 		Integer uid = request.getUid();
+		if (uid > 0) {
+			GateServerCommunicator gateServerCommunicator = getGateServerCommunicator(uid);
 
-		GateServerCommunicator gateServerCommunicator = getGateServerCommunicator(uid);
-		//FIXME use characterServerCommunicator
-		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(uid + "").setName("" + uid).build();
-		Position position = Position.newBuilder().setPosX(14).setPosY(0).setPosZ(15).build();
-		CommonProtocol.Character character = CommonProtocol.Character.newBuilder()
-				.setMapId(globalContext.getGameServerId()).setPosition(position).setIdentify(identifyInfo).build();
-		CharacterCreateEvent event = CharacterCreateEvent.newBuilder().setCharacter(character).build();
+			CommonProtocol.Character character = globalContext.getCharacterServerCommunicator().getCharacter(uid);
+			CharacterCreateEvent event = CharacterCreateEvent.newBuilder().setCharacter(character).build();
 
-		CharacterCreateEventRequest characterCreateEventRequest = CharacterCreateEventRequest.newBuilder()
-				.setMapId(globalContext.getGameServerId()).setEvent(event)
-				.setEventType(MapEventType.CHARACTERCREATEEVENT).build();
+			CharacterCreateEventRequest characterCreateEventRequest = CharacterCreateEventRequest.newBuilder()
+					.setMapId(globalContext.getGameServerId()).setEvent(event).setEventType(MapEventType.CHARACTERCREATEEVENT)
+					.build();
 
-		CharacterEnterMapRequest characterEnterMapRequest = CharacterEnterMapRequest.newBuilder().setStat(CommonStat.OK)
-				.setMapId(globalContext.getGameServerId()).setUid(uid).build();
+			CharacterEnterMapRequest characterEnterMapRequest = CharacterEnterMapRequest.newBuilder().setStat(CommonStat.OK)
+					.setMapId(globalContext.getGameServerId()).setUid(uid).build();
 
-		// Response the gate which is hold the user channel
-		gateServerCommunicator.characterEnterMapRequest(characterEnterMapRequest);
+			// Response the gate which is hold the user channel
+			gateServerCommunicator.characterEnterMapRequest(characterEnterMapRequest);
 
-		// Broadcast message to all gates
-		keyToGate.forEach((k, v) -> {
-			try {
-				v.createCharacterEvent(characterCreateEventRequest);
-			} catch (Exception e) {
-				if (v.failureTime.incrementAndGet() > 3) {
-					// TODO remove
-					LOG.warn("Remove gate key : " + k);
+			// Broadcast message to all gates
+			keyToGate.forEach((k, v) -> {
+				try {
+					v.createCharacterEvent(characterCreateEventRequest);
+				} catch (Exception e) {
+					if (v.failureTime.incrementAndGet() > 3) {
+						// TODO remove
+						LOG.warn("Remove gate key : " + k);
+					}
+
 				}
-
-			}
-		});
+			});
+		}
 
 	}
 

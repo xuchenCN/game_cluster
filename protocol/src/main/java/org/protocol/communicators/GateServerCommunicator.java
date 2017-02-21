@@ -1,4 +1,4 @@
-package org.server.game.communicator;
+package org.protocol.communicators;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

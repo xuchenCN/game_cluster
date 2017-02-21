@@ -3,6 +3,7 @@ package org.server.gate;
 import org.mmo.persistent.UserInfoPersistentService;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.utils.Constants;
+import org.protocol.communicators.CharacterServerCommunicator;
 import org.server.gate.communicator.WorldServerCommunicator;
 import org.server.gate.core.AccountService;
 import org.server.gate.core.GateServerRouter;
@@ -13,6 +14,8 @@ public class GateServerContext {
 	private int listenOn;
 
 	private WorldServerCommunicator worldServerCommunicator;
+
+	private CharacterServerCommunicator characterServerCommunicator;
 
 	private UserInfoPersistentService userInfoPersistentService;
 
@@ -82,6 +85,14 @@ public class GateServerContext {
 
 	public GameConfiguration getConfig() {
 		return config;
+	}
+
+	public void setCharacterServerCommunicator(CharacterServerCommunicator characterServerCommunicator) {
+		this.characterServerCommunicator = characterServerCommunicator;
+	}
+
+	public CharacterServerCommunicator getCharacterServerCommunicator() {
+		return characterServerCommunicator;
 	}
 
 }

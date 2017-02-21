@@ -2,8 +2,8 @@ package org.server.game;
 
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.utils.Constants;
-import org.server.game.communicator.CharacterServerCommunicator;
-import org.server.game.communicator.WorldServerCommunicator;
+import org.protocol.communicators.CharacterServerCommunicator;
+import org.protocol.communicators.WorldServerCommunicator;
 
 public class GameServerContext {
 	private GameConfiguration config;

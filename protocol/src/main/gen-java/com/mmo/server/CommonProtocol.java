@@ -3094,14 +3094,9 @@ public final class CommonProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string ID = 1;</code>
+     * <code>optional int32 ID = 1;</code>
      */
-    java.lang.String getID();
-    /**
-     * <code>optional string ID = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIDBytes();
+    int getID();
 
     /**
      * <code>optional string name = 2;</code>
@@ -3134,7 +3129,7 @@ public final class CommonProtocol {
       super(builder);
     }
     private IdentifyInfo() {
-      iD_ = "";
+      iD_ = 0;
       name_ = "";
       type_ = 0;
     }
@@ -3164,10 +3159,9 @@ public final class CommonProtocol {
               }
               break;
             }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              iD_ = s;
+              iD_ = input.readInt32();
               break;
             }
             case 18: {
@@ -3206,37 +3200,12 @@ public final class CommonProtocol {
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object iD_;
+    private int iD_;
     /**
-     * <code>optional string ID = 1;</code>
+     * <code>optional int32 ID = 1;</code>
      */
-    public java.lang.String getID() {
-      java.lang.Object ref = iD_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        iD_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string ID = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIDBytes() {
-      java.lang.Object ref = iD_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        iD_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getID() {
+      return iD_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -3301,8 +3270,8 @@ public final class CommonProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIDBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, iD_);
+      if (iD_ != 0) {
+        output.writeInt32(1, iD_);
       }
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
@@ -3317,8 +3286,9 @@ public final class CommonProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (!getIDBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, iD_);
+      if (iD_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, iD_);
       }
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
@@ -3343,8 +3313,8 @@ public final class CommonProtocol {
       com.mmo.server.CommonProtocol.IdentifyInfo other = (com.mmo.server.CommonProtocol.IdentifyInfo) obj;
 
       boolean result = true;
-      result = result && getID()
-          .equals(other.getID());
+      result = result && (getID()
+          == other.getID());
       result = result && getName()
           .equals(other.getName());
       result = result && type_ == other.type_;
@@ -3359,7 +3329,7 @@ public final class CommonProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getID().hashCode();
+      hash = (53 * hash) + getID();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -3481,7 +3451,7 @@ public final class CommonProtocol {
       }
       public Builder clear() {
         super.clear();
-        iD_ = "";
+        iD_ = 0;
 
         name_ = "";
 
@@ -3527,9 +3497,8 @@ public final class CommonProtocol {
 
       public Builder mergeFrom(com.mmo.server.CommonProtocol.IdentifyInfo other) {
         if (other == com.mmo.server.CommonProtocol.IdentifyInfo.getDefaultInstance()) return this;
-        if (!other.getID().isEmpty()) {
-          iD_ = other.iD_;
-          onChanged();
+        if (other.getID() != 0) {
+          setID(other.getID());
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
@@ -3564,71 +3533,28 @@ public final class CommonProtocol {
         return this;
       }
 
-      private java.lang.Object iD_ = "";
+      private int iD_ ;
       /**
-       * <code>optional string ID = 1;</code>
+       * <code>optional int32 ID = 1;</code>
        */
-      public java.lang.String getID() {
-        java.lang.Object ref = iD_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          iD_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getID() {
+        return iD_;
       }
       /**
-       * <code>optional string ID = 1;</code>
+       * <code>optional int32 ID = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getIDBytes() {
-        java.lang.Object ref = iD_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          iD_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string ID = 1;</code>
-       */
-      public Builder setID(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setID(int value) {
+        
         iD_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string ID = 1;</code>
+       * <code>optional int32 ID = 1;</code>
        */
       public Builder clearID() {
         
-        iD_ = getDefaultInstance().getID();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string ID = 1;</code>
-       */
-      public Builder setIDBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        iD_ = value;
+        iD_ = 0;
         onChanged();
         return this;
       }
@@ -11859,7 +11785,7 @@ public final class CommonProtocol {
       "(\005\022\016\n\006spirit\030\003 \001(\005\022\017\n\007comfort\030\004 \001(\005\"S\n\nE" +
       "nergyInfo\022\020\n\010strength\030\001 \001(\005\022\021\n\tendurance" +
       "\030\002 \001(\005\022\017\n\007agility\030\003 \001(\005\022\017\n\007defence\030\004 \001(\005" +
-      "\"A\n\014IdentifyInfo\022\n\n\002ID\030\001 \001(\t\022\014\n\004name\030\002 \001",
+      "\"A\n\014IdentifyInfo\022\n\n\002ID\030\001 \001(\005\022\014\n\004name\030\002 \001",
       "(\t\022\027\n\004type\030\003 \001(\0162\t.ItemType\"\204\001\n\004Item\022\037\n\010" +
       "identify\030\001 \001(\0132\r.IdentifyInfo\022\033\n\010positio" +
       "n\030\002 \001(\0132\t.Position\022\031\n\007modInfo\030\003 \001(\0132\010.Mo" +

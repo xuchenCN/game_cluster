@@ -5,8 +5,8 @@ import org.apache.commons.logging.LogFactory;
 import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.CompositeService;
 import org.mmo.server.common.utils.NetUtils;
-import org.server.game.communicator.CharacterServerCommunicator;
-import org.server.game.communicator.WorldServerCommunicator;
+import org.protocol.communicators.CharacterServerCommunicator;
+import org.protocol.communicators.WorldServerCommunicator;
 import org.server.game.core.CharactorLogic;
 import org.server.game.services.GameServerProcessor;
 

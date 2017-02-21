@@ -50,6 +50,8 @@ public class GateServer extends CompositeService {
 		addIfService(accountService);
 		globalContext.setAccountService(accountService);
 		
+//		CharacterServerCommunicator characterServerCommunicator = new CharacterServerCommunicator();
+		
 		gateServerRouter = new GateServerRouter(globalContext);
 		addIfService(gateServerRouter);
 		globalContext.setGateServerRouter(gateServerRouter);

@@ -31,6 +31,8 @@ public class CharacterServerProcessor extends AbstractService {
 	private CharacterContext characterContext;
 	private CharacterService characterService;
 	private SystemClock clock = new SystemClock();
+	
+	private volatile boolean shouldRun;
 
 	private Map<Integer, Pair<CharacterAttrInfo, Long>> characterInfoMap = new HashMap<Integer, Pair<CharacterAttrInfo, Long>>();
 
@@ -93,7 +95,7 @@ public class CharacterServerProcessor extends AbstractService {
 	}
 
 	private com.mmo.server.CommonProtocol.Character toProtoCharacter(CharacterAttrInfo characterAttrInfo) {
-		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(characterAttrInfo.getUid().toString())
+		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(characterAttrInfo.getUid())
 				.setName(characterAttrInfo.getName()).build();
 		Position position = Position.newBuilder().setPosX(characterAttrInfo.getPosX())
 				.setPosY(characterAttrInfo.getPosY()).setPosZ(characterAttrInfo.getPosZ()).build();
@@ -163,17 +165,27 @@ public class CharacterServerProcessor extends AbstractService {
 		@Override
 		public void characterUnload(CharacterUnloadRequest request, StreamObserver<CommonResponse> responseObserver) {
 			Integer uid = request.getUid();
-			if(uid > 0) {
+			if (uid > 0) {
 				Pair<CharacterAttrInfo, Long> CharacterAttrInfoPair = characterInfoMap.remove(uid);
-				//TODO persit CharacterAttrInfo;
+				// TODO persit CharacterAttrInfo;
 				responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.OK).build());
 				responseObserver.onCompleted();
 				return;
 			}
-			
+
 			responseObserver.onNext(CommonResponse.newBuilder().setStat(CommonStat.ERROR).build());
 			responseObserver.onCompleted();
-			
+
+		}
+
+	}
+
+	class CharacterPersistor implements Runnable {
+
+		@Override
+		public void run() {
+			while(shouldRun && !Thread.interrupted()) {
+			}
 		}
 
 	}

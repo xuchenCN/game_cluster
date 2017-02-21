@@ -12,7 +12,9 @@ import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.CompositeService;
 import org.mmo.server.common.utils.BaseX;
 import org.server.gate.GateServerContext;
+import org.server.gate.utils.ClientMessageConverter;
 
+import com.mmo.server.CommonProtocol;
 import com.mmo.server.ServerClientProtocol.ClientCharacter;
 import com.mmo.server.ServerClientProtocol.ClientIdentifyInfo;
 import com.mmo.server.ServerClientProtocol.ClientPosition;
@@ -74,18 +76,18 @@ public class AccountService extends CompositeService {
 					ticketToUidMapId.remove(oldTicket);
 				}
 				
+				CommonProtocol.Character character = globalContext.getCharacterServerCommunicator().getCharacter(userInfoPersistentBean.getUid());
+				
+				
+				
 				String ticket = baseX.encode(new BigInteger(System.nanoTime() + userInfoPersistentBean.getUid() + ""));
 				uidToTicket.put(userInfoPersistentBean.getUid(), ticket);
 				//FIXME
-				ticketToUidMapId.put(ticket, Pair.of(userInfoPersistentBean.getUid(),1));
-				
-				ClientIdentifyInfo clientIdentifyInfo = ClientIdentifyInfo.newBuilder().setID(userInfoPersistentBean.getUid() + "").setName(userInfoPersistentBean.getUid() + "").build();
-				ClientPosition position = ClientPosition.newBuilder().setPosX(14).setPosY(0).setPosZ(15).build();
-				ClientCharacter character = ClientCharacter.newBuilder().setMapId(1).setIdentify(clientIdentifyInfo).setPosition(position).build();
+				ticketToUidMapId.put(ticket, Pair.of(userInfoPersistentBean.getUid(),character.getMapId()));
 				
 				responseBuilder.setCode(LoginCode.SUC);
 				responseBuilder.setTicket(ticket);
-				responseBuilder.setCharacter(character);
+				responseBuilder.setCharacter(ClientMessageConverter.toClientCharacter(character));
 			} else {
 				responseBuilder.setCode(LoginCode.ERROR_PWD);
 			}

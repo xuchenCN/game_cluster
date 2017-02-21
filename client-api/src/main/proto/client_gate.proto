@@ -73,7 +73,7 @@ message CharacterEquipMod {
 
 
 message ClientIdentifyInfo {
-	required string ID = 1;
+	required int32 ID = 1;
 	required string name = 2;
 	optional ClientItemType type = 3;
 }

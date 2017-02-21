@@ -5903,18 +5903,13 @@ public final class ServerClientProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string ID = 1;</code>
+     * <code>required int32 ID = 1;</code>
      */
     boolean hasID();
     /**
-     * <code>required string ID = 1;</code>
+     * <code>required int32 ID = 1;</code>
      */
-    java.lang.String getID();
-    /**
-     * <code>required string ID = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIDBytes();
+    int getID();
 
     /**
      * <code>required string name = 2;</code>
@@ -5991,10 +5986,9 @@ public final class ServerClientProtocol {
               }
               break;
             }
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
+            case 8: {
               bitField0_ |= 0x00000001;
-              iD_ = bs;
+              iD_ = input.readInt32();
               break;
             }
             case 18: {
@@ -6055,45 +6049,18 @@ public final class ServerClientProtocol {
 
     private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
-    private java.lang.Object iD_;
+    private int iD_;
     /**
-     * <code>required string ID = 1;</code>
+     * <code>required int32 ID = 1;</code>
      */
     public boolean hasID() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string ID = 1;</code>
+     * <code>required int32 ID = 1;</code>
      */
-    public java.lang.String getID() {
-      java.lang.Object ref = iD_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          iD_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string ID = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIDBytes() {
-      java.lang.Object ref = iD_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        iD_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getID() {
+      return iD_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -6154,7 +6121,7 @@ public final class ServerClientProtocol {
     }
 
     private void initFields() {
-      iD_ = "";
+      iD_ = 0;
       name_ = "";
       type_ = com.mmo.server.ServerClientProtocol.ClientItemType.BUILD;
     }
@@ -6180,7 +6147,7 @@ public final class ServerClientProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getIDBytes());
+        output.writeInt32(1, iD_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getNameBytes());
@@ -6199,7 +6166,7 @@ public final class ServerClientProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getIDBytes());
+          .computeInt32Size(1, iD_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6234,8 +6201,8 @@ public final class ServerClientProtocol {
       boolean result = true;
       result = result && (hasID() == other.hasID());
       if (hasID()) {
-        result = result && getID()
-            .equals(other.getID());
+        result = result && (getID()
+            == other.getID());
       }
       result = result && (hasName() == other.hasName());
       if (hasName()) {
@@ -6261,7 +6228,7 @@ public final class ServerClientProtocol {
       hash = (19 * hash) + getDescriptorForType().hashCode();
       if (hasID()) {
         hash = (37 * hash) + ID_FIELD_NUMBER;
-        hash = (53 * hash) + getID().hashCode();
+        hash = (53 * hash) + getID();
       }
       if (hasName()) {
         hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -6382,7 +6349,7 @@ public final class ServerClientProtocol {
 
       public Builder clear() {
         super.clear();
-        iD_ = "";
+        iD_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -6445,9 +6412,7 @@ public final class ServerClientProtocol {
       public Builder mergeFrom(com.mmo.server.ServerClientProtocol.ClientIdentifyInfo other) {
         if (other == com.mmo.server.ServerClientProtocol.ClientIdentifyInfo.getDefaultInstance()) return this;
         if (other.hasID()) {
-          bitField0_ |= 0x00000001;
-          iD_ = other.iD_;
-          onChanged();
+          setID(other.getID());
         }
         if (other.hasName()) {
           bitField0_ |= 0x00000002;
@@ -6492,78 +6457,34 @@ public final class ServerClientProtocol {
       }
       private int bitField0_;
 
-      private java.lang.Object iD_ = "";
+      private int iD_ ;
       /**
-       * <code>required string ID = 1;</code>
+       * <code>required int32 ID = 1;</code>
        */
       public boolean hasID() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string ID = 1;</code>
+       * <code>required int32 ID = 1;</code>
        */
-      public java.lang.String getID() {
-        java.lang.Object ref = iD_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            iD_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getID() {
+        return iD_;
       }
       /**
-       * <code>required string ID = 1;</code>
+       * <code>required int32 ID = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getIDBytes() {
-        java.lang.Object ref = iD_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          iD_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string ID = 1;</code>
-       */
-      public Builder setID(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      public Builder setID(int value) {
+        bitField0_ |= 0x00000001;
         iD_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string ID = 1;</code>
+       * <code>required int32 ID = 1;</code>
        */
       public Builder clearID() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        iD_ = getDefaultInstance().getID();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string ID = 1;</code>
-       */
-      public Builder setIDBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        iD_ = value;
+        iD_ = 0;
         onChanged();
         return this;
       }
@@ -19932,7 +19853,7 @@ public final class ServerClientProtocol {
       "\n\005wrist\030\007 \002(\0132\016.ClientModInfo\022 \n\010leftHol" +
       "d\030\010 \002(\0132\016.ClientModInfo\022!\n\trightHold\030\t \002" +
       "(\0132\016.ClientModInfo\"M\n\022ClientIdentifyInfo" +
-      "\022\n\n\002ID\030\001 \002(\t\022\014\n\004name\030\002 \002(\t\022\035\n\004type\030\003 \001(\016" +
+      "\022\n\n\002ID\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\035\n\004type\030\003 \001(\016" +
       "2\017.ClientItemType\"\242\001\n\nClientItem\022%\n\010iden",
       "tify\030\001 \002(\0132\023.ClientIdentifyInfo\022!\n\010posit" +
       "ion\030\002 \002(\0132\017.ClientPosition\022\037\n\007modInfo\030\003 " +

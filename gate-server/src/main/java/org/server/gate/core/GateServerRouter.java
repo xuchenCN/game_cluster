@@ -16,6 +16,7 @@ import org.mmo.server.common.service.AbstractService;
 import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.ExecutorExceptionHandler;
 import org.mmo.server.common.utils.NetUtils;
+import org.protocol.communicators.CharacterServerCommunicator;
 import org.server.gate.GateServerContext;
 import org.server.gate.communicator.GameServerCommunicator;
 
@@ -35,6 +36,8 @@ import com.mmo.server.ServerGateProtocol.ItemCreateEventRequest;
 import com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest;
 import com.mmo.server.ServerGateProtocol.ItemMoveEventRequest;
 import com.mmo.server.ServerGateProtocol.MapEventType;
+import com.mmo.server.ServerWorldProtocol.CharacterServerInfo;
+import com.mmo.server.ServerWorldProtocol.GateRegisterResponse;
 import com.mmo.server.ServerWorldProtocol.RegionServerInfo;
 import com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest;
 
@@ -83,10 +86,18 @@ public class GateServerRouter extends AbstractService {
 	@Override
 	protected void serviceStart() throws Exception {
 
-		List<RegionServerInfo> regionServerList = globalContext.getWorldServerCommunicator()
+		GateRegisterResponse response = globalContext.getWorldServerCommunicator()
 				.registerGate(NetUtils.getLocalIpAddress(getConfig()), globalContext.getListenOn());
-		LOG.info("Registered got regionServer : " + regionServerList);
-
+		List<RegionServerInfo> regionServerList = response.getRegionsList();
+		// List<CharacterServerInfo> characterServerList =
+		// response.getCharServersList();
+		CharacterServerInfo characterServer = response.getCharServersList().get(0);
+		LOG.info("Registered got regionServer : " + regionServerList + " characterServer : " + characterServer);
+		CharacterServerCommunicator characterServerCommunicator = new CharacterServerCommunicator(
+				characterServer.getServerHost(), characterServer.getServerPort());
+		
+		globalContext.setCharacterServerCommunicator(characterServerCommunicator);
+		
 		regionServerList.forEach(info -> {
 			mapCommunicators.put(info.getMapid() + "",
 					new GameServerCommunicator(info.getServerHost(), info.getServerPort()));
@@ -139,12 +150,10 @@ public class GateServerRouter extends AbstractService {
 							communicator.moveTo(characterMove);
 							break;
 						case MessageRegistry.CHARACTERENTERREQUEST_VALUE:
-							UserArrivedWorldRequest userArrivedWorldRequest = (UserArrivedWorldRequest) instructionEvent
-									.getBody();
+							UserArrivedWorldRequest userArrivedWorldRequest = (UserArrivedWorldRequest) instructionEvent.getBody();
 							globalContext.getWorldServerCommunicator().userArrivedWorld(userArrivedWorldRequest);
 							UserArrivedRegionRequest userArrivedRegionRequest = UserArrivedRegionRequest.newBuilder()
-									.setGateHost(userArrivedWorldRequest.getGateHost())
-									.setGatePort(userArrivedWorldRequest.getGatePort())
+									.setGateHost(userArrivedWorldRequest.getGateHost()).setGatePort(userArrivedWorldRequest.getGatePort())
 									.setUid(userArrivedWorldRequest.getUid()).build();
 
 							communicator.userArrivedRegion(userArrivedRegionRequest);

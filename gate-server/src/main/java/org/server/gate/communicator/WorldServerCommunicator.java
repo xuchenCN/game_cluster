@@ -1,10 +1,8 @@
 package org.server.gate.communicator;
 
-import java.util.List;
-
 import com.mmo.server.CommonProtocol.CommonResponse;
 import com.mmo.server.ServerWorldProtocol.GateRegisterRequest;
-import com.mmo.server.ServerWorldProtocol.RegionServerInfo;
+import com.mmo.server.ServerWorldProtocol.GateRegisterResponse;
 import com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest;
 import com.mmo.server.UserWorldServiceGrpc;
 import com.mmo.server.UserWorldServiceGrpc.UserWorldServiceBlockingStub;
@@ -28,9 +26,9 @@ public class WorldServerCommunicator {
 		worldServerStub = WorldServiceGrpc.newBlockingStub(channel);
 	}
 
-	public List<RegionServerInfo> registerGate(String host, int port) {
+	public GateRegisterResponse registerGate(String host, int port) {
 		GateRegisterRequest request = GateRegisterRequest.newBuilder().setGateHost(host).setGatePort(port).build();
-		return worldServerStub.registerGate(request).getRegionsList();
+		return worldServerStub.registerGate(request);
 	}
 	
 	public CommonResponse userArrivedWorld(UserArrivedWorldRequest request) {
