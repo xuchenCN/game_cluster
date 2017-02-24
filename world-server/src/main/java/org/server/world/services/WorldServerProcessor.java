@@ -112,8 +112,11 @@ public class WorldServerProcessor extends AbstractService {
 				return;
 			}
 
+			List<CharacterServerInfo> characterServers = new ArrayList<CharacterServerInfo>();
+			characterServers.addAll(charMapping.values());
+			
 			GateRegisterResponse.Builder responseBuilder = GateRegisterResponse.newBuilder()
-					.addAllRegions(new ArrayList<RegionServerInfo>(regionMapping.values()));
+					.addAllRegions(new ArrayList<RegionServerInfo>(regionMapping.values())).addAllCharServers(characterServers);
 			responseObserver.onNext(responseBuilder.build());
 			responseObserver.onCompleted();
 

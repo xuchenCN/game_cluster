@@ -15,7 +15,7 @@ public class TestNettyHandle extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		UserLoginRequest req = UserLoginRequest.newBuilder().setUname("tester1").setUpwd("pwd1").build();
+		UserLoginRequest req = UserLoginRequest.newBuilder().setUname("tester1").setUpwd("tester1").build();
 
 		GateClientMessage msg = new GateClientMessage(MessageRegistry.USERLOGINREQUEST, Unpooled.wrappedBuffer(req.toByteArray()));
 

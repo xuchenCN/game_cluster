@@ -17,8 +17,8 @@ import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.ExecutorExceptionHandler;
 import org.mmo.server.common.utils.NetUtils;
 import org.protocol.communicators.CharacterServerCommunicator;
+import org.protocol.communicators.GameServerCommunicator;
 import org.server.gate.GateServerContext;
-import org.server.gate.communicator.GameServerCommunicator;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mmo.server.CommonProtocol.CommonResponse;

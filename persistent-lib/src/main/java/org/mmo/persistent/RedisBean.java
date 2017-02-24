@@ -53,21 +53,21 @@ public abstract class RedisBean {
 						String value = values.get(p.getDisplayName());
 						Method m = p.getWriteMethod();
 						Class<?> type = p.getPropertyType();
-						if (type == byte.class) {
+						if (type == byte.class || type == Byte.class) {
 							m.invoke(this, Byte.valueOf(value));
-						} else if (type == short.class) {
+						} else if (type == short.class || type == Short.class) {
 							m.invoke(this, Short.valueOf(value));
-						} else if (type == int.class) {
+						} else if (type == int.class || type == Integer.class) {
 							m.invoke(this, Integer.valueOf(value));
-						} else if (type == long.class) {
+						} else if (type == long.class || type == Long.class) {
 							m.invoke(this, Long.valueOf(value));
-						} else if (type == float.class) {
+						} else if (type == float.class || type == Float.class) {
 							m.invoke(this, Float.valueOf(value));
-						} else if (type == double.class) {
+						} else if (type == double.class || type == Double.class) {
 							m.invoke(this, Double.valueOf(value));
 						} else if (type == String.class) {
 							m.invoke(this, String.valueOf(value));
-						} else if (type == char.class) {
+						} else if (type == char.class || type == Character.class) {
 							m.invoke(this, value.charAt(0));
 						}
 

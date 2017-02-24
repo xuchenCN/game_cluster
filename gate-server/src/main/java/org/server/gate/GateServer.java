@@ -7,7 +7,7 @@ import org.mmo.server.common.conf.GameConfiguration;
 import org.mmo.server.common.service.CompositeService;
 import org.mmo.server.common.utils.Constants;
 import org.mmo.server.common.utils.ReflectionUtils;
-import org.server.gate.communicator.WorldServerCommunicator;
+import org.protocol.communicators.WorldServerCommunicator;
 import org.server.gate.core.AccountService;
 import org.server.gate.core.GateServerRouter;
 import org.server.gate.net.GateNettyServer;
