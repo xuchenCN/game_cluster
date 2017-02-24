@@ -4,13 +4,37 @@ import org.mmo.persistent.CharacterAttrInfo;
 import org.mmo.persistent.RedisBean;
 
 public class CharacterAttrInfoImpl extends RedisBean implements CharacterAttrInfo {
+	public Float getPosX() {
+		return posX;
+	}
+
+	public void setPosX(Float posX) {
+		this.posX = posX;
+	}
+
+	public Float getPosY() {
+		return posY;
+	}
+
+	public void setPosY(Float posY) {
+		this.posY = posY;
+	}
+
+	public Float getPosZ() {
+		return posZ;
+	}
+
+	public void setPosZ(Float posZ) {
+		this.posZ = posZ;
+	}
+
 	private Integer uid;
 	private String name;
 
 	private Integer mapId;
-	private Integer posX;
-	private Integer posY;
-	private Integer posZ;
+	private Float posX;
+	private Float posY;
+	private Float posZ;
 
 	private Integer strength;
 	private Integer endurance;
@@ -36,30 +60,6 @@ public class CharacterAttrInfoImpl extends RedisBean implements CharacterAttrInf
 
 	public void setMapId(Integer mapId) {
 		this.mapId = mapId;
-	}
-
-	public Integer getPosX() {
-		return posX;
-	}
-
-	public void setPosX(Integer posX) {
-		this.posX = posX;
-	}
-
-	public Integer getPosY() {
-		return posY;
-	}
-
-	public void setPosY(Integer posY) {
-		this.posY = posY;
-	}
-
-	public Integer getPosZ() {
-		return posZ;
-	}
-
-	public void setPosZ(Integer posZ) {
-		this.posZ = posZ;
 	}
 
 	public Integer getStrength() {

@@ -86,7 +86,7 @@ public static partial class ClientGate {
           "CgRib2R5GAYgAigLMg4uQ2xpZW50TW9kSW5mbxIdCgV3cmlzdBgHIAIoCzIO", 
           "LkNsaWVudE1vZEluZm8SIAoIbGVmdEhvbGQYCCACKAsyDi5DbGllbnRNb2RJ", 
           "bmZvEiEKCXJpZ2h0SG9sZBgJIAIoCzIOLkNsaWVudE1vZEluZm8iTQoSQ2xp", 
-          "ZW50SWRlbnRpZnlJbmZvEgoKAklEGAEgAigJEgwKBG5hbWUYAiACKAkSHQoE", 
+          "ZW50SWRlbnRpZnlJbmZvEgoKAklEGAEgAigFEgwKBG5hbWUYAiACKAkSHQoE", 
           "dHlwZRgDIAEoDjIPLkNsaWVudEl0ZW1UeXBlIqIBCgpDbGllbnRJdGVtEiUK", 
           "CGlkZW50aWZ5GAEgAigLMhMuQ2xpZW50SWRlbnRpZnlJbmZvEiEKCHBvc2l0", 
           "aW9uGAIgAigLMg8uQ2xpZW50UG9zaXRpb24SHwoHbW9kSW5mbxgDIAIoCzIO", 
@@ -3030,7 +3030,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
   private ClientIdentifyInfo() { }
   private static readonly ClientIdentifyInfo defaultInstance = new ClientIdentifyInfo().MakeReadOnly();
   private static readonly string[] _clientIdentifyInfoFieldNames = new string[] { "ID", "name", "type" };
-  private static readonly uint[] _clientIdentifyInfoFieldTags = new uint[] { 10, 18, 24 };
+  private static readonly uint[] _clientIdentifyInfoFieldTags = new uint[] { 8, 18, 24 };
   public static ClientIdentifyInfo DefaultInstance {
     get { return defaultInstance; }
   }
@@ -3053,11 +3053,11 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
   
   public const int IDFieldNumber = 1;
   private bool hasID;
-  private string iD_ = "";
+  private int iD_;
   public bool HasID {
     get { return hasID; }
   }
-  public string ID {
+  public int ID {
     get { return iD_; }
   }
   
@@ -3093,7 +3093,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     CalcSerializedSize();
     string[] field_names = _clientIdentifyInfoFieldNames;
     if (hasID) {
-      output.WriteString(1, field_names[0], ID);
+      output.WriteInt32(1, field_names[0], ID);
     }
     if (hasName) {
       output.WriteString(2, field_names[1], Name);
@@ -3119,7 +3119,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     
     size = 0;
     if (hasID) {
-      size += pb::CodedOutputStream.ComputeStringSize(1, ID);
+      size += pb::CodedOutputStream.ComputeInt32Size(1, ID);
     }
     if (hasName) {
       size += pb::CodedOutputStream.ComputeStringSize(2, Name);
@@ -3301,8 +3301,8 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
             ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
             break;
           }
-          case 10: {
-            result.hasID = input.ReadString(ref result.iD_);
+          case 8: {
+            result.hasID = input.ReadInt32(ref result.iD_);
             break;
           }
           case 18: {
@@ -3334,12 +3334,11 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     public bool HasID {
       get { return result.hasID; }
     }
-    public string ID {
+    public int ID {
       get { return result.ID; }
       set { SetID(value); }
     }
-    public Builder SetID(string value) {
-      pb::ThrowHelper.ThrowIfNull(value, "value");
+    public Builder SetID(int value) {
       PrepareBuilder();
       result.hasID = true;
       result.iD_ = value;
@@ -3348,7 +3347,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     public Builder ClearID() {
       PrepareBuilder();
       result.hasID = false;
-      result.iD_ = "";
+      result.iD_ = 0;
       return this;
     }
     

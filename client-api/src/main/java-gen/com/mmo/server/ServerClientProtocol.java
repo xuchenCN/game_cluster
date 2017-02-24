@@ -277,31 +277,31 @@ public final class ServerClientProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 posX = 1;</code>
+     * <code>required float posX = 1;</code>
      */
     boolean hasPosX();
     /**
-     * <code>required int32 posX = 1;</code>
+     * <code>required float posX = 1;</code>
      */
-    int getPosX();
+    float getPosX();
 
     /**
-     * <code>required int32 posY = 2;</code>
+     * <code>required float posY = 2;</code>
      */
     boolean hasPosY();
     /**
-     * <code>required int32 posY = 2;</code>
+     * <code>required float posY = 2;</code>
      */
-    int getPosY();
+    float getPosY();
 
     /**
-     * <code>required int32 posZ = 3;</code>
+     * <code>required float posZ = 3;</code>
      */
     boolean hasPosZ();
     /**
-     * <code>required int32 posZ = 3;</code>
+     * <code>required float posZ = 3;</code>
      */
-    int getPosZ();
+    float getPosZ();
   }
   /**
    * Protobuf type {@code ClientPosition}
@@ -355,19 +355,19 @@ public final class ServerClientProtocol {
               }
               break;
             }
-            case 8: {
+            case 13: {
               bitField0_ |= 0x00000001;
-              posX_ = input.readInt32();
+              posX_ = input.readFloat();
               break;
             }
-            case 16: {
+            case 21: {
               bitField0_ |= 0x00000002;
-              posY_ = input.readInt32();
+              posY_ = input.readFloat();
               break;
             }
-            case 24: {
+            case 29: {
               bitField0_ |= 0x00000004;
-              posZ_ = input.readInt32();
+              posZ_ = input.readFloat();
               break;
             }
           }
@@ -411,54 +411,54 @@ public final class ServerClientProtocol {
 
     private int bitField0_;
     public static final int POSX_FIELD_NUMBER = 1;
-    private int posX_;
+    private float posX_;
     /**
-     * <code>required int32 posX = 1;</code>
+     * <code>required float posX = 1;</code>
      */
     public boolean hasPosX() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 posX = 1;</code>
+     * <code>required float posX = 1;</code>
      */
-    public int getPosX() {
+    public float getPosX() {
       return posX_;
     }
 
     public static final int POSY_FIELD_NUMBER = 2;
-    private int posY_;
+    private float posY_;
     /**
-     * <code>required int32 posY = 2;</code>
+     * <code>required float posY = 2;</code>
      */
     public boolean hasPosY() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 posY = 2;</code>
+     * <code>required float posY = 2;</code>
      */
-    public int getPosY() {
+    public float getPosY() {
       return posY_;
     }
 
     public static final int POSZ_FIELD_NUMBER = 3;
-    private int posZ_;
+    private float posZ_;
     /**
-     * <code>required int32 posZ = 3;</code>
+     * <code>required float posZ = 3;</code>
      */
     public boolean hasPosZ() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 posZ = 3;</code>
+     * <code>required float posZ = 3;</code>
      */
-    public int getPosZ() {
+    public float getPosZ() {
       return posZ_;
     }
 
     private void initFields() {
-      posX_ = 0;
-      posY_ = 0;
-      posZ_ = 0;
+      posX_ = 0F;
+      posY_ = 0F;
+      posZ_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -486,13 +486,13 @@ public final class ServerClientProtocol {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, posX_);
+        output.writeFloat(1, posX_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, posY_);
+        output.writeFloat(2, posY_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, posZ_);
+        output.writeFloat(3, posZ_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -505,15 +505,15 @@ public final class ServerClientProtocol {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, posX_);
+          .computeFloatSize(1, posX_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, posY_);
+          .computeFloatSize(2, posY_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, posZ_);
+          .computeFloatSize(3, posZ_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -540,18 +540,24 @@ public final class ServerClientProtocol {
       boolean result = true;
       result = result && (hasPosX() == other.hasPosX());
       if (hasPosX()) {
-        result = result && (getPosX()
-            == other.getPosX());
+        result = result && (
+            java.lang.Float.floatToIntBits(getPosX())
+            == java.lang.Float.floatToIntBits(
+                other.getPosX()));
       }
       result = result && (hasPosY() == other.hasPosY());
       if (hasPosY()) {
-        result = result && (getPosY()
-            == other.getPosY());
+        result = result && (
+            java.lang.Float.floatToIntBits(getPosY())
+            == java.lang.Float.floatToIntBits(
+                other.getPosY()));
       }
       result = result && (hasPosZ() == other.hasPosZ());
       if (hasPosZ()) {
-        result = result && (getPosZ()
-            == other.getPosZ());
+        result = result && (
+            java.lang.Float.floatToIntBits(getPosZ())
+            == java.lang.Float.floatToIntBits(
+                other.getPosZ()));
       }
       result = result &&
           getUnknownFields().equals(other.getUnknownFields());
@@ -567,15 +573,18 @@ public final class ServerClientProtocol {
       hash = (19 * hash) + getDescriptorForType().hashCode();
       if (hasPosX()) {
         hash = (37 * hash) + POSX_FIELD_NUMBER;
-        hash = (53 * hash) + getPosX();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getPosX());
       }
       if (hasPosY()) {
         hash = (37 * hash) + POSY_FIELD_NUMBER;
-        hash = (53 * hash) + getPosY();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getPosY());
       }
       if (hasPosZ()) {
         hash = (37 * hash) + POSZ_FIELD_NUMBER;
-        hash = (53 * hash) + getPosZ();
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getPosZ());
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -687,11 +696,11 @@ public final class ServerClientProtocol {
 
       public Builder clear() {
         super.clear();
-        posX_ = 0;
+        posX_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000001);
-        posY_ = 0;
+        posY_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000002);
-        posZ_ = 0;
+        posZ_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -797,98 +806,98 @@ public final class ServerClientProtocol {
       }
       private int bitField0_;
 
-      private int posX_ ;
+      private float posX_ ;
       /**
-       * <code>required int32 posX = 1;</code>
+       * <code>required float posX = 1;</code>
        */
       public boolean hasPosX() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 posX = 1;</code>
+       * <code>required float posX = 1;</code>
        */
-      public int getPosX() {
+      public float getPosX() {
         return posX_;
       }
       /**
-       * <code>required int32 posX = 1;</code>
+       * <code>required float posX = 1;</code>
        */
-      public Builder setPosX(int value) {
+      public Builder setPosX(float value) {
         bitField0_ |= 0x00000001;
         posX_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 posX = 1;</code>
+       * <code>required float posX = 1;</code>
        */
       public Builder clearPosX() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        posX_ = 0;
+        posX_ = 0F;
         onChanged();
         return this;
       }
 
-      private int posY_ ;
+      private float posY_ ;
       /**
-       * <code>required int32 posY = 2;</code>
+       * <code>required float posY = 2;</code>
        */
       public boolean hasPosY() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 posY = 2;</code>
+       * <code>required float posY = 2;</code>
        */
-      public int getPosY() {
+      public float getPosY() {
         return posY_;
       }
       /**
-       * <code>required int32 posY = 2;</code>
+       * <code>required float posY = 2;</code>
        */
-      public Builder setPosY(int value) {
+      public Builder setPosY(float value) {
         bitField0_ |= 0x00000002;
         posY_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 posY = 2;</code>
+       * <code>required float posY = 2;</code>
        */
       public Builder clearPosY() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        posY_ = 0;
+        posY_ = 0F;
         onChanged();
         return this;
       }
 
-      private int posZ_ ;
+      private float posZ_ ;
       /**
-       * <code>required int32 posZ = 3;</code>
+       * <code>required float posZ = 3;</code>
        */
       public boolean hasPosZ() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 posZ = 3;</code>
+       * <code>required float posZ = 3;</code>
        */
-      public int getPosZ() {
+      public float getPosZ() {
         return posZ_;
       }
       /**
-       * <code>required int32 posZ = 3;</code>
+       * <code>required float posZ = 3;</code>
        */
-      public Builder setPosZ(int value) {
+      public Builder setPosZ(float value) {
         bitField0_ |= 0x00000004;
         posZ_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 posZ = 3;</code>
+       * <code>required float posZ = 3;</code>
        */
       public Builder clearPosZ() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        posZ_ = 0;
+        posZ_ = 0F;
         onChanged();
         return this;
       }
@@ -19836,7 +19845,7 @@ public final class ServerClientProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\021client_gate.proto\":\n\016ClientPosition\022\014\n" +
-      "\004posX\030\001 \002(\005\022\014\n\004posY\030\002 \002(\005\022\014\n\004posZ\030\003 \002(\005\"" +
+      "\004posX\030\001 \002(\002\022\014\n\004posY\030\002 \002(\002\022\014\n\004posZ\030\003 \002(\002\"" +
       "C\n\rClientModInfo\022\r\n\005modId\030\001 \002(\005\022\016\n\006motio" +
       "n\030\002 \002(\005\022\023\n\013orientation\030\003 \002(\005\"C\n\020ClientMo" +
       "tionInfo\022\016\n\006motion\030\001 \002(\005\022\020\n\010efficacy\030\002 \002" +

@@ -6,7 +6,13 @@ package com.mmo.server;
 public final class ServerGateProtocol {
   private ServerGateProtocol() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
    * Protobuf enum {@code MapEventType}
@@ -386,6 +392,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPing) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPing)other);
@@ -724,6 +756,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.GateServerPong) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.GateServerPong)other);
@@ -944,7 +1002,8 @@ public final class ServerGateProtocol {
                 mapItems_ = new java.util.ArrayList<com.mmo.server.CommonProtocol.Item>();
                 mutable_bitField0_ |= 0x00000004;
               }
-              mapItems_.add(input.readMessage(com.mmo.server.CommonProtocol.Item.parser(), extensionRegistry));
+              mapItems_.add(
+                  input.readMessage(com.mmo.server.CommonProtocol.Item.parser(), extensionRegistry));
               break;
             }
             case 34: {
@@ -952,7 +1011,8 @@ public final class ServerGateProtocol {
                 mapCharacters_ = new java.util.ArrayList<com.mmo.server.CommonProtocol.Character>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              mapCharacters_.add(input.readMessage(com.mmo.server.CommonProtocol.Character.parser(), extensionRegistry));
+              mapCharacters_.add(
+                  input.readMessage(com.mmo.server.CommonProtocol.Character.parser(), extensionRegistry));
               break;
             }
             case 40: {
@@ -1002,7 +1062,7 @@ public final class ServerGateProtocol {
      * <code>optional .CommonStat stat = 1;</code>
      */
     public com.mmo.server.CommonProtocol.CommonStat getStat() {
-      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.forNumber(stat_);
+      com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
       return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
     }
 
@@ -1388,6 +1448,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest)other);
@@ -1506,7 +1592,7 @@ public final class ServerGateProtocol {
        * <code>optional .CommonStat stat = 1;</code>
        */
       public com.mmo.server.CommonProtocol.CommonStat getStat() {
-        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.forNumber(stat_);
+        com.mmo.server.CommonProtocol.CommonStat result = com.mmo.server.CommonProtocol.CommonStat.valueOf(stat_);
         return result == null ? com.mmo.server.CommonProtocol.CommonStat.UNRECOGNIZED : result;
       }
       /**
@@ -1566,7 +1652,7 @@ public final class ServerGateProtocol {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> mapItemsBuilder_;
 
       /**
@@ -1782,11 +1868,11 @@ public final class ServerGateProtocol {
            getMapItemsBuilderList() {
         return getMapItemsFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder> 
           getMapItemsFieldBuilder() {
         if (mapItemsBuilder_ == null) {
-          mapItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          mapItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.mmo.server.CommonProtocol.Item, com.mmo.server.CommonProtocol.Item.Builder, com.mmo.server.CommonProtocol.ItemOrBuilder>(
                   mapItems_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
@@ -1806,7 +1892,7 @@ public final class ServerGateProtocol {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> mapCharactersBuilder_;
 
       /**
@@ -2022,11 +2108,11 @@ public final class ServerGateProtocol {
            getMapCharactersBuilderList() {
         return getMapCharactersFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder> 
           getMapCharactersFieldBuilder() {
         if (mapCharactersBuilder_ == null) {
-          mapCharactersBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          mapCharactersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.mmo.server.CommonProtocol.Character, com.mmo.server.CommonProtocol.Character.Builder, com.mmo.server.CommonProtocol.CharacterOrBuilder>(
                   mapCharacters_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -2315,7 +2401,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -2365,8 +2451,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -2626,6 +2712,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemMoveEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemMoveEventRequest)other);
@@ -2710,7 +2822,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemMoveEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemMoveEvent event = 2;</code>
@@ -2812,11 +2924,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemMoveEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ItemMoveEvent, com.mmo.server.CommonProtocol.ItemMoveEvent.Builder, com.mmo.server.CommonProtocol.ItemMoveEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -2845,7 +2957,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -3184,7 +3296,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -3234,8 +3346,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -3491,6 +3603,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemCreateEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemCreateEventRequest)other);
@@ -3575,7 +3713,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemCreateEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemCreateEvent, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder, com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemCreateEvent event = 2;</code>
@@ -3677,11 +3815,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemCreateEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemCreateEvent, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder, com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ItemCreateEvent, com.mmo.server.CommonProtocol.ItemCreateEvent.Builder, com.mmo.server.CommonProtocol.ItemCreateEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -3710,7 +3848,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -4049,7 +4187,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -4099,8 +4237,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -4356,6 +4494,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest)other);
@@ -4440,7 +4604,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.ItemDestroyEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .ItemDestroyEvent event = 2;</code>
@@ -4542,11 +4706,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .ItemDestroyEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.ItemDestroyEvent, com.mmo.server.CommonProtocol.ItemDestroyEvent.Builder, com.mmo.server.CommonProtocol.ItemDestroyEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -4575,7 +4739,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**
@@ -4914,7 +5078,7 @@ public final class ServerGateProtocol {
      * <code>optional .MapEventType eventType = 3;</code>
      */
     public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+      com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
       return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
     }
 
@@ -4964,8 +5128,8 @@ public final class ServerGateProtocol {
         output.writeEnum(3, eventType_);
       }
       if (getEffectsList().size() > 0) {
-        output.writeRawVarint32(34);
-        output.writeRawVarint32(effectsMemoizedSerializedSize);
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(effectsMemoizedSerializedSize);
       }
       for (int i = 0; i < effects_.size(); i++) {
         output.writeInt32NoTag(effects_.get(i));
@@ -5221,6 +5385,32 @@ public final class ServerGateProtocol {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest) {
           return mergeFrom((com.mmo.server.ServerGateProtocol.CharacterCreateEventRequest)other);
@@ -5305,7 +5495,7 @@ public final class ServerGateProtocol {
       }
 
       private com.mmo.server.CommonProtocol.CharacterCreateEvent event_ = null;
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder> eventBuilder_;
       /**
        * <code>optional .CharacterCreateEvent event = 2;</code>
@@ -5407,11 +5597,11 @@ public final class ServerGateProtocol {
       /**
        * <code>optional .CharacterCreateEvent event = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               com.mmo.server.CommonProtocol.CharacterCreateEvent, com.mmo.server.CommonProtocol.CharacterCreateEvent.Builder, com.mmo.server.CommonProtocol.CharacterCreateEventOrBuilder>(
                   getEvent(),
                   getParentForChildren(),
@@ -5440,7 +5630,7 @@ public final class ServerGateProtocol {
        * <code>optional .MapEventType eventType = 3;</code>
        */
       public com.mmo.server.ServerGateProtocol.MapEventType getEventType() {
-        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.forNumber(eventType_);
+        com.mmo.server.ServerGateProtocol.MapEventType result = com.mmo.server.ServerGateProtocol.MapEventType.valueOf(eventType_);
         return result == null ? com.mmo.server.ServerGateProtocol.MapEventType.UNRECOGNIZED : result;
       }
       /**

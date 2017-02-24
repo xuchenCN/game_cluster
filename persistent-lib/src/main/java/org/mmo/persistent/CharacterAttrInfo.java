@@ -10,17 +10,17 @@ public interface CharacterAttrInfo {
 
 	public void setMapId(Integer mapId);
 
-	public Integer getPosX();
+	public Float getPosX();
 
-	public void setPosX(Integer posX);
+	public void setPosX(Float posX);
 
-	public Integer getPosY();
+	public Float getPosY();
 
-	public void setPosY(Integer posY);
+	public void setPosY(Float posY);
 
-	public Integer getPosZ();
+	public Float getPosZ();
 
-	public void setPosZ(Integer posZ);
+	public void setPosZ(Float posZ);
 
 	public Integer getStrength();
 
