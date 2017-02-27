@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
@@ -24,6 +25,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mmo.server.CommonProtocol;
 import com.mmo.server.CommonProtocol.CharacterCreateEvent;
 import com.mmo.server.CommonProtocol.Item;
+import com.mmo.server.CommonProtocol.ItemMoveEvent;
 import com.mmo.server.CommonProtocol.Position;
 import com.mmo.server.MessagesLocation.MessageRegistry;
 import com.mmo.server.ServerClientProtocol;
@@ -45,15 +47,16 @@ import com.mmo.server.ServerGameProtocol.CharacterMoveReq;
 import com.mmo.server.ServerGateProtocol.CharacterEnterMapRequest;
 import com.mmo.server.ServerGateProtocol.ItemCreateEventRequest;
 import com.mmo.server.ServerGateProtocol.ItemDestroyEventRequest;
-import com.mmo.server.ServerGateProtocol.ItemMoveEventRequest;
 import com.mmo.server.ServerGateProtocol.MapEventType;
 import com.mmo.server.ServerWorldProtocol.UserArrivedWorldRequest;
 
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+@Sharable
 public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 	private static final Log LOG = LogFactory.getLog(GateNettyHandler.class);
@@ -64,7 +67,7 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 	private volatile boolean shouldRun;
 
-	private Map<Integer, Map<Integer, Channel>> mapIdToUid = new HashMap<Integer, Map<Integer, Channel>>();
+	private volatile Map<Integer, Map<Integer, Channel>> mapIdToUid = new HashMap<Integer, Map<Integer, Channel>>();
 	private Map<String, String> channelToTicket = new HashMap<String, String>();
 
 	public GateNettyHandler(GateServerContext gateServerContext) {
@@ -99,15 +102,15 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
-		System.out.println("channelUnregistered" + ctx.channel().remoteAddress());
-		String ticket = channelToTicket.remove(ctx.channel().toString());
+		LOG.info("channelUnregistered" + ctx.channel().remoteAddress().toString());
+		String ticket = channelToTicket.remove(ctx.channel().remoteAddress().toString());
 		if (!StringUtils.isEmpty(ticket)) {
 			Pair<Integer, Integer> uidMapIdPair = gateServerContext.getAccountService().getUidMapIdPair(ticket);
-			Map<Integer, Channel> uidChannel = mapIdToUid.get(uidMapIdPair.getLeft());
-			if (uidChannel != null) {
+			Map<Integer, Channel> uidChannel = mapIdToUid.get(uidMapIdPair.getRight());
+			if (uidChannel != null && !uidChannel.isEmpty()) {
 				uidChannel.remove(uidMapIdPair.getLeft());
 			}
-
+			
 			gateServerContext.getAccountService().userLogout(UserLogoutRequest.newBuilder().setTicket(ticket).build());
 
 		}
@@ -134,13 +137,13 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 			if (response.getCode() == LoginCode.SUC) {
 				int uid = gateServerContext.getAccountService().getUidByTicket(response.getTicket());
 				int mapId = gateServerContext.getAccountService().getMapIdByTicket(response.getTicket());
-				Map<Integer, Channel> uid2Channel = mapIdToUid.get(mapId);
-				if (uid2Channel == null) {
+				Map<Integer, Channel> uid2Channel = this.mapIdToUid.get(mapId);
+				if (uid2Channel == null || uid2Channel.isEmpty()) {
 					uid2Channel = new HashMap<Integer, Channel>();
 				}
 				uid2Channel.put(uid, ctx.channel());
-				mapIdToUid.put(mapId, uid2Channel);
-				channelToTicket.put(ctx.channel().toString(), response.getTicket());
+				this.mapIdToUid.put(mapId, uid2Channel);
+				channelToTicket.put(ctx.channel().remoteAddress().toString(), response.getTicket());
 			}
 
 			GateClientMessage responseMes = new GateClientMessage(MessageRegistry.USERLOGINRESPONSE,
@@ -154,6 +157,9 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 		case MessageRegistry.GETCHARACTERINFOREQUEST_VALUE:
 		case MessageRegistry.GETCHARACTERINFORESPONSE_VALUE:
 		case MessageRegistry.CHARACTERENTERREQUEST_VALUE:
+
+			LOG.info("CHARACTERENTERREQUEST");
+
 			ClientCharacterEnterRequest clientCharacterEnterRequest = (ClientCharacterEnterRequest) FlexiblePBDecoder
 					.decode(ClientCharacterEnterRequest.getDefaultInstance(), null, message.body);
 
@@ -172,6 +178,9 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 			break;
 
 		case MessageRegistry.CHARACTERMOVE_VALUE:
+
+			LOG.info("CHARACTERMOVE");
+
 			ClientCharacterMove characterMove = (ClientCharacterMove) FlexiblePBDecoder
 					.decode(ClientCharacterMove.getDefaultInstance(), null, message.body);
 
@@ -200,25 +209,23 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 	private GateClientMessage messageConverter(GateSendMessge gateSendMessge) {
 		switch (gateSendMessge.getType().getNumber()) {
 		case MapEventType.CHARACTERCREATEEVENT_VALUE:
-			CharacterCreateEvent characterCreateEvent = (CharacterCreateEvent) gateSendMessge
-					.getMessage();
+			CharacterCreateEvent characterCreateEvent = (CharacterCreateEvent) gateSendMessge.getMessage();
 			ClientCharacterCreateEvent clientCharacterCreateEvent = ClientCharacterCreateEvent.newBuilder()
-					.setCharacter(ClientMessageConverter
-							.toClientCharacter(characterCreateEvent.getCharacter()))
+					.setCharacter(ClientMessageConverter.toClientCharacter(characterCreateEvent.getCharacter()))
 					.build();
 
 			return new GateClientMessage(MessageRegistry.CHARACTERCREATEEVENT,
 					Unpooled.wrappedBuffer(clientCharacterCreateEvent.toByteArray()));
 		case MapEventType.ITEMMOVEEVENT_VALUE:
-			ItemMoveEventRequest itemMoveEventRequest = (ItemMoveEventRequest) gateSendMessge.getMessage();
+			ItemMoveEvent itemMoveEvent = (ItemMoveEvent) gateSendMessge.getMessage();
 			ClientItemMoveEvent clientItemMoveEvent = ClientItemMoveEvent.newBuilder()
 					.setIdentify(
-							ClientMessageConverter.toClientIdentifyInfo(itemMoveEventRequest.getEvent().getIdentify()))
-					.setFromPos(ClientMessageConverter.toClientPosition(itemMoveEventRequest.getEvent().getFromPos()))
-					.setToPos(ClientMessageConverter.toClientPosition(itemMoveEventRequest.getEvent().getToPos()))
-					.setSpeed(itemMoveEventRequest.getEvent().getSpeed())
+							ClientMessageConverter.toClientIdentifyInfo(itemMoveEvent.getIdentify()))
+					.setFromPos(ClientMessageConverter.toClientPosition(itemMoveEvent.getFromPos()))
+					.setToPos(ClientMessageConverter.toClientPosition(itemMoveEvent.getToPos()))
+					.setSpeed(itemMoveEvent.getSpeed())
 					.setPlayMotion(
-							ClientMessageConverter.toClientMotionInfo(itemMoveEventRequest.getEvent().getPlayMotion()))
+							ClientMessageConverter.toClientMotionInfo(itemMoveEvent.getPlayMotion()))
 					.build();
 
 			return new GateClientMessage(MessageRegistry.ITEMMOVEEVENT,
@@ -259,7 +266,7 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 			ClientCharacterEnterEvent clientCharacterEnterEvent = ClientCharacterEnterEvent.newBuilder()
 					.setStat(clientCommonStat).setMapId(characterEnterMapRequest.getMapId())
 					.addAllMapCharacters(clientCharacters).addAllMapItems(clientItems).build();
-			
+
 			return new GateClientMessage(MessageRegistry.CHARACTERENTERRESPONSE,
 					Unpooled.wrappedBuffer(clientCharacterEnterEvent.toByteArray()));
 
@@ -298,23 +305,40 @@ public class GateNettyHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	class SendMessageActor implements Runnable {
+		
+		public SendMessageActor() {
+			System.out.println("SendMessageActor constuct");
+		}
 
 		@Override
 		public void run() {
 			while (shouldRun && !Thread.interrupted()) {
 				try {
+					
 					GateSendMessge gateSendMessge = gateServerContext.getGateServerRouter().pullSendQueue();
 					List<Integer> effects = gateSendMessge.getEffects();
 					boolean isEffects = effects != null && !effects.isEmpty();
 					Map<Integer, Channel> uid2Channel = mapIdToUid.get(gateSendMessge.getMapId());
 					if (uid2Channel != null && !uid2Channel.isEmpty()) {
-						uid2Channel.entrySet().stream().filter(map -> !isEffects || effects.contains(map.getKey()))
-								.forEach(entry -> {
-									GateClientMessage gateClientMessage = messageConverter(gateSendMessge);
-									entry.getValue().writeAndFlush(gateClientMessage);
-								});
-					}
 
+						for (Entry<Integer, Channel> entry : uid2Channel.entrySet()) {
+							if (isEffects && !effects.contains(entry.getKey())) {
+
+								continue;
+							} else {
+								GateClientMessage gateClientMessage = messageConverter(gateSendMessge);
+								LOG.info("response : " + gateClientMessage.messageId.toString());
+								entry.getValue().writeAndFlush(gateClientMessage);
+							}
+						}
+
+						// uid2Channel.entrySet().stream().filter(map ->
+						// !isEffects || effects.contains(map.getKey()))
+						// .forEach(entry -> {
+						//
+						// });
+					}
+					Thread.sleep(1000);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

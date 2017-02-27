@@ -166,7 +166,7 @@ public class GateServerRouter extends AbstractService {
 					} else {
 						LOG.error("MapId not exist " + instructionEvent.getMapId());
 					}
-
+					Thread.sleep(1);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
