@@ -25,7 +25,7 @@ public class TestDistance {
     
     System.out.println((System.nanoTime() - t1 ) / 10000);
     
-    Arc2D.Float arc2d = new Arc2D.Float(15,20,35,35,90,30,1);
+    Arc2D.Float arc2d = new Arc2D.Float(200,200,100,100,30,120,Arc2D.PIE);
     System.out.println(arc2d.contains(new Point(15,18)));
     
   }
