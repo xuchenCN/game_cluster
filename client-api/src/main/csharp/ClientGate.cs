@@ -71,8 +71,8 @@ public static partial class ClientGate {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
           "CiBzcmMvbWFpbi9wcm90by9jbGllbnRfZ2F0ZS5wcm90byI6Cg5DbGllbnRQ", 
-          "b3NpdGlvbhIMCgRwb3NYGAEgAigFEgwKBHBvc1kYAiACKAUSDAoEcG9zWhgD", 
-          "IAIoBSJDCg1DbGllbnRNb2RJbmZvEg0KBW1vZElkGAEgAigFEg4KBm1vdGlv", 
+          "b3NpdGlvbhIMCgRwb3NYGAEgAigCEgwKBHBvc1kYAiACKAISDAoEcG9zWhgD", 
+          "IAIoAiJDCg1DbGllbnRNb2RJbmZvEg0KBW1vZElkGAEgAigFEg4KBm1vdGlv", 
           "bhgCIAIoBRITCgtvcmllbnRhdGlvbhgDIAIoBSJDChBDbGllbnRNb3Rpb25J", 
           "bmZvEg4KBm1vdGlvbhgBIAIoBRIQCghlZmZpY2FjeRgCIAIoBRINCgVzcGVl", 
           "ZBgDIAIoAiJVChJDbGllbnRTdXJ2aXZhbEluZm8SDgoGaGVhbHRoGAEgAigF", 
@@ -86,7 +86,7 @@ public static partial class ClientGate {
           "CgRib2R5GAYgAigLMg4uQ2xpZW50TW9kSW5mbxIdCgV3cmlzdBgHIAIoCzIO", 
           "LkNsaWVudE1vZEluZm8SIAoIbGVmdEhvbGQYCCACKAsyDi5DbGllbnRNb2RJ", 
           "bmZvEiEKCXJpZ2h0SG9sZBgJIAIoCzIOLkNsaWVudE1vZEluZm8iTQoSQ2xp", 
-          "ZW50SWRlbnRpZnlJbmZvEgoKAklEGAEgAigJEgwKBG5hbWUYAiACKAkSHQoE", 
+          "ZW50SWRlbnRpZnlJbmZvEgoKAklEGAEgAigFEgwKBG5hbWUYAiACKAkSHQoE", 
           "dHlwZRgDIAEoDjIPLkNsaWVudEl0ZW1UeXBlIqIBCgpDbGllbnRJdGVtEiUK", 
           "CGlkZW50aWZ5GAEgAigLMhMuQ2xpZW50SWRlbnRpZnlJbmZvEiEKCHBvc2l0", 
           "aW9uGAIgAigLMg8uQ2xpZW50UG9zaXRpb24SHwoHbW9kSW5mbxgDIAIoCzIO", 
@@ -260,7 +260,7 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
   private ClientPosition() { }
   private static readonly ClientPosition defaultInstance = new ClientPosition().MakeReadOnly();
   private static readonly string[] _clientPositionFieldNames = new string[] { "posX", "posY", "posZ" };
-  private static readonly uint[] _clientPositionFieldTags = new uint[] { 8, 16, 24 };
+  private static readonly uint[] _clientPositionFieldTags = new uint[] { 13, 21, 29 };
   public static ClientPosition DefaultInstance {
     get { return defaultInstance; }
   }
@@ -283,31 +283,31 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
   
   public const int PosXFieldNumber = 1;
   private bool hasPosX;
-  private int posX_;
+  private float posX_;
   public bool HasPosX {
     get { return hasPosX; }
   }
-  public int PosX {
+  public float PosX {
     get { return posX_; }
   }
   
   public const int PosYFieldNumber = 2;
   private bool hasPosY;
-  private int posY_;
+  private float posY_;
   public bool HasPosY {
     get { return hasPosY; }
   }
-  public int PosY {
+  public float PosY {
     get { return posY_; }
   }
   
   public const int PosZFieldNumber = 3;
   private bool hasPosZ;
-  private int posZ_;
+  private float posZ_;
   public bool HasPosZ {
     get { return hasPosZ; }
   }
-  public int PosZ {
+  public float PosZ {
     get { return posZ_; }
   }
   
@@ -324,13 +324,13 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
     CalcSerializedSize();
     string[] field_names = _clientPositionFieldNames;
     if (hasPosX) {
-      output.WriteInt32(1, field_names[0], PosX);
+      output.WriteFloat(1, field_names[0], PosX);
     }
     if (hasPosY) {
-      output.WriteInt32(2, field_names[1], PosY);
+      output.WriteFloat(2, field_names[1], PosY);
     }
     if (hasPosZ) {
-      output.WriteInt32(3, field_names[2], PosZ);
+      output.WriteFloat(3, field_names[2], PosZ);
     }
     UnknownFields.WriteTo(output);
   }
@@ -350,13 +350,13 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
     
     size = 0;
     if (hasPosX) {
-      size += pb::CodedOutputStream.ComputeInt32Size(1, PosX);
+      size += pb::CodedOutputStream.ComputeFloatSize(1, PosX);
     }
     if (hasPosY) {
-      size += pb::CodedOutputStream.ComputeInt32Size(2, PosY);
+      size += pb::CodedOutputStream.ComputeFloatSize(2, PosY);
     }
     if (hasPosZ) {
-      size += pb::CodedOutputStream.ComputeInt32Size(3, PosZ);
+      size += pb::CodedOutputStream.ComputeFloatSize(3, PosZ);
     }
     size += UnknownFields.SerializedSize;
     memoizedSerializedSize = size;
@@ -532,16 +532,16 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
             ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
             break;
           }
-          case 8: {
-            result.hasPosX = input.ReadInt32(ref result.posX_);
+          case 13: {
+            result.hasPosX = input.ReadFloat(ref result.posX_);
             break;
           }
-          case 16: {
-            result.hasPosY = input.ReadInt32(ref result.posY_);
+          case 21: {
+            result.hasPosY = input.ReadFloat(ref result.posY_);
             break;
           }
-          case 24: {
-            result.hasPosZ = input.ReadInt32(ref result.posZ_);
+          case 29: {
+            result.hasPosZ = input.ReadFloat(ref result.posZ_);
             break;
           }
         }
@@ -557,11 +557,11 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
     public bool HasPosX {
       get { return result.hasPosX; }
     }
-    public int PosX {
+    public float PosX {
       get { return result.PosX; }
       set { SetPosX(value); }
     }
-    public Builder SetPosX(int value) {
+    public Builder SetPosX(float value) {
       PrepareBuilder();
       result.hasPosX = true;
       result.posX_ = value;
@@ -570,18 +570,18 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
     public Builder ClearPosX() {
       PrepareBuilder();
       result.hasPosX = false;
-      result.posX_ = 0;
+      result.posX_ = 0F;
       return this;
     }
     
     public bool HasPosY {
       get { return result.hasPosY; }
     }
-    public int PosY {
+    public float PosY {
       get { return result.PosY; }
       set { SetPosY(value); }
     }
-    public Builder SetPosY(int value) {
+    public Builder SetPosY(float value) {
       PrepareBuilder();
       result.hasPosY = true;
       result.posY_ = value;
@@ -590,18 +590,18 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
     public Builder ClearPosY() {
       PrepareBuilder();
       result.hasPosY = false;
-      result.posY_ = 0;
+      result.posY_ = 0F;
       return this;
     }
     
     public bool HasPosZ {
       get { return result.hasPosZ; }
     }
-    public int PosZ {
+    public float PosZ {
       get { return result.PosZ; }
       set { SetPosZ(value); }
     }
-    public Builder SetPosZ(int value) {
+    public Builder SetPosZ(float value) {
       PrepareBuilder();
       result.hasPosZ = true;
       result.posZ_ = value;
@@ -610,7 +610,7 @@ public sealed partial class ClientPosition : pb::GeneratedMessage<ClientPosition
     public Builder ClearPosZ() {
       PrepareBuilder();
       result.hasPosZ = false;
-      result.posZ_ = 0;
+      result.posZ_ = 0F;
       return this;
     }
   }
@@ -3030,7 +3030,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
   private ClientIdentifyInfo() { }
   private static readonly ClientIdentifyInfo defaultInstance = new ClientIdentifyInfo().MakeReadOnly();
   private static readonly string[] _clientIdentifyInfoFieldNames = new string[] { "ID", "name", "type" };
-  private static readonly uint[] _clientIdentifyInfoFieldTags = new uint[] { 10, 18, 24 };
+  private static readonly uint[] _clientIdentifyInfoFieldTags = new uint[] { 8, 18, 24 };
   public static ClientIdentifyInfo DefaultInstance {
     get { return defaultInstance; }
   }
@@ -3053,11 +3053,11 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
   
   public const int IDFieldNumber = 1;
   private bool hasID;
-  private string iD_ = "";
+  private int iD_;
   public bool HasID {
     get { return hasID; }
   }
-  public string ID {
+  public int ID {
     get { return iD_; }
   }
   
@@ -3093,7 +3093,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     CalcSerializedSize();
     string[] field_names = _clientIdentifyInfoFieldNames;
     if (hasID) {
-      output.WriteString(1, field_names[0], ID);
+      output.WriteInt32(1, field_names[0], ID);
     }
     if (hasName) {
       output.WriteString(2, field_names[1], Name);
@@ -3119,7 +3119,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     
     size = 0;
     if (hasID) {
-      size += pb::CodedOutputStream.ComputeStringSize(1, ID);
+      size += pb::CodedOutputStream.ComputeInt32Size(1, ID);
     }
     if (hasName) {
       size += pb::CodedOutputStream.ComputeStringSize(2, Name);
@@ -3301,8 +3301,8 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
             ParseUnknownField(input, unknownFields, extensionRegistry, tag, field_name);
             break;
           }
-          case 10: {
-            result.hasID = input.ReadString(ref result.iD_);
+          case 8: {
+            result.hasID = input.ReadInt32(ref result.iD_);
             break;
           }
           case 18: {
@@ -3334,12 +3334,11 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     public bool HasID {
       get { return result.hasID; }
     }
-    public string ID {
+    public int ID {
       get { return result.ID; }
       set { SetID(value); }
     }
-    public Builder SetID(string value) {
-      pb::ThrowHelper.ThrowIfNull(value, "value");
+    public Builder SetID(int value) {
       PrepareBuilder();
       result.hasID = true;
       result.iD_ = value;
@@ -3348,7 +3347,7 @@ public sealed partial class ClientIdentifyInfo : pb::GeneratedMessage<ClientIden
     public Builder ClearID() {
       PrepareBuilder();
       result.hasID = false;
-      result.iD_ = "";
+      result.iD_ = 0;
       return this;
     }
     

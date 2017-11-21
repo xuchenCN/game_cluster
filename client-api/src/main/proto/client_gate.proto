@@ -27,9 +27,9 @@ enum ClientItemType {
 /* Basically Informations */
 
 message ClientPosition {
-	required int32 posX = 1;
-	required int32 posY = 2;
-	required int32 posZ = 3;
+	required float posX = 1;
+	required float posY = 2;
+	required float posZ = 3;
 	
 }
 

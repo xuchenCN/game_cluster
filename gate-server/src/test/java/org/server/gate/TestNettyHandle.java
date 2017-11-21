@@ -4,6 +4,7 @@ import org.server.gate.net.FlexiblePBDecoder;
 import org.server.gate.net.GateClientMessage;
 
 import com.mmo.server.MessagesLocation.MessageRegistry;
+import com.mmo.server.ServerClientProtocol.ClientCharacterEnterRequest;
 import com.mmo.server.ServerClientProtocol.UserLoginRequest;
 import com.mmo.server.ServerClientProtocol.UserLoginResponse;
 
@@ -30,7 +31,12 @@ public class TestNettyHandle extends ChannelInboundHandlerAdapter {
 		
 		switch (message.messageId.getNumber()) {
 		case MessageRegistry.USERLOGINRESPONSE_VALUE:
-			System.out.println(FlexiblePBDecoder.decode(UserLoginResponse.getDefaultInstance(),null,message.body));
+			//System.out.println();
+			UserLoginResponse response = (UserLoginResponse)FlexiblePBDecoder.decode(UserLoginResponse.getDefaultInstance(),null,message.body);
+			ClientCharacterEnterRequest enterReq = ClientCharacterEnterRequest.newBuilder().setTicket(response.getTicket()).build();
+			GateClientMessage en_msg = new GateClientMessage(MessageRegistry.CHARACTERENTERREQUEST, Unpooled.wrappedBuffer(enterReq.toByteArray()));
+			ctx.writeAndFlush(en_msg);
+			System.out.println("ClientCharacterEnterRequest");
 			break;
 		}
 		

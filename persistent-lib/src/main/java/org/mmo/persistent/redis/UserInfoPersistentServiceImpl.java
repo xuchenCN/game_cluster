@@ -35,7 +35,7 @@ public class UserInfoPersistentServiceImpl extends AbstractService
 		poolConfig.setMinIdle(conf.getInt(KeyConstants.REDIS_POOL_MINIDLE, KeyConstants.REDIS_POOL_MINIDLE_DEFAULT));
 
 		String host = conf.get(KeyConstants.REDIS_HOST, "localhost");
-		int port = conf.getInt(KeyConstants.REDIS_PORT, 7379);
+		int port = conf.getInt(KeyConstants.REDIS_PORT, 6379);
 		pool = new JedisPool(poolConfig, host, port);
 
 		testConnection();

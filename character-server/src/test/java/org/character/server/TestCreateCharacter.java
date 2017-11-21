@@ -21,7 +21,7 @@ public class TestCreateCharacter {
 		service.init(new GameConfiguration());
 		service.start();
 		
-		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(10001).setName("test_character").build();
+		IdentifyInfo identifyInfo = IdentifyInfo.newBuilder().setID(10002).setName("test_character1").build();
 		Position position = Position.newBuilder().setPosX(255).setPosY(0).setPosZ(255).build();
 
 		CommonProtocol.Character character = CommonProtocol.Character.newBuilder().setIdentify(identifyInfo)

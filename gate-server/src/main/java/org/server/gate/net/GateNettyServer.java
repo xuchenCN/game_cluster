@@ -31,7 +31,7 @@ public class GateNettyServer {
 
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
-	
+
 	private GateServerContext gateServerContext;
 
 	public GateNettyServer(GateServerContext gateServerContext) {
@@ -52,15 +52,15 @@ public class GateNettyServer {
 		b.childOption(SO_KEEPALIVE, true);
 		// }
 
+		GateNettyHandler gateHandler = new GateNettyHandler(gateServerContext);
+
 		b.childHandler(new ChannelInitializer<Channel>() {
 			@Override
 			public void initChannel(Channel ch) throws Exception {
 
 				LOG.info("Channel init");
 
-				ch.pipeline().addLast(new GateProtoEncoder())
-						.addLast(new GateProtoDecoder()).addLast(new GateProtoEncoder())
-						.addLast(new GateNettyHandler(gateServerContext));
+				ch.pipeline().addLast(new GateProtoEncoder()).addLast(new GateProtoDecoder()).addLast(gateHandler);
 
 				ch.closeFuture().addListener(new ChannelFutureListener() {
 					@Override
@@ -83,7 +83,7 @@ public class GateNettyServer {
 			throw new IOException("Failed to bind", future.cause());
 		}
 		channel = future.channel();
-		
+
 		LOG.info("GateNettyServer listen on : " + port);
 	}
 

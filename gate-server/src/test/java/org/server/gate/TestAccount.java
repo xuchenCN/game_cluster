@@ -17,9 +17,9 @@ public class TestAccount {
 		service.start();
 		
 		UserInfoPersistentBean  userBean = userInfoPersistentService.getBeanFactory().createUserInfoPersistentBean();
-		userBean.setName("tester1");
-		userBean.setPwd("tester1");
-		userBean.setUid(10001);
+		userBean.setName("tester2");
+		userBean.setPwd("tester2");
+		userBean.setUid(10002);
 		
 		userInfoPersistentService.putUserInfo(userBean);
 	}

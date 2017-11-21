@@ -27,9 +27,9 @@ enum ItemType {
 /* Basically Informations */
 
 message Position {
-	int32 posX = 1;
-	int32 posY = 2;
-	int32 posZ = 3;
+	float posX = 1;
+	float posY = 2;
+	float posZ = 3;
 	
 }
 
